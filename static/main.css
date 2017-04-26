@@ -2,6 +2,24 @@ body {
     font-family: "helvetica", sans-serif;
 }
 
+nav {
+    margin: 0px;
+    padding: 10px;
+    background-color: #000;
+}
+
+nav ul {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+
+nav ul li {
+    color: #FFFFFF;
+    display: inline-block;
+    padding: 4px;
+}
+
 h1 {
 
 }

@@ -1,8 +1,9 @@
 from flask import Flask
 app = Flask(__name__)
 
-@app.route("/")
-def hello():
+@app.route('/')
+@app.route('/index.html')
+def index():
     return app.send_static_file('index.html') 
 
 @app.route("/main.css")
@@ -17,14 +18,14 @@ def main_admin():
 def main_student():
     return app.send_static_file('main_student.html')
 
+@app.route("/category_controllers.html")
+def category_controllers():
+    return app.send_static_file('category_controllers.html')
+
+@app.route("/detail_controllers.html")
+def detail_controllers():
+    return app.send_static_file('detail_controllers.html')
+
 if __name__ == "__main__":
     app.run()
-
-@app.after_request
-def add_header(r):
-    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-    r.headers["Pragma"] = "no-cache"
-    r.headers["Expires"] = "0"
-    r.headers['Cache-Control'] = 'public, max-age=0'
-    return r
 

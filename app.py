@@ -1,31 +1,62 @@
-from flask import Flask
+from flask import Flask, url_for, redirect, request
+import os
+import dataset
 app = Flask(__name__)
 
-@app.route('/')
-@app.route('/index.html')
+#app.debug allows error messages and on the fly code changes
+app.debug=True
+app.secret_key = os.urandom(24)
+
+# #this serves static pages
+@app.route('/<path:path>')
+def get_static(path):
+    return app.send_static_file(path)
+
+@app.route('/', methods=['GET','POST'])
+@app.route('/index.html',methods=['GET','POST'])
 def index():
-    return app.send_static_file('index.html') 
+    if request.method == 'POST':
+        name = request.form['username']
+        return '<h1>Welcome ' + name + '!</h1>'
 
-@app.route("/main.css")
-def css():
-    return app.send_static_file('main.css')
-    
-@app.route("/main_admin.html")
-def main_admin():
-    return app.send_static_file('main_admin.html')
+    return app.send_static_file('index.html')
 
-@app.route("/main_student.html")
-def main_student():
-    return app.send_static_file('main_student.html')
+#route to create a new part
+@app.route('/create.html', methods=['GET','POST'])
+def create():
+    if request.method == 'POST':
+        name = request.form['name']
+        desc = request.form['desc']
+        type = request.form['type']
 
-@app.route("/category_controllers.html")
-def category_controllers():
-    return app.send_static_file('category_controllers.html')
+        # connect to database, make transaction
+        db = dataset.connect('sqlite:///data.sqlite')
+        db.begin()
+        try:
+            db['parts'].insert(dict(name=name,desc=desc, type=type))
+            db.commit()
+        except:
+            db.rollback()
 
-@app.route("/detail_controllers.html")
-def detail_controllers():
-    return app.send_static_file('detail_controllers.html')
+        print name + ": " + desc + ", " + type
+        return redirect(url_for('retrieve'))
 
+    return app.send_static_file('create.html')
+
+#get all records from database
+@app.route('/retrieve.html')
+def retrieve():
+    retval = '<h1>Parts:</h1>'
+    retval += '<ul>'
+    # connect to database, make transaction
+    db = dataset.connect('sqlite:///data.sqlite')
+    parts = db['parts'].all()
+    for part in parts:
+        retval += '<li>' + part['name'] + ": " + part['desc'] + ', (' + part['type'] + ')</li>'
+
+    retval += '</ul>'
+    return retval
+
+#this must come at the end (to allow decorators to be set)
 if __name__ == "__main__":
     app.run()
-

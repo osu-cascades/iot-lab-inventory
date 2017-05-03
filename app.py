@@ -26,7 +26,6 @@ def index():
 @app.route('/create.html', methods=['GET','POST'])
 def create():
     if request.method == 'POST':
-        print request.form
         name = request.form['name']
         desc = request.form['desc']
         type = request.form['type']
@@ -67,11 +66,30 @@ def retrieve():
     retval += '</ul>'
     return retval
 
-@app.route('/update/<id>')
+@app.route('/update/<id>', methods=['GET', 'POST'])
 def update(id):
-    db = dataset.connect('sqlite:///data.sqlite')
-    part = db['parts'].find_one(id=id)
-    return render_template('update.html', name=part['name'], desc=part['desc'], type=part['type'] )
+
+    if request.method=='GET':
+        db = dataset.connect('sqlite:///data.sqlite')
+        part = db['parts'].find_one(id=id)
+        return render_template('update.html', id=id, name=part['name'], desc=part['desc'], type=part['type'] )
+    elif request.method=='POST':
+        name = request.form['name']
+        desc = request.form['desc']
+        type = request.form['type']
+
+        # connect to database, make transaction
+        db = dataset.connect('sqlite:///data.sqlite')
+        db.begin()
+        try:
+            db['parts'].update(dict(id=id, name=name, desc=desc, type=type),['id'])
+            db.commit()
+        except Exception as e:
+            print e
+            db.rollback()
+
+        print name + ": " + desc + ", " + type
+        return redirect(url_for('retrieve'))
 
 @app.route('/delete/<id>')
 def delete(id):

@@ -1,5 +1,6 @@
-<html>
-    <form action="" method="post">
+{% extends "base.html" %}
+{% block content %}
+<form action="" method="post">
         <label>Name</label>
         <input type="text" name="name">
         <br>
@@ -10,6 +11,7 @@
 
         <label>Type:</label><br>
         <select name="type">
+            <option value=""></option>
             <option value="controller">Controller</option>
             <option value="sensor">Sensor</option>
             <option value="actuator">Actuator</option>
@@ -17,4 +19,4 @@
 
         <input type="submit" value="SUBMIT">
     </form>
-</html>
+{% endblock %}

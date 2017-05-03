@@ -43,28 +43,17 @@ def create():
         return redirect(url_for('retrieve'))
 
     else:
-        return app.send_static_file('create.html')
+        return render_template('create.html')
 
 #get all records from database
 @app.route('/retrieve')
-@app.route('/retrieve.html')
 def retrieve():
     retval = '<h1>Parts:</h1>'
     retval += '<ul>'
     # connect to database, make transaction
     db = dataset.connect('sqlite:///data.sqlite')
     parts = db['parts'].all()
-    for part in parts:
-        retval += '<li>'
-        for k in part.keys():
-            retval += str(k) + ": " + str(part[k]) + ", "
-
-        retval += '<a href="update/' + str(part['id']) + '"> Update</a>'
-        retval += ', <a href="delete/' + str(part['id']) + '"> Delete</a>'
-        retval += "</li>"
-
-    retval += '</ul>'
-    return retval
+    return render_template("retrieve.html", parts=parts)
 
 @app.route('/update/<id>', methods=['GET', 'POST'])
 def update(id):

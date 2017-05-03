@@ -15,12 +15,7 @@ def get_static(path):
 @app.route('/', methods=['GET','POST'])
 @app.route('/index.html',methods=['GET','POST'])
 def index():
-    if request.method == 'POST':
-        name = request.form['username']
-        return '<h1>Welcome ' + name + '!</h1>'
-
-    else:
-        return app.send_static_file('index.html')
+    return render_template("home.html")
 
 #route to create a new part
 @app.route('/create.html', methods=['GET','POST'])

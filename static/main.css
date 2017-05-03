@@ -20,7 +20,15 @@ nav ul li {
     padding: 4px;
 }
 
+nav ul li.login {
+    float: right;
+}
+
 h1 {
 
+}
+
+a {
+    color: #ff6347;
 }
 

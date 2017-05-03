@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="" method="post">
+        <label>Name</label>
+        <input type="text" name="name" value="{{ name }}">
+        <br>
+
+        <label>Description</label>
+        <textarea name="desc">{{ desc }}</textarea>
+        <br>
+
+        <label>Type:</label><br>
+        <select name="type">
+            <option value="controller" {% if type=='controller' %} selected="selected" {% endif %}>Controller</option>
+            <option value="sensor" {% if type=='sensor' %} selected="selected" {% endif %}>Sensor</option>
+            <option value="actuator" {% if type=='actuator' %} selected="selected" {% endif %}>Actuator</option>
+        </select>
+
+        <input type="submit" value="SUBMIT">
+    </form>
+{% endblock %}

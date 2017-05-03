@@ -1,4 +1,4 @@
-from flask import Flask, url_for, redirect, request
+from flask import Flask, url_for, redirect, request, render_template
 import os
 import dataset
 app = Flask(__name__)
@@ -26,6 +26,7 @@ def index():
 @app.route('/create.html', methods=['GET','POST'])
 def create():
     if request.method == 'POST':
+        print request.form
         name = request.form['name']
         desc = request.form['desc']
         type = request.form['type']
@@ -68,11 +69,16 @@ def retrieve():
 
 @app.route('/update/<id>')
 def update(id):
-    return '<h1> TODO: update part #: ' + id + '<h1>'
+    db = dataset.connect('sqlite:///data.sqlite')
+    part = db['parts'].find_one(id=id)
+    return render_template('update.html', name=part['name'], desc=part['desc'], type=part['type'] )
 
 @app.route('/delete/<id>')
 def delete(id):
-    return '<h1> TODO: delete part #: ' + id + '<h1>'
+    db = dataset.connect('sqlite:///data.sqlite')
+    table = db['parts']
+    table.delete(id=id)
+    return '<h1> TODO: deleted part #: ' + id + '<h1>'
 
 #this must come at the end (to allow decorators to be set)
 if __name__ == "__main__":

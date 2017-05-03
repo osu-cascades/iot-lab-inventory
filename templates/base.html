@@ -8,10 +8,10 @@
         <meta http-equiv="pragma" content="no-cache" />
         <meta charset="utf-8">
         <title>OSU-Cascades IoT Lab Inventory</title>
-        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="/main.css">
     </head>
 
-    <body id="home">
+    <body>
         <nav>
             <ul>
                 <li>Home</li>
@@ -22,5 +22,8 @@
                 <li>Misc</li>
             </ul>
         </nav>
+
+        <div id="content">{% block content %}{% endblock %}</div>
+
     </body>
 </html>

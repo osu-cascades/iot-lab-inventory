@@ -19,7 +19,8 @@ def index():
         name = request.form['username']
         return '<h1>Welcome ' + name + '!</h1>'
 
-    return app.send_static_file('index.html')
+    else:
+        return app.send_static_file('index.html')
 
 #route to create a new part
 @app.route('/create.html', methods=['GET','POST'])
@@ -33,7 +34,7 @@ def create():
         db = dataset.connect('sqlite:///data.sqlite')
         db.begin()
         try:
-            db['parts'].insert(dict(name=name,desc=desc, type=type))
+            db['parts'].insert(dict(name=name, desc=desc, type=type))
             db.commit()
         except:
             db.rollback()
@@ -41,9 +42,11 @@ def create():
         print name + ": " + desc + ", " + type
         return redirect(url_for('retrieve'))
 
-    return app.send_static_file('create.html')
+    else:
+        return app.send_static_file('create.html')
 
 #get all records from database
+@app.route('/retrieve')
 @app.route('/retrieve.html')
 def retrieve():
     retval = '<h1>Parts:</h1>'
@@ -52,10 +55,24 @@ def retrieve():
     db = dataset.connect('sqlite:///data.sqlite')
     parts = db['parts'].all()
     for part in parts:
-        retval += '<li>' + part['name'] + ": " + part['desc'] + ', (' + part['type'] + ')</li>'
+        retval += '<li>'
+        for k in part.keys():
+            retval += str(k) + ": " + str(part[k]) + ", "
+
+        retval += '<a href="update/' + str(part['id']) + '"> Update</a>'
+        retval += ', <a href="delete/' + str(part['id']) + '"> Delete</a>'
+        retval += "</li>"
 
     retval += '</ul>'
     return retval
+
+@app.route('/update/<id>')
+def update(id):
+    return '<h1> TODO: update part #: ' + id + '<h1>'
+
+@app.route('/delete/<id>')
+def delete(id):
+    return '<h1> TODO: delete part #: ' + id + '<h1>'
 
 #this must come at the end (to allow decorators to be set)
 if __name__ == "__main__":

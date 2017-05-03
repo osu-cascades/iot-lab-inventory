@@ -1,11 +1,16 @@
 from flask import Flask, url_for, redirect, request, render_template
 import os
 import dataset
+#from flask_googlelogin import GoogleLogin
+
 app = Flask(__name__)
 
 #app.debug allows error messages and on the fly code changes
 app.debug=True
 app.secret_key = os.urandom(24)
+
+#add Google auth
+# googleLogin = GoogleLogin(app)
 
 # #this serves static pages
 @app.route('/<path:path>')
@@ -15,7 +20,9 @@ def get_static(path):
 @app.route('/', methods=['GET','POST'])
 @app.route('/index.html',methods=['GET','POST'])
 def index():
-    return render_template("home.html")
+    db = dataset.connect('sqlite:///data.sqlite')
+    parts = db['parts'].all()
+    return render_template("home.html", parts=parts)
 
 #route to create a new part
 @app.route('/create.html', methods=['GET','POST'])
@@ -42,17 +49,22 @@ def create():
 
 #get all records from database
 @app.route('/retrieve')
-def retrieve():
-    retval = '<h1>Parts:</h1>'
-    retval += '<ul>'
-    # connect to database, make transaction
+@app.route('/retrieve/<type>')
+def retrieve(type=None):
     db = dataset.connect('sqlite:///data.sqlite')
-    parts = db['parts'].all()
-    return render_template("retrieve.html", parts=parts)
+
+    if type is None:
+        # connect to database, make transaction
+        parts = db['parts'].all()
+        return render_template("retrieve.html", parts=parts)
+
+    elif type is not None:
+        parts = db['parts'].find(type=type)
+        return render_template("retrieve.html", parts=parts)
+
 
 @app.route('/update/<id>', methods=['GET', 'POST'])
 def update(id):
-
     if request.method=='GET':
         db = dataset.connect('sqlite:///data.sqlite')
         part = db['parts'].find_one(id=id)
@@ -81,6 +93,23 @@ def delete(id):
     table = db['parts']
     table.delete(id=id)
     return '<h1> TODO: deleted part #: ' + id + '<h1>'
+
+# #Google Login auth stuffs
+# @app.route('/oauth2callback')
+# @googlelogin.oauth2callback
+# def create_or_update_user(token, userinfo, **params):
+#     user = User.filter_by(google_id=userinfo['id']).first()
+#     if user:
+#         user.name = userinfo['name']
+#         user.avatar = userinfo['picture']
+#     else:
+#         user = User(google_id=userinfo['id'],
+#                     name=userinfo['name'],
+#                     avatar=userinfo['picture'])
+#     db.session.add(user)
+#     db.session.flush()
+#     login_user(user)
+#     return redirect(url_for('index'))
 
 #this must come at the end (to allow decorators to be set)
 if __name__ == "__main__":

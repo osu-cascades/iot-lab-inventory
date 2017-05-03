@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
- <h1>Welcome to IoT Lab Inventory App, sucka!</h1>
-        <h2>Equipment List</h2>
-        <p>placeholder for list of equipment</p>
+    <h1>Welcome to IoT Lab Inventory App, sucka!</h1>
+    <h1>Parts:</h1>
+    <ul>
+        {% for part in parts: %}
+            <li>
+                {% for key in part.keys(): %}
+                    {{ key ~ ": " ~ part[key] ~ ", "  }}
+                {% endfor %}
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

@@ -2,6 +2,7 @@
 {% block content %}
 <!-- parts/edit.html -->
 <h1>Edit Part {{ id }}</h1>
+<p class="lnk-back"><a href="/parts">« back to list</a></p>
 <form class="frm-edit" action="/parts/{{ id }}" method="POST">
   <div class="frm-item">
     <label>Name</label>

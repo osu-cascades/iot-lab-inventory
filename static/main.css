@@ -67,6 +67,7 @@ p {
 
 a {
   color: #ff6347;
+  text-decoration: none;
 }
 
 a:hover {
@@ -84,6 +85,10 @@ form.frm-edit {
 form .frm-item {
   margin-bottom: 20px;
   vertical-align: top;
+}
+
+p.lnk-back {
+  font-size: 0.8em;
 }
 
 .frm-item label {

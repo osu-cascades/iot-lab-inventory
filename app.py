@@ -9,6 +9,8 @@ app.debug=True
 app.secret_key = os.urandom(24)
 # googleLogin = GoogleLogin(app)
 
+DATABASE_URL = 'sqlite:///data.sqlite'
+
 
 # Static files
 
@@ -21,7 +23,7 @@ def get_static(path):
 
 @app.route('/', methods=['GET'])
 def index():
-    db = dataset.connect('sqlite:///data.sqlite')
+    db = dataset.connect(DATABASE_URL)
     parts = db['parts'].all()
     return render_template("home.html", parts=parts)
 
@@ -31,7 +33,7 @@ def index():
 @app.route('/retrieve')
 @app.route('/retrieve/<type>')
 def retrieve(type=None):
-    db = dataset.connect('sqlite:///data.sqlite')
+    db = dataset.connect(DATABASE_URL)
 
     if type is None:
         # connect to database, make transaction
@@ -50,7 +52,7 @@ def create():
         type = request.form['type']
 
         # connect to database, make transaction
-        db = dataset.connect('sqlite:///data.sqlite')
+        db = dataset.connect(DATABASE_URL)
         db.begin()
         try:
             db['parts'].insert(dict(name=name, desc=desc, type=type))
@@ -66,7 +68,7 @@ def create():
 @app.route('/update/<id>', methods=['GET', 'POST'])
 def update(id):
     if request.method=='GET':
-        db = dataset.connect('sqlite:///data.sqlite')
+        db = dataset.connect(DATABASE_URL)
         part = db['parts'].find_one(id=id)
         return render_template('update.html', id=id, name=part['name'], desc=part['desc'], type=part['type'] )
     elif request.method=='POST':
@@ -75,7 +77,7 @@ def update(id):
         type = request.form['type']
 
         # connect to database, make transaction
-        db = dataset.connect('sqlite:///data.sqlite')
+        db = dataset.connect(DATABASE_URL)
         db.begin()
         try:
             db['parts'].update(dict(id=id, name=name, desc=desc, type=type),['id'])
@@ -88,7 +90,7 @@ def update(id):
 
 @app.route('/delete/<id>')
 def delete(id):
-    db = dataset.connect('sqlite:///data.sqlite')
+    db = dataset.connect(DATABASE_URL)
     table = db['parts']
     table.delete(id=id)
     return '<h1> TODO: deleted part #: ' + id + '<h1>'

@@ -1,22 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-<form action="" method="post">
-        <label>Name</label>
-        <input type="text" name="name">
-        <br>
-
-        <label>Description</label>
-        <textarea name="desc"></textarea>
-        <br>
-
-        <label>Type:</label><br>
-        <select name="type">
-            <option value=""></option>
-            <option value="controller">Controller</option>
-            <option value="sensor">Sensor</option>
-            <option value="actuator">Actuator</option>
-        </select>
-
-        <input type="submit" value="SUBMIT">
-    </form>
+<!-- parts/new.html -->
+<form action="/parts" method="POST">
+  <label>Name</label>
+  <br>
+  <input type="text" name="name">
+  <br>
+  <label>Description</label>
+  <br>
+  <textarea name="description"></textarea>
+  <br>
+  <label>Category:</label><br>
+  <select name="category">
+    <option value=""></option>
+    <option value="controller">Controller</option>
+    <option value="sensor">Sensor</option>
+    <option value="actuator">Actuator</option>
+  </select>
+  <br>
+  <input type="submit" value="Add This Part">
+</form>
+<!-- /parts/new.html -->
 {% endblock %}

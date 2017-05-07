@@ -37,7 +37,7 @@ def parts_list():
     if category is None:
         parts = db['parts'].all()
     else:
-        parts = db['parts'].find(type=category)
+        parts = db['parts'].find(category=category)
     return render_template('parts/list.html', parts=parts)
 
 
@@ -47,20 +47,19 @@ def parts_new():
 
 
 @app.route('/parts', methods=['POST'])
-def create():
+def parts_create():
     name = request.form['name']
-    desc = request.form['desc']
-    type = request.form['type']
+    description = request.form['description']
+    category = request.form['category']
 
     db = dataset.connect(DATABASE_URL)
     db.begin()
     try:
-        db['parts'].insert(dict(name=name, desc=desc, type=type))
+        db['parts'].insert(dict(name=name, description=description, category=category))
         db.commit()
     except:
         db.rollback()
-
-    return redirect(url_for('retrieve'))
+    return redirect(url_for('parts_list'))
 
 
 @app.route('/update/<id>', methods=['GET', 'POST'])

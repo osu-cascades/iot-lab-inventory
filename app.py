@@ -31,19 +31,12 @@ def teardown_db(exception):
 db = LocalProxy(get_db)
 
 
-# Static files
-
-@app.route('/<path:path>')
-def get_static(path):
-    return app.send_static_file(path)
-
-
 # Root
 
 @app.route('/', methods=['GET'])
-def index():
+def home():
     parts = db['parts'].all()
-    return render_template("home.html", parts=parts)
+    return render_template('home.html', parts=parts)
 
 
 # Parts

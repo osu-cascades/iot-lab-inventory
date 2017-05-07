@@ -1,11 +1,11 @@
 from flask import Flask, url_for, redirect, request, render_template
-#from flask_googlelogin import GoogleLogin
+# from flask_googlelogin import GoogleLogin
 import os
 import dataset
 
 
 app = Flask(__name__)
-app.debug=True
+app.debug = True
 app.secret_key = os.urandom(24)
 # googleLogin = GoogleLogin(app)
 
@@ -30,19 +30,15 @@ def index():
 
 # Parts
 
-@app.route('/retrieve')
-@app.route('/retrieve/<type>')
-def retrieve(type=None):
+@app.route('/parts')
+def retrieve():
     db = dataset.connect(DATABASE_URL)
-
-    if type is None:
-        # connect to database, make transaction
+    category = request.args.get('category')
+    if category is None:
         parts = db['parts'].all()
-        return render_template("retrieve.html", parts=parts)
-
-    elif type is not None:
-        parts = db['parts'].find(type=type)
-        return render_template("retrieve.html", parts=parts)
+    else:
+        parts = db['parts'].find(type=category)
+    return render_template("retrieve.html", parts=parts)
 
 @app.route('/create.html', methods=['GET','POST'])
 def create():
@@ -51,7 +47,6 @@ def create():
         desc = request.form['desc']
         type = request.form['type']
 
-        # connect to database, make transaction
         db = dataset.connect(DATABASE_URL)
         db.begin()
         try:
@@ -75,8 +70,6 @@ def update(id):
         name = request.form['name']
         desc = request.form['desc']
         type = request.form['type']
-
-        # connect to database, make transaction
         db = dataset.connect(DATABASE_URL)
         db.begin()
         try:
@@ -111,7 +104,3 @@ def delete(id):
 #     db.session.flush()
 #     login_user(user)
 #     return redirect(url_for('index'))
-
-
-if __name__ == "__main__":
-    app.run()

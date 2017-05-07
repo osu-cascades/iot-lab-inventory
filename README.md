@@ -1,4 +1,2 @@
-# IoT Lab Inventory System
+# IoT Lab Inventory
 
-TODO:
-- url: /retrieve?type=?

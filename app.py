@@ -61,7 +61,7 @@ def parts_create():
     return redirect(url_for('parts_list'))
 
 
-@app.route('/parts/edit/<int:id>', methods=['GET'])
+@app.route('/parts/<int:id>/edit', methods=['GET'])
 def parts_edit(id=id):
     db = dataset.connect(DATABASE_URL)
     part = db['parts'].find_one(id=id)

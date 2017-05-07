@@ -89,7 +89,7 @@ def parts_delete(id):
     db = dataset.connect(DATABASE_URL)
     table = db['parts']
     table.delete(id=id)
-    return '<h1> TODO: deleted part #: ' + str(id) + '<h1>'
+    return redirect(url_for('parts_list'))
 
 # #Google Login auth stuffs
 # @app.route('/oauth2callback')

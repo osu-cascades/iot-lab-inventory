@@ -1,5 +1,6 @@
 from flask import Flask, g, url_for, redirect, request, render_template, flash
 # from flask_googlelogin import GoogleLogin
+from werkzeug.local import LocalProxy
 import os
 import dataset
 
@@ -22,8 +23,12 @@ def get_db():
 
 
 @app.teardown_appcontext
-def close_db(exception):
-    g.db = None
+def teardown_db(exception):
+    # NOOP. dataset API has no close() method.
+    return
+
+
+db = LocalProxy(get_db)
 
 
 # Static files
@@ -37,7 +42,7 @@ def get_static(path):
 
 @app.route('/', methods=['GET'])
 def index():
-    parts = get_db()['parts'].all()
+    parts = db['parts'].all()
     return render_template("home.html", parts=parts)
 
 
@@ -47,9 +52,9 @@ def index():
 def parts_list():
     category = request.args.get('category')
     if category is None:
-        parts = get_db()['parts'].all()
+        parts = db['parts'].all()
     else:
-        parts = get_db()['parts'].find(category=category)
+        parts = db['parts'].find(category=category)
     return render_template('parts/list.html', parts=parts)
 
 
@@ -63,7 +68,6 @@ def parts_create():
     name = request.form['name']
     description = request.form['description']
     category = request.form['category']
-    db = get_db()
     db.begin()
     try:
         db['parts'].insert(dict(name=name, description=description, category=category))
@@ -77,7 +81,7 @@ def parts_create():
 
 @app.route('/parts/<int:id>/edit', methods=['GET'])
 def parts_edit(id=id):
-    part = get_db()['parts'].find_one(id=id)
+    part = db['parts'].find_one(id=id)
     return render_template('parts/edit.html', id=id, name=part['name'], description=part['description'], category=part['category'])
 
 
@@ -86,7 +90,6 @@ def parts_update(id):
     name = request.form['name']
     description = request.form['description']
     category = request.form['category']
-    db = get_db()
     db.begin()
     try:
         db['parts'].update(dict(id=id, name=name, description=description, category=category), ['id'])
@@ -101,7 +104,7 @@ def parts_update(id):
 
 @app.route('/parts/<int:id>/delete', methods=['POST'])
 def parts_delete(id):
-    table = get_db()['parts']
+    table = db['parts']
     table.delete(id=id)
     flash('Part ' + str(id) + ' has been deleted.')
     return redirect(url_for('parts_list'))

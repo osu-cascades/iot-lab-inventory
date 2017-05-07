@@ -18,8 +18,7 @@ def get_static(path):
     return app.send_static_file(path)
 
 
-@app.route('/', methods=['GET','POST'])
-@app.route('/index.html', methods=['GET','POST'])
+@app.route('/', methods=['GET'])
 def index():
     db = dataset.connect('sqlite:///data.sqlite')
     parts = db['parts'].all()

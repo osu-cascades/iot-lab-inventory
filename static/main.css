@@ -74,6 +74,19 @@ a:hover {
   color: #ff8367;
 }
 
+ul.flashes {
+  list-style-type: none;
+  padding: 20px;
+  border: 1px solid #F0F0F0;
+  background-color: #FFFFF0;
+}
+
+ul.flashes li {
+  margin: 0px;
+  padding: 0px;
+  color: #999;
+}
+
 form.frm-delete {
   display: inline;
 }

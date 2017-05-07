@@ -1,4 +1,4 @@
-from flask import Flask, url_for, redirect, request, render_template
+from flask import Flask, url_for, redirect, request, render_template, flash
 # from flask_googlelogin import GoogleLogin
 import os
 import dataset
@@ -56,7 +56,9 @@ def parts_create():
     try:
         db['parts'].insert(dict(name=name, description=description, category=category))
         db.commit()
+        flash('Part added successfully.')
     except:
+        flash('There was a problem adding this part.')
         db.rollback()
     return redirect(url_for('parts_list'))
 
@@ -78,8 +80,10 @@ def parts_update(id):
     try:
         db['parts'].update(dict(id=id, name=name, description=description, category=category), ['id'])
         db.commit()
+        flash('Part ' + str(id) + ' updated.')
     except Exception as e:
         print(e)
+        flash('There was a problem updating this part.')
         db.rollback()
     return redirect(url_for('parts_list'))
 
@@ -89,6 +93,7 @@ def parts_delete(id):
     db = dataset.connect(DATABASE_URL)
     table = db['parts']
     table.delete(id=id)
+    flash('Part ' + str(id) + ' has been deleted.')
     return redirect(url_for('parts_list'))
 
 # #Google Login auth stuffs

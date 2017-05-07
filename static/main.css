@@ -32,3 +32,6 @@ a {
     color: #ff6347;
 }
 
+form.frm-delete {
+    display: inline;
+}

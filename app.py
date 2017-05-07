@@ -84,12 +84,12 @@ def parts_update(id):
     return redirect(url_for('parts_list'))
 
 
-@app.route('/delete/<int:id>')
-def delete(id):
+@app.route('/parts/<int:id>/delete', methods=['POST'])
+def parts_delete(id):
     db = dataset.connect(DATABASE_URL)
     table = db['parts']
     table.delete(id=id)
-    return '<h1> TODO: deleted part #: ' + id + '<h1>'
+    return '<h1> TODO: deleted part #: ' + str(id) + '<h1>'
 
 # #Google Login auth stuffs
 # @app.route('/oauth2callback')

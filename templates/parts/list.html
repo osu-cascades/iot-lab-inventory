@@ -9,7 +9,9 @@
   {% endfor %}
     <a href="/parts/edit/{{ part['id'] }}">edit</a>
     |
-    <a href="delete/{{ part['id'] }}">delete</a>
+    <form id="frm-delete" class="frm-delete" action="{{ url_for('parts_delete', id=part['id']) }}" method="POST">
+    <a href="#" onclick="document.getElementById('frm-delete').submit();">delete</a>
+</form>
   </li>
 {% endfor %}
 </ul>

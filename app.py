@@ -69,7 +69,7 @@ def parts_edit(id=id):
 
 
 @app.route('/parts/<int:id>', methods=['POST'])
-def update(id):
+def parts_update(id):
     name = request.form['name']
     description = request.form['description']
     category = request.form['category']

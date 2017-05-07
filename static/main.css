@@ -27,20 +27,24 @@ nav ul li a {
   text-decoration: none;
 }
 
-nav ul li a.home {
+nav ul li.home a {
   font-size: 1.5em;
   color: #DDD;
   margin-right: 40px;
   font-family: "helveticaneue-thin", helvetica, arial, sans-serif;
 }
 
-nav ul li a.home:hover {
+nav ul li.home a:hover, nav ul li.login a:hover {
   color: #FFF;
 }
 
 nav ul li.login {
   float: right;
   padding-top: 9px;
+}
+
+nav ul li.login a {
+  color: #DDD;
 }
 
 div#content {
@@ -55,6 +59,11 @@ h1 {
 a {
   color: #ff6347;
 }
+
+a:hover {
+  color: #ff8367;
+}
+
 
 form.frm-delete {
   display: inline;

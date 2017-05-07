@@ -1,4 +1,4 @@
-from flask import Flask, url_for, redirect, request, render_template, flash
+from flask import Flask, g, url_for, redirect, request, render_template, flash
 # from flask_googlelogin import GoogleLogin
 import os
 import dataset
@@ -12,6 +12,20 @@ app.secret_key = os.urandom(24)
 DATABASE_URL = 'sqlite:///data.sqlite'
 
 
+# Helpers
+
+def get_db():
+    db = getattr(g, 'database', None)
+    if db is None:
+        db = g.database = dataset.connect(DATABASE_URL)
+    return db
+
+
+@app.teardown_appcontext
+def close_db(exception):
+    g.db = None
+
+
 # Static files
 
 @app.route('/<path:path>')
@@ -23,8 +37,7 @@ def get_static(path):
 
 @app.route('/', methods=['GET'])
 def index():
-    db = dataset.connect(DATABASE_URL)
-    parts = db['parts'].all()
+    parts = get_db()['parts'].all()
     return render_template("home.html", parts=parts)
 
 
@@ -32,12 +45,11 @@ def index():
 
 @app.route('/parts', methods=['GET'])
 def parts_list():
-    db = dataset.connect(DATABASE_URL)
     category = request.args.get('category')
     if category is None:
-        parts = db['parts'].all()
+        parts = get_db()['parts'].all()
     else:
-        parts = db['parts'].find(category=category)
+        parts = get_db()['parts'].find(category=category)
     return render_template('parts/list.html', parts=parts)
 
 
@@ -51,7 +63,7 @@ def parts_create():
     name = request.form['name']
     description = request.form['description']
     category = request.form['category']
-    db = dataset.connect(DATABASE_URL)
+    db = get_db()
     db.begin()
     try:
         db['parts'].insert(dict(name=name, description=description, category=category))
@@ -65,8 +77,7 @@ def parts_create():
 
 @app.route('/parts/<int:id>/edit', methods=['GET'])
 def parts_edit(id=id):
-    db = dataset.connect(DATABASE_URL)
-    part = db['parts'].find_one(id=id)
+    part = get_db()['parts'].find_one(id=id)
     return render_template('parts/edit.html', id=id, name=part['name'], description=part['description'], category=part['category'])
 
 
@@ -75,7 +86,7 @@ def parts_update(id):
     name = request.form['name']
     description = request.form['description']
     category = request.form['category']
-    db = dataset.connect(DATABASE_URL)
+    db = get_db()
     db.begin()
     try:
         db['parts'].update(dict(id=id, name=name, description=description, category=category), ['id'])
@@ -90,8 +101,7 @@ def parts_update(id):
 
 @app.route('/parts/<int:id>/delete', methods=['POST'])
 def parts_delete(id):
-    db = dataset.connect(DATABASE_URL)
-    table = db['parts']
+    table = get_db()['parts']
     table.delete(id=id)
     flash('Part ' + str(id) + ' has been deleted.')
     return redirect(url_for('parts_list'))

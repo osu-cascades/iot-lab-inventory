@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Parts:</h1>
-    <ul>
-        {% for part in parts: %}
-            <li>
-                {% for key in part.keys(): %}
-                    {{ key ~ ": " ~ part[key] ~ ", "  }}
-                {% endfor %}
-                <a href="update/{{ part['id'] }}">Update</a>
-                <a href="delete/{{ part['id'] }}">Delete</a>
-            </li>
-        {% endfor %}
-    </ul>
+<h1>Parts:</h1>
+<ul>
+{% for part in parts: %}
+  <li>
+  {% for key in part.keys(): %}
+    {{ key ~ ": " ~ part[key] ~ ", "  }}
+  {% endfor %}
+    <a href="/parts/edit/{{ part['id'] }}">edit</a>
+    |
+    <a href="delete/{{ part['id'] }}">delete</a>
+  </li>
+{% endfor %}
+</ul>
 {% endblock %}

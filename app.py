@@ -51,7 +51,6 @@ def parts_create():
     name = request.form['name']
     description = request.form['description']
     category = request.form['category']
-
     db = dataset.connect(DATABASE_URL)
     db.begin()
     try:
@@ -62,26 +61,27 @@ def parts_create():
     return redirect(url_for('parts_list'))
 
 
-@app.route('/update/<id>', methods=['GET', 'POST'])
-def update(id):
-    if request.method=='GET':
-        db = dataset.connect(DATABASE_URL)
-        part = db['parts'].find_one(id=id)
-        return render_template('update.html', id=id, name=part['name'], desc=part['desc'], type=part['type'] )
-    elif request.method=='POST':
-        name = request.form['name']
-        desc = request.form['desc']
-        type = request.form['type']
-        db = dataset.connect(DATABASE_URL)
-        db.begin()
-        try:
-            db['parts'].update(dict(id=id, name=name, desc=desc, type=type),['id'])
-            db.commit()
-        except Exception as e:
-            print(e)
-            db.rollback()
+@app.route('/parts/edit/<id>', methods=['GET'])
+def parts_edit(id=id):
+    db = dataset.connect(DATABASE_URL)
+    part = db['parts'].find_one(id=id)
+    return render_template('parts/edit.html', id=id, name=part['name'], description=part['description'], category=part['category'])
 
-        return redirect(url_for('parts'))
+
+@app.route('/parts/<id>', methods=['POST'])
+def update(id):
+    name = request.form['name']
+    description = request.form['description']
+    category = request.form['category']
+    db = dataset.connect(DATABASE_URL)
+    db.begin()
+    try:
+        db['parts'].update(dict(id=id, name=name, description=description, category=category), ['id'])
+        db.commit()
+    except Exception as e:
+        print(e)
+        db.rollback()
+    return redirect(url_for('parts_list'))
 
 
 @app.route('/delete/<id>')

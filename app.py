@@ -30,7 +30,7 @@ def index():
 
 # Parts
 
-@app.route('/parts')
+@app.route('/parts', methods=['GET'])
 def retrieve():
     db = dataset.connect(DATABASE_URL)
     category = request.args.get('category')

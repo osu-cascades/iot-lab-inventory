@@ -78,6 +78,14 @@ form.frm-delete {
   display: inline;
 }
 
+a.lnk-delete {
+  color: #FAA;
+}
+
+a.lnk-delete:hover {
+  color: #F00;
+}
+
 form.frm-edit {
   margin-top: 20px;
 }
@@ -88,6 +96,10 @@ form .frm-item {
 }
 
 p.lnk-back {
+  font-size: 0.8em;
+}
+
+p.lnk-new {
   font-size: 0.8em;
 }
 
@@ -120,4 +132,8 @@ ul.parts li span.controls {
   display: inline-block;
   padding-top: 8px;
   font-size: 0.8em;
+}
+
+ul.parts li span.controls a {
+  margin-right: 10px;
 }

@@ -41,7 +41,6 @@ def create():
         except:
             db.rollback()
 
-        print name + ": " + desc + ", " + type
         return redirect(url_for('retrieve'))
 
     else:
@@ -81,10 +80,9 @@ def update(id):
             db['parts'].update(dict(id=id, name=name, desc=desc, type=type),['id'])
             db.commit()
         except Exception as e:
-            print e
+            print(e)
             db.rollback()
 
-        print name + ": " + desc + ", " + type
         return redirect(url_for('retrieve'))
 
 @app.route('/delete/<id>')

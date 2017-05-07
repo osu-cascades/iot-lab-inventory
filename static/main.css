@@ -1,5 +1,7 @@
 body {
     font-family: "helvetica", sans-serif;
+    padding: 0px;
+    margin: 0px;
 }
 
 nav {
@@ -17,11 +19,28 @@ nav ul {
 nav ul li {
     color: #FFFFFF;
     display: inline-block;
-    padding: 4px;
+    padding: 0px;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+}
+
+nav ul li a.home {
+    font-size: 1.5em;
+    color: #DDD;
+    margin-right: 40px;
+    font-family: "helveticaneue-thin", helvetica, arial, sans-serif;
+}
+
+nav ul li a.home:hover {
+    color: #FFF;
 }
 
 nav ul li.login {
     float: right;
+    padding-top: 9px;
 }
 
 h1 {

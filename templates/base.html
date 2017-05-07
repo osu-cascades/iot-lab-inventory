@@ -11,21 +11,22 @@
     <link rel="stylesheet" href="/main.css?q={{ range(10000) | random }}">
   </head>
   <body>
-    <nav>
-      <ul>
-        <li><a href="/">IoT Lab Inventory</a></li>
-        <li> | </li>
-        <li><a href="/parts">All Parts</a></li>
-        <li><a href="/parts?category=controller">Controllers</a></li>
-        <li><a href="/parts?category=sensor">Sensors</a></li>
-        <li><a href="/parts?category=actuator">Actuators</a></li>
-        <li>Communication</li>
-        <li>Misc</li>
-        <li class="login">Login</li>
-      </ul>
-    </nav>
-    <div id="content">
-      {% block content %}{% endblock %}
-    </div>
+    <div id="wrapper">
+      <nav>
+        <ul>
+          <li><a class="home" href="/">IoT Lab Inventory</a></li>
+          <li><a href="/parts">All Parts</a></li>
+          <li><a href="/parts?category=controller">Controllers</a></li>
+          <li><a href="/parts?category=sensor">Sensors</a></li>
+          <li><a href="/parts?category=actuator">Actuators</a></li>
+          <li><a href="/parts?category=communication">Communication</a></li>
+          <li><a href="/parts?category=miscellaneous">Misc</a></li>
+          <li class="login">Login</li>
+        </ul>
+      </nav>
+      <div id="content">
+        {% block content %}{% endblock %}
+      </div><!-- /content -->
+    </div><!-- /wrapper -->
   </body>
 </html>

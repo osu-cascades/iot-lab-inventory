@@ -4,6 +4,10 @@ body {
     margin: 0px;
 }
 
+div#content {
+    padding: 20px;
+}
+
 nav {
     margin: 0px;
     padding: 10px;

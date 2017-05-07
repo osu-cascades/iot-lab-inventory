@@ -1,24 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
-<!-- parts/new.html -->
-<form action="/parts/{{ id }}" method="POST">
-  <label>Name</label>
-  <br>
-  <input type="text" name="name" value="{{ name }}">
-  <br>
-  <label>Description</label>
-  <br>
-  <textarea name="description">{{ description }}</textarea>
-  <br>
-  <label>Category:</label><br>
-  <select name="category">
-    <option value=""></option>
-    <option value="controller" {% if category == 'controller' %} selected="selected" {% endif %}>Controller</option>
-    <option value="sensor" {% if category == 'sensor' %} selected="selected" {% endif %}>Sensor</option>
-    <option value="actuator" {% if category == 'actuator' %} selected="selected" {% endif %}>Actuator</option>
-  </select>
-  <br>
-  <input type="submit" value="Save Part">
+<!-- parts/edit.html -->
+<h1>Edit Part {{ id }}</h1>
+<form class="frm-edit" action="/parts/{{ id }}" method="POST">
+  <div class="frm-item">
+    <label>Name</label>
+    <input type="text" name="name" value="{{ name }}" size="50">
+  </div>
+  <div class="frm-item">
+    <label>Description</label>
+    <textarea name="description" cols="48" rows="10">{{ description }}</textarea>
+  </div>
+  <div class="frm-item">
+    <label>Category</label>
+    <select name="category">
+      <option value=""></option>
+      <option value="controller" {% if category == 'controller' %} selected="selected" {% endif %}>Controller</option>
+      <option value="sensor" {% if category == 'sensor' %} selected="selected" {% endif %}>Sensor</option>
+      <option value="actuator" {% if category == 'actuator' %} selected="selected" {% endif %}>Actuator</option>
+    </select>
+  </div>
+  <div class="frm-item">
+    <label></label>
+    <input type="submit" value="Save Part">
+  </div>
 </form>
-<!-- /parts/new.html -->
+<!-- /parts/edit.html -->
 {% endblock %}

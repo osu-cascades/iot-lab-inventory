@@ -77,6 +77,24 @@ form.frm-delete {
   display: inline;
 }
 
+form.frm-edit {
+  margin-top: 20px;
+}
+
+form .frm-item {
+  margin-bottom: 20px;
+  vertical-align: top;
+}
+
+.frm-item label {
+  display: inline-block;
+  width: 150px;
+  text-align: right;
+  padding-right: 20px;
+  vertical-align: top;
+  color: #666;
+}
+
 ul.parts {
   list-style-type: none;
   margin-left: 0px;

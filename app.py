@@ -61,14 +61,14 @@ def parts_create():
     return redirect(url_for('parts_list'))
 
 
-@app.route('/parts/edit/<id>', methods=['GET'])
+@app.route('/parts/edit/<int:id>', methods=['GET'])
 def parts_edit(id=id):
     db = dataset.connect(DATABASE_URL)
     part = db['parts'].find_one(id=id)
     return render_template('parts/edit.html', id=id, name=part['name'], description=part['description'], category=part['category'])
 
 
-@app.route('/parts/<id>', methods=['POST'])
+@app.route('/parts/<int:id>', methods=['POST'])
 def update(id):
     name = request.form['name']
     description = request.form['description']
@@ -84,7 +84,7 @@ def update(id):
     return redirect(url_for('parts_list'))
 
 
-@app.route('/delete/<id>')
+@app.route('/delete/<int:id>')
 def delete(id):
     db = dataset.connect(DATABASE_URL)
     table = db['parts']

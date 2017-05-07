@@ -31,34 +31,37 @@ def index():
 # Parts
 
 @app.route('/parts', methods=['GET'])
-def retrieve():
+def parts_list():
     db = dataset.connect(DATABASE_URL)
     category = request.args.get('category')
     if category is None:
         parts = db['parts'].all()
     else:
         parts = db['parts'].find(type=category)
-    return render_template("retrieve.html", parts=parts)
+    return render_template('parts/list.html', parts=parts)
 
-@app.route('/create.html', methods=['GET','POST'])
+
+@app.route('/parts/new', methods=['GET'])
+def parts_new():
+    return render_template('parts/new.html')
+
+
+@app.route('/parts', methods=['POST'])
 def create():
-    if request.method == 'POST':
-        name = request.form['name']
-        desc = request.form['desc']
-        type = request.form['type']
+    name = request.form['name']
+    desc = request.form['desc']
+    type = request.form['type']
 
-        db = dataset.connect(DATABASE_URL)
-        db.begin()
-        try:
-            db['parts'].insert(dict(name=name, desc=desc, type=type))
-            db.commit()
-        except:
-            db.rollback()
+    db = dataset.connect(DATABASE_URL)
+    db.begin()
+    try:
+        db['parts'].insert(dict(name=name, desc=desc, type=type))
+        db.commit()
+    except:
+        db.rollback()
 
-        return redirect(url_for('retrieve'))
+    return redirect(url_for('retrieve'))
 
-    else:
-        return render_template('create.html')
 
 @app.route('/update/<id>', methods=['GET', 'POST'])
 def update(id):
@@ -79,7 +82,8 @@ def update(id):
             print(e)
             db.rollback()
 
-        return redirect(url_for('retrieve'))
+        return redirect(url_for('parts'))
+
 
 @app.route('/delete/<id>')
 def delete(id):

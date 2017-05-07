@@ -1,60 +1,61 @@
 body {
-    font-family: "helvetica", sans-serif;
-    padding: 0px;
-    margin: 0px;
-}
-
-div#content {
-    padding: 20px;
+  font-family: "helvetica", sans-serif;
+  padding: 0px;
+  margin: 0px;
 }
 
 nav {
-    margin: 0px;
-    padding: 10px;
-    background-color: #000;
+  margin: 0px;
+  padding: 10px;
+  background-color: #000;
 }
 
 nav ul {
-    padding: 0px;
-    margin: 0px;
-    list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+  list-style-type: none;
 }
 
 nav ul li {
-    color: #FFFFFF;
-    display: inline-block;
-    padding: 0px;
-    margin-right: 20px;
+  color: #FFFFFF;
+  display: inline-block;
+  padding: 0px;
+  margin-right: 20px;
 }
 
 nav ul li a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 nav ul li a.home {
-    font-size: 1.5em;
-    color: #DDD;
-    margin-right: 40px;
-    font-family: "helveticaneue-thin", helvetica, arial, sans-serif;
+  font-size: 1.5em;
+  color: #DDD;
+  margin-right: 40px;
+  font-family: "helveticaneue-thin", helvetica, arial, sans-serif;
 }
 
 nav ul li a.home:hover {
-    color: #FFF;
+  color: #FFF;
 }
 
 nav ul li.login {
-    float: right;
-    padding-top: 9px;
+  float: right;
+  padding-top: 9px;
 }
+
+div#content {
+  padding: 20px;
+}
+
 
 h1 {
 
 }
 
 a {
-    color: #ff6347;
+  color: #ff6347;
 }
 
 form.frm-delete {
-    display: inline;
+  display: inline;
 }

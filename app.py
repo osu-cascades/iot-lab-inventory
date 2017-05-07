@@ -1,22 +1,23 @@
 from flask import Flask, url_for, redirect, request, render_template
+#from flask_googlelogin import GoogleLogin
 import os
 import dataset
-#from flask_googlelogin import GoogleLogin
+
 
 app = Flask(__name__)
-
-#app.debug allows error messages and on the fly code changes
 app.debug=True
 app.secret_key = os.urandom(24)
-
-#add Google auth
 # googleLogin = GoogleLogin(app)
 
+
 # Static files
+
 @app.route('/<path:path>')
 def get_static(path):
     return app.send_static_file(path)
 
+
+# Root
 
 @app.route('/', methods=['GET'])
 def index():

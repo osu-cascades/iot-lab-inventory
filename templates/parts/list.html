@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Parts:</h1>
-<ul>
+<h1>Parts List</h1>
+<ul class="parts">
 {% for part in parts: %}
   <li>
-  {% for key in part.keys(): %}
-    {{ key ~ ": " ~ part[key] ~ ", "  }}
-  {% endfor %}
-    <a href="{{ url_for('parts_edit', id=part['id']) }}">edit</a>
-    |
-    <form id="frm-delete-{{ part['id' ]}}" class="frm-delete" action="{{ url_for('parts_delete', id=part['id']) }}" method="POST">
-      <a href="#" onclick="document.getElementById('frm-delete-{{ part['id'] }}').submit();">delete</a>
-    </form>
+    <h2 class="part_name">{{ part['name']  }}</h2>
+    <p class="part_id">{{ part['category'] }} {{ part['id'] }}</p>
+    <p class="part_description">{{ part['description'] }}</p>
+    <span class="controls">
+      <a href="{{ url_for('parts_edit', id=part['id']) }}">edit</a>
+      |
+      <form id="frm-delete-{{ part['id' ]}}" class="frm-delete" action="{{ url_for('parts_delete', id=part['id']) }}" method="POST">
+        <a href="#" onclick="document.getElementById('frm-delete-{{ part['id'] }}').submit();">delete</a>
+      </form>
+    </span>
   </li>
 {% endfor %}
 </ul>

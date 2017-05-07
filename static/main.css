@@ -51,9 +51,18 @@ div#content {
   padding: 20px;
 }
 
-
 h1 {
+  margin: 0px;
+  font-weight: normal;
+}
 
+h2 {
+  margin: 0px;
+  font-weight: normal;
+}
+
+p {
+  margin: 0px;
 }
 
 a {
@@ -64,7 +73,28 @@ a:hover {
   color: #ff8367;
 }
 
-
 form.frm-delete {
   display: inline;
+}
+
+ul.parts {
+  list-style-type: none;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+ul.parts li {
+  margin-bottom: 20px;
+}
+
+ul.parts li p.part_id {
+  color: #999;
+  font-size: 0.8em;
+  margin-bottom: 4px;
+}
+
+ul.parts li span.controls {
+  display: inline-block;
+  padding-top: 8px;
+  font-size: 0.8em;
 }

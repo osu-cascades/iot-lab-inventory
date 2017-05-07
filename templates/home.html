@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Welcome to IoT Lab Inventory App, sucka!</h1>
-    <h1>Parts:</h1>
-    <ul>
-        {% for part in parts: %}
-            <li>
-                {% for key in part.keys(): %}
-                    {{ key ~ ": " ~ part[key] ~ ", "  }}
-                {% endfor %}
-            </li>
-        {% endfor %}
-    </ul>
+<h1>Parts List</h1>
+<ul class="parts">
+{% for part in parts: %}
+  <li>
+    <h2 class="part_name">{{ part['name']  }}</h2>
+    <p class="part_id">{{ part['category'] }} {{ part['id'] }}</p>
+    <p class="part_description">{{ part['description'] }}</p>
+  </li>
+{% endfor %}
+</ul>
 {% endblock %}

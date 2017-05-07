@@ -12,19 +12,36 @@ app.secret_key = os.urandom(24)
 #add Google auth
 # googleLogin = GoogleLogin(app)
 
-# #this serves static pages
+# Static files
 @app.route('/<path:path>')
 def get_static(path):
     return app.send_static_file(path)
 
+
 @app.route('/', methods=['GET','POST'])
-@app.route('/index.html',methods=['GET','POST'])
+@app.route('/index.html', methods=['GET','POST'])
 def index():
     db = dataset.connect('sqlite:///data.sqlite')
     parts = db['parts'].all()
     return render_template("home.html", parts=parts)
 
-#route to create a new part
+
+# Parts
+
+@app.route('/retrieve')
+@app.route('/retrieve/<type>')
+def retrieve(type=None):
+    db = dataset.connect('sqlite:///data.sqlite')
+
+    if type is None:
+        # connect to database, make transaction
+        parts = db['parts'].all()
+        return render_template("retrieve.html", parts=parts)
+
+    elif type is not None:
+        parts = db['parts'].find(type=type)
+        return render_template("retrieve.html", parts=parts)
+
 @app.route('/create.html', methods=['GET','POST'])
 def create():
     if request.method == 'POST':
@@ -45,22 +62,6 @@ def create():
 
     else:
         return render_template('create.html')
-
-#get all records from database
-@app.route('/retrieve')
-@app.route('/retrieve/<type>')
-def retrieve(type=None):
-    db = dataset.connect('sqlite:///data.sqlite')
-
-    if type is None:
-        # connect to database, make transaction
-        parts = db['parts'].all()
-        return render_template("retrieve.html", parts=parts)
-
-    elif type is not None:
-        parts = db['parts'].find(type=type)
-        return render_template("retrieve.html", parts=parts)
-
 
 @app.route('/update/<id>', methods=['GET', 'POST'])
 def update(id):
@@ -109,6 +110,6 @@ def delete(id):
 #     login_user(user)
 #     return redirect(url_for('index'))
 
-#this must come at the end (to allow decorators to be set)
+
 if __name__ == "__main__":
     app.run()

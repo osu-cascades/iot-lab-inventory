@@ -21,7 +21,15 @@
         <li><a href="/parts?category=actuator">Actuators</a></li>
         <li><a href="/parts?category=communication">Communication</a></li>
         <li><a href="/parts?category=miscellaneous">Misc</a></li>
-        <li class="login"><a href="#">Log In</a></li>
+{#        <li class="login"><a href="/login">Log In</a></li>#}
+          <li class="login">
+              {% if current_user.is_authenticated() %}
+                  <p>Welcome {{ current_user.name.split(' ')[0] }}!
+                      <a href="/logout">Log Out</a></p>
+              {% else %}
+                  <a href="/login">Log In</a>
+              {% endif %}
+          </li>
       </ul>
     </nav>
     <div id="content">

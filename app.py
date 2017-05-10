@@ -44,6 +44,12 @@ def home():
     #return render_template('home.html', parts=parts)
     return render_template('home.html', parts=parts, user=current_user)
 
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
 # Parts
 
 @app.route('/parts', methods=['GET'])

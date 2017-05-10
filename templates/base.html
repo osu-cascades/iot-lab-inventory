@@ -24,7 +24,7 @@
 {#        <li class="login"><a href="/login">Log In</a></li>#}
           <li class="login">
               {% if current_user.is_authenticated() %}
-                  <p>Welcome {{ current_user.name.split(' ')[0] }}!
+                  <p>Welcome <a href="/user">{{ current_user.name.split(' ')[0] }}!</a>
                       <a href="/logout">Log Out</a></p>
               {% else %}
                   <a href="/login">Log In</a>

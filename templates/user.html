@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Welcome {{ current_user.name }}! </h1>
+    <img src="{{ current_user.picture }}"/>
+
+{% endblock %}

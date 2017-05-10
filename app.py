@@ -57,6 +57,7 @@ def parts_list():
 
 
 @app.route('/parts/new', methods=['GET'])
+@login_required
 def parts_new():
     return render_template('parts/new.html')
 
@@ -128,16 +129,10 @@ def login():
     #redirect user to log in with Google credentials
     return redirect(googlelogin.login_url(approval_prompt='force',scopes=['https://www.googleapis.com/auth/userinfo.email']))
 
-@app.route('/profile')
+@app.route('/user')
 @login_required
-def profile():
-    return """
-        <p>Hello, %s</p>
-        <p><img src="%s" width="100" height="100"></p>
-        <p>Token: %r</p>
-        <p>Extra: %r</p>
-        <p><a href="/logout">Logout</a></p>
-        """ % (current_user.name, current_user.picture, session.get('token'),session.get('extra'))
+def user():
+    return render_template('user.html')
 
 
 @app.route('/oauth2callback')

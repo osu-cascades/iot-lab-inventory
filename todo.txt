@@ -1,8 +1,0 @@
-TODO:
-
-- create Users table in database
-- update code to use Users table instead of users dict
-- use flask_wtf for forms
-- separate code into models.py, views.py,
-- use blueprints for parts, users
-- populate Parts table in db

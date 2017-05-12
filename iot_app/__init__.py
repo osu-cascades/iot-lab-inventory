@@ -12,7 +12,7 @@ migrate = Migrate(app,db)
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return '<h1>Not Found',404
+    return '<h1>Not Found</h1>',404
 
 import iot_app.models
 import iot_app.views

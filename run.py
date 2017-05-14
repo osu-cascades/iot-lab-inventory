@@ -1,4 +1,5 @@
-#run test server
+#!/usr/bin/env python
+
 from iot_app import app
 
 app.run(host='0.0.0.0',port=5000, debug=True)

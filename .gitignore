@@ -1,6 +1,7 @@
 *.sqlite
 *.pyc
 venv/
+grab_data/
 
 .DS_Store
 

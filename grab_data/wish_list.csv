@@ -1,0 +1,27 @@
+SKU,Quantity,URL,Thumbnail Image,Name,RoHS Compliance,Price (USD),
+WRL-08742,20,https://www.sparkfun.com/products/8742,https://cdn.sparkfun.com/r/92-92/assets/parts/1/9/3/5/08742-03-L.jpg,XBee Pro 60mW Wire Antenna - Series 1 (802.15.4),1,37.95,759
+PRT-09835,15,https://www.sparkfun.com/products/9835,https://cdn.sparkfun.com/r/92-92/assets/parts/3/8/9/9/09835-01a.jpg,Battery Holder - 4xAA to Barrel Jack Connector,,2.49,37.35
+COM-08636,5,https://www.sparkfun.com/products/8636,https://cdn.sparkfun.com/r/92-92/assets/parts/1/7/7/0/08636-03-L.jpg,Analog to Digital Converter - MCP3002,1,2.3,11.5
+BOB-12708,5,https://www.sparkfun.com/products/12708,https://cdn.sparkfun.com/r/92-92/assets/parts/9/4/5/4/12708-01.jpg,SparkFun Real Time Clock Module,,14.95,74.75
+PRT-00115,5,https://www.sparkfun.com/products/115,https://cdn.sparkfun.com/r/92-92/assets/parts/1/0/5/00115-03-L.jpg,Female Headers,1,1.5,7.5
+PRT-00116,20,https://www.sparkfun.com/products/116,https://cdn.sparkfun.com/r/92-92/assets/parts/1/0/6/00116-02-L.jpg,Break Away Headers - Straight,1,1.5,30
+PRT-11417,15,https://www.sparkfun.com/products/11417,https://cdn.sparkfun.com/r/92-92/assets/parts/7/2/1/6/11417-01a.jpg,Arduino Stackable Header Kit - R3,1,1.5,22.5
+SEN-12862,5,https://www.sparkfun.com/products/12862,https://cdn.sparkfun.com/r/92-92/assets/parts/9/7/3/1/12862-01.jpg,SparkFun Essential Sensor Kit,1,39.95,199.75
+KIT-13826,5,https://www.sparkfun.com/products/13826,https://cdn.sparkfun.com/r/92-92/assets/parts/1/1/4/1/9/13826-01.jpg,Raspberry Pi 3 Starter Kit,1,89.95,449.75
+COM-13833,5,https://www.sparkfun.com/products/13833,https://cdn.sparkfun.com/r/92-92/assets/parts/1/1/4/3/0/13833-02.jpg,microSD Card with Adapter - 16GB (Class 10),1,19.95,99.75
+PRT-00337,5,https://www.sparkfun.com/products/337,https://cdn.sparkfun.com/r/92-92/assets/parts/2/6/3/00337-01.jpg,Coin Cell Battery - 12mm (CR1225),,1.95,9.75
+GPS-13750,5,https://www.sparkfun.com/products/13750,https://cdn.sparkfun.com/r/92-92/assets/parts/1/1/2/8/4/13750-01.jpg,SparkFun GPS Logger Shield,1,44.95,224.75
+WRL-12571,20,https://www.sparkfun.com/products/12571,https://cdn.sparkfun.com/r/92-92/assets/parts/9/2/2/1/12571-01.jpg,XBee WiFi Module - Wire Antenna,1,43.95,879
+WRL-11697,5,https://www.sparkfun.com/products/11697,https://cdn.sparkfun.com/r/92-92/assets/parts/7/8/6/5/11697-01b.jpg,SparkFun XBee Explorer Dongle,1,24.95,124.75
+KIT-13154,15,https://www.sparkfun.com/products/13154,https://cdn.sparkfun.com/r/92-92/assets/parts/1/0/2/3/8/13154-01.jpg,SparkFun Inventor\'s Kit (for Arduino Uno) - V3.2,1,104.45,1566.75
+WRL-12847,15,https://www.sparkfun.com/products/12847,https://cdn.sparkfun.com/r/92-92/assets/parts/9/6/9/7/12847-00.jpg,SparkFun XBee Shield,1,14.2,213
+DEV-13754,5,https://www.sparkfun.com/products/13754,https://cdn.sparkfun.com/r/92-92/assets/parts/1/1/2/9/4/13754-01.jpg,SparkFun Sensor Kit,1,129.95,649.75
+TOL-11766,1,https://www.sparkfun.com/products/11766,https://cdn.sparkfun.com/r/92-92/assets/parts/7/9/9/8/11766-01.jpg,100MHz Digital Storage Oscilloscope - GA1102CAL,,399.95,399.95
+TOL-09325,2,https://www.sparkfun.com/products/9325,https://cdn.sparkfun.com/r/92-92/assets/parts/2/8/7/3/09161-02-L.jpg,Solder Lead Free - 100-gram Spool,1,7.95,15.9
+TOL-13203,1,https://www.sparkfun.com/products/13203,https://cdn.sparkfun.com/r/92-92/assets/parts/1/0/3/4/4/13203-01.jpg,Solder Vacuum,,4.95,4.95
+TOL-08775,1,https://www.sparkfun.com/products/8775,https://cdn.sparkfun.com/r/92-92/assets/parts/1/9/9/4/08775-01-L.jpg,Solder Wick #2 25ft. - TechSpray,1,16.95,16.95
+TOL-09317,1,https://www.sparkfun.com/products/9317,https://cdn.sparkfun.com/r/92-92/assets/parts/2/8/5/8/09317-01.jpg,Third Hand,1,9.95,9.95
+TOL-11704,1,https://www.sparkfun.com/products/11704,https://cdn.sparkfun.com/r/92-92/assets/parts/7/8/8/5/11704-01.jpg,Hakko FX888D Soldering Station,1,99.95,99.95
+TOL-12966,1,https://www.sparkfun.com/products/12966,https://cdn.sparkfun.com/r/92-92/assets/parts/9/9/0/7/12966-01.jpg,Digital Multimeter - Basic,1,14.95,14.95
+TOL-13055,1,https://www.sparkfun.com/products/13055,https://cdn.sparkfun.com/r/92-92/assets/parts/1/0/0/7/5/13055-02.jpg,SparkFun Tool Bag Kit,,39.95,39.95
+LAB-13111,1,https://www.sparkfun.com/products/13111,https://cdn.sparkfun.com/r/92-92/assets/parts/1/0/1/6/0/13111-01.jpg,SparkFun Digital Sandbox Lab Pack,1,675,675

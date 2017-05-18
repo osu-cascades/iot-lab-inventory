@@ -7,14 +7,24 @@
 {% for part in parts: %}
   <li>
     <h2 class="part_name">{{ part['name']  }}</h2>
-    <p class="part_id">{{ part['category'] }} {{ part['id'] }}</p>
-    <p class="part_description">{{ part['description'] }}</p>
     <span class="controls">
       <a href="{{ url_for('parts_edit', id=part['id']) }}">edit</a>
       <form id="frm-delete-{{ part['id' ]}}" class="frm-delete" action="{{ url_for('parts_delete', id=part['id']) }}" method="POST">
         <a class="lnk-delete" href="#" onclick="document.getElementById('frm-delete-{{ part['id'] }}').submit();">delete</a>
       </form>
     </span>
+    <br>
+    {% for image in part.images %}
+    <img height="100" src="{{ url_for('static', filename=image.filename) }}"/>
+    {% endfor %}
+    <p class="part_id">{{ part['category'] }} {{ part['id'] }}</p>
+    <p class="part_description">{{ part['description'] }}</p>
+    <h3>Documents: </h3>
+    {% for document in part.documents %}
+    <a href="{{ url_for('static', filename=document.filename) }}">{{ document.filename }}</a>
+    <br>
+    {% endfor %}
+    <hr>
   </li>
 {% endfor %}
 </ul>

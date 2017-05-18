@@ -2,6 +2,8 @@
 *.pyc
 venv/
 part_resources/
+*.jpg
+*.pdf
 
 .DS_Store
 

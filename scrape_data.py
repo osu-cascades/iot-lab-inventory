@@ -42,21 +42,12 @@ for row in reader:
 
     ## create a directory based on the part's name
     dirname = 'part_resources/'
-    # try:
-    #     os.mkdir(dirname)
-    # except Exception as e:
-    #     pass
-
-    # #get part name (from page)
-    # #TODO: add name to db
-    # divs = soup.find_all('div', class_='product-title')
-    # for d in divs:
-    #     h1 = d.find('h1')
-    #     if h1 is not None:
-    #         print h1.text
+    try:
+        os.mkdir(dirname)
+    except Exception as e:
+        pass
 
     #get part description
-    #TODO: add description to db
     divs = soup.find_all('div', class_="description")
     for d in divs:
         p = d.find('p')
@@ -64,7 +55,6 @@ for row in reader:
             part.description = p.text
 
     #grab all jpg images, store in file system
-    #TODO: add image filename(s) to db
     images = soup.find_all('img')
     i = 1
     for image in images:
@@ -85,9 +75,9 @@ for row in reader:
         href = link.get('href')
         if href is not None \
                 and '.pdf' in href \
-                and 'http' in href \
-                and 'micrel' not in href\
-                and 'interlinkelectronics' not in href:
+                and 'http' in href:
+                # and 'micrel' not in href\
+                # and 'interlinkelectronics' not in href:
             pdf_name = href.split('/')[-1]
             pdf_name = pdf_name.replace('%','_')
             try:

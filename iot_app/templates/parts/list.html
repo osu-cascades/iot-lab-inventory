@@ -7,6 +7,7 @@
 {% for part in parts: %}
   <li>
     <h2 class="part_name">{{ part['name']  }}</h2>
+    <p>Quantity = {{ part.inventory_item.quantity }}</p>
     <span class="controls">
       <a href="{{ url_for('parts_edit', id=part['id']) }}">edit</a>
       <form id="frm-delete-{{ part['id' ]}}" class="frm-delete" action="{{ url_for('parts_delete', id=part['id']) }}" method="POST">

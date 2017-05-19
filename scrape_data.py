@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import csv
 import sys
 import requests
@@ -8,7 +10,7 @@ from iot_app.models import InventoryItem, Part, Image, Document
 import flask_sqlalchemy
 from iot_app import db
 
-#column number in csv file
+# Column number in csv file
 SKU = 0
 NUM = 1
 NAME = 4
@@ -36,31 +38,31 @@ for row in reader:
 
     print 'grabbing data for "' + name + '"'
 
-    #get the part's page
+    # Get the part's page
     page = requests.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
 
-    ## create a directory based on the part's name
+    # Create a directory based on the part's name
     dirname = 'part_resources/'
     try:
         os.mkdir(dirname)
     except Exception as e:
         pass
 
-    #get part description
+    # Get part description
     divs = soup.find_all('div', class_="description")
     for d in divs:
         p = d.find('p')
         if p is not None and 'Description' in p.text:
             part.description = p.text
 
-    #grab all jpg images, store in file system
+    # Grab all jpg images, store in file system
     images = soup.find_all('img')
     i = 1
     for image in images:
         src = image.get('src')
         if '.jpg' in src and sku_num in src:
-            #store image in part_name_1.jpg, 2.jpg, ...
+            # Store image in part_name_1.jpg, 2.jpg, ...
             image_data = urllib2.urlopen(src).read()
             filename = name.replace(' ', '_').replace('/','_') + '_' + str(i) + '.jpg'
             with open(dirname + filename, "wb") as image_file:
@@ -69,7 +71,7 @@ for row in reader:
             imageObj.part = part
             i += 1
 
-    #grab all pdf documentation, store in file system
+    # Grab all pdf documentation, store in file system
     links = soup.find_all('a')
     for link in links:
         href = link.get('href')
@@ -99,7 +101,7 @@ for row in reader:
                 document.part=part
                 os.system(cmd)
 
-    #put part into database
+    # Put part into database
     db.session.add(part)
     db.session.commit()
 

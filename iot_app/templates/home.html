@@ -1,13 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Parts List</h1>
-<ul class="parts">
-{% for part in parts: %}
-  <li>
-    <h2 class="part_name">{{ part['name']  }}</h2>
-    <p class="part_id">{{ part['category'] }} {{ part['id'] }}</p>
-    <p class="part_description">{{ part['description'] }}</p>
-  </li>
-{% endfor %}
-</ul>
+<h1>Welcome!</h1>
+<p>something useful goes here</p>
 {% endblock %}

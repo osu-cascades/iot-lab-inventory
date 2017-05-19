@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 <!-- /parts/list.html -->
-<h1>Parts List</h1>
+<h1>
+  {% if category == None %}
+    Parts
+  {% elif category=='wireless' %}
+    Wireless
+  {% else %}
+    {{ category.capitalize() + 's' }}
+  {% endif %}</h1>
 <p class="lnk-new"><a href="parts/new">add a new part »</a></p>
 <ul class="parts">
-{% for part in parts: %}
+  {% for part in parts: %}
   <li>
     <h2 class="part_name">{{ part['name']  }}</h2>
     <p>Quantity = {{ part.inventory_item.quantity }}</p>
@@ -27,7 +34,7 @@
     {% endfor %}
     <hr>
   </li>
-{% endfor %}
+  {% endfor %}
 </ul>
 <!-- /parts/list.html -->
 {% endblock %}

@@ -3,7 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_googlelogin import GoogleLogin
 from flask_migrate import Migrate
 
-
 app = Flask(__name__)
 app.config.from_object('config')
 googlelogin = GoogleLogin(app)

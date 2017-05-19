@@ -27,7 +27,7 @@ def parts_list():
 
 
 @app.route('/parts/new', methods=['GET'])
-@login_required
+# @login_required
 def parts_new():
     return render_template('parts/new.html')
 

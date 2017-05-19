@@ -23,7 +23,7 @@ def parts_list():
         parts = Part.query.all()
     else:
         parts = Part.query.filter_by(category=category).all()
-    return render_template('parts/list.html', parts=parts)
+    return render_template('parts/list.html', parts=parts, category=category)
 
 
 @app.route('/parts/new', methods=['GET'])

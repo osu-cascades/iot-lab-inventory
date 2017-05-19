@@ -16,12 +16,16 @@
       <ul>
         <li class="home"><a href="/">IoT Lab Inventory</a></li>
         <li><a href="/parts">All Parts</a></li>
-        <li><a href="/parts?category=controller">Controllers</a></li>
-        <li><a href="/parts?category=sensor">Sensors</a></li>
         <li><a href="/parts?category=actuator">Actuators</a></li>
-        <li><a href="/parts?category=communication">Communication</a></li>
+        <li><a href="/parts?category=cable">Cables</a></li>
+        <li><a href="/parts?category=controller">Controllers</a></li>
+        <li><a href="/parts?category=kit">Kits</a></li>
         <li><a href="/parts?category=misc">Misc</a></li>
-{#        <li class="login"><a href="/login">Log In</a></li>#}
+        <li><a href="/parts?category=sensor">Sensors</a></li>
+        <li><a href="/parts?category=tool">Tools</a></li>
+        <li><a href="/parts?category=wireless">Wireless</a></li>
+{#
+          <li class="login"><a href="/login">Log In</a></li>#}
           <li class="login">
               {% if current_user.is_authenticated() %}
                   <p>Welcome <a href="/user">{{ current_user.name.split(' ')[0] }}!</a>

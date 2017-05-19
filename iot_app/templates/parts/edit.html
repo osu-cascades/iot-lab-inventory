@@ -16,11 +16,14 @@
     <label>Category</label>
     <select name="category">
       <option value=""></option>
-      <option value="controller" {% if category == 'controller' %} selected="selected" {% endif %}>Controller</option>
-      <option value="sensor" {% if category == 'sensor' %} selected="selected" {% endif %}>Sensor</option>
       <option value="actuator" {% if category == 'actuator' %} selected="selected" {% endif %}>Actuator</option>
-      <option value="communication" {% if category == 'communication' %} selected="selected" {% endif %}>Communication</option>
+      <option value="cable" {% if category == 'cable' %} selected="selected" {% endif %}>Cable</option>
+      <option value="controller" {% if category == 'controller' %} selected="selected" {% endif %}>Controller</option>
+      <option value="kit" {% if category == 'kit' %} selected="selected" {% endif %}>Kit</option>
       <option value="misc" {% if category == 'misc' %} selected="selected" {% endif %}>Misc</option>
+      <option value="sensor" {% if category == 'sensor' %} selected="selected" {% endif %}>Sensor</option>
+      <option value="tool" {% if category == 'tool' %} selected="selected" {% endif %}>Tool</option>
+      <option value="wireless" {% if category == 'wireless' %} selected="selected" {% endif %}>Wireless</option>
     </select>
   </div>
   <div class="frm-item">

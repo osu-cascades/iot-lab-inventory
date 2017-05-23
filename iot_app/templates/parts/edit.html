@@ -1,35 +1,41 @@
 {% extends 'base.html' %}
+
+<!--Macro helper function for error messages-->
+{% macro error_msg(field) %}
+    {% if field.errors %}
+    {% for error in field.errors %} {{ error }} {% endfor %}
+    {% endif %}
+{% endmacro %}
+
 {% block content %}
-<!-- parts/edit.html -->
-<h1>Edit Part {{ id }}</h1>
+
+<h1>Edit Part {{ part.id }}</h1>
+{% for image in part.images %}
+<img height="100" src="{{ url_for('static', filename=image.filename) }}"/>
+{% endfor %}
 <p class="lnk-back"><a href="/parts">« back to list</a></p>
-<form class="frm-edit" action="/parts/{{ id }}" method="POST">
-  <div class="frm-item">
-    <label>Name</label>
-    <input type="text" name="name" value="{{ name }}" size="50">
-  </div>
-  <div class="frm-item">
-    <label>Description</label>
-    <textarea name="description" cols="48" rows="10">{{ description }}</textarea>
-  </div>
-  <div class="frm-item">
-    <label>Category</label>
-    <select name="category">
-      <option value=""></option>
-      <option value="actuator" {% if category == 'actuator' %} selected="selected" {% endif %}>Actuator</option>
-      <option value="cable" {% if category == 'cable' %} selected="selected" {% endif %}>Cable</option>
-      <option value="controller" {% if category == 'controller' %} selected="selected" {% endif %}>Controller</option>
-      <option value="kit" {% if category == 'kit' %} selected="selected" {% endif %}>Kit</option>
-      <option value="misc" {% if category == 'misc' %} selected="selected" {% endif %}>Misc</option>
-      <option value="sensor" {% if category == 'sensor' %} selected="selected" {% endif %}>Sensor</option>
-      <option value="tool" {% if category == 'tool' %} selected="selected" {% endif %}>Tool</option>
-      <option value="wireless" {% if category == 'wireless' %} selected="selected" {% endif %}>Wireless</option>
-    </select>
-  </div>
-  <div class="frm-item">
-    <label></label>
-    <input type="submit" value="Save Part">
-  </div>
+<form class="frm-edit" action="/parts/{{ part.id }}" method="POST">
+    {{ form.csrf_token }}
+    <div class="frm-item">
+        {{ form.name.label }} {{ form.name(size="48") }}
+        {{ error_msg(form.name) }}
+    </div>
+    <div class="frm-item">
+        {{ form.description.label }} {{ form.description(cols="48",rows="10") }}
+        {{ error_msg(form.description) }}
+    </div>
+    <div class="frm-item">
+        {{ form.category.label }} {{ form.category() }}
+    </div>
+    <div class="frm-item">
+        {{ form.quantity.label }}{{ form.quantity() }}
+        {{ error_msg(form.quantity) }}
+    </div>
+
+    <div class="frm-item">
+        {{ form.submit.label }}{{ form.submit() }}
+        <!--<label></label>-->
+        <!--<input type="submit" value="Save Part">-->
+    </div>
 </form>
-<!-- /parts/edit.html -->
 {% endblock %}

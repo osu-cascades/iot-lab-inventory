@@ -4,6 +4,7 @@ from flask import url_for, redirect, request, render_template, flash, session
 from flask_login import login_required, login_user, logout_user, current_user
 from iot_app import db, googlelogin
 from models import Part, User
+from forms import EditPartForm, index_category, category_index
 
 @app.route('/', methods=['GET'])
 def home():
@@ -46,28 +47,37 @@ def parts_create():
         #db.rollback()
     return redirect(url_for('parts_list'))
 
-
+#using WTF forms
 @app.route('/parts/<int:id>/edit', methods=['GET'])
 def parts_edit(id=id):
+    form = EditPartForm()
     part = Part.query.filter_by(id=id).first()
-    return render_template('parts/edit.html', id=id, name=part.name, description=part.description,category=part.category)
+    form.name.data = part.name
+    form.description.data = part.description
+    form.quantity.data = part.inventory_item.quantity
+    form.category.data = category_index[part.category]
+    return render_template('parts/edit.html', part=part, form=form)
 
 @app.route('/parts/<int:id>', methods=['POST'])
 def parts_update(id):
-    name = request.form['name']
-    description = request.form['description']
-    category = request.form['category']
-    try:
+    form = EditPartForm(request.form)
+    if form.validate_on_submit():
+        try:
+            part = Part.query.filter_by(id=id).first()
+            part.name = form.name.data
+            part.description = form.description.data
+            part.category = index_category[form.category.data]
+            part.inventory_item.quantity = form.quantity.data
+            db.session.commit()
+            flash('Part ' + str(id) + ' updated.')
+        except Exception as e:
+            print e
+            flash('There was a problem updating this part.')
+            db.session.rollback()
+    else:
         part = Part.query.filter_by(id=id).first()
-        part.name = name
-        part.description = description
-        part.category = category
-        db.session.commit()
-        flash('Part ' + str(id) + ' updated.')
-    except Exception as e:
-        print(e)
-        flash('There was a problem updating this part.')
-        # db.rollback()
+        return render_template('parts/edit3.html', part=part, form=form)
+
     return redirect(url_for('parts_list'))
 
 
@@ -107,3 +117,4 @@ def logout():
     logout_user()
     session.clear()
     return redirect(url_for('home'))
+

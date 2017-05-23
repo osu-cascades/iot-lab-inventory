@@ -2,9 +2,9 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, IntegerField, SelectField, TextAreaField
 from wtforms.validators import DataRequired, NumberRange
 
-index_category = { 0:'actuator',
+index_category = {   0:'actuator',
                      1:'cable',
-                     2: 'controller',
+                     2:'controller',
                      3:'kit',
                      4:'misc',
                      5:'sensor',

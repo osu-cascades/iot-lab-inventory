@@ -3,7 +3,7 @@ import json
 from flask import url_for, redirect, request, render_template, flash, session
 from flask_login import login_required, login_user, logout_user, current_user
 from iot_app import db, googlelogin
-from models import Part, User
+from models import Part, User, InventoryItem
 from forms import EditPartForm, index_category, category_index
 
 @app.route('/', methods=['GET'])
@@ -29,23 +29,31 @@ def parts_list():
 
 @app.route('/parts/new', methods=['GET'])
 # @login_required
-def parts_new():
-    return render_template('parts/new.html')
+def parts_new(form=None):
+    if form is None:
+        form = EditPartForm()
+    return render_template('parts/new.html',form=form)
 
 @app.route('/parts', methods=['POST'])
 def parts_create():
-    name = request.form['name']
-    description = request.form['description']
-    category = request.form['category']
-    try:
-        part = Part(name=name, description=description, category=category)
-        db.session.add(part)
-        db.session.commit()
-        flash('Part added successfully.')
-    except:
-        flash('There was a problem adding this part.')
-        #db.rollback()
-    return redirect(url_for('parts_list'))
+    form = EditPartForm(request.form)
+
+    if form.validate_on_submit():
+        name = form.name.data
+        description = form.description.data
+        category = index_category[form.category.data]
+        quantity = form.quantity.data
+        try:
+            inventory_item = InventoryItem(quantity=quantity)
+            part = Part(name=name,description=description,category=category,inventory_item=inventory_item)
+            db.session.add(part)
+            db.session.commit()
+            flash('Part added successfully.')
+            return redirect(url_for('parts_list'))
+        except Exception as e:
+            flash('There was a problem adding this part.')
+            db.session.rollback()
+    return render_template('parts/new.html', form=form)
 
 #using WTF forms
 @app.route('/parts/<int:id>/edit', methods=['GET'])

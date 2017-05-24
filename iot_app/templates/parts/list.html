@@ -8,33 +8,61 @@
     Wireless
   {% else %}
     {{ category.capitalize() + 's' }}
-  {% endif %}</h1>
+  {% endif %}
+</h1>
 <p class="lnk-new"><a href="parts/new">add a new part »</a></p>
-<ul class="parts">
-  {% for part in parts: %}
-  <li>
-    <h2 class="part_name">{{ part['name']  }}</h2>
-    <p>Quantity = {{ part.inventory_item.quantity }}</p>
-    <span class="controls">
-      <a href="{{ url_for('parts_edit', id=part['id']) }}">edit</a>
-      <form id="frm-delete-{{ part['id' ]}}" class="frm-delete" action="{{ url_for('parts_delete', id=part['id']) }}" method="POST">
-        <a class="lnk-delete" href="#" onclick="document.getElementById('frm-delete-{{ part['id'] }}').submit();">delete</a>
-      </form>
-    </span>
-    <br>
-    {% for image in part.images %}
-    <img height="100" src="{{ url_for('static', filename=image.filename) }}"/>
+<table>
+    {% for part in parts %}
+    <tr>
+        <td>
+            {% if part.images | length > 0 %}
+            <img height="200" src="{{ url_for('static', filename=part.images[0].filename) }}"/>
+            {% else %}
+            <img height="200" src="#"/>
+            {% endif %}
+        </td>
+        <td>
+            <a href="{{ url_for('parts_detail', id=part.id) }}"><h2 class="part_name">{{ part.name }}</h2></a>
+            <br>
+             ({{ part.inventory_item.quantity }})
+            <span class="controls">
+                <a href="{{ url_for('parts_edit', id=part['id']) }}">edit</a>
+{#                <form id="frm-delete-{{ part['id' ]}}" class="frm-delete" action="{{ url_for('parts_delete', id=part['id']) }}" method="POST">#}
+{#                    <a class="lnk-delete" href="#" onclick="document.getElementById('frm-delete-{{ part['id'] }}').submit();">delete</a>#}
+{#                </form>#}
+                <form style="display:inline;" action="{{ url_for('parts_add_to_cart', id=part.id) }}">
+                    <button type="submit">add to cart</button>
+                </form>
+             </span>
+        </td>
+    </tr>
     {% endfor %}
-    <p class="part_id">{{ part['category'] }} {{ part['id'] }}</p>
-    <p class="part_description">{{ part['description'] }}</p>
-    <h3>Documents: </h3>
-    {% for document in part.documents %}
-    <a href="{{ url_for('static', filename=document.filename) }}">{{ document.filename }}</a>
-    <br>
-    {% endfor %}
-    <hr>
-  </li>
-  {% endfor %}
-</ul>
-<!-- /parts/list.html -->
+</table>
+
+{#<ul class="parts">#}
+{#  {% for part in parts: %}#}
+{#  <li>#}
+{#    <h2 class="part_name">{{ part['name']  }}</h2>#}
+{#    <p>Quantity = {{ part.inventory_item.quantity }}</p>#}
+{#    <span class="controls">#}
+{#      <a href="{{ url_for('parts_edit', id=part['id']) }}">edit</a>#}
+{#      <form id="frm-delete-{{ part['id' ]}}" class="frm-delete" action="{{ url_for('parts_delete', id=part['id']) }}" method="POST">#}
+{#        <a class="lnk-delete" href="#" onclick="document.getElementById('frm-delete-{{ part['id'] }}').submit();">delete</a>#}
+{#      </form>#}
+{#    </span>#}
+{#    <br>#}
+{#    {% for image in part.images %}#}
+{#    <img height="100" src="{{ url_for('static', filename=image.filename) }}"/>#}
+{#    {% endfor %}#}
+{#    <p class="part_id">{{ part['category'] }} {{ part['id'] }}</p>#}
+{#    <p class="part_description">{{ part['description'] }}</p>#}
+{#    <h3>Documents: </h3>#}
+{#    {% for document in part.documents %}#}
+{#    <a href="{{ url_for('static', filename=document.filename) }}">{{ document.filename }}</a>#}
+{#    <br>#}
+{#    {% endfor %}#}
+{#    <hr>#}
+{#  </li>#}
+{#  {% endfor %}#}
+{# </ul>#}
 {% endblock %}

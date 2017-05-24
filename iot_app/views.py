@@ -34,6 +34,11 @@ def parts_new(form=None):
         form = EditPartForm()
     return render_template('parts/new.html',form=form)
 
+@app.route('/parts/<int:id>/detail')
+def parts_detail(id):
+    part = Part.query.filter_by(id=id).first()
+    return render_template('parts/detail.html', part=part)
+
 @app.route('/parts', methods=['POST'])
 def parts_create():
     form = EditPartForm(request.form)
@@ -84,7 +89,7 @@ def parts_update(id):
             db.session.rollback()
     else:
         part = Part.query.filter_by(id=id).first()
-        return render_template('parts/edit3.html', part=part, form=form)
+        return render_template('parts/edit.html', part=part, form=form)
 
     return redirect(url_for('parts_list'))
 
@@ -97,6 +102,12 @@ def parts_delete(id):
         db.session.commit()
         flash('Part ' + str(id) + ' has been deleted.')
     return redirect(url_for('parts_list'))
+
+@app.route('/parts/<int:id>/add_to_cart')
+def parts_add_to_cart(id):
+    part = Part.query.filter_by(id=id).first()
+    return '<h1>Adding ' + part.name + ' to cart... </h1>'
+
 
 @app.route('/login')
 def login():

@@ -1,4 +1,4 @@
-from iot_app import db, googlelogin
+from iot_app import db
 from flask_login import UserMixin
 
 class Part(db.Model):
@@ -45,9 +45,5 @@ class User(db.Model, UserMixin):
         self.id = userinfo['id']
         self.name = userinfo['name']
         self.picture = userinfo['picture']
-
-@googlelogin.user_loader
-def get_user(userid):
-    return User.query.get(userid)
 
 

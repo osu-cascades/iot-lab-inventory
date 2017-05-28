@@ -2,7 +2,7 @@ from iot_app import app
 import json
 from flask import url_for, redirect, request, render_template, flash, session
 from flask_login import login_required, login_user, logout_user, current_user
-from iot_app import db, googlelogin
+from iot_app import db
 from models import Part, User, InventoryItem
 from forms import EditPartForm, index_category, category_index
 
@@ -111,29 +111,12 @@ def parts_add_to_cart(id):
 
 @app.route('/login')
 def login():
-    return redirect(googlelogin.login_url(approval_prompt='force',scopes=['https://www.googleapis.com/auth/userinfo.email']))
+    return 'login...'
 
 @app.route('/user')
-@login_required
 def user():
     return render_template('user.html')
 
-@app.route('/oauth2callback')
-@googlelogin.oauth2callback
-def login_oauth(token, userinfo, **params):
-    user = User.query.filter_by(id=userinfo['id']).first()
-    if user is None:
-        user = User(userinfo)
-        db.session.add(user)
-        db.session.commit()
-    login_user(user)
-    session['token'] = json.dumps(token)
-    session['extra'] = params.get('extra')
-    return redirect(params.get('next', url_for('.home')))
-
 @app.route('/logout')
 def logout():
-    logout_user()
-    session.clear()
-    return redirect(url_for('home'))
-
+    return 'logout...'

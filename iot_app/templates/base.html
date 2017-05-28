@@ -24,16 +24,7 @@
         <li><a href="/parts?category=sensor">Sensors</a></li>
         <li><a href="/parts?category=tool">Tools</a></li>
         <li><a href="/parts?category=wireless">Wireless</a></li>
-{#
-          <li class="login"><a href="/login">Log In</a></li>#}
-          <li class="login">
-              {% if current_user.is_authenticated() %}
-                  <p>Welcome <a href="/user">{{ current_user.name.split(' ')[0] }}!</a>
-                      <a href="/logout">Log Out</a></p>
-              {% else %}
-                  <a href="/login">Log In</a>
-              {% endif %}
-          </li>
+        <li class="login"><a href="/login">Log In</a></li>
       </ul>
     </nav>
     <div id="content">

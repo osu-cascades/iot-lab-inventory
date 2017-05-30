@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Welcome {{ current_user.name }}! </h1>
-    <img src="{{ current_user.picture }}"/>
-
+    {% if current_user.is_authenticated() %}
+        <h2>username = {{ current_user.username }}</h2>
+        <h2>name = {{ current_user.name }}</h2>
+        <h2>email = {{ current_user.email }}</h2>
+        <img height="100" src="{{ current_user.picture }}"/>
+    {% else  %}
+        <h1>Please login</h1>
+    {% endif %}
 {% endblock %}

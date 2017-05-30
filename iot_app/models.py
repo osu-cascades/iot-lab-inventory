@@ -31,19 +31,17 @@ class InventoryItem(db.Model):
     part_id = db.Column(db.Integer, db.ForeignKey('parts.id'))
     part = db.relationship("Part", back_populates='inventory_item', uselist=False)
 
-
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
-    #add id column (int) as primary key
-    #change id to google_id
-    id = db.Column(db.String(256), primary_key=True, unique=True)
-    name = db.Column(db.String(64))
-    picture = db.Column(db.String(64))
-    email = db.Column(db.String(64))
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    username = db.Column(db.String(20), unique=True)
+    email = db.Column(db.String)
+    name = db.Column(db.String)
+    picture = db.Column(db.String)
 
-    def __init__(self,userinfo):
-        self.id = userinfo['id']
-        self.name = userinfo['name']
-        self.picture = userinfo['picture']
-
+    def __init__(self, username, email, name, picture):
+        self.username = username
+        self.email = email
+        self.name = name
+        self.picture = picture
 

@@ -1,22 +1,21 @@
 from iot_app import app
-import json
 from flask import url_for, redirect, request, render_template, flash, session
-from flask_login import login_required, login_user, logout_user, current_user
 from iot_app import db
 from models import Part, User, InventoryItem
 from forms import EditPartForm, index_category, category_index
+from flask_login import login_required, login_user, current_user, logout_user
+from iot_app import login_manager, google_login
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 @app.route('/', methods=['GET'])
 def home():
     parts = Part.query.all()
     return render_template('home.html', parts=parts, user=current_user)
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
-
 # Parts
-
 @app.route('/parts', methods=['GET'])
 def parts_list():
     category = request.args.get('category')
@@ -28,7 +27,7 @@ def parts_list():
 
 
 @app.route('/parts/new', methods=['GET'])
-# @login_required
+@login_required
 def parts_new(form=None):
     if form is None:
         form = EditPartForm()
@@ -40,6 +39,7 @@ def parts_detail(id):
     return render_template('parts/detail.html', part=part)
 
 @app.route('/parts', methods=['POST'])
+@login_required
 def parts_create():
     form = EditPartForm(request.form)
 
@@ -62,6 +62,7 @@ def parts_create():
 
 #using WTF forms
 @app.route('/parts/<int:id>/edit', methods=['GET'])
+@login_required
 def parts_edit(id=id):
     form = EditPartForm()
     part = Part.query.filter_by(id=id).first()
@@ -108,15 +109,50 @@ def parts_add_to_cart(id):
     part = Part.query.filter_by(id=id).first()
     return '<h1>Adding ' + part.name + ' to cart... </h1>'
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return '<h1>Not Found</h1>',404
 
-@app.route('/login')
+#Google authentication for login
+@login_manager.user_loader
+def load_user(id):
+    print 'requesting user with id =',id
+    user = User.query.filter_by(id=id).first()
+    if user is not None:
+        return user
+    else:
+        return None
+
+@app.route("/login")
 def login():
-    return 'login...'
+    return redirect(google_login.authorization_url())
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
+
+@google_login.login_success
+def login_success(token, profile):
+    username = profile['email'].split('@')[0]
+
+    #check to see if user in db
+    user = User.query.filter_by(username=username).first()
+    if user is None: #if not, create new user
+        email = profile['email']
+        name = profile['name']
+        picture = profile['picture']
+        user = User(username, email, name, picture)
+        db.session.add(user)
+        db.session.commit()
+
+    login_user(user)
+    return redirect(url_for('home'))
+
+@google_login.login_failure
+def login_failure(e):
+    return jsonify(error=str(e))
 
 @app.route('/user')
 def user():
     return render_template('user.html')
-
-@app.route('/logout')
-def logout():
-    return 'logout...'

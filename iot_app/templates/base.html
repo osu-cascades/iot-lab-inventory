@@ -24,7 +24,14 @@
         <li><a href="/parts?category=sensor">Sensors</a></li>
         <li><a href="/parts?category=tool">Tools</a></li>
         <li><a href="/parts?category=wireless">Wireless</a></li>
-        <li class="login"><a href="/login">Log In</a></li>
+        <li class="login">
+            {% if current_user.is_authenticated() %}
+                <a href="/user"><img height="20" src="{{ current_user.picture }}"/></a>
+                <a href="/logout">Logout</a>
+            {% else %}
+                <a href="/login">Login</a>
+            {% endif %}
+        </li>
       </ul>
     </nav>
     <div id="content">

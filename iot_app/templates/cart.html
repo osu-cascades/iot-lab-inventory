@@ -2,15 +2,11 @@
 {% block content %}
     <h1>Cart</h1>
     {% if current_user.is_authenticated() %}
-        {% if current_user.cart is not none %}
             <ul>
-
-            {% for p in current_user.cart.parts %}
-                <li>{{ p.name }}</li>
+            {% for item in current_user.cart.cart_items %}
+                <li>{{ item.name }}</li>
             {% endfor %}
             </ul>
-        {% endif %}
-
         <form>
             <button type="submit">Checkout</button>
             <button type="submit">Clear</button>

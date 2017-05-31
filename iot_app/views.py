@@ -1,7 +1,7 @@
 from iot_app import app
 from flask import url_for, redirect, request, render_template, flash, session
 from iot_app import db
-from .models import Part, User, InventoryItem, Cart, cart_parts
+from .models import Part, User, InventoryItem, CartItem, Cart
 from .forms import EditPartForm, index_category, category_index
 from flask_login import login_required, login_user, current_user, logout_user
 from iot_app import login_manager, google_login
@@ -108,11 +108,8 @@ def parts_delete(id):
 @login_required
 def parts_add_to_cart(id):
     part = Part.query.filter_by(id=id).first()
-    if current_user.cart is None:
-        current_user.cart = Cart()
-
-    current_user.cart.parts.append(part)
-    db.session.commit()
+    cart_item = CartItem(part.inventory_item, 1)
+    current_user.cart.add(cart_item)
 
     msg = 'added ' + part.name + ' to cart!'
     flash(msg)

@@ -59,11 +59,6 @@ def load_user(id):
         return user
     else:
         return None
-    # print 'load_user ', id
-    # user = User.get('plark')
-    # if user is not None:
-    #     return User(user[0], user[1])
-    # return None
 
 @app.route("/")
 def index():

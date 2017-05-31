@@ -1,6 +1,11 @@
 from iot_app import db
 from flask_login import UserMixin
 
+cart_parts = db.Table('cart_parts',
+    db.Column('carts_id', db.Integer, db.ForeignKey('carts.id')),
+    db.Column('parts_id', db.Integer, db.ForeignKey('parts.id'))
+)
+
 class Part(db.Model):
     __tablename__ = 'parts'
     id = db.Column(db.Integer, primary_key=True)
@@ -39,9 +44,18 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String)
     picture = db.Column(db.String)
 
+    cart_id = db.Column(db.Integer, db.ForeignKey('carts.id'))
+    cart = db.relationship('Cart', uselist=False, backref='user')
+
     def __init__(self, username, email, name, picture):
         self.username = username
         self.email = email
         self.name = name
         self.picture = picture
+
+class Cart(db.Model):
+    __tablename__='carts'
+    id = db.Column(db.Integer, primary_key=True)
+    parts = db.relationship('Part', secondary=cart_parts, backref=db.backref('cart', lazy='dynamic'))
+
 

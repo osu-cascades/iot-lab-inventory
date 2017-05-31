@@ -1,7 +1,7 @@
 from iot_app import app
 from flask import url_for, redirect, request, render_template, flash, session
 from iot_app import db
-from models import Part, User, InventoryItem
+from models import Part, User, InventoryItem, Cart, cart_parts
 from forms import EditPartForm, index_category, category_index
 from flask_login import login_required, login_user, current_user, logout_user
 from iot_app import login_manager, google_login
@@ -105,9 +105,18 @@ def parts_delete(id):
     return redirect(url_for('parts_list'))
 
 @app.route('/parts/<int:id>/add_to_cart')
+@login_required
 def parts_add_to_cart(id):
     part = Part.query.filter_by(id=id).first()
-    return '<h1>Adding ' + part.name + ' to cart... </h1>'
+    if current_user.cart is None:
+        current_user.cart = Cart()
+
+    current_user.cart.parts.append(part)
+    db.session.commit()
+
+    msg = 'added ' + part.name + ' to cart!'
+    flash(msg)
+    return render_template('cart.html')
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -134,6 +143,7 @@ def logout():
 
 @google_login.login_success
 def login_success(token, profile):
+    flash('Login successful!')
     username = profile['email'].split('@')[0]
 
     #check to see if user in db
@@ -156,3 +166,8 @@ def login_failure(e):
 @app.route('/user')
 def user():
     return render_template('user.html')
+
+@app.route('/cart')
+@login_required
+def cart():
+    return render_template('cart.html')

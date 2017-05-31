@@ -1,8 +1,8 @@
 from iot_app import app
 from flask import url_for, redirect, request, render_template, flash, session
 from iot_app import db
-from models import Part, User, InventoryItem, Cart, cart_parts
-from forms import EditPartForm, index_category, category_index
+from .models import Part, User, InventoryItem, Cart, cart_parts
+from .forms import EditPartForm, index_category, category_index
 from flask_login import login_required, login_user, current_user, logout_user
 from iot_app import login_manager, google_login
 

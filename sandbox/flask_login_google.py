@@ -11,8 +11,8 @@ app.config.update(
     GOOGLE_LOGIN_REDIRECT_SCHEME="http",
 )
 
-app.config['GOOGLE_LOGIN_CLIENT_ID']= '256102919201-qvjgcstktj5bimq3ffj8k5va85g0r137.apps.googleusercontent.com'
-app.config['GOOGLE_LOGIN_CLIENT_SECRET'] = 'X0HqD1zykF3i4Hvde2QsvkdL'
+app.config['GOOGLE_LOGIN_CLIENT_ID']= os.environ['GOOGLE_LOGIN_CLIENT_ID']
+app.config['GOOGLE_LOGIN_CLIENT_SECRET'] = os.environ['GOOGLE_LOGIN_CLIENT_SECRET']
 google_login = GoogleLogin(app)
 
 login_manager = LoginManager()

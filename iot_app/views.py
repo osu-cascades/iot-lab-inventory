@@ -85,7 +85,7 @@ def parts_update(id):
             db.session.commit()
             flash('Part ' + str(id) + ' updated.')
         except Exception as e:
-            print e
+            print(e)
             flash('There was a problem updating this part.')
             db.session.rollback()
     else:
@@ -125,7 +125,7 @@ def page_not_found(e):
 #Google authentication for login
 @login_manager.user_loader
 def load_user(id):
-    print 'requesting user with id =',id
+    print('requesting user with id =',id)
     user = User.query.filter_by(id=id).first()
     if user is not None:
         return user

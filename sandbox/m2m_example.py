@@ -38,11 +38,11 @@ if __name__ == '__main__':
 
     page = Page.query.filter_by(id=1).first()
     for t in page.tags:
-        print page.id, t.id
+        print(page.id, t.id)
 
     page = Page.query.filter_by(id=2).first()
     for t in page.tags:
-        print page.id, t.id
+        print(page.id, t.id)
 
 
 

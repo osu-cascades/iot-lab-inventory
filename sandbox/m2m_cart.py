@@ -52,19 +52,19 @@ if __name__ == '__main__':
 
     cart = Cart.query.filter_by(id=1).first()
     for p in cart.parts:
-        print cart.id, p.name
+        print(cart.id, p.name)
 
     cart = Cart.query.filter_by(id=2).first()
     for p in cart.parts:
-        print cart.id, p.name
+        print(cart.id, p.name)
 
 
     user1 = User('Marc')
-    print user1.name
+    print(user1.name)
     user1.cart = Cart()
     user1.cart.parts = [part1, part3]
     for p in user1.cart.parts:
-        print p.name
+        print(p.name)
 
 
 

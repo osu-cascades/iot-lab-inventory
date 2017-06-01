@@ -122,52 +122,7 @@ def parts_add_to_cart(id):
     return redirect(url_for('view_cart'))
 
 
-@login_manager.user_loader
-def load_user(id):
-    print('requesting user with id =',id)
-    user = User.query.filter_by(id=id).first()
-    if user is not None:
-        return user
-    else:
-        return None
-
-
-@app.route("/login")
-def login():
-    return redirect(google_login.authorization_url())
-
-
-@app.route('/logout')
-def logout():
-    logout_user()
-    return redirect(url_for('home'))
-
-
-@google_login.login_success
-def login_success(token, profile):
-    flash('Login successful!')
-    username = profile['email'].split('@')[0]
-    user = User.query.filter_by(username=username).first()
-    if user is None:
-        email = profile['email']
-        name = profile['name']
-        picture = profile['picture']
-        user = User(username, email, name, picture)
-        db.session.add(user)
-        db.session.commit()
-    login_user(user)
-    return redirect(url_for('home'))
-
-
-@google_login.login_failure
-def login_failure(e):
-    return jsonify(error=str(e))
-
-
-@app.route('/user')
-def user():
-    return render_template('user.html')
-
+# Carts
 
 @app.route('/cart')
 @login_required

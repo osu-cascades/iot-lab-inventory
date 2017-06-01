@@ -50,11 +50,15 @@ class CartItem():
 
 class Cart():
 
-    cart_items = []
+    # cart_items = []
+    #
+    # def add(self, cart_item):
+    #     self.cart_items.append(cart_item)
 
-    def add(self, cart_item):
-        self.cart_items.append(cart_item)
+    cart_items = {}
 
+    def add(self, id, cart_item):
+        self.cart_items[id] = cart_item
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'

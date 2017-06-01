@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>Cart</h1>
+    <a href="#" onclick="history.back();">« back</a>
     {% if current_user.is_authenticated() %}
         <table>
-            {% for cart_item in current_user.cart.cart_items %}
+            {% for cart_item in current_user.cart.cart_items.values() %}
                 <tr>
                     <td>
                         {% if cart_item.image is not none %}

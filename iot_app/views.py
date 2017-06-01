@@ -107,12 +107,12 @@ def parts_delete(id):
 @app.route('/parts/<int:id>/add_to_cart')
 @login_required
 def parts_add_to_cart(id):
-    part = Part.query.filter_by(id=id).first()
-    cart_item = CartItem(part.inventory_item, 1)
-    current_user.cart.add(cart_item)
-
-    msg = 'added ' + part.name + ' to cart!'
-    flash(msg)
+    if id in current_user.cart.cart_items:
+        current_user.cart.cart_items[id].quantity += 1
+    else:
+        part = Part.query.filter_by(id=id).first()
+        cart_item = CartItem(part.inventory_item, 1)
+        current_user.cart.add(id,cart_item)
     return redirect(url_for('view_cart'))
 
 @app.errorhandler(404)

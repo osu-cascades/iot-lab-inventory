@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+    <a href="#" onclick="history.back();">« back</a>
     <h1>{{ part.name }}</h1>
      {% for image in part.images %}
         <img width="150" src="{{ url_for('static', filename=image.filename) }}"/>

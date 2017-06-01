@@ -1,5 +1,5 @@
 from flask_login import UserMixin
-from iot_app import db
+from iot_app import db, login_manager
 
 
 class Part(db.Model):
@@ -70,3 +70,13 @@ class User(db.Model, UserMixin):
         self.email = email
         self.name = name
         self.picture = picture
+
+    @staticmethod
+    @login_manager.user_loader
+    def load_user(id):
+        print('requesting user with id =',id)
+        user = User.query.filter_by(id=id).first()
+        if user is not None:
+            return user
+        else:
+            return None

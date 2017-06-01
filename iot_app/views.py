@@ -1,6 +1,6 @@
 from flask import url_for, redirect, request, render_template, flash, session
 from flask_login import login_required, login_user, current_user, logout_user
-from iot_app import app, db, login_manager, google_login
+from iot_app import app, db, google_login
 from .models import Part, User, InventoryItem, CartItem, Cart
 from .forms import EditPartForm, index_category, category_index
 
@@ -14,6 +14,47 @@ def page_not_found(e):
 def home():
     parts = Part.query.all()
     return render_template('home.html', parts=parts, user=current_user)
+
+
+# Authentication
+
+@app.route("/login")
+def login():
+    return redirect(google_login.authorization_url())
+
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
+
+
+@google_login.login_success
+def login_success(token, profile):
+    flash('Login successful!')
+    username = profile['email'].split('@')[0]
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        email = profile['email']
+        name = profile['name']
+        picture = profile['picture']
+        user = User(username, email, name, picture)
+        db.session.add(user)
+        db.session.commit()
+    login_user(user)
+    return redirect(url_for('home'))
+
+
+@google_login.login_failure
+def login_failure(e):
+    return jsonify(error=str(e))
+
+
+# Users
+
+@app.route('/user')
+def user():
+    return render_template('user.html')
 
 
 # Parts

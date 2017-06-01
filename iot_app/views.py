@@ -33,6 +33,12 @@ def logout():
 def login_success(token, profile):
     flash('Login successful!')
     username = profile['email'].split('@')[0]
+    domain = profile['hd']
+
+    if domain != 'oregonstate.edu':
+        flash('Login failed: used OSU ONID')
+        return redirect(url_for('home'))
+
     user = User.query.filter_by(username=username).first()
     if user is None:
         email = profile['email']

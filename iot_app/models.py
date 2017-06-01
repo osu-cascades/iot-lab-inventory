@@ -75,7 +75,6 @@ class User(db.Model, UserMixin):
     @staticmethod
     @login_manager.user_loader
     def load_user(id):
-        print('requesting user with id =',id)
         user = User.query.filter_by(id=id).first()
         if user is not None:
             return user

@@ -113,7 +113,7 @@ def parts_add_to_cart(id):
 
     msg = 'added ' + part.name + ' to cart!'
     flash(msg)
-    return render_template('cart.html')
+    return redirect(url_for('view_cart'))
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -166,5 +166,12 @@ def user():
 
 @app.route('/cart')
 @login_required
-def cart():
+def view_cart():
     return render_template('cart.html')
+
+@app.route('/cart/remove_from_cart/<int:index>')
+@login_required
+def remove_from_cart(index):
+    print index
+    current_user.cart.cart_items.pop(index)
+    return redirect(url_for('view_cart'))

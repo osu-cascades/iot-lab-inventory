@@ -2,11 +2,26 @@
 {% block content %}
     <h1>Cart</h1>
     {% if current_user.is_authenticated() %}
-            <ul>
-            {% for item in current_user.cart.cart_items %}
-                <li>{{ item.name }}</li>
+        <table>
+            {% for cart_item in current_user.cart.cart_items %}
+                <tr>
+                    <td>
+                        {% if cart_item.image is not none %}
+                        <img height="100" src="{{ url_for('static', filename=cart_item.image) }}"/>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <h2>{{ cart_item.name }}</h2>
+                        <a href="{{ url_for('remove_from_cart', index=loop.index0) }}">remove</a>
+                    </td>
+                    <td align="center">
+                        <form>
+                            <input type="number" id="{{ loop.index0 }}" value="{{ cart_item.quantity }}" min="1" >
+                        </form>
+                    </td>
+                </tr>
             {% endfor %}
-            </ul>
+        </table>
         <form>
             <button type="submit">Checkout</button>
             <button type="submit">Clear</button>

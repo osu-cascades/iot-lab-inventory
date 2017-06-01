@@ -36,10 +36,10 @@ def parts_new(form=None):
     return render_template('parts/new.html',form=form)
 
 
-@app.route('/parts/<int:id>/detail')
-def parts_detail(id):
+@app.route('/parts/<int:id>', methods=['GET'])
+def part(id):
     part = Part.query.filter_by(id=id).first()
-    return render_template('parts/detail.html', part=part)
+    return render_template('parts/part.html', part=part)
 
 
 @app.route('/parts', methods=['POST'])

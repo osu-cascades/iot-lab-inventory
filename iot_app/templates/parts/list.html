@@ -22,7 +22,7 @@
       {% endif %}
     </td>
     <td>
-      <a href="{{ url_for('parts_detail', id=part.id) }}"><h2 class="part_name">{{ part.name }}</h2></a>
+      <a href="{{ url_for('part', id=part.id) }}"><h2 class="part_name">{{ part.name }}</h2></a>
       <br>
        ({{ part.inventory_item.quantity }})
       <span class="controls">

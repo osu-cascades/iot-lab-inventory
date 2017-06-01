@@ -55,6 +55,7 @@ class Cart():
     def add(self, id, cart_item):
         self.cart_items[id] = cart_item
 
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)

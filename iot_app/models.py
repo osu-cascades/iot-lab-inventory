@@ -43,14 +43,17 @@ class CartItem():
         self.name = inventory_item.part.name
         self.quantity = quantity
 
+        try:
+            self.image = inventory_item.part.images[0].filename
+        except Exception as e:
+            self.image = None
 
 class Cart():
 
-    cart_items = []
+    cart_items = {}
 
-    def add(self, cart_item):
-        self.cart_items.append(cart_item)
-
+    def add(self, id, cart_item):
+        self.cart_items[id] = cart_item
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'

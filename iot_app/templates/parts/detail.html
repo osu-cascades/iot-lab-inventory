@@ -1,21 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-    <a href="#" onclick="history.back();">« back</a>
-    <h1>{{ part.name }}</h1>
-     {% for image in part.images %}
-        <img width="150" src="{{ url_for('static', filename=image.filename) }}"/>
-     {% endfor %}
-    <p>{{ part.description }}</p>
-    <br>
-    <h2>Documents:</h2>
-    {% for document in part.documents %}
-        <a href="{{ url_for('static',filename=document.filename) }}">{{ document.filename }}</a>
-        <br>
-    {% endfor %}
-
-    <br>
-    <form action="{{ url_for('parts_add_to_cart', id=part.id) }}">
-        <button type="submit">add to cart</button>
-    </form>
-
+<!-- /parts/detail.html -->
+<a href="#" onclick="history.back();">« back</a>
+<h1>{{ part.name }}</h1>
+{% for image in part.images %}
+  <img width="150" src="{{ url_for('static', filename=image.filename) }}"/>
+{% endfor %}
+<p>{{ part.description }}</p>
+<br>
+<h2>Documents:</h2>
+{% for document in part.documents %}
+  <a href="{{ url_for('static',filename=document.filename) }}">{{ document.filename }}</a><br>
+{% endfor %}
+<br>
+<form action="{{ url_for('parts_add_to_cart', id=part.id) }}">
+  <button type="submit">add to cart</button>
+</form>
 {% endblock %}

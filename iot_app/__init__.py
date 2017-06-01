@@ -15,4 +15,3 @@ login_manager.init_app(app)
 
 import iot_app.models
 import iot_app.views
-

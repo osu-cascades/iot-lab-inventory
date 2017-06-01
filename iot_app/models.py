@@ -1,5 +1,5 @@
-from iot_app import db
 from flask_login import UserMixin
+from iot_app import db
 
 
 class Part(db.Model):

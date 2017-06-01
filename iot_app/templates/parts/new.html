@@ -1,36 +1,34 @@
 {% extends 'base.html' %}
 
-<!--Macro helper function for error messages-->
 {% macro error_msg(field) %}
-    {% if field.errors %}
+  {% if field.errors %}
     {% for error in field.errors %} {{ error }} {% endfor %}
-    {% endif %}
+  {% endif %}
 {% endmacro %}
 
 {% block content %}
-
-<h1>Add a new part</h1>
+<!-- /parts/new.html -->
+<h1>Add a New Part</h1>
 <p class="lnk-back"><a href="/parts">« back to list</a></p>
 <form class="frm-edit" action="/parts" method="POST">
-    {{ form.csrf_token }}
-    <div class="frm-item">
-        {{ form.name.label }} {{ form.name(size="48") }}
-        {{ error_msg(form.name) }}
-    </div>
-    <div class="frm-item">
-        {{ form.description.label }} {{ form.description(cols="48",rows="10") }}
-        {{ error_msg(form.description) }}
-    </div>
-    <div class="frm-item">
-        {{ form.category.label }} {{ form.category() }}
-    </div>
-    <div class="frm-item">
-        {{ form.quantity.label }}{{ form.quantity() }}
-        {{ error_msg(form.quantity) }}
-    </div>
-
-    <div class="frm-item">
-        {{ form.submit.label }}{{ form.submit() }}
-    </div>
+  {{ form.csrf_token }}
+  <div class="frm-item">
+    {{ form.name.label }} {{ form.name(size="48") }}
+    {{ error_msg(form.name) }}
+  </div>
+  <div class="frm-item">
+    {{ form.description.label }} {{ form.description(cols="48",rows="10") }}
+    {{ error_msg(form.description) }}
+  </div>
+  <div class="frm-item">
+    {{ form.category.label }} {{ form.category() }}
+  </div>
+  <div class="frm-item">
+    {{ form.quantity.label }}{{ form.quantity() }}
+    {{ error_msg(form.quantity) }}
+  </div>
+  <div class="frm-item">
+    {{ form.submit.label }}{{ form.submit() }}
+  </div>
 </form>
 {% endblock %}

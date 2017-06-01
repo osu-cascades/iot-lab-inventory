@@ -1,39 +1,37 @@
 {% extends 'base.html' %}
 
-<!--Macro helper function for error messages-->
 {% macro error_msg(field) %}
-    {% if field.errors %}
+  {% if field.errors %}
     {% for error in field.errors %} {{ error }} {% endfor %}
-    {% endif %}
+  {% endif %}
 {% endmacro %}
 
 {% block content %}
-
+<!-- /parts/edit.html -->
 <h1>Edit Part {{ part.id }}</h1>
 {% for image in part.images %}
 <img height="100" src="{{ url_for('static', filename=image.filename) }}"/>
 {% endfor %}
 <p class="lnk-back"><a href="/parts">« back to list</a></p>
 <form class="frm-edit" action="/parts/{{ part.id }}" method="POST">
-    {{ form.csrf_token }}
-    <div class="frm-item">
-        {{ form.name.label }} {{ form.name(size="48") }}
-        {{ error_msg(form.name) }}
-    </div>
-    <div class="frm-item">
-        {{ form.description.label }} {{ form.description(cols="48",rows="10") }}
-        {{ error_msg(form.description) }}
-    </div>
-    <div class="frm-item">
-        {{ form.category.label }} {{ form.category() }}
-    </div>
-    <div class="frm-item">
-        {{ form.quantity.label }}{{ form.quantity() }}
-        {{ error_msg(form.quantity) }}
-    </div>
-
-    <div class="frm-item">
-        {{ form.submit.label }}{{ form.submit() }}
-    </div>
+  {{ form.csrf_token }}
+  <div class="frm-item">
+    {{ form.name.label }} {{ form.name(size="48") }}
+    {{ error_msg(form.name) }}
+  </div>
+  <div class="frm-item">
+    {{ form.description.label }} {{ form.description(cols="48",rows="10") }}
+    {{ error_msg(form.description) }}
+  </div>
+  <div class="frm-item">
+    {{ form.category.label }} {{ form.category() }}
+  </div>
+  <div class="frm-item">
+    {{ form.quantity.label }}{{ form.quantity() }}
+    {{ error_msg(form.quantity) }}
+  </div>
+  <div class="frm-item">
+    {{ form.submit.label }}{{ form.submit() }}
+  </div>
 </form>
 {% endblock %}

@@ -77,6 +77,7 @@ def parts_edit(id=id):
 
 
 @app.route('/parts/<int:id>', methods=['POST'])
+@login_required
 def parts_update(id):
     form = EditPartForm(request.form)
     if form.validate_on_submit():
@@ -99,6 +100,7 @@ def parts_update(id):
 
 
 @app.route('/parts/<int:id>/delete', methods=['POST'])
+@login_required
 def parts_delete(id):
     part = Part.query.filter_by(id=id).first()
     if part is not None:

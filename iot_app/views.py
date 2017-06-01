@@ -172,6 +172,6 @@ def view_cart():
 @app.route('/cart/remove_from_cart/<int:id>')
 @login_required
 def remove_from_cart(id):
-    print id
+    print(id)
     current_user.cart.cart_items.pop(id)
     return redirect(url_for('view_cart'))

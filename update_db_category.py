@@ -1,7 +1,22 @@
+#!/usr/bin/env python
+# TODO: description of this script
+# BOB = controller
+# CAB = cable
+# COM = misc
+# DEV = controller
+# GPS = sensor
+# LCD = actuator
+# ROB = actuator
+# SEN = sensor
+# TOL = tool
+# WRL = wireless
+# KIT = (drop)
+# LAB = (drop)
+# PRT = misc
 
-from iot_app.models import Part
 import flask_sqlalchemy
 from iot_app import db
+from iot_app.models import Part
 
 sku_category = {'BOB': 'controller',\
                 'CAB': 'cable',\
@@ -27,21 +42,3 @@ for part in parts:
         part.category = sku_category[sku]
         db.session.commit()
     #sku = 'KIT' or 'LAB', drop from table
-
-
-
-
-# BOB = controller
-# CAB = cable
-# COM = misc
-# DEV = controller
-# GPS = sensor
-# LCD = actuator
-# ROB = actuator
-# SEN = sensor
-# TOL = tool
-# WRL = wireless
-# KIT = (drop)
-# LAB = (drop)
-# PRT = misc
-#

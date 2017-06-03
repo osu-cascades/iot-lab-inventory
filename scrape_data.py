@@ -1,14 +1,19 @@
 #!/usr/bin/env python
+# TODO: description of this script
 
-import csv
-import sys
-import requests
-from bs4 import BeautifulSoup
-import urllib2
 import os
-from iot_app.models import InventoryItem, Part, Image, Document
+import sys
+import csv
+import requests
+try:
+    import urllib2                   # Python 2
+except ImportError:
+    import urllib.request as urllib2 # Python 3
+from bs4 import BeautifulSoup
 import flask_sqlalchemy
 from iot_app import db
+from iot_app.models import InventoryItem, Part, Image, Document
+
 
 # Column number in csv file
 SKU = 0
@@ -22,7 +27,10 @@ if len(sys.argv) != 2:
 
 f = open(sys.argv[1], 'r')
 reader = csv.reader(f)
-headers = reader.next()
+try:
+    headers = reader.next() # Python 2
+except AttributeError:
+    next(reader)            # Python 3
 
 for row in reader:
     part = Part()

@@ -55,7 +55,7 @@ for row in reader:
     soup = BeautifulSoup(page.content, 'html.parser')
 
     # Create a directory based on the part's name
-    dirname = 'part_resources/'
+    dirname = os.path.dirname(__file__) + '/part_resources/'
     try:
         os.mkdir(dirname)
     except Exception as e:

@@ -1,13 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 <!-- /user.html -->
-{% if current_user.is_authenticated() %}
-  <a class="None" href="{{ url_for('view_cart') }}">View Cart</a>
-  <h2>username = {{ current_user.username }}</h2>
-  <h2>name = {{ current_user.name }}</h2>
-  <h2>email = {{ current_user.email }}</h2>
-  <img height="100" src="{{ current_user.picture }}"/>
-{% else %}
-  <h1>Please log in.</h1>
-{% endif %}
+<h1>Your Account</h1>
+<div class="profile">
+  <img class="user_profile_avatar" src="{{ current_user.picture }}">
+  <h2>{{ current_user.name }}</h2>
+  <p>{{ current_user.username }} ({{ current_user.email }})</p>
+  <p>TODO Role Name</p>
+</div>
 {% endblock %}

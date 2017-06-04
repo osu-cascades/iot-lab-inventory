@@ -53,6 +53,7 @@ def login_failure(e):
 # Users
 
 @app.route('/users/me')
+@login_required
 def users_current_user():
     return render_template('users/current_user.html')
 

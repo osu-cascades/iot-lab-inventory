@@ -183,3 +183,13 @@ div.welcome h1 {
 div.welcome h2 {
   margin-top: 1em;
 }
+
+div.profile {
+  margin-top: 20px;
+}
+
+img.user_profile_avatar {
+  float: left;
+  height: 100px;
+  margin-right: 20px;
+}

@@ -34,16 +34,16 @@ nav ul li.home a {
   font-family: "helveticaneue-thin", helvetica, arial, sans-serif;
 }
 
-nav ul li.home a:hover, nav ul li.login a:hover {
+nav ul li.home a:hover, nav ul li.user a:hover {
   color: #FFF;
 }
 
-nav ul li.login {
+nav ul li.user {
   float: right;
   padding-top: 9px;
 }
 
-nav ul li.login a {
+nav ul li.user a {
   color: #DDD;
 }
 
@@ -54,6 +54,11 @@ nav img.osu_crest {
   vertical-align: middle;
 }
 
+nav img.user_avatar {
+  height: 32px;
+  margin-top: -10px;
+  vertical-align: middle;
+}
 
 div#content {
   padding: 20px;

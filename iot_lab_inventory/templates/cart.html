@@ -5,7 +5,7 @@
 <a href="#" onclick="history.back();">« back</a>
 {% if current_user.is_authenticated() %}
   <table>
-  {% for id,cart_item in current_user.cart.cart_items.items() %}
+  {% for id, cart_item in current_user.cart.cart_items.items() %}
     <tr>
       <td>
         {% if cart_item.image is not none %}
@@ -14,7 +14,10 @@
       </td>
       <td>
         <h2>{{ cart_item.name }}</h2>
-        <a href="{{ url_for('remove_from_cart', id=id) }}">remove</a>
+        <form action="{{ url_for('remove_part_from_cart', id=id) }}" method="POST">
+          <input type="hidden" name="id" value="{{ id }}">
+          <input type="submit" value="Remove">
+        </form>
       </td>
       <td align="center">
         <form>

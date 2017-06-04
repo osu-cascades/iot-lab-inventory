@@ -173,10 +173,9 @@ def add_part_to_cart():
     return redirect(url_for('cart'))
 
 
-@app.route('/cart/remove_from_cart/<int:id>')
+@app.route('/cart/<int:id>/delete', methods=['POST'])
 @login_required
-def remove_from_cart(id):
-    print(id)
-    current_user.cart.cart_items.pop(id)
+def remove_part_from_cart(id):
+    current_user.cart.cart_items.pop(int(request.form['id']))
     return redirect(url_for('cart'))
 

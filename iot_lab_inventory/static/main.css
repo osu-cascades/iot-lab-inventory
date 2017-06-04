@@ -47,6 +47,14 @@ nav ul li.login a {
   color: #DDD;
 }
 
+nav img.osu_crest {
+  height: 32px;
+  margin-top: -10px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+
 div#content {
   padding: 20px;
 }

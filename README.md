@@ -12,6 +12,6 @@ python
 
 You can scrape SparkFun to populate the database and download images and documents:
 
-`./scrape_data.py all_parts.csv`
+`python -m util.scrape_data util/all_parts.csv`
 
 Start the app via `./run.py`.

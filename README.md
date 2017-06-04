@@ -23,7 +23,7 @@ set (eg in $VIRTUAL_ENV/bin/postactivate):
 
 ```
 export FLASK_DEBUG=1
-export FLASK_APP=iot_lab_inventory
+export FLASK_APP=iot_lab_inventory/__init__.py
 export GOOGLE_LOGIN_CLIENT_ID=???
 export GOOGLE_LOGIN_CLIENT_SECRET=???
 ```

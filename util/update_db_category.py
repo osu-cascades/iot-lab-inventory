@@ -15,8 +15,8 @@
 # PRT = misc
 
 import flask_sqlalchemy
-from iot_app import db
-from iot_app.models import Part
+from iot_lab_inventory import db
+from iot_lab_inventory.models import Part
 
 sku_category = {'BOB': 'controller',\
                 'CAB': 'cable',\

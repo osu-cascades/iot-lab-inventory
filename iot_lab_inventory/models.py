@@ -1,5 +1,5 @@
 from flask_login import UserMixin
-from iot_app import db, login_manager
+from iot_lab_inventory import db, login_manager
 
 
 class Part(db.Model):

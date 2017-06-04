@@ -11,8 +11,8 @@ except ImportError:
     import urllib.request as urllib2 # Python 3
 from bs4 import BeautifulSoup
 import flask_sqlalchemy
-from iot_app import db
-from iot_app.models import InventoryItem, Part, Image, Document
+from iot_lab_inventory import db
+from iot_lab_inventory.models import InventoryItem, Part, Image, Document
 
 
 # Column number in csv file

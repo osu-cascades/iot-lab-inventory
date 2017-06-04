@@ -13,5 +13,5 @@ google_login = GoogleLogin(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-import iot_app.models
-import iot_app.views
+import iot_lab_inventory.models
+import iot_lab_inventory.views

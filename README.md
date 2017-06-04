@@ -5,7 +5,7 @@ exists:
 
 ```
 python
->>> from iot_app import db
+>>> from iot_lab_inventory import db
 >>> db.create_all()
 >>> exit()
 ```

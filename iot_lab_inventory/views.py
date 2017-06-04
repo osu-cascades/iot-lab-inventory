@@ -152,24 +152,25 @@ def parts_delete(id):
     return redirect(url_for('parts_list'))
 
 
-@app.route('/parts/<int:id>/add_to_cart')
-@login_required
-def parts_add_to_cart(id):
-    if id in current_user.cart.cart_items:
-        current_user.cart.cart_items[id].quantity += 1
-    else:
-        part = Part.query.filter_by(id=id).first()
-        cart_item = CartItem(part.inventory_item, 1)
-        current_user.cart.add(id,cart_item)
-    return redirect(url_for('view_cart'))
-
-
 # Carts
 
 @app.route('/cart')
 @login_required
 def view_cart():
     return render_template('cart.html')
+
+
+@app.route('/cart', methods=['POST'])
+@login_required
+def add_part_to_cart():
+    part_id = int(request.form['part_id'])
+    if part_id in current_user.cart.cart_items:
+        current_user.cart.cart_items[part_id].quantity += 1
+    else:
+        part = Part.query.filter_by(id=part_id).first()
+        cart_item = CartItem(part.inventory_item, 1)
+        current_user.cart.add(part_id, cart_item)
+    return redirect(url_for('view_cart'))
 
 
 @app.route('/cart/remove_from_cart/<int:id>')

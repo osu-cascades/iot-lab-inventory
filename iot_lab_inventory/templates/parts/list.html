@@ -22,18 +22,18 @@
       {% endif %}
     </td>
     <td>
-      <a href="{{ url_for('part', id=part.id) }}"><h2 class="part_name">{{ part.name }}</h2></a>
-      <br>
-       ({{ part.inventory_item.quantity }})
+      <h2 class="part_name"><a href="{{ url_for('part', id=part.id) }}">{{ part.name }}</a></h2>
+      <p>({{ part.inventory_item.quantity }} available)</p>
       <span class="controls">
         <a href="{{ url_for('parts_edit', id=part['id']) }}">edit</a>
         {# <form id="frm-delete-{{ part['id' ]}}" class="frm-delete" action="{{ url_for('parts_delete', id=part['id']) }}" method="POST"> #}
           {# <a class="lnk-delete" href="#" onclick="document.getElementById('frm-delete-{{ part['id'] }}').submit();">delete</a> #}
         {# </form>#}
-          <form style="display:inline;" action="{{ url_for('parts_add_to_cart', id=part.id) }}">
-            <button type="submit">Add to Cart</button>
-          </form>
-       </span>
+        <form action="{{ url_for('add_part_to_cart') }}" method="POST">
+          <input type="hidden" name="part_id" value="{{ part.id }}">
+          <input type="submit" value="Add to Cart">
+        </form>
+      </span>
     </td>
   </tr>
 {% endfor %}

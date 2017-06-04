@@ -1,6 +1,6 @@
 from flask_login import UserMixin
 from iot_lab_inventory import db, login_manager
-
+from .cart import Cart, CartItem
 
 class Part(db.Model):
     __tablename__ = 'parts'
@@ -36,26 +36,6 @@ class InventoryItem(db.Model):
     part = db.relationship("Part", back_populates='inventory_item', uselist=False)
 
 
-class CartItem():
-
-    def __init__(self, inventory_item, quantity):
-        self.inventory_item = inventory_item
-        self.name = inventory_item.part.name
-        self.quantity = quantity
-
-        try:
-            self.image = inventory_item.part.images[0].filename
-        except Exception as e:
-            self.image = None
-
-class Cart():
-
-    cart_items = {}
-
-    def add(self, id, cart_item):
-        self.cart_items[id] = cart_item
-
-
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -80,3 +60,4 @@ class User(db.Model, UserMixin):
             return user
         else:
             return None
+

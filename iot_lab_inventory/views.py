@@ -52,9 +52,9 @@ def login_failure(e):
 
 # Users
 
-@app.route('/user')
-def user():
-    return render_template('user.html')
+@app.route('/users/me')
+def users_current_user():
+    return render_template('users/current_user.html')
 
 
 # Parts

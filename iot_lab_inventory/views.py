@@ -154,9 +154,9 @@ def parts_delete(id):
 
 # Carts
 
-@app.route('/cart')
+@app.route('/cart', methods=['GET'])
 @login_required
-def view_cart():
+def cart():
     return render_template('cart.html')
 
 
@@ -170,7 +170,7 @@ def add_part_to_cart():
         part = Part.query.filter_by(id=part_id).first()
         cart_item = CartItem(part.inventory_item, 1)
         current_user.cart.add(part_id, cart_item)
-    return redirect(url_for('view_cart'))
+    return redirect(url_for('cart'))
 
 
 @app.route('/cart/remove_from_cart/<int:id>')
@@ -178,5 +178,5 @@ def add_part_to_cart():
 def remove_from_cart(id):
     print(id)
     current_user.cart.cart_items.pop(id)
-    return redirect(url_for('view_cart'))
+    return redirect(url_for('cart'))
 

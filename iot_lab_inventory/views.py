@@ -31,12 +31,12 @@ def logout():
 
 @google_login.login_success
 def login_success(token, profile):
-    flash('Login successful!')
+    flash('You have successfully logged in.')
     username = profile['email'].split('@')[0]
     domain = profile['hd']
 
     if domain != 'oregonstate.edu':
-        flash('Login failed: used OSU ONID')
+        flash('Log in failed. Did you use your OSU google account?')
         return redirect(url_for('home'))
 
     user = User.query.filter_by(username=username).first()

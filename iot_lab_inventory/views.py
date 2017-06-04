@@ -31,23 +31,17 @@ def logout():
 
 @google_login.login_success
 def login_success(token, profile):
-    flash('You have successfully logged in.')
-    username = profile['email'].split('@')[0]
-    domain = profile['hd']
-
-    if domain != 'oregonstate.edu':
+    if profile['hd'] != 'oregonstate.edu':
         flash('Log in failed. Did you use your OSU google account?')
         return redirect(url_for('home'))
-
+    username = profile['email'].split('@')[0]
     user = User.query.filter_by(username=username).first()
     if user is None:
-        email = profile['email']
-        name = profile['name']
-        picture = profile['picture']
-        user = User(username, email, name, picture)
+        user = User(username, profile['email'], profile['name'], profile['picture'])
         db.session.add(user)
         db.session.commit()
     login_user(user)
+    flash('You have successfully logged in.')
     return redirect(url_for('home'))
 
 

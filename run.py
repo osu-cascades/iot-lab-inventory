@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # In development, it is preferred to run the app via the `flask` command:
-# export FLASK_APP=iot_lab_inventory/__init__.py flask run
+# FLASK_APP=iot_lab_inventory python -m flask run
 
 from iot_lab_inventory import app
 

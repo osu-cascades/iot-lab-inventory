@@ -163,3 +163,23 @@ ul.parts li span.controls {
 ul.parts li span.controls a {
   margin-right: 10px;
 }
+
+div.welcome {
+  width: 80%;
+  border: 1px solid #ff6347;
+  background: #ddd6d6;
+  border-radius: 1em;
+  margin: auto;
+  margin-top: 4em;
+  padding: 1em;
+  padding-bottom: 2em;
+}
+
+div.welcome h1 {
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+div.welcome h2 {
+  margin-top: 1em;
+}

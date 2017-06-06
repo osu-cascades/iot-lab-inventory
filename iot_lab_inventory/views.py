@@ -1,13 +1,9 @@
-from flask import url_for, redirect, request, render_template, flash, session
+from flask import url_for, redirect, request, render_template, flash, session, abort
 from flask_login import login_required, login_user, current_user, logout_user
 from iot_lab_inventory import app, db, google_login
 from .models import Part, User, InventoryItem, CartItem, Cart
 from .forms import EditPartForm, index_category, category_index
-
-
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
+from functools import wraps
 
 
 @app.route('/', methods=['GET'])
@@ -47,7 +43,8 @@ def login_success(token, profile):
 
 @google_login.login_failure
 def login_failure(e):
-    return jsonify(error=str(e))
+    abort(401)
+    # return jsonify(error=str(e))
 
 
 # Users
@@ -59,20 +56,32 @@ def users_current_user():
 
 # Admin
 
+def admin_required(f):
+    @wraps(f)
+    def wrapped(*args, **kwargs):
+        if not current_user.is_admin:
+            abort(403)
+        return f(*args, **kwargs)
+    return wrapped
+
+
 @app.route('/admin/dashboard')
 @login_required
+@admin_required
 def admin_dashboard():
     return render_template('admin/dashboard.html')
 
 
 @app.route('/admin/manage_users')
 @login_required
+@admin_required
 def admin_manage_users():
     users = User.query.all()
     return render_template('admin/manage_users.html', users=users)
 
 @app.route('/admin/manage_users', methods=['POST'])
 @login_required
+@admin_required
 def admin_update_user_role():
     user_id = int(request.form['user_id'])
     role = request.form.get('role')
@@ -121,6 +130,7 @@ def part(id):
 
 @app.route('/parts', methods=['POST'])
 @login_required
+@admin_required
 def parts_create():
     form = EditPartForm(request.form)
     if form.validate_on_submit():
@@ -143,6 +153,7 @@ def parts_create():
 
 @app.route('/parts/<int:id>/edit', methods=['GET'])
 @login_required
+@admin_required
 def parts_edit(id=id):
     form = EditPartForm()
     part = Part.query.filter_by(id=id).first()
@@ -155,6 +166,7 @@ def parts_edit(id=id):
 
 @app.route('/parts/<int:id>', methods=['POST'])
 @login_required
+@admin_required
 def parts_update(id):
     form = EditPartForm(request.form)
     if form.validate_on_submit():
@@ -178,6 +190,7 @@ def parts_update(id):
 
 @app.route('/parts/<int:id>/delete', methods=['POST'])
 @login_required
+@admin_required
 def parts_delete(id):
     part = Part.query.filter_by(id=id).first()
     if part is not None:
@@ -214,3 +227,19 @@ def remove_part_from_cart(id):
     current_user.cart.cart_items.pop(int(request.form['id']))
     return redirect(url_for('cart'))
 
+
+#error handlers
+
+@app.errorhandler(401)
+def unauthorized(e):
+    return render_template('401.html'), 401
+
+
+@app.errorhandler(403)
+def unauthorized(e):
+    return render_template('403.html'), 403
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404

@@ -20,7 +20,11 @@
         <li><a href="/parts?category=wireless">Wireless</a></li>
         <li class="user">
           {% if current_user.is_authenticated() %}
-            <a href="{{ url_for('cart') }}">View Cart</a>
+              {% if current_user.is_admin %}
+                  <a href="{{ url_for('admin_dashboard') }}">Admin | </a>
+              {% endif %}
+
+            <a href="{{ url_for('cart') }}">View Cart | </a>
             <a href="{{ url_for('users_current_user')}}"><img class="user_avatar" src="{{ current_user.picture }}"/></a>
             <a href="/logout">Log Out</a>
           {% else %}

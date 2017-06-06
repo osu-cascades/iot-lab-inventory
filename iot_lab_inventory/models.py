@@ -43,6 +43,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String)
     name = db.Column(db.String)
     picture = db.Column(db.String)
+    is_admin = db.Column(db.Boolean)
 
     cart = Cart()
 
@@ -51,6 +52,7 @@ class User(db.Model, UserMixin):
         self.email = email
         self.name = name
         self.picture = picture
+        self.is_admin = False
 
     @staticmethod
     @login_manager.user_loader

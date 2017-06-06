@@ -6,6 +6,6 @@
   <img class="user_profile_avatar" src="{{ current_user.picture }}">
   <h2>{{ current_user.name }}</h2>
   <p>{{ current_user.username }} ({{ current_user.email }})</p>
-  <p>TODO Role Name</p>
+  <p>Role: {% if current_user.is_admin %} Administrator {% else %} Student{% endif %}</p>
 </div>
 {% endblock %}

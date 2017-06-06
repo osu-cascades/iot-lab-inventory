@@ -57,6 +57,41 @@ def login_failure(e):
 def users_current_user():
     return render_template('users/current_user.html')
 
+# Admin
+
+@app.route('/admin/dashboard')
+@login_required
+def admin_dashboard():
+    return render_template('admin/dashboard.html')
+
+
+@app.route('/admin/manage_users')
+@login_required
+def admin_manage_users():
+    users = User.query.all()
+    return render_template('admin/manage_users.html', users=users)
+
+@app.route('/admin/manage_users', methods=['POST'])
+@login_required
+def admin_update_user_role():
+    user_id = int(request.form['user_id'])
+    role = request.form.get('role')
+
+    try:
+        user = User.query.filter_by(id=user_id).first()
+        if role == 'True':
+            user.is_admin = True
+        else:
+            user.is_admin = False
+        db.session.commit()
+        flash('Updated user role')
+
+    except Exception as err:
+        flash('ERROR: unable to update user role')
+
+    return redirect(url_for('admin_manage_users'))
+
+
 
 # Parts
 

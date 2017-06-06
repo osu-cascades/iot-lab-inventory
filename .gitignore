@@ -1,8 +1,11 @@
 *.sqlite
 *.sqlite3.db
 *.pyc
+*.jpg
+*.pdf
 venv/
 part_resources/
+.idea/
 
 .DS_Store
 

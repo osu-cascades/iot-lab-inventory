@@ -25,7 +25,9 @@
             </form>
           </td>
           <td>
-              <form><input type="submit" value="Delete User"/></form>
+              {% if not user.is_admin %}
+                <form><input type="submit" value="Delete User"/></form>
+              {% endif %}
           </td>
         </tr>
     {% endfor %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Pending orders:</h1>
+    <table border="1">
+        <tr>
+            <th>Order number</th>
+            <th>User</th>
+            <th>Approve</th>
+            <th>Delete</th>
+        </tr>
+        <tr>
+            <td>(link) to order N</td>
+            <td>some user</td>
+            <td>button to approve (send email)</td>
+            <td>button to reject / delete </td>
+        </tr>
+    </table>
+
+    <hr>
+    <br>
+    <a href="{{ url_for('admin_manage_users')}}"><h2>Manage Users</h2></a>
+    <br>
+    <a href="#"><h2>View Current Orders</h2></a>
+
+{% endblock %}

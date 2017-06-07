@@ -2,6 +2,13 @@ from flask_login import UserMixin
 from iot_lab_inventory import db, login_manager
 from .cart import Cart, CartItem
 
+
+orders_parts = db.Table('orders_parts', db.metadata,
+    db.Column('order_id', db.Integer, db.ForeignKey('orders.id')),
+    db.Column('part_id', db.Integer, db.ForeignKey('parts.id'))
+)
+
+
 class Part(db.Model):
     __tablename__ = 'parts'
     id = db.Column(db.Integer, primary_key=True)
@@ -12,6 +19,7 @@ class Part(db.Model):
     images = db.relationship('Image', backref='part')
     documents = db.relationship('Document', backref='part')
     inventory_item = db.relationship('InventoryItem', back_populates='part', uselist=False)
+    orders = db.relationship("Order", secondary=orders_parts)
 
 
 class Image(db.Model):
@@ -34,6 +42,15 @@ class InventoryItem(db.Model):
     quantity = db.Column(db.Integer)
     part_id = db.Column(db.Integer, db.ForeignKey('parts.id'))
     part = db.relationship("Part", back_populates='inventory_item', uselist=False)
+
+
+class Order(db.Model):
+    __tablename__ = 'orders'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    parts = db.relationship("Part", secondary=orders_parts)
+    status = db.Column(db.String, default="Pending")
+    created_at = db.Column(db.Date)
 
 
 class User(db.Model, UserMixin):

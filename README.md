@@ -1,7 +1,7 @@
 # OSU Cascades IoT Lab Inventory
 
 Before you run the application for the first time, ensure that the database
-exists:
+exists, and then implement the schema:
 
 ```
 python

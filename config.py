@@ -7,4 +7,4 @@ GOOGLE_LOGIN_CLIENT_SECRET = os.environ['GOOGLE_LOGIN_CLIENT_SECRET']
 GOOGLE_LOGIN_REDIRECT_SCHEME = 'http'
 SQLALCHEMY_COMMIT_ON_TEARDOWN = True
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-SQLALCHEMY_DATABASE_URI = "sqlite:///{0}/development.sqlite3.db".format(os.path.join(os.path.abspath(os.path.dirname(__file__))))
+SQLALCHEMY_DATABASE_URI = "postgresql://localhost/iot_lab_inventory_dev"

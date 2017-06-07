@@ -1,4 +1,4 @@
-from flask_login import UserMixin
+from flask_login import UserMixin, current_user
 from iot_lab_inventory import db, login_manager
 from .cart import Cart, CartItem
 
@@ -51,6 +51,10 @@ class Order(db.Model):
     parts = db.relationship("Part", secondary=orders_parts)
     status = db.Column(db.String, default="Pending")
     created_at = db.Column(db.Date)
+
+    def __init__(self, cart):
+        self.user = current_user
+        # TODO
 
 
 class User(db.Model, UserMixin):

@@ -27,9 +27,9 @@
     </tr>
   {% endfor %}
   </table>
-  <form>
-    <button type="submit">Checkout</button>
-    <button type="submit">Clear</button>
+  <form action="{{ url_for('orders_create') }}" method="POST">
+    <input type="submit" value="Place Order">
+    <button>Clear</button>
   </form>
 {% endif %}
 {% endblock %}

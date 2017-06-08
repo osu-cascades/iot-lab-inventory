@@ -1,7 +1,7 @@
 from flask import url_for, redirect, request, render_template, flash, session, abort
 from flask_login import login_required, login_user, current_user, logout_user
 from iot_lab_inventory import app, db, google_login
-from .models import Part, User, InventoryItem, CartItem, Cart
+from .models import Part, User, InventoryItem, CartItem, Cart, Order
 from .forms import EditPartForm, index_category, category_index
 from functools import wraps
 
@@ -227,6 +227,14 @@ def remove_part_from_cart(id):
     current_user.cart.cart_items.pop(int(request.form['id']))
     return redirect(url_for('cart'))
 
+
+# Orders
+
+@app.route('/orders', methods=['POST'])
+@login_required
+def orders_create():
+    order = Order(current_user.cart)
+    return render_template('orders/order.html')
 
 #error handlers
 

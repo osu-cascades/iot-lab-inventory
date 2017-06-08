@@ -45,6 +45,7 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String)
     picture = db.Column(db.String)
     is_admin = db.Column(db.Boolean)
+    orders = db.relationship('Order', backref='user')
 
     cart = Cart()
 
@@ -71,6 +72,8 @@ class Order(db.Model):
 
 
     def __init__(self, cart):
+        self.user = current_user
+
         for part_id in cart.cart_items:
             part = Part.query.filter_by(id=part_id).first()
             order_item = OrderItem(part=part, order=self)

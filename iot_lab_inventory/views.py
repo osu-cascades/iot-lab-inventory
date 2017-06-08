@@ -236,8 +236,8 @@ def orders_create():
     order = Order(current_user.cart)
     db.session.add(order)
     db.session.commit()
-    for order_item in order.order_items:
-        print order_item.id
+
+    current_user.cart.cart_items.clear()
     return render_template('orders/order.html', order=order)
 
 #error handlers

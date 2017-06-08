@@ -1,11 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- /orders/order.html -->
-<a href="#" onclick="history.back();">« back</a>
-<h2>Display Order</h2>
-{% for order_item in order.order_items %}
-    <h2>order_item:id = {{ order_item.id }}</h2>
-    <p>order_item:name = {{ order_item.part.name }}</p>
-{% endfor %}
+    <!-- /orders/order.html -->
+    <a href="#" onclick="history.back();">« back</a>
+
+    <h2>Order owned by: {{ order.user.username }}</h2>
+    <br>
+
+    <h1>Most recent order items:</h1>
+
+    <br>
+    {% for order_item in order.order_items %}
+        <h2>order_item:id = {{ order_item.id }}</h2>
+        <p>order_item:name = {{ order_item.part.name }}</p>
+    {% endfor %}
 
 {% endblock %}

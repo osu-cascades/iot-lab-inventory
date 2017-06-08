@@ -3,12 +3,6 @@ from iot_lab_inventory import db, login_manager
 from .cart import Cart, CartItem
 
 
-orders_parts = db.Table('orders_parts', db.metadata,
-    db.Column('order_id', db.Integer, db.ForeignKey('orders.id')),
-    db.Column('part_id', db.Integer, db.ForeignKey('parts.id'))
-)
-
-
 class Part(db.Model):
     __tablename__ = 'parts'
     id = db.Column(db.Integer, primary_key=True)
@@ -19,7 +13,6 @@ class Part(db.Model):
     images = db.relationship('Image', backref='part')
     documents = db.relationship('Document', backref='part')
     inventory_item = db.relationship('InventoryItem', back_populates='part', uselist=False)
-    orders = db.relationship("Order", secondary=orders_parts)
 
 
 class Image(db.Model):
@@ -44,19 +37,6 @@ class InventoryItem(db.Model):
     part = db.relationship("Part", back_populates='inventory_item', uselist=False)
 
 
-class Order(db.Model):
-    __tablename__ = 'orders'
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    parts = db.relationship("Part", secondary=orders_parts)
-    status = db.Column(db.String, default="Pending")
-    created_at = db.Column(db.Date)
-
-    def __init__(self, cart):
-        self.user = current_user
-        # TODO
-
-
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -79,4 +59,29 @@ class User(db.Model, UserMixin):
     @login_manager.user_loader
     def load_user(id):
         return User.query.filter_by(id=id).first()
+
+
+class Order(db.Model):
+    __tablename__ = 'orders'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    status = db.Column(db.String, default="Pending")
+    created_at = db.Column(db.Date)
+    order_items = db.relationship('OrderItem', backref='order')
+
+
+    def __init__(self, cart):
+        for part_id in cart.cart_items:
+            part = Part.query.filter_by(id=part_id).first()
+            order_item = OrderItem(part=part, order=self)
+            db.session.add(order_item)
+            db.session.commit()
+
+
+class OrderItem(db.Model):
+    __tablename__ = 'order_items';
+    id = db.Column(db.Integer, primary_key=True)
+    part_id = db.Column(db.Integer, db.ForeignKey('parts.id'))
+    part = db.relationship('Part', uselist=False)
+    order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
 

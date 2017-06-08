@@ -234,7 +234,11 @@ def remove_part_from_cart(id):
 @login_required
 def orders_create():
     order = Order(current_user.cart)
-    return render_template('orders/order.html')
+    db.session.add(order)
+    db.session.commit()
+    for order_item in order.order_items:
+        print order_item.id
+    return render_template('orders/order.html', order=order)
 
 #error handlers
 

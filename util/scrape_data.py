@@ -75,12 +75,13 @@ for row in reader:
         src = image.get('src')
         if '.jpg' in src and sku_num in src:
             # Store image in part_name_1.jpg, 2.jpg, ...
-            image_data = urllib2.urlopen(src).read()
             filename = name.replace(' ', '_').replace('/','_') + '_' + str(i) + '.jpg'
-            with open(dirname + filename, "wb") as image_file:
-                image_file.write(image_data)
             imageObj = Image(filename=filename)
             imageObj.part = part
+
+            # image_data = urllib2.urlopen(src).read()
+            # with open(dirname + filename, "wb") as image_file:
+            #     image_file.write(image_data)
             i += 1
 
     # Grab all pdf documentation, store in file system
@@ -95,23 +96,25 @@ for row in reader:
             pdf_name = href.split('/')[-1]
             pdf_name = pdf_name.replace('%','_')
             try:
-                pdf_data = urllib2.urlopen(href).read()
                 filename = name.replace(' ', '_').replace('/','_') + '_' + pdf_name
-                with open(dirname + filename, 'wb') as pdf_file:
-                    pdf_file.write(pdf_data)
-
                 document = Document(filename=filename)
                 document.part = part
+
+                # pdf_data = urllib2.urlopen(href).read()
+                # with open(dirname + filename, 'wb') as pdf_file:
+                #     pdf_file.write(pdf_data)
+
             except Exception as e:
                 pass
 
         if link.string == 'Hookup Guide':
             if href is not None and 'learn' in href:
                 filename = name.replace(' ','_').replace('/','_') + '_hookup_guide.pdf'
-                cmd = "wkhtmltopdf '" + href + "' " + '"' + dirname + filename + '"'
                 document = Document(filename=filename)
-                document.part=part
-                os.system(cmd)
+                document.part = part
+
+                # cmd = "wkhtmltopdf '" + href + "' " + '"' + dirname + filename + '"'
+                # os.system(cmd)
 
     # Put part into database
     db.session.add(part)

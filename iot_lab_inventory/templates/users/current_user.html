@@ -10,6 +10,9 @@
   <p>Orders (id):
     {% for order in current_user.orders %}
       <h2>{{ order.id }}</h2>
+        {% for order_item in order.order_items %}
+            <p>{{ order_item.part.name }}</p>
+        {% endfor %}
     {% endfor %}
   </p>
 </div>

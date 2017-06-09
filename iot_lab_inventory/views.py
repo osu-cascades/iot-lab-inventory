@@ -54,6 +54,7 @@ def login_failure(e):
 def users_current_user():
     return render_template('users/current_user.html')
 
+
 # Admin
 
 def admin_required(f):
@@ -79,6 +80,7 @@ def admin_manage_users():
     users = User.query.all()
     return render_template('admin/manage_users.html', users=users)
 
+
 @app.route('/admin/manage_users', methods=['POST'])
 @login_required
 @admin_required
@@ -99,7 +101,6 @@ def admin_update_user_role():
         flash('ERROR: unable to update user role')
 
     return redirect(url_for('admin_manage_users'))
-
 
 
 # Parts
@@ -236,11 +237,11 @@ def orders_create():
     order = Order(current_user.cart)
     db.session.add(order)
     db.session.commit()
-
     current_user.cart.cart_items.clear()
     return render_template('orders/order.html', order=order)
 
-#error handlers
+
+# Errors
 
 @app.errorhandler(401)
 def unauthorized(e):
@@ -255,3 +256,4 @@ def unauthorized(e):
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
+

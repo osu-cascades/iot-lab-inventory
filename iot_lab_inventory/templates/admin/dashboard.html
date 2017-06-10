@@ -1,25 +1,49 @@
 {% extends "base.html" %}
 {% block content %}
+    <a href="{{ url_for('admin_manage_users')}}"><h2>Manage Users</h2></a>
+    <br>
+    <a href="{{ url_for('admin_manage_orders')}}"><h2>Manage Orders</h2></a>
+
+    <hr>
+
     <h1>Pending orders:</h1>
     <table border="1">
         <tr>
             <th>Order number</th>
             <th>User</th>
-            <th>Approve</th>
-            <th>Delete</th>
+            <th>Reserve</th>
         </tr>
+        {% for order in pending %}
         <tr>
-            <td>(link) to order N</td>
-            <td>some user</td>
-            <td>button to approve (send email)</td>
-            <td>button to reject / delete </td>
+            <td>{{ order.id }}</td>
+            <td>{{ order.user.username }}</td>
+            <td>
+                <form action="{{ url_for('orders_reserve',id=order.id) }}" method="POST">
+                    <input type="submit" value="Reserve" >
+                </form>
+            </td>
         </tr>
+        {% endfor  %}
     </table>
-
     <hr>
-    <br>
-    <a href="{{ url_for('admin_manage_users')}}"><h2>Manage Users</h2></a>
-    <br>
-    <a href="#"><h2>View Current Orders</h2></a>
+      <h1>Reserved orders:</h1>
+    <table border="1">
+        <tr>
+            <th>Order number</th>
+            <th>User</th>
+            <th>Approve rental</th>
+        </tr>
+        {% for order in reserved %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.user.username }}</td>
+            <td>
+                <form action="{{ url_for('orders_rent',id=order.id) }}" method="POST">
+                    <input type="submit" value="Rent" >
+                </form>
+            </td>
+        </tr>
+        {% endfor  %}
+    </table>
 
 {% endblock %}

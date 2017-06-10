@@ -70,7 +70,9 @@ def admin_required(f):
 @login_required
 @admin_required
 def admin_dashboard():
-    return render_template('admin/dashboard.html')
+    pending = Order.query.filter_by(status='Pending')
+    reserved = Order.query.filter_by(status='Reserved')
+    return render_template('admin/dashboard.html', pending=pending, reserved=reserved)
 
 
 @app.route('/admin/manage_users')
@@ -101,6 +103,14 @@ def admin_update_user_role():
         flash('ERROR: unable to update user role')
 
     return redirect(url_for('admin_manage_users'))
+
+
+@app.route('/admin/manage_orders')
+@login_required
+@admin_required
+def admin_manage_orders():
+    orders = Order.query.all()
+    return render_template('admin/manage_orders.html', orders=orders)
 
 
 # Parts
@@ -240,6 +250,36 @@ def orders_create():
     current_user.cart.cart_items.clear()
     return render_template('orders/order.html', order=order)
 
+
+@app.route('/orders/<int:id>/reserve', methods=['POST'])
+@login_required
+@admin_required
+def orders_reserve(id=id):
+    #send email to user
+    order = Order.query.filter_by(id=id).first()
+    order.status = "Reserved"
+    return redirect(url_for('admin_dashboard'))
+
+
+
+@app.route('/orders/<int:id>/rent', methods=['POST'])
+@login_required
+@admin_required
+def orders_rent(id=id):
+    #decrease numbers in inventory
+    order = Order.query.filter_by(id=id).first()
+    order.status = "Rented"
+    return redirect(url_for('admin_dashboard'))
+
+
+@app.route('/orders/<int:id>/update_status', methods=['POST'])
+@login_required
+@admin_required
+def orders_update_status(id=id):
+    order = Order.query.filter_by(id=id).first()
+    return 'TODO'
+
+#order: Pending => Reserved => Rented => Returned
 
 # Errors
 

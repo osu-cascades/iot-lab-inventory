@@ -241,6 +241,13 @@ def remove_part_from_cart(id):
 
 # Orders
 
+@app.route('/orders/<int:id>')
+@login_required
+def orders_view(id):
+    order = Order.query.filter_by(id=id).first()
+    return render_template('orders/order.html', order=order)
+
+
 @app.route('/orders', methods=['POST'])
 @login_required
 def orders_create():
@@ -248,13 +255,13 @@ def orders_create():
     db.session.add(order)
     db.session.commit()
     current_user.cart.cart_items.clear()
-    return render_template('orders/order.html', order=order)
+    return redirect(url_for('orders_view', id=order.id))
 
 
 @app.route('/orders/<int:id>/reserve', methods=['POST'])
 @login_required
 @admin_required
-def orders_reserve(id=id):
+def orders_reserve(id):
     #send email to user
     order = Order.query.filter_by(id=id).first()
     order.status = "Reserved"
@@ -275,7 +282,7 @@ def orders_rent(id=id):
 @app.route('/orders/<int:id>/update_status', methods=['POST'])
 @login_required
 @admin_required
-def orders_update_status(id=id):
+def orders_update_status(id):
     order = Order.query.filter_by(id=id).first()
     return 'TODO'
 

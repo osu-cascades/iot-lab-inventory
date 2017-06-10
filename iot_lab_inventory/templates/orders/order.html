@@ -2,16 +2,33 @@
 {% block content %}
     <!-- /orders/order.html -->
     <a href="#" onclick="history.back();">« back</a>
-
-    <h2>Order owned by: {{ order.user.username }}</h2>
+    <h1>Order</h1><br>
+    <p>
+        Owner: {{ order.user.username }}<br>
+        Date created: TODO<br>
+        Status: {{ order.status }}
+    </p>
     <br>
+    <h2>Items</h2>
+    <table>
+        {% for order_item in order.order_items %}
+            <tr>
+                <td>
 
-    <h1>Most recent order items:</h1>
-
-    <br>
-    {% for order_item in order.order_items %}
-        <h2>order_item:id = {{ order_item.id }}</h2>
-        <p>order_item:name = {{ order_item.part.name }}</p>
-    {% endfor %}
+                    {% if order_item.part.images | length > 0 %}
+                        <img height="200" src="{{ url_for('static', filename=order_item.part.images[0].filename) }}"/>
+                    {% else %}
+                        <img height="200" src="#"/>
+                    {% endif %}
+                </td>
+                <td>
+                    <h2 class="part_name"><a href="{{ url_for('part', id=order_item.part.id) }}">{{ order_item.part.name }}</a></h2>
+                </td>
+                <td>
+                    {{ order_item.quantity }}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
 
 {% endblock %}

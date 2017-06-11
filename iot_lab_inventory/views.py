@@ -246,6 +246,7 @@ def update_part_in_cart(id):
     current_user.cart.cart_items[id].quantity = quantity
     return redirect(url_for('cart'))
 
+
 # Orders
 
 @app.route('/orders/<int:id>')
@@ -273,7 +274,6 @@ def orders_reserve(id):
     order = Order.query.filter_by(id=id).first()
     order.status = "Reserved"
     return redirect(url_for('admin_dashboard'))
-
 
 
 @app.route('/orders/<int:id>/rent', methods=['POST'])

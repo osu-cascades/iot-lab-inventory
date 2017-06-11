@@ -54,16 +54,16 @@ def update_part_in_cart(id):
 
 @users.route('/orders/<int:id>', methods=['GET'])
 @login_required
-def orders_view(id):
+def order(id):
     order = Order.query.filter_by(id=id).first()
     return render_template('orders/order.html', order=order)
 
 
 @users.route('/orders', methods=['POST'])
 @login_required
-def orders_create():
+def create_order():
     order = Order(current_user.cart)
     db.session.add(order)
     db.session.commit()
     current_user.cart.cart_items.clear()
-    return redirect(url_for('users.orders_view', id=order.id))
+    return redirect(url_for('users.order', id=order.id))

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <!-- /orders/order.html -->
-<h1>Order</h1>
+<h1>Order {{ order.id }}</h1>
 <a href="#" onclick="history.back();">« back</a>
 <p>
   Owner: {{ order.user.username }}<br>

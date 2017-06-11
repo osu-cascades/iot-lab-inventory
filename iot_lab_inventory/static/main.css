@@ -186,10 +186,19 @@ div.welcome h2 {
 
 div.profile {
   margin-top: 20px;
+  height: 100px;
 }
 
 img.user_profile_avatar {
   float: left;
   height: 100px;
   margin-right: 20px;
+}
+
+.orders {
+  margin-top: 20px;
+}
+
+.orders h3 {
+  font-size: 3em;
 }

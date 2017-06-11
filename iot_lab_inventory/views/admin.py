@@ -61,7 +61,7 @@ def update_user(id):
 @admin.route('/parts', methods=['POST'])
 @login_required
 @admin_required
-def parts_create():
+def create_part():
     form = EditPartForm(request.form)
     if form.validate_on_submit():
         name = form.name.data
@@ -76,6 +76,7 @@ def parts_create():
             flash('Part added successfully.')
             return redirect(url_for('public.parts'))
         except Exception as e:
+            print(str(e))
             flash('There was a problem adding this part.')
             db.session.rollback()
     return render_template('parts/new.html', form=form)
@@ -84,16 +85,16 @@ def parts_create():
 @admin.route('/parts/new', methods=['GET'])
 @login_required
 @admin_required
-def parts_new(form=None):
+def new_part(form=None):
     if form is None:
         form = EditPartForm()
-    return render_template('parts/new.html',form=form)
+    return render_template('parts/new.html', form=form)
 
 
 @admin.route('/parts/<int:id>/edit', methods=['GET'])
 @login_required
 @admin_required
-def parts_edit(id=id):
+def edit_part(id=id):
     form = EditPartForm()
     part = Part.query.filter_by(id=id).first()
     form.name.data = part.name

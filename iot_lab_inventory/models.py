@@ -70,10 +70,8 @@ class Order(db.Model):
     created_at = db.Column(db.Date)
     order_items = db.relationship('OrderItem', backref='order')
 
-
     def __init__(self, cart):
         self.user = current_user
-
         for part_id in cart.cart_items:
             part = Part.query.filter_by(id=part_id).first()
             order_item = OrderItem(part=part, order=self)

@@ -1,5 +1,4 @@
 from flask import Blueprint, request, render_template
-from flask_login import current_user
 from iot_lab_inventory.models import Part
 
 public = Blueprint('public', __name__)

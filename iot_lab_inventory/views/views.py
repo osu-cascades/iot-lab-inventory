@@ -1,8 +1,8 @@
 from flask import url_for, redirect, request, render_template, flash, session, abort
 from flask_login import login_required, login_user, current_user, logout_user
 from iot_lab_inventory import app, db, google_login
-from .models import Part, User, InventoryItem, CartItem, Cart, Order
-from .forms import EditPartForm, index_category, category_index
+from iot_lab_inventory.models import Part, User, InventoryItem, CartItem, Cart, Order
+from iot_lab_inventory.forms import EditPartForm, index_category, category_index
 from functools import wraps
 
 

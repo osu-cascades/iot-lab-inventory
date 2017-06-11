@@ -13,4 +13,8 @@ google_login = GoogleLogin(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-from .views import views
+from .views.public import public
+from .views.admin import admin
+app.register_blueprint(public)
+app.register_blueprint(admin)
+

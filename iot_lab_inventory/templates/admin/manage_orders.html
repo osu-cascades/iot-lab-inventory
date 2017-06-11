@@ -8,10 +8,10 @@
         </tr>
         {% for order in orders %}
             <tr>
-                <td><a href="{{ url_for('orders_view', id=order.id) }}">{{ order.id }}</a></td>
+                <td><a href="{{ url_for('public.orders_view', id=order.id) }}">{{ order.id }}</a></td>
                 <td>{{ order.user.username }}</td>
                 <td>
-                    <form action="{{ url_for('orders_update_status', id=order.id) }}" method="POST">
+                    <form action="{{ url_for('admin.orders_update_status', id=order.id) }}" method="POST">
                         <select name="status">
                             <option>TODO</option>
                         </select>

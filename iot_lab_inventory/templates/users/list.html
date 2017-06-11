@@ -13,7 +13,7 @@
     <td>{{ user.username }}</td>
     <td>{{ user.email }}</td>
     <td>
-      <form action="{{ url_for('admin.users_update', id=user.id) }}" method="POST">
+      <form action="{{ url_for('admin.update_user', id=user.id) }}" method="POST">
         <select name="role">
           <option value="True" {% if user.is_admin %} selected="selected" {% endif %}>
             Administrator

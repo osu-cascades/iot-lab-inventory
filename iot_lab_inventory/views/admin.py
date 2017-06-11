@@ -41,7 +41,7 @@ def users():
 @admin.route('/users/<int:id>', methods=['POST'])
 @login_required
 @admin_required
-def users_update(id):
+def update_user(id):
     role = request.form.get('role')
     try:
         user = User.query.filter_by(id=id).first()

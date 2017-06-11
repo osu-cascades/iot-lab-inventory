@@ -22,18 +22,18 @@
       {% endif %}
     </td>
     <td>
-      <h2 class="part_name"><a href="{{ url_for('part', id=part.id) }}">{{ part.name }}</a></h2>
+      <h2 class="part_name"><a href="{{ url_for('public.part', id=part.id) }}">{{ part.name }}</a></h2>
       <p>({{ part.inventory_item.quantity }} available)</p>
 
       <span class="controls">
       {% if current_user is not none and current_user.is_admin %}
-        <a href="{{ url_for('parts_edit', id=part['id']) }}">edit</a>
+        <a href="{{ url_for('admin.parts_edit', id=part['id']) }}">edit</a>
         &emsp;
-          <form id="frm-delete-{{ part['id' ]}}" class="frm-delete" action="{{ url_for('parts_delete', id=part['id']) }}" method="POST">
+          <form id="frm-delete-{{ part['id' ]}}" class="frm-delete" action="{{ url_for('admin.parts_delete', id=part['id']) }}" method="POST">
          <a class="lnk-delete" href="#" onclick="document.getElementById('frm-delete-{{ part['id'] }}').submit();">delete</a>
         </form>
       {% endif %}
-        <form action="{{ url_for('add_part_to_cart') }}" method="POST">
+        <form action="{{ url_for('users.add_part_to_cart') }}" method="POST">
           <input type="hidden" name="part_id" value="{{ part.id }}">
           <input type="submit" value="Add to Cart">
         </form>

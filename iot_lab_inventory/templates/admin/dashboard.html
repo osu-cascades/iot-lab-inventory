@@ -15,7 +15,7 @@
         </tr>
         {% for order in pending %}
         <tr>
-            <td><a href="{{ url_for('public.orders_view', id=order.id) }}">{{ order.id }}</a></td>
+            <td><a href="{{ url_for('users.orders_view', id=order.id) }}">{{ order.id }}</a></td>
             <td>{{ order.user.username }}</td>
             <td>
                 <form action="{{ url_for('admin.orders_reserve',id=order.id) }}" method="POST">
@@ -35,7 +35,7 @@
         </tr>
         {% for order in reserved %}
         <tr>
-            <td><a href="{{ url_for('public.orders_view', id=order.id) }}">{{ order.id }}</a></td>
+            <td><a href="{{ url_for('users.orders_view', id=order.id) }}">{{ order.id }}</a></td>
             <td>{{ order.user.username }}</td>
             <td>
                 <form action="{{ url_for('admin.orders_rent',id=order.id) }}" method="POST">

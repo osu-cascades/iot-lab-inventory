@@ -22,7 +22,7 @@
                     {% endif %}
                 </td>
                 <td>
-                    <h2 class="part_name"><a href="{{ url_for('part', id=order_item.part.id) }}">{{ order_item.part.name }}</a></h2>
+                    <h2 class="part_name"><a href="{{ url_for('public.part', id=order_item.part.id) }}">{{ order_item.part.name }}</a></h2>
                 </td>
                 <td>
                     {{ order_item.quantity }}

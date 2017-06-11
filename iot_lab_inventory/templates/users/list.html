@@ -4,34 +4,34 @@
 <h1>Users</h1>
 <table>
   <tr>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Role</th>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Role</th>
   </tr>
-  {% for user in users %}
-    <tr>
-      <td>{{ user.username }}</td>
-      <td>{{ user.email }}</td>
-      <td>
-        <form action="{{ url_for('admin.users_update', id=user.id) }}" method="POST">
-          <select name="role">
-            <option value="True" {% if user.is_admin %} selected="selected" {% endif %}>
-                Administrator
-            </option>
-            <option value="False" {% if not user.is_admin %} selected="selected" {% endif %}>
-                Student
-            </option>
-          </select>
-          <input type="hidden" name="user_id" value="{{ user.id }}"/>
-          <input type="submit" value="Update"/>
-        </form>
-      </td>
-      <td>
-          {% if not user.is_admin %}
-            <form><input type="submit" value="Delete User"/></form>
-          {% endif %}
-      </td>
-    </tr>
-  {% endfor %}
+{% for user in users %}
+  <tr>
+    <td>{{ user.username }}</td>
+    <td>{{ user.email }}</td>
+    <td>
+      <form action="{{ url_for('admin.users_update', id=user.id) }}" method="POST">
+        <select name="role">
+          <option value="True" {% if user.is_admin %} selected="selected" {% endif %}>
+            Administrator
+          </option>
+          <option value="False" {% if not user.is_admin %} selected="selected" {% endif %}>
+            Student
+          </option>
+        </select>
+        <input type="hidden" name="user_id" value="{{ user.id }}"/>
+        <input type="submit" value="Update"/>
+      </form>
+    </td>
+    <td>
+    {% if not user.is_admin %}
+      <form><input type="submit" value="Delete User"/></form>
+    {% endif %}
+    </td>
+  </tr>
+{% endfor %}
 </table>
 {% endblock %}

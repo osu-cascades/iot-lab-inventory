@@ -19,31 +19,30 @@
         <li><a href="/parts?category=tool">Tools</a></li>
         <li><a href="/parts?category=wireless">Wireless</a></li>
         <li class="user">
-          {% if current_user.is_authenticated() %}
-              {% if current_user.is_admin %}
-                  <a href="{{ url_for('admin.home') }}">Admin | </a>
-              {% endif %}
-
-            <a href="{{ url_for('users.cart') }}">View Cart | </a>
-            <a href="{{ url_for('users.users_current_user')}}"><img class="user_avatar" src="{{ current_user.picture }}"/></a>
-            <a href="{{ url_for('auth.logout') }}">Log Out</a>
-          {% else %}
-            <a href="{{ url_for('auth.login') }}">Log In</a>
+        {% if current_user.is_authenticated() %}
+          {% if current_user.is_admin %}
+            <a href="{{ url_for('admin.home') }}">Admin | </a>
           {% endif %}
+          <a href="{{ url_for('users.cart') }}">View Cart | </a>
+          <a href="{{ url_for('users.users_current_user')}}"><img class="user_avatar" src="{{ current_user.picture }}"/></a>
+          <a href="{{ url_for('auth.logout') }}">Log Out</a>
+        {% else %}
+          <a href="{{ url_for('auth.login') }}">Log In</a>
+        {% endif %}
         </li>
       </ul>
     </nav>
     <div id="content">
-      {% with messages = get_flashed_messages() %}
-        {% if messages %}
-          <ul class="flashes">
-          {% for message in messages %}
-            <li>{{ message }}</li>
-          {% endfor %}
-          </ul>
-        {% endif %}
-      {% endwith %}
-      {% block content %}{% endblock %}
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
     </div><!-- /content -->
   </body>
 </html>

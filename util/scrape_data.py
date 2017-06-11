@@ -5,9 +5,9 @@ import os
 import sys
 import csv
 import requests
-try:
+if sys.version_info[0] < 3:
     import urllib2                   # Python 2
-except ImportError:
+else:
     import urllib.request as urllib2 # Python 3
 from bs4 import BeautifulSoup
 import flask_sqlalchemy
@@ -27,9 +27,9 @@ if len(sys.argv) != 2:
 
 f = open(sys.argv[1], 'r')
 reader = csv.reader(f)
-try:
+if sys.version_info[0] < 3:
     headers = reader.next() # Python 2
-except AttributeError:
+else:
     next(reader)            # Python 3
 
 for row in reader:

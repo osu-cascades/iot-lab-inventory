@@ -52,7 +52,7 @@ def update_part_in_cart(id):
 
 # Order
 
-@users.route('/orders/<int:id>')
+@users.route('/orders/<int:id>', methods=['GET'])
 @login_required
 def orders_view(id):
     order = Order.query.filter_by(id=id).first()

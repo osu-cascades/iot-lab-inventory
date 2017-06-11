@@ -21,7 +21,7 @@
         <li class="user">
           {% if current_user.is_authenticated() %}
               {% if current_user.is_admin %}
-                  <a href="{{ url_for('admin.admin_dashboard') }}">Admin | </a>
+                  <a href="{{ url_for('admin.home') }}">Admin | </a>
               {% endif %}
 
             <a href="{{ url_for('users.cart') }}">View Cart | </a>

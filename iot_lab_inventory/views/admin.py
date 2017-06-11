@@ -1,4 +1,4 @@
-from flask import Blueprint, url_for, redirect, request, render_template, flash
+from flask import Blueprint, url_for, redirect, request, render_template, flash, abort
 from flask_login import login_required, login_user, current_user
 from iot_lab_inventory import db
 from iot_lab_inventory.models import User, Order, Part
@@ -19,51 +19,41 @@ def admin_required(f):
     return wrapped
 
 
-@admin.route('/admin/dashboard')
+@admin.route('/admin', methods=['GET'])
 @login_required
 @admin_required
-def admin_dashboard():
+def home():
     pending = Order.query.filter_by(status='Pending')
     reserved = Order.query.filter_by(status='Reserved')
-    return render_template('admin/dashboard.html', pending=pending, reserved=reserved)
+    return render_template('admin/home.html', pending=pending, reserved=reserved)
 
 
-@admin.route('/admin/manage_users')
+# Users
+
+@admin.route('/users', methods=['GET'])
 @login_required
 @admin_required
-def admin_manage_users():
+def users():
     users = User.query.all()
-    return render_template('admin/manage_users.html', users=users)
+    return render_template('users/list.html', users=users)
 
 
-@admin.route('/admin/manage_users', methods=['POST'])
+@admin.route('/users/<int:id>', methods=['POST'])
 @login_required
 @admin_required
-def admin_update_user_role():
-    user_id = int(request.form['user_id'])
+def users_update(id):
     role = request.form.get('role')
-
     try:
-        user = User.query.filter_by(id=user_id).first()
+        user = User.query.filter_by(id=id).first()
         if role == 'True':
             user.is_admin = True
         else:
             user.is_admin = False
         db.session.commit()
-        flash('Updated user role')
-
+        flash('User updated.')
     except Exception as err:
-        flash('ERROR: unable to update user role')
-
-    return redirect(url_for('admin.admin_manage_users'))
-
-
-@admin.route('/admin/manage_orders')
-@login_required
-@admin_required
-def admin_manage_orders():
-    orders = Order.query.all()
-    return render_template('admin/manage_orders.html', orders=orders)
+        flash('Error: unable to update user role.')
+    return redirect(url_for('admin.users'))
 
 
 # Parts
@@ -151,6 +141,14 @@ def parts_delete(id):
 
 # Orders
 
+@admin.route('/orders', methods=['GET'])
+@login_required
+@admin_required
+def orders():
+    orders = Order.query.all()
+    return render_template('orders/list.html', orders=orders)
+
+
 @admin.route('/orders/<int:id>/reserve', methods=['POST'])
 @login_required
 @admin_required
@@ -158,7 +156,7 @@ def orders_reserve(id):
     #send email to user
     order = Order.query.filter_by(id=id).first()
     order.status = "Reserved"
-    return redirect(url_for('admin.admin_dashboard'))
+    return redirect(url_for('admin.home'))
 
 
 @admin.route('/orders/<int:id>/rent', methods=['POST'])
@@ -168,7 +166,7 @@ def orders_rent(id=id):
     #decrease numbers in inventory
     order = Order.query.filter_by(id=id).first()
     order.status = "Rented"
-    return redirect(url_for('admin.admin_dashboard'))
+    return redirect(url_for('admin.home'))
 
 
 @admin.route('/orders/<int:id>/update_status', methods=['POST'])

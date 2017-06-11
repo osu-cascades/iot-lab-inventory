@@ -20,8 +20,9 @@
         </form>
       </td>
       <td align="center">
-        <form>
-          <input type="number" id="{{ id }}" value="{{ cart_item.quantity }}" min="1" >
+        <form action="{{ url_for('update_part_in_cart', id=id)}}" method="POST">
+          <input type="number" name="quantity" id="{{ id }}" value="{{ cart_item.quantity }}" min="1" >
+          <input type="submit" value="update">
         </form>
       </td>
     </tr>

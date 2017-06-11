@@ -75,6 +75,7 @@ class Order(db.Model):
         for part_id in cart.cart_items:
             part = Part.query.filter_by(id=part_id).first()
             order_item = OrderItem(part=part, order=self)
+            order_item.quantity = cart.cart_items[part_id].quantity
             db.session.add(order_item)
             db.session.commit()
 
@@ -85,4 +86,5 @@ class OrderItem(db.Model):
     part_id = db.Column(db.Integer, db.ForeignKey('parts.id'))
     part = db.relationship('Part', uselist=False)
     order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
+    quantity = db.Column(db.Integer)
 

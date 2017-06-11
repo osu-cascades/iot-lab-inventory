@@ -235,9 +235,16 @@ def add_part_to_cart():
 @app.route('/cart/<int:id>/delete', methods=['POST'])
 @login_required
 def remove_part_from_cart(id):
-    current_user.cart.cart_items.pop(int(request.form['id']))
+    current_user.cart.cart_items.pop(id)
     return redirect(url_for('cart'))
 
+
+@app.route('/cart/<int:id>/update', methods=['POST'])
+@login_required
+def update_part_in_cart(id):
+    quantity = request.form.get('quantity')
+    current_user.cart.cart_items[id].quantity = quantity
+    return redirect(url_for('cart'))
 
 # Orders
 

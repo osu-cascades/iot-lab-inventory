@@ -24,7 +24,7 @@
             <a href="{{ url_for('admin.home') }}">Admin | </a>
           {% endif %}
           <a href="{{ url_for('users.cart') }}">View Cart | </a>
-          <a href="{{ url_for('users.users_current_user')}}"><img class="user_avatar" src="{{ current_user.picture }}"/></a>
+          <a href="{{ url_for('users.home')}}"><img class="user_avatar" src="{{ current_user.picture }}"/></a>
           <a href="{{ url_for('auth.logout') }}">Log Out</a>
         {% else %}
           <a href="{{ url_for('auth.login') }}">Log In</a>

@@ -8,10 +8,10 @@ users = Blueprint('users', __name__)
 
 # Users
 
-@users.route('/users/me')
+@users.route('/users/me', methods=['GET'])
 @login_required
-def users_current_user():
-    return render_template('users/current_user.html')
+def home():
+    return render_template('users/home.html')
 
 
 # Cart

@@ -29,7 +29,7 @@
       {% if current_user is not none and current_user.is_admin %}
         <a href="{{ url_for('admin.edit_part', id=part['id']) }}">edit</a>
         &emsp;
-          <form id="frm-delete-{{ part['id' ]}}" class="frm-delete" action="{{ url_for('admin.parts_delete', id=part['id']) }}" method="POST">
+          <form id="frm-delete-{{ part['id' ]}}" class="frm-delete" action="{{ url_for('admin.delete_part', id=part['id']) }}" method="POST">
          <a class="lnk-delete" href="#" onclick="document.getElementById('frm-delete-{{ part['id'] }}').submit();">delete</a>
         </form>
       {% endif %}

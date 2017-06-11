@@ -107,7 +107,7 @@ def edit_part(id=id):
 @admin.route('/parts/<int:id>', methods=['POST'])
 @login_required
 @admin_required
-def parts_update(id):
+def update_part(id):
     form = EditPartForm(request.form)
     if form.validate_on_submit():
         try:
@@ -131,7 +131,7 @@ def parts_update(id):
 @admin.route('/parts/<int:id>/delete', methods=['POST'])
 @login_required
 @admin_required
-def parts_delete(id):
+def delete_part(id):
     part = Part.query.filter_by(id=id).first()
     if part is not None:
         db.session.delete(part)

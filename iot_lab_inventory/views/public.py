@@ -8,7 +8,7 @@ public = Blueprint('public', __name__)
 @public.route('/', methods=['GET'])
 def home():
     parts = Part.query.all()
-    return render_template('home.html', parts=parts, user=current_user)
+    return render_template('home.html', parts=parts)
 
 
 @public.route('/parts', methods=['GET'])

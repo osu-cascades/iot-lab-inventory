@@ -60,5 +60,12 @@ documents:
 
 `python -m util.scrape_data util/all_parts.csv`
 
+## Testing
+
+The test suite resides in the _test_ directory and can be run with:
+
+`python -m test.all`
+
+---
 
 (c) 2017 Marc Rubin, Yong Bakos. All rights reserved.

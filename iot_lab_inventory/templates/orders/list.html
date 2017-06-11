@@ -13,7 +13,7 @@
     <td><a href="{{ url_for('users.order', id=order.id) }}">{{ order.id }}</a></td>
     <td>{{ order.user.username }}</td>
     <td>
-      <form action="{{ url_for('admin.orders_update_status', id=order.id) }}" method="POST">
+      <form action="{{ url_for('admin.update_order', id=order.id) }}" method="POST">
         <select name="status">
           <option>TODO</option>
         </select>

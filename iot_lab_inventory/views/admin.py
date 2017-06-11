@@ -153,7 +153,7 @@ def orders():
 @admin.route('/orders/<int:id>/reserve', methods=['POST'])
 @login_required
 @admin_required
-def orders_reserve(id):
+def reserve_order(id):
     #send email to user
     order = Order.query.filter_by(id=id).first()
     order.status = "Reserved"
@@ -163,7 +163,7 @@ def orders_reserve(id):
 @admin.route('/orders/<int:id>/rent', methods=['POST'])
 @login_required
 @admin_required
-def orders_rent(id=id):
+def rent_order(id=id):
     #decrease numbers in inventory
     order = Order.query.filter_by(id=id).first()
     order.status = "Rented"
@@ -173,7 +173,7 @@ def orders_rent(id=id):
 @admin.route('/orders/<int:id>/update_status', methods=['POST'])
 @login_required
 @admin_required
-def orders_update_status(id):
+def update_order(id):
     order = Order.query.filter_by(id=id).first()
     return 'TODO'
 

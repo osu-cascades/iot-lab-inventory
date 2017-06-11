@@ -12,7 +12,7 @@ def home():
 
 
 @public.route('/parts', methods=['GET'])
-def parts_list():
+def parts():
     category = request.args.get('category')
     if category is None:
         parts = Part.query.all()

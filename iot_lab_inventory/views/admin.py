@@ -84,7 +84,7 @@ def parts_create():
             db.session.add(part)
             db.session.commit()
             flash('Part added successfully.')
-            return redirect(url_for('public.parts_list'))
+            return redirect(url_for('public.parts'))
         except Exception as e:
             flash('There was a problem adding this part.')
             db.session.rollback()
@@ -134,7 +134,7 @@ def parts_update(id):
     else:
         part = Part.query.filter_by(id=id).first()
         return render_template('parts/edit.html', part=part, form=form)
-    return redirect(url_for('public.parts_list'))
+    return redirect(url_for('public.parts'))
 
 
 @admin.route('/parts/<int:id>/delete', methods=['POST'])
@@ -146,7 +146,7 @@ def parts_delete(id):
         db.session.delete(part)
         db.session.commit()
         flash('Part ' + str(id) + ' has been deleted.')
-    return redirect(url_for('public.parts_list'))
+    return redirect(url_for('public.parts'))
 
 
 # Orders

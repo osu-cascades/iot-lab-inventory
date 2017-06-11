@@ -19,6 +19,9 @@ app.register_blueprint(errors)
 from .views.public import public
 app.register_blueprint(public)
 
+from .views.auth import auth
+app.register_blueprint(auth)
+
 from .views.users import users
 app.register_blueprint(users)
 

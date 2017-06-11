@@ -1,18 +1,9 @@
 from flask import Blueprint, url_for, redirect, request, render_template, flash, session
-from flask_login import login_required, current_user, logout_user
+from flask_login import login_required, current_user
 from iot_lab_inventory import db
 from iot_lab_inventory.models import Part, CartItem, Order
 
 users = Blueprint('users', __name__)
-
-
-# Authentication
-
-@users.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('public.home'))
 
 
 # Users
@@ -23,7 +14,7 @@ def users_current_user():
     return render_template('users/current_user.html')
 
 
-# Carts
+# Cart
 
 @users.route('/cart', methods=['GET'])
 @login_required
@@ -59,7 +50,7 @@ def update_part_in_cart(id):
     return redirect(url_for('users.cart'))
 
 
-# Orders
+# Order
 
 @users.route('/orders/<int:id>')
 @login_required

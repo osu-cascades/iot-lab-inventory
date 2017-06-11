@@ -55,7 +55,7 @@ def admin_update_user_role():
     except Exception as err:
         flash('ERROR: unable to update user role')
 
-    return redirect(url_for('admin_manage_users'))
+    return redirect(url_for('admin.admin_manage_users'))
 
 
 @admin.route('/admin/manage_orders')
@@ -84,7 +84,7 @@ def parts_create():
             db.session.add(part)
             db.session.commit()
             flash('Part added successfully.')
-            return redirect(url_for('parts_list'))
+            return redirect(url_for('public.parts_list'))
         except Exception as e:
             flash('There was a problem adding this part.')
             db.session.rollback()
@@ -134,7 +134,7 @@ def parts_update(id):
     else:
         part = Part.query.filter_by(id=id).first()
         return render_template('parts/edit.html', part=part, form=form)
-    return redirect(url_for('parts_list'))
+    return redirect(url_for('public.parts_list'))
 
 
 @admin.route('/parts/<int:id>/delete', methods=['POST'])
@@ -146,7 +146,7 @@ def parts_delete(id):
         db.session.delete(part)
         db.session.commit()
         flash('Part ' + str(id) + ' has been deleted.')
-    return redirect(url_for('parts_list'))
+    return redirect(url_for('public.parts_list'))
 
 
 # Orders
@@ -158,7 +158,7 @@ def orders_reserve(id):
     #send email to user
     order = Order.query.filter_by(id=id).first()
     order.status = "Reserved"
-    return redirect(url_for('admin_dashboard'))
+    return redirect(url_for('admin.admin_dashboard'))
 
 
 @admin.route('/orders/<int:id>/rent', methods=['POST'])
@@ -168,7 +168,7 @@ def orders_rent(id=id):
     #decrease numbers in inventory
     order = Order.query.filter_by(id=id).first()
     order.status = "Rented"
-    return redirect(url_for('admin_dashboard'))
+    return redirect(url_for('admin.admin_dashboard'))
 
 
 @admin.route('/orders/<int:id>/update_status', methods=['POST'])

@@ -13,10 +13,10 @@
   {% for order in current_user.orders %}
     <ul>
       <li>
-        <h3><a href="{{ url_for('users.order', id=order.id) }}">{{ order.id }}</a></h3>
+          <p><a href="{{ url_for('users.order', id=order.id) }}">{{ order.id }} ({{ order.status }})</a></p>
         <ul>
         {% for order_item in order.order_items %}
-          <li>{{ order_item.part.name }}</li>
+          <li>{{ order_item.part.name }} ({{ order_item.quantity }})</li>
         {% endfor %}
         </ul>
       </li>

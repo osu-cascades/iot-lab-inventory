@@ -10,12 +10,20 @@
 <tr>
   <th>Order number</th>
   <th>User</th>
+  <th>Parts</th>
   <th>Reserve</th>
 </tr>
 {% for order in pending %}
 <tr>
   <td><a href="{{ url_for('users.order', id=order.id) }}">{{ order.id }}</a></td>
-  <td>{{ order.user.username }}</td>
+  <td>{{ order.user.name }} ({{ order.user.username }})</td>
+  <td>
+      <ul>
+          {% for order_item in order.order_items %}
+            <li>{{ order_item.part.name }} ({{ order_item.quantity }})</li>
+          {% endfor %}
+      </ul>
+  </td>
   <td>
     <form action="{{ url_for('admin.reserve_order',id=order.id) }}" method="POST">
         <input type="submit" value="Reserve" >
@@ -30,12 +38,20 @@
 <tr>
   <th>Order number</th>
   <th>User</th>
+  <th>Parts</th>
   <th>Approve rental</th>
 </tr>
 {% for order in reserved %}
   <tr>
     <td><a href="{{ url_for('users.order', id=order.id) }}">{{ order.id }}</a></td>
-    <td>{{ order.user.username }}</td>
+      <td>{{ order.user.name }} ({{ order.user.username }})</td>
+  <td>
+      <ul>
+          {% for order_item in order.order_items %}
+            <li>{{ order_item.part.name }} ({{ order_item.quantity }})</li>
+          {% endfor %}
+      </ul>
+  </td>
     <td>
       <form action="{{ url_for('admin.rent_order',id=order.id) }}" method="POST">
         <input type="submit" value="Rent" >
@@ -44,4 +60,32 @@
   </tr>
 {% endfor %}
 </table>
+    <hr>
+    <h1>Rented orders:</h1>
+<table border="1">
+<tr>
+  <th>Order number</th>
+  <th>User</th>
+  <th>Return rental</th>
+</tr>
+{% for order in rented %}
+  <tr>
+    <td><a href="{{ url_for('users.order', id=order.id) }}">{{ order.id }}</a></td>
+    <td>{{ order.user.name }} ({{ order.user.username }})</td>
+    <td>
+      <ul>
+          {% for order_item in order.order_items %}
+            <li>{{ order_item.part.name }} ({{ order_item.quantity }})</li>
+          {% endfor %}
+      </ul>
+    </td>
+    <td>
+      <form action="{{ url_for('admin.return_order',id=order.id) }}" method="POST">
+        <input type="submit" value="Return" >
+      </form>
+    </td>
+  </tr>
+{% endfor %}
+</table>
+
 {% endblock %}

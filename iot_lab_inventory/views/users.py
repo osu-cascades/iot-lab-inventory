@@ -11,7 +11,7 @@ users = Blueprint('users', __name__)
 @users.route('/users/me', methods=['GET'])
 @login_required
 def home():
-    return render_template('users/home.html')
+  return render_template('users/home.html')
 
 
 # Cart
@@ -19,35 +19,35 @@ def home():
 @users.route('/cart', methods=['GET'])
 @login_required
 def cart():
-    return render_template('cart.html')
+  return render_template('cart.html')
 
 
 @users.route('/cart', methods=['POST'])
 @login_required
 def add_part_to_cart():
-    part_id = int(request.form['part_id'])
-    if part_id in current_user.cart.cart_items:
-        current_user.cart.cart_items[part_id].quantity += 1
-    else:
-        part = Part.query.filter_by(id=part_id).first()
-        cart_item = CartItem(part.inventory_item, 1)
-        current_user.cart.add(part_id, cart_item)
-    return redirect(url_for('users.cart'))
+  part_id = int(request.form['part_id'])
+  if part_id in current_user.cart.cart_items:
+    current_user.cart.cart_items[part_id].quantity += 1
+  else:
+    part = Part.query.filter_by(id=part_id).first()
+    cart_item = CartItem(part.inventory_item, 1)
+    current_user.cart.add(part_id, cart_item)
+  return redirect(url_for('users.cart'))
 
 
 @users.route('/cart/<int:id>/delete', methods=['POST'])
 @login_required
 def remove_part_from_cart(id):
-    current_user.cart.cart_items.pop(id)
-    return redirect(url_for('users.cart'))
+  current_user.cart.cart_items.pop(id)
+  return redirect(url_for('users.cart'))
 
 
 @users.route('/cart/<int:id>/update', methods=['POST'])
 @login_required
 def update_part_in_cart(id):
-    quantity = request.form.get('quantity')
-    current_user.cart.cart_items[id].quantity = quantity
-    return redirect(url_for('users.cart'))
+  quantity = request.form.get('quantity')
+  current_user.cart.cart_items[id].quantity = int(quantity)
+  return redirect(url_for('users.cart'))
 
 
 # Order
@@ -55,15 +55,30 @@ def update_part_in_cart(id):
 @users.route('/orders/<int:id>', methods=['GET'])
 @login_required
 def order(id):
-    order = Order.query.filter_by(id=id).first()
-    return render_template('orders/order.html', order=order)
+  order = Order.query.filter_by(id=id).first()
+  return render_template('orders/order.html', order=order)
 
 
 @users.route('/orders', methods=['POST'])
 @login_required
 def create_order():
-    order = Order(current_user.cart)
-    db.session.add(order)
-    db.session.commit()
-    current_user.cart.cart_items.clear()
-    return redirect(url_for('users.order', id=order.id))
+  #check for empty cart
+  if not current_user.cart.cart_items:
+    flash('No items in cart.')
+    return redirect(url_for('users.cart'))
+
+  #check inventory for quantity
+  for part_id in current_user.cart.cart_items:
+    part = Part.query.filter_by(id=part_id).first()
+    quantity = part.inventory_item.quantity
+    cart_item = current_user.cart.cart_items[part_id]
+    if cart_item.quantity > quantity:
+      msg = 'Unable to create order: not enough ' + part.name + ' in inventory.'
+      flash(msg)
+      return redirect(url_for('users.cart'))
+
+  order = Order(current_user.cart)
+  db.session.add(order)
+  db.session.commit()
+  current_user.cart.cart_items.clear()
+  return redirect(url_for('users.order', id=order.id))

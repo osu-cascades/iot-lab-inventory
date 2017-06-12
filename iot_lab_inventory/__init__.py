@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_oauth2_login import GoogleLogin
@@ -13,8 +13,9 @@ google_login = GoogleLogin(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-from .views.errors import errors
-app.register_blueprint(errors)
+#error handling via blueprints is a known bug in flask
+# abort(403) does not reach the blueprint route..
+import error_handlers
 
 from .views.public import public
 app.register_blueprint(public)
@@ -27,3 +28,4 @@ app.register_blueprint(users)
 
 from .views.admin import admin
 app.register_blueprint(admin)
+

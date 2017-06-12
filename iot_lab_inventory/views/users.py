@@ -1,10 +1,9 @@
-from flask import Blueprint, url_for, redirect, request, render_template, flash, session
+from flask import Blueprint, url_for, redirect, request, render_template, flash, session, abort
 from flask_login import login_required, current_user
 from iot_lab_inventory import db
 from iot_lab_inventory.models import Part, CartItem, Order
 
 users = Blueprint('users', __name__)
-
 
 # Users
 
@@ -56,6 +55,8 @@ def update_part_in_cart(id):
 @login_required
 def order(id):
   order = Order.query.filter_by(id=id).first()
+  if current_user.id != order.user_id and not current_user.is_admin:
+    abort(403)
   return render_template('orders/order.html', order=order)
 
 

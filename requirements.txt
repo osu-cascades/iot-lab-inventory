@@ -2,6 +2,7 @@ alembic==0.9.1
 appdirs==1.4.3
 asn1crypto==0.22.0
 beautifulsoup4==4.6.0
+blinker==1.4
 bs4==0.0.1
 cffi==1.10.0
 chardet==3.0.2
@@ -15,6 +16,7 @@ dominate==2.3.1
 enum34==1.1.6
 Flask==0.12.2
 Flask-Login==0.2.11
+Flask-Mail==0.9.1
 Flask-Migrate==2.0.3
 Flask-OAuth==0.12
 Flask-OAuth2-Login==0.0.9

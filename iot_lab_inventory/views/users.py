@@ -1,6 +1,7 @@
 from flask import Blueprint, url_for, redirect, request, render_template, flash, session, abort
 from flask_login import login_required, current_user
-from iot_lab_inventory import db
+from flask_mail import Message
+from iot_lab_inventory import db, mail
 from iot_lab_inventory.models import Part, CartItem, Order
 
 users = Blueprint('users', __name__)
@@ -82,4 +83,12 @@ def create_order():
   db.session.add(order)
   db.session.commit()
   current_user.cart.cart_items.clear()
+
+  #send email to user saying order is pending..
+  msg = Message(subject='OSU-Cascades IoT-Lab: Order Pending ', \
+                recipients=[ current_user.email ])
+  msg.body = render_template('mail/pending.txt', order=order)
+  msg.html = render_template('mail/pending.html', order=order)
+  mail.send(msg)
+
   return redirect(url_for('users.order', id=order.id))

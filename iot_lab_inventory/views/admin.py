@@ -1,6 +1,7 @@
 from flask import Blueprint, url_for, redirect, request, render_template, flash, abort
 from flask_login import login_required, login_user, current_user
-from iot_lab_inventory import db
+from flask_mail import Message
+from iot_lab_inventory import db, mail
 from iot_lab_inventory.models import User, Order, Part, InventoryItem
 from iot_lab_inventory.forms import EditPartForm, index_category, category_index
 from functools import wraps
@@ -155,9 +156,16 @@ def orders():
 @login_required
 @admin_required
 def reserve_order(id):
-  #send email to user
   order = Order.query.filter_by(id=id).first()
   order.status = "Reserved"
+
+  #send email to user
+  msg = Message(subject='OSU-Cascades IoT-Lab: Order Reserved ', \
+                recipients=[ order.user.email ])
+  msg.body = render_template('mail/reserved.txt', order=order)
+  msg.html = render_template('mail/reserved.html', order=order)
+  mail.send(msg)
+
   return redirect(url_for('admin.home'))
 
 

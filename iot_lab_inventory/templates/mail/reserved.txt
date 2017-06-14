@@ -1,0 +1,15 @@
+{% set first_name = order.user.name.split(' ')[0] %}
+Greetings {{ first_name }},
+
+Order #{{ order.id }} is now Reserved.
+
+    {% for order_item in order.order_items %}
+        {{ order_item.part.name }} ({{ order_item.quantity }})
+
+    {% endfor %}
+
+Please visit the IoT Lab to pick up your order.
+
+Cheers,
+
+OSU-Cascades IoT Lab Admin

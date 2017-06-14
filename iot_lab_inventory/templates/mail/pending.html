@@ -1,0 +1,18 @@
+{% set first_name = order.user.name.split(' ')[0] %}
+<h1>Greetings {{ first_name }},</h1>
+<p>
+Order #<a href="{{ url_for('users.order',id=order.id, _external=True) }}">{{ order.id }}</a> is now Pending.
+<br>
+   <ul>
+    {% for order_item in order.order_items %}
+      <li>
+        {{ order_item.part.name }} ({{ order_item.quantity }})
+      </li>
+    {% endfor %}
+  </ul>
+<br>
+You will receive an email notification once the order is Reserved and ready to pick up from the IoT Lab.
+<br><br>
+Cheers,
+</p>
+<h3>OSU-Cascades IoT Lab Admin</h3>

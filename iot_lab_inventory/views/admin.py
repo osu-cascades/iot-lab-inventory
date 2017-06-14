@@ -189,11 +189,4 @@ def return_order(id=id):
   return redirect(url_for('admin.home'))
 
 
-@admin.route('/orders/<int:id>/update_status', methods=['POST'])
-@login_required
-@admin_required
-def update_order(id):
-  order = Order.query.filter_by(id=id).first()
-  return 'TODO'
-
 #order: Pending => Reserved => Rented => Returned

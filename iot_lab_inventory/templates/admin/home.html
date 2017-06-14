@@ -1,91 +1,41 @@
 {% extends 'base.html' %}
-{% block content %}
-<!-- /admin/home.html -->
-<a href="{{ url_for('admin.users')}}"><h2>Manage Users</h2></a>
-<br>
-<a href="{{ url_for('admin.orders')}}"><h2>Manage Orders</h2></a>
-<hr>
-<h1>Pending orders:</h1>
-<table border="1">
-<tr>
-  <th>Order number</th>
-  <th>User</th>
-  <th>Parts</th>
-  <th>Reserve</th>
-</tr>
-{% for order in pending %}
-<tr>
-  <td><a href="{{ url_for('users.order', id=order.id) }}">{{ order.id }}</a></td>
-  <td>{{ order.user.name }} ({{ order.user.username }})</td>
-  <td>
-      <ul>
-          {% for order_item in order.order_items %}
-            <li>{{ order_item.part.name }} ({{ order_item.quantity }})</li>
-          {% endfor %}
-      </ul>
-  </td>
-  <td>
-    <form action="{{ url_for('admin.reserve_order',id=order.id) }}" method="POST">
-        <input type="submit" value="Reserve" >
-    </form>
-  </td>
-</tr>
-{% endfor %}
-</table>
-<hr>
-<h1>Reserved orders:</h1>
-<table border="1">
-<tr>
-  <th>Order number</th>
-  <th>User</th>
-  <th>Parts</th>
-  <th>Approve rental</th>
-</tr>
-{% for order in reserved %}
-  <tr>
-    <td><a href="{{ url_for('users.order', id=order.id) }}">{{ order.id }}</a></td>
-      <td>{{ order.user.name }} ({{ order.user.username }})</td>
-  <td>
-      <ul>
-          {% for order_item in order.order_items %}
-            <li>{{ order_item.part.name }} ({{ order_item.quantity }})</li>
-          {% endfor %}
-      </ul>
-  </td>
-    <td>
-      <form action="{{ url_for('admin.rent_order',id=order.id) }}" method="POST">
-        <input type="submit" value="Rent" >
-      </form>
-    </td>
-  </tr>
-{% endfor %}
-</table>
-    <hr>
-    <h1>Rented orders:</h1>
-<table border="1">
-<tr>
-  <th>Order number</th>
-  <th>User</th>
-  <th>Return rental</th>
-</tr>
-{% for order in rented %}
-  <tr>
-    <td><a href="{{ url_for('users.order', id=order.id) }}">{{ order.id }}</a></td>
-    <td>{{ order.user.name }} ({{ order.user.username }})</td>
-    <td>
-      <ul>
-          {% for order_item in order.order_items %}
-            <li>{{ order_item.part.name }} ({{ order_item.quantity }})</li>
-          {% endfor %}
-      </ul>
-    </td>
-    <td>
-      <form action="{{ url_for('admin.return_order',id=order.id) }}" method="POST">
-        <input type="submit" value="Return" >
-      </form>
-    </td>
-  </tr>
-{% endfor %}
-</table>
 
+{% macro list_orders(orders, status, next_status) -%}
+  <h1>{{ status }} orders:</h1>
+  <table border="1">
+    <tr>
+      <th>Order number</th><th>User</th><th>Parts</th><th>{{ next_status }}</th>
+    </tr>
+    {% for order in orders %}
+      <tr>
+        <td><a href="{{ url_for('users.order', id=order.id) }}">{{ order.id }}</a></td>
+        <td>{{ order.user.name }} ({{ order.user.username }})</td>
+        <td>
+          <ul>
+            {% for order_item in order.order_items %}
+              <li>{{ order_item.part.name }} ({{ order_item.quantity }})</li>
+            {% endfor %}
+          </ul>
+        </td>
+        <td>
+          {% set url_text = ['admin.', next_status|lower, '_order' ] %}
+{#          <form action="{{ url_for('admin.reserve_order',id=order.id) }}" method="POST">#}
+          <form action="{{ url_for( url_text|join, id=order.id) }}" method="POST">
+           <input type="submit" value="{{ next_status }}" >
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+{%- endmacro %}
+
+{% block content %}
+  <!-- /admin/home.html -->
+  <a href="{{ url_for('admin.users')}}"><h2>Manage Users</h2></a><br>
+  <hr>
+    {{ list_orders(pending, "Pending", "Reserve") }}
+  <hr>
+    {{ list_orders(reserved, "Reserved", "Rent") }}
+  <hr>
+    {{ list_orders(rented, "Rented", "Return") }}
 {% endblock %}

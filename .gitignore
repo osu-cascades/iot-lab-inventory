@@ -4,6 +4,7 @@
 *.jpg
 *.pdf
 venv/
+db_exp/
 part_resources/
 .idea/
 

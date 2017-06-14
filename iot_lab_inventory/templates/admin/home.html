@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
-
-{% macro list_orders(orders, status, next_status) -%}
+{% macro list_orders(orders, status, next_status, prev_status=none) %}
   <h1>{{ status }} orders:</h1>
   <table border="1">
     <tr>
@@ -19,10 +18,15 @@
         </td>
         <td>
           {% set url_text = ['admin.', next_status|lower, '_order' ] %}
-{#          <form action="{{ url_for('admin.reserve_order',id=order.id) }}" method="POST">#}
           <form action="{{ url_for( url_text|join, id=order.id) }}" method="POST">
-           <input type="submit" value="{{ next_status }}" >
+            <input type="submit" value="{{ next_status }}" >
           </form>
+          {% if prev_status is not none %}
+            {% set url_text = ['admin.', prev_status|lower, '_order' ] %}
+            <form action="{{ url_for(url_text|join, id=order.id) }}" method="POST">
+              <input type="submit" value={{ prev_status }}>
+            </form>
+          {% endif %}
         </td>
       </tr>
     {% endfor %}
@@ -30,12 +34,13 @@
 {%- endmacro %}
 
 {% block content %}
-  <!-- /admin/home.html -->
   <a href="{{ url_for('admin.users')}}"><h2>Manage Users</h2></a><br>
+  <a href="{{ url_for('admin.orders')}}"><h2>View All Orders</h2></a><br>
+
   <hr>
-    {{ list_orders(pending, "Pending", "Reserve") }}
+  {{ list_orders(pending, "Pending", "Reserve") }}
   <hr>
-    {{ list_orders(reserved, "Reserved", "Rent") }}
+  {{ list_orders(reserved, "Reserved", "Rent", "Cancel") }}
   <hr>
-    {{ list_orders(rented, "Rented", "Return") }}
+  {{ list_orders(rented, "Rented", "Return") }}
 {% endblock %}

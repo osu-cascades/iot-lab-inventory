@@ -144,7 +144,7 @@ def delete_part(id):
 
 # Orders
 
-@admin.route('/orders', methods=['GET'])
+@admin.route('/admin/orders', methods=['GET'])
 @login_required
 @admin_required
 def orders():
@@ -164,6 +164,23 @@ def reserve_order(id):
                 recipients=[ order.user.email ])
   msg.body = render_template('mail/reserved.txt', order=order)
   msg.html = render_template('mail/reserved.html', order=order)
+  mail.send(msg)
+
+  return redirect(url_for('admin.home'))
+
+#cancel a reserved order (goes back to Pending)
+@admin.route('/orders/<int:id>/cancel', methods=['POST'])
+@login_required
+@admin_required
+def cancel_order(id):
+  order = Order.query.filter_by(id=id).first()
+  order.status='Pending'
+
+  #send email to user
+  msg = Message(subject='OSU-Cascades IoT-Lab: Order no longer Reserved', \
+                recipients=[ order.user.email ])
+  msg.body = render_template('mail/canceled.txt', order=order)
+  msg.html = render_template('mail/canceled.html', order=order)
   mail.send(msg)
 
   return redirect(url_for('admin.home'))
@@ -198,3 +215,4 @@ def return_order(id=id):
 
 
 #order: Pending => Reserved => Rented => Returned
+

@@ -2,24 +2,19 @@
 {% block content %}
 <!-- /orders/list.html -->
 <h1>Orders</h1>
-<table>
+<table border="1">
 <tr>
   <th>Order #</th>
   <th>User</th>
   <th>Status</th>
+  <th>Email</th>
 </tr>
 {% for order in orders %}
   <tr>
     <td><a href="{{ url_for('users.order', id=order.id) }}">{{ order.id }}</a></td>
-    <td>{{ order.user.username }}</td>
-    <td>
-      <form action="{{ url_for('admin.update_order', id=order.id) }}" method="POST">
-        <select name="status">
-          <option>TODO</option>
-        </select>
-        <input type="submit" value="Update"/>
-      </form>
-    </td>
+    <td>{{ order.user.name }} ({{ order.user.username }})</td>
+    <td>{{ order.status }}</td>
+    <td><a href="mailto:{{ order.user.email }}">{{ order.user.email }}</a></td>
   </tr>
 {% endfor %}
 </table>

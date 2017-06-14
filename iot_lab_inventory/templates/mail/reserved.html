@@ -1,7 +1,7 @@
 {% set first_name = order.user.name.split(' ')[0] %}
 <h1>Greetings {{ first_name }},</h1>
 <p>
-Order #<a href="{{ url_for('users.order',id=order.id, _external=True) }}">{{ order.id }}</a> is now Reserved.
+Order #<a href="{{ url_for('users.order',id=order.id, _external=True) }}">{{ order.id }}</a> is now <b>Reserved</b>.
 <br>
    <ul>
     {% for order_item in order.order_items %}

@@ -12,7 +12,9 @@
   <br>
   <h2>Documents:</h2>
   {% for document in part.documents %}
-    <a href="{{ url_for('static',filename=document.filename) }}">{{ document.filename }}</a><br>
+{#    <a href="{{ url_for('static',filename=document.filename) }}">{{ document.filename }}</a><br>#}
+    {% set s3_document_url = [config.S3_BUCKET_NAME, document.filename]|join %}
+      <a href="{{ s3_document_url }}">{{ document.filename }}</a><br>
   {% endfor %}
   <br>
   <form action="{{ url_for('users.add_part_to_cart') }}" method="POST">

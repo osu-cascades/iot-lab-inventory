@@ -1,20 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
-<!-- /parts/detail.html -->
-<a href="#" onclick="history.back();">« back</a>
-<h1>{{ part.name }}</h1>
-{% for image in part.images %}
-  <img width="150" src="{{ url_for('static', filename=image.filename) }}"/>
-{% endfor %}
-<p>{{ part.description }}</p>
-<br>
-<h2>Documents:</h2>
-{% for document in part.documents %}
-  <a href="{{ url_for('static',filename=document.filename) }}">{{ document.filename }}</a><br>
-{% endfor %}
-<br>
-<form action="{{ url_for('users.add_part_to_cart') }}" method="POST">
-  <input type="hidden" name="part_id" value="{{ part.id }}">
-  <input type="submit" value="Add to Cart">
-</form>
+  <!-- /parts/detail.html -->
+  <a href="#" onclick="history.back();">« back</a>
+  <h1>{{ part.name }}</h1>
+  {% for image in part.images %}
+    {#  <img width="150" src="{{ url_for('static', filename=image.filename) }}"/>#}
+    {% set s3_image_url = [config.S3_BUCKET_NAME, image.filename] | join %}
+    <img height="150" src="{{ s3_image_url }}"/>
+  {% endfor %}
+  <p>{{ part.description }}</p>
+  <br>
+  <h2>Documents:</h2>
+  {% for document in part.documents %}
+{#    <a href="{{ url_for('static',filename=document.filename) }}">{{ document.filename }}</a><br>#}
+    {% set s3_document_url = [config.S3_BUCKET_NAME, document.filename]|join %}
+      <a href="{{ s3_document_url }}">{{ document.filename }}</a><br>
+  {% endfor %}
+  <br>
+  <form action="{{ url_for('users.add_part_to_cart') }}" method="POST">
+    <input type="hidden" name="part_id" value="{{ part.id }}">
+    <input type="submit" value="Add to Cart">
+  </form>
 {% endblock %}

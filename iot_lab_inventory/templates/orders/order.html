@@ -15,7 +15,9 @@
   <tr>
     <td>
     {% if order_item.part.images | length > 0 %}
-      <img height="200" src="{{ url_for('static', filename=order_item.part.images[0].filename) }}"/>
+{#      <img height="200" src="{{ url_for('static', filename=order_item.part.images[0].filename) }}"/>#}
+        {% set s3_image_url = [config.S3_BUCKET_NAME, order_item.part.images[0].filename] | join %}
+        <img height="200" src="{{ s3_image_url }}"/>
     {% else %}
       <img height="200" src="#"/>
     {% endif %}

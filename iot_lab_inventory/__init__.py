@@ -15,10 +15,6 @@ google_login = GoogleLogin(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-#error handling via blueprints is a known bug in flask
-# abort(403) does not reach the blueprint route..
-import error_handlers
-
 from .views.public import public
 app.register_blueprint(public)
 
@@ -31,3 +27,6 @@ app.register_blueprint(users)
 from .views.admin import admin
 app.register_blueprint(admin)
 
+#error handling via blueprints is a known bug in flask
+# abort(403) does not reach the blueprint route..
+from .error_handlers import *

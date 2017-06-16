@@ -84,11 +84,11 @@ def create_order():
   db.session.commit()
   current_user.cart.cart_items.clear()
 
-  #send email to user saying order is pending..
-  msg = Message(subject='OSU-Cascades IoT-Lab: Order Pending ', \
-                recipients=[ current_user.email ])
-  msg.body = render_template('mail/pending.txt', order=order)
-  msg.html = render_template('mail/pending.html', order=order)
-  mail.send(msg)
+  # #send email to user saying order is pending..
+  # msg = Message(subject='OSU-Cascades IoT-Lab: Order Pending ', \
+  #               recipients=[ current_user.email ])
+  # msg.body = render_template('mail/pending.txt', order=order)
+  # msg.html = render_template('mail/pending.html', order=order)
+  # mail.send(msg)
 
   return redirect(url_for('users.order', id=order.id))

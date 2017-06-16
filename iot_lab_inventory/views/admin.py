@@ -159,12 +159,12 @@ def reserve_order(id):
   order = Order.query.filter_by(id=id).first()
   order.status = "Reserved"
 
-  #send email to user
-  msg = Message(subject='OSU-Cascades IoT-Lab: Order Reserved ', \
-                recipients=[ order.user.email ])
-  msg.body = render_template('mail/reserved.txt', order=order)
-  msg.html = render_template('mail/reserved.html', order=order)
-  mail.send(msg)
+  # #send email to user
+  # msg = Message(subject='OSU-Cascades IoT-Lab: Order Reserved ', \
+  #               recipients=[ order.user.email ])
+  # msg.body = render_template('mail/reserved.txt', order=order)
+  # msg.html = render_template('mail/reserved.html', order=order)
+  # mail.send(msg)
 
   return redirect(url_for('admin.home'))
 
@@ -176,12 +176,12 @@ def cancel_order(id):
   order = Order.query.filter_by(id=id).first()
   order.status='Pending'
 
-  #send email to user
-  msg = Message(subject='OSU-Cascades IoT-Lab: Order no longer Reserved', \
-                recipients=[ order.user.email ])
-  msg.body = render_template('mail/canceled.txt', order=order)
-  msg.html = render_template('mail/canceled.html', order=order)
-  mail.send(msg)
+  # #send email to user
+  # msg = Message(subject='OSU-Cascades IoT-Lab: Order no longer Reserved', \
+  #               recipients=[ order.user.email ])
+  # msg.body = render_template('mail/canceled.txt', order=order)
+  # msg.html = render_template('mail/canceled.html', order=order)
+  # mail.send(msg)
 
   return redirect(url_for('admin.home'))
 

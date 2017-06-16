@@ -1,35 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
-<!-- /cart.html -->
-<h1>Cart</h1>
-<a href="#" onclick="history.back();">« back</a>
-{% if current_user.is_authenticated() %}
-  <table>
-  {% for id, cart_item in current_user.cart.cart_items.items() %}
-    <tr>
-      <td>
-        {% if cart_item.image is not none %}
-        <img height="100" src="{{ url_for('static', filename=cart_item.image) }}"/>
-        {% endif %}
-      </td>
-      <td>
-        <h2>{{ cart_item.name }}</h2>
-        <form action="{{ url_for('users.remove_part_from_cart', id=id) }}" method="POST">
-          <input type="hidden" name="id" value="{{ id }}">
-          <input type="submit" value="Remove">
-        </form>
-      </td>
-      <td align="center">
-        <form action="{{ url_for('users.update_part_in_cart', id=id)}}" method="POST">
-          <input onchange="this.form.submit()" type="number" name="quantity" id="{{ id }}" value="{{ cart_item.quantity }}" min="1" >
-{#          <input type="submit" value="update">#}
-        </form>
-      </td>
-    </tr>
-  {% endfor %}
-  </table>
-  <form action="{{ url_for('users.create_order') }}" method="POST">
-    <input type="submit" value="Place Order">
-  </form>
-{% endif %}
+  <!-- /cart.html -->
+  <h1>Cart</h1>
+  <a href="#" onclick="history.back();">« back</a>
+  {% if current_user.is_authenticated() %}
+    <table>
+      {% for id, cart_item in current_user.cart.cart_items.items() %}
+        <tr>
+          <td>
+            {% if cart_item.image is not none %}
+              {#        <img height="100" src="{{ url_for('static', filename=cart_item.image) }}"/>#}
+              {% set s3_image_url = [config.S3_BUCKET_NAME,cart_item.image] | join %}
+              <img height="100" src="{{ s3_image_url }}"/>
+            {% endif %}
+          </td>
+          <td>
+            <h2>{{ cart_item.name }}</h2>
+            <form action="{{ url_for('users.remove_part_from_cart', id=id) }}" method="POST">
+              <input type="hidden" name="id" value="{{ id }}">
+              <input type="submit" value="Remove">
+            </form>
+          </td>
+          <td align="center">
+            <form action="{{ url_for('users.update_part_in_cart', id=id)}}" method="POST">
+              <input onchange="this.form.submit()" type="number" name="quantity" id="{{ id }}" value="{{ cart_item.quantity }}" min="1" >
+              {#          <input type="submit" value="update">#}
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+    <form action="{{ url_for('users.create_order') }}" method="POST">
+      <input type="submit" value="Place Order">
+    </form>
+  {% endif %}
 {% endblock %}

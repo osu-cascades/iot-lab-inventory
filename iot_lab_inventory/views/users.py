@@ -22,7 +22,6 @@ def cart():
   cart = Order.query.filter_by(user=current_user, status='Cart').first()
 
   if cart is None:
-    print 'creating new cart'
     cart = Order()
   return render_template('cart.html', cart=cart)
 
@@ -38,7 +37,6 @@ def add_part_to_cart():
 
   #if Order does not exist, create new Order
   if cart is None:
-    print 'new cart'
     cart = Order()
     cart.status = 'Cart'
     cart.user = current_user

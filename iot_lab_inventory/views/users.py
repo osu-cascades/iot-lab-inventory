@@ -90,7 +90,7 @@ def create_order():
   cart = Order.query.filter_by(user=current_user, status='Cart').first()
 
   #check for empty cart
-  if cart is None:
+  if cart is None or len(cart.order_items) == 0:
     flash('No items in cart.')
     return redirect(url_for('users.cart'))
 

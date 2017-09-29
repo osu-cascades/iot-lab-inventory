@@ -1,6 +1,6 @@
 from flask_login import UserMixin, current_user
 from iot_lab_inventory import db, login_manager
-from .cart import Cart, CartItem
+# from .cart import Cart, CartItem
 
 
 class Part(db.Model):
@@ -47,8 +47,6 @@ class User(db.Model, UserMixin):
     is_admin = db.Column(db.Boolean)
     orders = db.relationship('Order', backref='user')
 
-    cart = Cart()
-
     def __init__(self, username, email, name, picture):
         self.username = username
         self.email = email
@@ -69,15 +67,6 @@ class Order(db.Model):
     status = db.Column(db.String, default="Pending")
     created_at = db.Column(db.Date)
     order_items = db.relationship('OrderItem', backref='order')
-
-    def __init__(self, cart):
-        self.user = current_user
-        for part_id in cart.cart_items:
-            part = Part.query.filter_by(id=part_id).first()
-            order_item = OrderItem(part=part, order=self)
-            order_item.quantity = cart.cart_items[part_id].quantity
-            db.session.add(order_item)
-            db.session.commit()
 
 
 class OrderItem(db.Model):

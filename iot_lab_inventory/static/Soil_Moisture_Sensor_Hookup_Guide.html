@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- mobile mode if small screen device -->
+    
+    <title>Soil Moisture Sensor Hookup Guide - learn.sparkfun.com</title>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/css/bootstrap.min.css?rev=1506620278" rel="stylesheet">
+    <link rel="stylesheet" href="/css/theme.github.css?rev=1506620278" type="text/css" media="screen" />    <link rel="alternate" type="application/atom+xml" title="Education Blog" href="https://learn.sparkfun.com/feeds/blog" />
+    <link rel="alternate" type="application/atom+xml" title="Tutorials" href="https://learn.sparkfun.com/feeds/tutorials" />
+    <link rel="alternate" type="application/atom+xml" title="Education Blog Comments" href="https://learn.sparkfun.com/feeds/blog_comments" />
+    <link rel="alternate" type="application/atom+xml" title="Tutorial Comments" href="https://learn.sparkfun.com/feeds/tutorial_comments" />
+
+    <script type="text/javascript">
+      var SFECONFIG = {
+        dnt: false,
+        http_server: 'http://learn.sparkfun.com',
+        https_server: 'https://learn.sparkfun.com',
+        http_static: 'https://cdn.sparkfun.com',
+        learn_server: 'https://learn.sparkfun.com',
+        commerce_server: 'https://www.sparkfun.com',
+        base_url: '/',
+        url: '/',
+        controller: 'tutorials',
+        action: 'view',
+        entity_id: '',
+        auth: false,
+        sparkrev: '1506620278',
+        track_arduino_products: true,
+        search_key: 'xY6qr5Ui3V2UMA762D9Z'      };
+      var require = {
+        paths: {
+          'jqueryui': 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min'
+        },
+        baseUrl: '/js/',
+        urlArgs: "sparkrev=" + SFECONFIG.sparkrev,
+        deps: ['jqueryui'],
+        callback: function() {
+          $('#learn').learn();
+          $('#learn').sfeutil();
+          $.shared('domready');
+        }
+      };
+    </script>
+    <script src="/js/learn-built.js?sparkrev=1506620278"></script>
+          <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-3404365-1', 'auto', {'allowLinker': true});
+      ga('require', 'linker');
+      ga('linker:autoLink', ['www.sparkfun.com', 'avc.sparkfun.com'] );
+      ga('require', 'displayfeatures');
+            ga('set', 'dimension1', 'Guest');
+      ga('send', 'pageview');
+
+      </script>
+        <script type="text/javascript">
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js'); 
+    fbq('init', '988931021243392');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1"src="https://www.facebook.com/tr?id=988931021243392&ev=PageView&noscript=1"/>
+  </noscript>
+      </head>
+
+  <body id=learn class="layout-default no-type tutorials-view" ontouchstart="">
+            <!--
+    Start of DoubleClick Floodlight Tag: Please do not remove
+    Activity name of this tag: Universal
+    URL of the webpage where the tag is expected to be placed: http://sparkfun.com
+    This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+    Creation Date: 07/18/2016
+  -->
+  <script type="text/javascript">
+    var axel = Math.random() + "";
+    var a = axel * 10000000000000;
+    document.write('<iframe src="https://5626816.fls.doubleclick.net/activityi;src=5626816;type=count0;cat=unive0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+  </script>
+  <noscript>
+    <iframe src="https://5626816.fls.doubleclick.net/activityi;src=5626816;type=count0;cat=unive0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+  </noscript>
+  <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+    
+    <div class="wrapper" itemscope itemtype="http://schema.org/WebSite">
+      <meta itemprop="url" content="https://learn.sparkfun.com/">
+      <div class=wrapper-inner>
+
+    
+<div class="header">
+  <div class="container">
+
+    <!-- Mobile Nav Button -->
+    <div class="mobile-menu-container left">
+      <a id="nav_toggle" class="mobile-menu-button nav_toggle" href="#"><span class="sfe-icon-hamburger"></span></a>
+              <a id="search_toggle" class="mobile-menu-button" href="#"><span class="glyphicon glyphicon-search"></span></a>
+          </div>
+
+    <nav class="top-links">
+      <ul>
+        <li>
+          <a href="https://www.sparkfun.com/distributors">Find a Retailer</a>        </li>
+                  <li>
+            <div class="dropdown">
+              <a href="#" id="phone_hours" type="button" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                Need Help?
+                <span class="caret"></span>
+              </a>
+              <div class="dropdown-menu pull-right need-help" role="menu" aria-labelledby="phone_hours">
+                <h4>Customer Service</h4>
+                <p><a href="https://www.sparkfun.com/orders/"><span class="glyphicon glyphicon-dashboard"></span> Track My Order</a></p>
+                <p><a href="https://www.sparkfun.com/support"><span class="glyphicon glyphicon-question-sign"></span> Frequently Asked Questions</a></p>
+                <p><a href="https://www.sparkfun.com/support#InternationalShipping"><span class="glyphicon glyphicon-globe"></span> International Shipping Info</a></p>
+                <p><a href="mailto:cservice@sparkfun.com"><span class="glyphicon glyphicon-envelope"></span> Send Email</a></p>
+                <p class="small text-muted">
+                  Mon-Fri, 9am to 12pm and<br>
+                  1pm to 5pm U.S. Mountain Time:
+                </p>
+                <p><span class="glyphicon glyphicon-earphone"></span> (303) 284-0979</p>
+                                  <p><a data-toggle="chatpopup" href="https://www.sparkfun.com/chat/popup"><span class="glyphicon glyphicon-comment"></span> Chat With Us</a></p>
+                              </div>
+            </div>
+          </li>
+              </ul>
+    </nav>
+
+    <!-- Logo -->
+    <div class="logo-container">
+      <a class="logo" href="https://www.sparkfun.com/">
+        <span class="sfe-icon-flame"></span>
+        <span class="sfe-icon-sparkfun" data-icon="&#x1f525">
+          <span class="visuallyhidden">sparkfun.com</span>
+        </span>
+      </a>
+    </div>
+
+    <!-- Tabs -->
+    <!-- also edit mobile tabs in .tabs-container-mobile -->
+    <nav class="tabs-container hidden-xs">
+      <ul>
+        <li class="shop "><a href="https://www.sparkfun.com/categories">Shop</a></li>
+        <li class="learn active"><a href="https://learn.sparkfun.com/">Learn</a></li>
+        <li class="blog "><a href="https://www.sparkfun.com/news">Blog</a></li>
+        <li class="support "><a href="https://www.sparkfun.com/support">Support</a></li>
+      </ul>
+    </nav>
+
+    <!-- Cart & User -->
+    <div class="user-container mobile-menu-container right">
+
+      <a id="account_toggle" class="mobile-menu-button" href="#"><span class="glyphicon glyphicon-user"></span></a>
+
+              <div class="cart mobile-menu-button">
+          <a href="https://www.sparkfun.com/cart">
+            <span id="cart_status" class="sfe-icon-carticon cart-empty">
+              <span class="visuallyhidden">Shopping Cart</span>
+            </span>
+            <span class="cart_count">
+              <span id="items_in_cart">0</span>
+              <span id="cart_noun" class="visuallyhidden">items</span>
+            </span>
+          </a>
+        </div>
+      
+              <div class="user">
+          <!-- login modal trigger -->
+          <a class="btn btn-default" href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fsoil-moisture-sensor-hookup-guide" data-toggle="modal" data-target="#login_modal" data-remote="false">log in</a>
+          <a class="btn btn-default" href="https://www.sparkfun.com/account/make">register</a>        </div>
+      
+    </div>
+
+    <nav class="tabs-container-mobile visible-xs col-xs-12">
+      <ul>
+        <li class="shop "><a href="https://www.sparkfun.com/categories">Shop</a></li>
+        <li class="learn active"><a href="https://learn.sparkfun.com/">Learn</a></li>
+        <li class="blog "><a href="https://www.sparkfun.com/news">Blog</a></li>
+        <li class="support "><a href="https://www.sparkfun.com/support">Support</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <!-- Navigation / Search -->
+  <div class="main-nav-container">
+
+    <div class="container">
+
+      <nav class="product-nav">
+        <button type="button" class="product-menu">
+          <span class="menu-icon sfe-icon-hamburger"></span>
+          <span class="product-menu-name">Product Menu</span>
+        </button>
+
+                  <form id="search_form" class="search" action="https://www.sparkfun.com/search/results" method="get" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+            <meta itemprop="target" content="https://www.sparkfun.com/search/results?term={term}">
+            <div class="ui-widget">
+              <input name="term" id="global-search" class="form-control" type="text" value="" placeholder="find products, tutorials, etc..." itemprop="query-input" autocomplete="off">
+              <button type="submit" class="glyphicon glyphicon-search global-search-icon" aria-label="Search"></button>
+            </div>
+          </form>
+              </nav>
+
+      <nav class="sub-nav">
+        <ul>
+          <li>
+            <a href="http://www.sparkfuneducation.com" target="_blank">Education</a>
+          </li>
+          <li>
+            <a href="https://avc.sparkfun.com/"><span class="sfe-icon-avc"></span></a>          </li>
+          <li>
+            <a href="https://forum.sparkfun.com/" target="_blank">Forum</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="product-menu-container">
+      <div class="container">
+
+        <div class="fixed-product-menu-container col-lg-2 col-sm-3 col-xs-12">
+          <div class="sub-nav-mobile product-menu-group">
+            <a class="product-menu-heading desktop-toggle" href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fsoil-moisture-sensor-hookup-guide">Desktop Site</a>            <a class="product-menu-heading" href="http://www.sparkfuneducation.com" target="_blank">Education</a>
+            <a class="product-menu-heading" href="https://avc.sparkfun.com/"><span class="sfe-icon-avc"></span></a>            <ul class="list-unstyled">
+            </ul>
+          </div>
+          <div class="product-menu-group">
+            <a class="product-menu-heading" href="https://www.sparkfun.com/categories">All Categories</a>            <ul class="list-unstyled">
+            </ul>
+          </div>
+          <div class="product-menu-group">
+            <a class="product-menu-heading" href="https://www.sparkfun.com/categories/featured">Featured <span class="visible-xs pull-right glyphicon glyphicon-plus"></span></a>            <ul class="list-unstyled">
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/new_products">New Products</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/top"><span class="sfe-icon-flame"></span> Top Sellers</a></li>
+                              <li>
+                  <a href="https://www.sparkfun.com/fallsale" class="product-menu-item"><span class="sfe-icon-pumpkin" style="color:#ff8000"></span> Fall Into Savings Sale</a>
+                </li>
+                              <li>
+                  <a href="https://www.sparkfun.com/spectacle" class="product-menu-item"><span class="sfe-icon-spectacle-glasses" style="color:#000000"></span> Spectacle</a>
+                </li>
+                            <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/283">SparkX</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/sale">Sale</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/gift_certificates">Gift Certificates</a></li>
+            </ul>
+          </div>
+                      <a href="https://www.sparkfun.com/microbit" class="hidden-xs">
+              <img class="img-responsive img-rounded center-block" src="https://cdn.sparkfun.com//c/180-180/assets/product_menu_items/1/microbit-now-availble.jpg" alt="Micro:bit Ecosystem">
+            </a>
+                  </div>
+
+                              <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/287" class="product-menu-heading">
+                 Brands                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/featured" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-flame" style="color:#ee2e22"></span> SparkFun                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/103" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-arduino" style="color:#00878f"></span> Arduino                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/233" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-rpi-multi-color" style="color:#ffffff"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span> Raspberry Pi                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/284" class="product-menu-item">
+                                               micro:bit                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/279" class="product-menu-item">
+                                               Espressif (ESP)                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/287" class="product-menu-item">
+                                               <small>all brands</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/2" class="product-menu-heading">
+                 Development                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/299" class="product-menu-item">
+                                               Single Board Comp.                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/300" class="product-menu-item">
+                                               Microcontrollers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/136" class="product-menu-item">
+                                               FPGA                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/149" class="product-menu-item">
+                                               Prototyping Boards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/1" class="product-menu-item">
+                                               Programmers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/2" class="product-menu-item">
+                                               <small>all development</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/23" class="product-menu-heading">
+                 Sensors                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/304" class="product-menu-item">
+                                               Movement                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/146" class="product-menu-item">
+                                               Biometrics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/102" class="product-menu-item">
+                                               Imaging                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/305" class="product-menu-item">
+                                               Environment                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/117" class="product-menu-item">
+                                               Capacitive                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/23" class="product-menu-item">
+                                               <small>all sensors</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/46" class="product-menu-heading">
+                 Tools                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/271" class="product-menu-item">
+                                               3D Printing                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/280" class="product-menu-item">
+                                               CNC                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/49" class="product-menu-item">
+                                               Soldering                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/47" class="product-menu-item">
+                                               Hand Tools                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/177" class="product-menu-item">
+                                               Instruments                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/46" class="product-menu-item">
+                                               <small>all tools</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/310" class="product-menu-heading">
+                 Miscellaneous                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/157" class="product-menu-item">
+                                               All Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/176" class="product-menu-item">
+                                               Books                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/311" class="product-menu-item">
+                                               Arts/Crafts Supplies                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/351" class="product-menu-item">
+                                               SD Cards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/130" class="product-menu-item">
+                                               Swag                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/310" class="product-menu-item">
+                                               <small>all misc</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/51" class="product-menu-heading">
+                 Components                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/89" class="product-menu-item">
+                                               LED &amp; Illumination                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/145" class="product-menu-item">
+                                               Buttons &amp; Switches                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/28" class="product-menu-item">
+                                               Power                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/76" class="product-menu-item">
+                                               LCDs                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/70" class="product-menu-item">
+                                               Cables                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/51" class="product-menu-item">
+                                               <small>all components</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/204" class="product-menu-heading">
+                 E-Textiles                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/327" class="product-menu-item">
+                                               LilyPad                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/328" class="product-menu-item">
+                                               Sewable Electronics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/206" class="product-menu-item">
+                                               Materials                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/268" class="product-menu-item">
+                                               E-Textile Power                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/329" class="product-menu-item">
+                                               E-Textile Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/204" class="product-menu-item">
+                                               <small>all e-textiles</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/31" class="product-menu-heading">
+                 Robotics                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/pages/Actobotics" class="product-menu-item">
+                                               Actobotics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/178" class="product-menu-item">
+                                               Motors &amp; Drivers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/330" class="product-menu-item">
+                                               Parts                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/155" class="product-menu-item">
+                                               Hardware                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/181" class="product-menu-item">
+                                               Robotics Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/31" class="product-menu-item">
+                                               <small>all robotics</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/16" class="product-menu-heading">
+                 Wireless &amp; IoT                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/115" class="product-menu-item">
+                                               Bluetooth                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/112" class="product-menu-item">
+                                               WiFi                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/338" class="product-menu-item">
+                                               Satellite                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/4" class="product-menu-item">
+                                               GPS                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/339" class="product-menu-item">
+                                               Wireless Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/16" class="product-menu-item">
+                                               <small>all wireless/IoT</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/273" class="product-menu-heading">
+                 Audio                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/343" class="product-menu-item">
+                                               Audio Boards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/342" class="product-menu-item">
+                                               Audio Cables                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/344" class="product-menu-item">
+                                               Speakers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/345" class="product-menu-item">
+                                               Audio Chips                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/273" class="product-menu-item">
+                                               <small>all audio</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                  
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+    
+    <div class=content>
+      <div class=container id=airlock>
+
+        
+        <div class=main-title>
+  <ul class="breadcrumb">
+    <li><a href="https://learn.sparkfun.com/">Home</a></li>
+    <li><a href="https://learn.sparkfun.com/tutorials">Tutorials</a></li>
+    <li>Soil Moisture Sensor Hookup Guide</li>
+      </ul>
+
+  <h1>
+    Soil Moisture Sensor Hookup Guide  </h1>
+
+</div>
+
+
+<a id=nav_toggle_pages class=nav_toggle href="#"><span>&#8801;</span> Pages</a>
+
+<div id=tutorial class="row">
+
+  <div class="col-sm-8" id="sections">
+
+    <div class="contributors">
+                      Contributors:
+                <a href="https://www.sparkfun.com/users/554346"><img src="https://static.sparkfun.com/avatar/d5315a00b76bbf49ead8a5040084a573?d=retro&s=20&r=pg" /> Sarah Al-Mutlaq</a>, <a href="https://www.sparkfun.com/users/55101"><img src="https://static.sparkfun.com/avatar/dca8e859e26320587cf9e18fe909c625?d=retro&s=20&r=pg" /> Joel_E_B</a>          </div>
+
+    <span class="fave_widget verbose">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="390">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">16</span>
+</span>    <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" type="text" value="http://sfe.io/t390" onclick="$(this).select();">
+
+    <div class="share-social">
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','googleplus');" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft390" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','tumblr');" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft390&name=Soil+Moisture+Sensor+Hookup+Guide" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','reddit');" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft390" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','twitter');" href="https://twitter.com/intent/tweet?text=Soil+Moisture+Sensor+Hookup+Guide&url=http%3A%2F%2Fsfe.io%2Ft390&via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','facebook');" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft390&t=Soil+Moisture+Sensor+Hookup+Guide" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','pinterest');" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft390&media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2Flearn_tutorials%2F3%2F9%2F0%2FSoil_Moisture_Sensor_Hook_Up_Guide-07.jpg&description=Soil+Moisture+Sensor+Hookup+Guide" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+          <div class="section tutorial-page">
+        <h2 id="getting-started">Getting Started</h2>
+        <p>Have you ever wanted your plants to tell you when they need watered? Or know how saturated the soil in your garden is? With the <a href="https://www.sparkfun.com/products/13322">SparkFun Soil Moisture Sensor</a>, you can do just that! This tutorial will show you how to get started using the Soil Moisture Sensor as well as how to build your own soil moisture sensing project.</p>
+
+
+
+<div >
+<div class="tile product-tile has_addl_actions big grid " data-id="13322"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="SEN13322">
+      <meta itemprop="gtin13" content="0845156002436">
+    <meta itemprop="sku" content="SEN-13322">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/13322">
+      <img src="https://cdn.sparkfun.com/r/500-500/assets/parts/1/0/6/1/0/13322-01.jpg" alt="SparkFun Soil Moisture Sensor" height="500" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type=hidden name=id value="13322">
+          <input type=hidden name=qty value="1">
+          <input type='hidden' name='csrf_token' value='32df56bb01d1b8b924467c739a65b0c30964e132d57ae3c701b176b73eb13eb3146dfa694bbbf653ad242a6a53d10265c821232293fb16e19b4cb5cfc5175d55'>          <!-- Add to Cart -->
+          <input type="number" class="quantity form-control" size="4" name="qty" value="1">
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_13322" style="display: none;">
+        <p class="success-message">
+          Added <span class="added_qty_13322"></span> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/13322" itemprop="url">
+        <span itemprop="name">SparkFun Soil Moisture Sensor</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class=sfe-icon-stock-in><span class=visuallyhidden>In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      SEN-13322    </span>
+          <p class="description" style="display:none" itemprop="description">
+        The SparkFun Soil Moisture Sensor is a simple breakout for measuring the moisture in soil and similar materials. The soil moi&hellip;      </p>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price" itemprop="price" content="4.95">$4.95</span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="4.4 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.4">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">9</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="13322">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">46</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="13322" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+</div>
+
+
+
+
+
+<p>If you prefer not to solder, you can purchase the sensor with a 3-pin screw terminal pre-soldered onto the board.</p>
+
+
+
+<div >
+<div class="tile product-tile has_addl_actions big grid " data-id="13637"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="SEN13637">
+      <meta itemprop="gtin13" content="0845156008124">
+    <meta itemprop="sku" content="SEN-13637">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/13637">
+      <img src="https://cdn.sparkfun.com/r/500-500/assets/parts/1/1/0/4/0/13637-01.jpg" alt="SparkFun Soil Moisture Sensor (with Screw Terminals)" height="500" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type=hidden name=id value="13637">
+          <input type=hidden name=qty value="1">
+          <input type='hidden' name='csrf_token' value='32df56bb01d1b8b924467c739a65b0c30964e132d57ae3c701b176b73eb13eb3146dfa694bbbf653ad242a6a53d10265c821232293fb16e19b4cb5cfc5175d55'>          <!-- Add to Cart -->
+          <input type="number" class="quantity form-control" size="4" name="qty" value="1">
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_13637" style="display: none;">
+        <p class="success-message">
+          Added <span class="added_qty_13637"></span> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/13637" itemprop="url">
+        <span itemprop="name">SparkFun Soil Moisture Sensor (with Screw Terminals)</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class=sfe-icon-stock-in><span class=visuallyhidden>In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      SEN-13637    </span>
+          <p class="description" style="display:none" itemprop="description">
+        The SparkFun Soil Moisture Sensor is a simple breakout for measuring the moisture in soil and similar materials. The soil moi&hellip;      </p>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price" itemprop="price" content="5.95">$5.95</span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="13637">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">6</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="13637" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+</div>
+
+
+
+
+
+<h3>Required Materials</h3>
+
+<p>To follow along with the project at the end of this tutorial, you will need the following:</p>
+
+<script src="https://www.sparkfun.com/wish_lists/117794.js"></script>
+
+
+<h3>Suggested Readings</h3>
+
+<p>There isn&rsquo;t much to learning how to use the Soil Moisture Sensor. However, you may find the following concepts useful along the way.</p>
+
+<ul>
+<li><a href="https://learn.sparkfun.com/tutorials/voltage-current-resistance-and-ohms-law">Voltage, Current, Resistance, and Ohm&rsquo;s Law</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/resistors">Resistors</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/how-to-solder---through-hole-soldering">How to Solder</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/analog-to-digital-conversion">Analog to Digital Conversion(ADC)</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/soil-moisture-sensing-by-hacking-a-solar-light?_ga=1.237782528.1840025642.1408565558">Soil Moisture Sensing by Hacking a Solar Light</a></li>
+</ul>
+      </div>
+          <div class="section tutorial-page">
+        <h2 id="hardware-overview-and-assembly">Hardware Overview and Assembly</h2>
+        <p>The Soil Moisture Sensor is pretty straightforward when it comes to hookup. There are only three pins to connect: <strong>VCC, GND, and SIG</strong>.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/3/9/0/13322-04.jpg"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/3/9/0/13322-04.jpg" alt="soil moisture sensor" /></a></p>
+
+<p>You need to supply power to VCC and GND. We recommend not powering the sensor constantly to prevent corrosion of the probes (more on this in a bit). SIG provides an anlog signal out that can be attached to the ADC pin on any microcontroller. The value read on SIG will vary depending on the voltage with which you power the sensor.</p>
+
+<h3>Theory of Operation</h3>
+
+<p>The two probes are acting as a variable resistor – more water in the soil means better conductivity and results in a lower resistance and a higher SIG out. Your analog readings will vary depending on what voltage you use for Vcc as well as the resolution of your ADC pins.</p>
+
+<h3>Powering the Soil Moisture Sensor</h3>
+
+<p>We recommend powering the Soil Moisture Sensor with between <strong>3.3V - 5V</strong>. Please note that the analog value returned will vary depending on what voltage is provided for the sensor.</p>
+
+<p>One commonly known issue with soil moisture senors is their short lifespan when exposed to a moist environment. To combat this, we&rsquo;ve had the PCB coated in Gold Finishing (<a href="https://www.goldphoenixpcb.com/html/Support_Resource/prdt/arc_119.html">Electroless Nickel Immersion Gold</a>).</p>
+
+<p>Another way to extend the lifespan of your sensor is to only power it when you take a reading. Using a digital pin set to HIGH on an Arduino, for example, is an easy way to accomplish this. If you wish to power the sensor with more than a digital pin on your microcontroller can provide, you could always use a <a href="https://learn.sparkfun.com/tutorials/transistors">transistor</a>.</p>
+
+<h3>Assembly</h3>
+
+<p>If you bought the Soil Moisture Sensor that already has the 3-pin screw terminal attached, you may skip this section.</p>
+
+<p>As for connecting the senor to your circuit, we&rsquo;ve given you a few different options. You can solder on a <a href="https://www.sparkfun.com/products/9915">3-pin JST Jumper Wire Assembly</a> if you need to easily switch sensors on your project. This pairs nicely with our <a href="https://www.sparkfun.com/products/13685">JST to Breadboard Jumper</a> connector.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/3/9/0/Soil_Moisture_Sensor_Hook_Up_Guide-01.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/3/9/0/Soil_Moisture_Sensor_Hook_Up_Guide-01.jpg" alt="3-pin JST Jumper Wire Assembly" /></a></p>
+
+<p>Another option is to solder on a <a href="https://www.sparkfun.com/products/8235">3-pin 3.5mm Screw Pin Terminal</a> for a slightly more robust connection.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/3/9/0/Soil_Moisture_Sensor_Hook_Up_Guide-02.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/3/9/0/Soil_Moisture_Sensor_Hook_Up_Guide-02.jpg" alt="3-pin 3.5mm Screw Pin Terminal" /></a></p>
+
+<p>Of course, you can always solder some <a href="https://www.sparkfun.com/products/11375">hookup wire</a> straight to the sensor.</p>
+
+<h3>Weatherproofing</h3>
+
+<p>If you intend to use this sensor outdoors, we recommend adding a little protection to the PCB to extend its lifespan. You could always use good ol' fashioned hot glue. However, hot glue does not hold up well in the sun and is only recommended for projects that will not be exposed to high temperatures. For projects that need to be able to withstand <em>all</em> the elements, you could use a <a href="https://learn.sparkfun.com/tutorials/customizing-lilypad-led-colors#materials">conformal coating</a> to cover the SMD parts on the PCB as well as your solder connections.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/3/9/0/Soil_Moisture_Sensor_Hook_Up_Guide-03.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/3/9/0/Soil_Moisture_Sensor_Hook_Up_Guide-03.jpg" alt="wires soldered to sensor" /></a></p>
+
+<p style="text-align:center;"><em>Wires have been soldered to this sensor. All the SMD parts and solder joints have then been covered in conformal coating.</em></p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="soil-moisture-sensing-basic-example">Soil Moisture Sensing Basic Example</h2>
+        <p>For this first example, we will connect the sensor to a RedBoard or other Arduino-compatible board in a minimalist fashion to show its output over the serial terminal.</p>
+
+<p>Connect your Soil Moisture Sensor to your board as shown in the diagram below.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/3/9/0/soilMoisture.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/3/9/0/soilMoisture.png" alt="simple hookup" /></a></p>
+
+<p>Once the circuit is built, upload the following code to your RedBoard or Arduino. If you&rsquo;ve never used the Arduino IDE before, please visit our <a href="https://learn.sparkfun.com/tutorials/installing-arduino-ide">tutorial</a>.</p>
+
+<pre><code>language:c
+/*  Soil Mositure Basic Example
+    This sketch was written by SparkFun Electronics
+    Joel Bartlett 
+    August 31, 2015
+
+    Basic skecth to print out soil moisture values to the Serial Monitor 
+
+    Released under the MIT License(http://opensource.org/licenses/MIT)
+*/
+
+int val = 0; //value for storing moisture value 
+int soilPin = A0;//Declare a variable for the soil moisture sensor 
+int soilPower = 7;//Variable for Soil moisture Power
+
+//Rather than powering the sensor through the 3.3V or 5V pins, 
+//we'll use a digital pin to power the sensor. This will 
+//prevent corrosion of the sensor as it sits in the soil. 
+
+void setup() 
+{
+  Serial.begin(9600);   // open serial over USB
+
+  pinMode(soilPower, OUTPUT);//Set D7 as an OUTPUT
+  digitalWrite(soilPower, LOW);//Set to LOW so no power is flowing through the sensor
+}
+
+void loop() 
+{
+Serial.print("Soil Moisture = ");    
+//get soil moisture value from the function below and print it
+Serial.println(readSoil());
+
+//This 1 second timefrme is used so you can test the sensor and see it change in real-time.
+//For in-plant applications, you will want to take readings much less frequently.
+delay(1000);//take a reading every second
+}
+//This is a function used to get the soil moisture content
+int readSoil()
+{
+
+    digitalWrite(soilPower, HIGH);//turn D7 "On"
+    delay(10);//wait 10 milliseconds 
+    val = analogRead(soilPin);//Read the SIG value form sensor 
+    digitalWrite(soilPower, LOW);//turn D7 "Off"
+    return val;//send current moisture value
+}
+</code></pre>
+
+<p>Note that in the code, we are powering the soil moisture sensor with a digital pin on the RedBoard, not directly from 3.3V or 5V. Since this is a 5V device, the digital IO pins have a HIGH voltage of ~5V.</p>
+
+<p>Once the sketch is uploaded, open a <a href="https://learn.sparkfun.com/tutorials/terminal-basics/arduino-serial-monitor-windows-mac-linux">Serial Monitor</a> window to see the output from the RedBoard. You should see a value at or close to 0 when the sensor is not touching anything. To see it sense moisture, you can grab both probes with your hand. The moisture from your body will be enough for the sensor to detect.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="calibration-">Calibration </h2>
+        <h3>System Calibration</h3>
+
+<p>To get any sort of useful data out of your Soil Moisture Sensor, it is advised that you calibrate it to whatever soil you plan to monitor. Different types of soil can affect the sensor, and you may get different readings from one composition tot he next. Before you start storing mositure data or triggering events based on that value, you should see what values you are actually getting from your sensor. Using the sketch above, note what values your sensor outputs when the sensor is completely dry vs when the sensor is completely submerged in a shallow cup of water. Depending on what microcontoller you&rsquo;re using, the operating voltage of that microcontoller, and the resolution of its analog-to-digital converter, you&rsquo;re results will vary.</p>
+
+<p>For example, using the same circuit above, if I detach the VCC pin from D7 and attach it directly to the 5V supply on the RedBoard, you&rsquo;ll see the close to the following values in the serial monitor when the senor is dry (~0) and when it is completely saturated with moisture (~880).</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/3/9/0/5V_Cal.png"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/3/9/0/5V_Cal.png" alt="5V calibration output" /></a></p>
+
+<p>But, if I take the VCC pin and connect it to the 3.3V supply on the RedBoard, the values change. As expected, they get lower since there is less resolution between 0V and 3.3V than there is between 0V and 5V.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/3/9/0/3_3V_Cal.png"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/3/9/0/3_3V_Cal.png" alt="3.3V calibration output" /></a></p>
+
+<p>Thus, it is difficult to write an example sketch that works for all platforms. It really depends on the operating voltage and ADC resolution of the board you&rsquo;re using.</p>
+
+<h3>Soil Calibration</h3>
+
+<p>Once you have an idea what values your sensor is outputting in completely dry and completely wet situations, it&rsquo;s time to calibrate your sensor for the specific soil you want to monitor. Do the same test above, only this time test your soil when it is a dry as possible, then measure it when the soil is completely saturated with moisture. Getting these values and comparing them to the ones from the previous calibration will give you the best insight into what values mean for for your specific plant and soil. This test may take some trial and error and patience. Be careful not to over-water (or under-water) your plants during these tests.</p>
+
+<p>Once you have a good handle on the values you can expect, you can <a href="https://www.arduino.cc/en/Reference/Map">use the <code>map()</code> function</a> to adjust your code accordingly.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="soil-moisture-sensing-project">Soil Moisture Sensing Project</h2>
+        <p>For this next example, we&rsquo;re going to make a portable soil moisture sensor that will print the current moisture value to an LCD screen. We&rsquo;ll use the circuit from the previous example. This time we just need to add a <a href="https://www.sparkfun.com/products/9394">Serial Enabled LCD Screen</a> and portable power.</p>
+
+<p>Hook up your circuit as pictured below:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/3/9/0/soilMoisture2.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/3/9/0/soilMoisture2.png" alt="alt text" /></a></p>
+
+<p>Along with the soil moisture sensor, we have connected the LCD screen to 5V, GND, and digital pin 2 (D2) for serial communication (also can be changed in the code).</p>
+
+<p>Feel free to put your circuit in an enclosure of some sort. A SparkFun red box makes for a great project box. For this project, we are powering the ReadBoard with a <a href="https://www.sparkfun.com/products/10218">9V battery</a> and <a href="https://www.sparkfun.com/products/10512">9V battery holder</a> to make it portable.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/3/9/0/Soil_Moisture_Sensor_Tutorial-02.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/3/9/0/Soil_Moisture_Sensor_Tutorial-02.jpg" alt="Sparkfun Soil moisture senor with LCD screen" /></a></p>
+
+<p>The code for this is fairly straightforward. You will need the Software Serial library to interact with the serial LCD screen. If you do not have this library you can get it from the <a href="https://github.com/arduino/Arduino/tree/master/hardware/arduino/avr/libraries/SoftwareSerial">Arduino GitHub here</a>. If you have never uploaded a library or want a quick refresher on how to do that, check out <a href="https://learn.sparkfun.com/tutorials/installing-an-arduino-library?_ga=1.28279100.1840025642.1408565558">our tutorial here</a>. Installation should not be necessary, as this library now comes with the Arduino IDE by default.</p>
+
+<p>For more specific information about the code, you can read the comments in the code itself:</p>
+
+<pre><code>language:c
+// SparkFun Soil Moisture Sensor and Serial LCD example 1
+// By Sarah Al-Mutlaq 2015
+// Sketch reads sensor and desplays level and whether soil is wet or dry
+
+// Use the softwareserial library to create a new "soft" serial port
+// for the display. This prevents display corruption when uploading code.
+#include &lt;SoftwareSerial.h&gt;
+
+// Attach the serial display's RX line to digital pin 2
+SoftwareSerial mySerial(3,2); // pin 2 = TX, pin 3 = RX (unused)
+
+
+// Here we are setting up some water thersholds that we will 
+// use later. Note that you will need to change these to match
+// your soil type and environment. 
+
+/********************************************************
+ * Change these values based on your calibration values
+ *******************************************************/
+int thresholdUp = 400;
+int thresholdDown = 250;
+
+// We are setting up the pin A0 on the redboard to be our sensor
+// pin input:
+
+int soilPin = A0;
+int soilPower = 7;//Variable for Soil moisture Power
+
+void setup(){
+  mySerial.begin(9600); // set up serial port for 9600 baud (speed)
+  delay(500); // wait for display to boot up
+
+  pinMode(soilPower, OUTPUT);//Set D7 as an OUTPUT
+  digitalWrite(soilPower, LOW);//Set to LOW so no power is flowing through the sensor
+}
+
+void loop(){
+  // Here we are declaring a string, which are lines of words,
+  // and we want DisplayWords to be the words displayed on
+  // the LCD screen, which will change based on whether the soil
+  // wet or dry based on our threshold values above.
+  String DisplayWords;
+
+  // We need to set up a pin to get the value that the soil 
+  // moisture sensor is outputting, so sensorValue will get the
+  // analog value from the sensor pin A0 on the redboard that we 
+  // set up earlier.
+
+  int sensorValue;
+  sensorValue = readSoil();
+
+  // move cursor to beginning of first line on LCD:
+  mySerial.write(254); 
+  mySerial.write(128);
+
+  // clear display:
+  mySerial.write("                "); 
+  mySerial.write("                ");
+
+  // move cursor to beginning of first line of the LCD screen:
+  mySerial.write(254); 
+  mySerial.write(128);
+
+  //Write what we want to desplay on the screen:
+  mySerial.write("Water Level: ");
+  mySerial.print(sensorValue); //Using .print instead of .write for values
+
+  // Now we are going to check if the water level is below a 
+  // out thresholdDown value we set earlier, and if it is have 
+  // words "Dry, Water it!" display one column over on the first 
+  // row:
+
+  if (sensorValue &lt;= thresholdDown){
+    // move cursor to beginning of second line on LCD:
+    mySerial.write(254); 
+    mySerial.write(192);
+
+    DisplayWords = "Dry, Water it!";
+    mySerial.print(DisplayWords);
+
+  // If the value is not below our thresholdDown value we want to 
+  // check if it is above our thresholdUp value, and if it is 
+  // change the display words to "Wet, Leave it!":
+
+
+
+  } else if (sensorValue &gt;= thresholdUp){
+    // move cursor to beginning of second line on LCD:
+    mySerial.write(254); 
+    mySerial.write(192);
+
+    DisplayWords = "Wet, Leave it!";
+    mySerial.print(DisplayWords);
+
+  // Otherwise if it is inbetween the two values we want it to 
+  // the display it had, so if our soil was really wet and drying 
+  // the words would only change to "Dry, Water it!" when it got to the lower threshold
+  // (thresholdDown), but if it was dry and getting wetter the words
+  // would only change to "Wet, Leave it!" when it got to the upper 
+  // threshold (thresholdUp_):
+
+  } else {
+    // move cursor to beginning of second line on LCD:
+    mySerial.write(254); 
+    mySerial.write(192);
+
+    mySerial.print(DisplayWords);
+  }
+
+  delay(500); //wait for half a second, so it is easier to read
+}
+
+//This is a function used to get the soil moisture content
+int readSoil()
+{
+    digitalWrite(soilPower, HIGH);//turn D7 "On"
+    delay(10);//wait 10 milliseconds 
+    int val = analogRead(soilPin);//Read the SIG value form sensor 
+    digitalWrite(soilPower, LOW);//turn D7 "Off"
+    return val;//send current moisture value
+}
+</code></pre>
+
+<p>This code has different values for an upper threshold and a lower one, so you have a middle zone that could either be wet or dry depending on whether the soil is drying out (coming down from being wet) or getting wet (coming up from being dry). If you don&rsquo;t want this middle zone, you can set both thresholds to the same value, but I have found that having this middle area is more similar to how soil actually works; there really isn&rsquo;t a point at which soil goes from being wet to dry.  If you are interested in soil and how it reacts to water, you should <a href="https://en.wikipedia.org/wiki/Water_content">read up on it</a>; it can be very complicated and interesting.</p>
+
+<p>You will need to adjust the code variables anyway, since this will be unique to your setup, soil type, and how wet you actually want your soil to be. Using the calibration techniques mentioned above, test out the reading and play around with the values until you find some that fit your needs.</p>
+
+<!---
+Sarah plant watering example
+removing 7/7/17 by Joel
+Now that we have a project that reads the soil moisture, we can take it a step further and set up a small self-watering system. 
+
+-> [![Soil moisture sensor with self watering system](https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/3/9/0/Soil_Moisture_Sensor_Tutorial-03.jpg)](https://cdn.sparkfun.com/assets/learn_tutorials/3/9/0/Soil_Moisture_Sensor_Tutorial-03.jpg) <-
+
+->_Soil moisture sensor with self-watering system_<-
+
+Using some Actobotics parts...
+
+<script src="https://www.sparkfun.com/wish_lists/113492.js"></script>
+
+...and some things I picked up from my local Home Depot ([bucket](http://www.homedepot.com/p/Pennington-1-gal-Plastic-Nursery-Container-100509068/203221812), [O rings](http://www.homedepot.com/p/PartsmasterPro-217-O-Ring-10-Pack-58281/203197118?keyword=o+ring+%23217), and [PVC pipe](http://www.homedepot.com/p/VPC-1-2-in-x-2-ft-PVC-Sch-40-Pipe-22015/202300504)) and Hobby Lobby ([Crazy straw](http://shop.hobbylobby.com/products/krazy-curly-straws-8-count-230532/), [zipties](http://shop.hobbylobby.com/products/black-zip-ties-176065/), and glues), as well as a small piece I laser cut, I was able to put together the watering system I wanted. 
+
+-> [![Parts for soil moiture sensor self watering system](https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/3/9/0/Soil_Moisture_Sensor_Tutorial-04.jpg)](https://cdn.sparkfun.com/assets/learn_tutorials/3/9/0/Soil_Moisture_Sensor_Tutorial-04.jpg) <-
+
+->_Parts for self-watering system_<-
+
+This is just one of many ways you could hook up a motor to run a self-watering system. Other ways include putting a gear directly into the water and having it rotate fast enough to pull the water up and into the plant. Or you could have the motor running a system somewhat like our [Bartendro Dispenser](https://www.sparkfun.com/products/12915).
+
+-> [![alt text](https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/3/9/0/Motor_setup_bb.jpg)](https://cdn.sparkfun.com/assets/learn_tutorials/3/9/0/Motor_setup_bb.jpg) <-
+
+->_Wiring from RedBoard to motor_<-
+
+
+Here is the code used (basically the same code with just a few additions for the motor):
+
+    language:c
+    // SparkFun Soil Moisture Sensor and Serial LCD example 2
+    // By Sarah Al-Mutlaq 2015
+    // Sketch reads sensor and desplays level and whether soil is wet or dry
+    // and turns on motor if dry
+    
+    // Use the softwareserial library to create a new "soft" serial port
+    // for the display. This prevents display corruption when uploading code.
+    #include <SoftwareSerial.h>
+    
+    // Attach the serial display's RX line to digital pin 2
+    SoftwareSerial mySerial(3,2); // pin 2 = TX, pin 3 = RX (unused)
+    
+    // We'll be controlling the motor from pin 9.
+    // This must be one of the PWM-capable pins.
+    const int motorPin = 9;
+    
+    
+    // Here we are setting up some water thersholds that we will 
+    // use later. Note that you will need to change these to match
+    // your soil type and environment. 
+    
+    int thresholdUp = 400;
+    int thresholdDown = 250;
+    
+    // We are setting up the pin A0 on the redboard to be our sensor
+    // pin input:
+    
+    int sensorPin = A0;
+    
+    
+    void setup(){
+      pinMode(motorPin, OUTPUT); // set pin controlling the motor as an output pin
+      mySerial.begin(9600); // set up serial port for 9600 baud (speed)
+      delay(500); // wait for display to boot up
+    }
+    
+    void loop(){
+      // Here we are declaring a string, which are lines of words,
+      // and we want DisplayWords to be the words displayed on
+      // the LCD screen, which will change based on whether the soil
+      // wet or dry based on our threshold values above.
+      String DisplayWords;
+      
+      // We need to set up a pin to get the value that the soil 
+      // moisture sensor is outputting, so sensorValue will get the
+      // analog value from the sensor pin A0 on the redboard that we 
+      // set up earlier.
+      
+      int sensorValue;
+      sensorValue = analogRead(sensorPin);
+      
+      // move cursor to beginning of first line on LCD:
+      mySerial.write(254); 
+      mySerial.write(128);
+    
+      // clear display:
+      mySerial.write("                "); 
+      mySerial.write("                ");
+    
+      // move cursor to beginning of first line of the LCD screen:
+      mySerial.write(254); 
+      mySerial.write(128);
+     
+      //Write what we want to desplay on the screen:
+      mySerial.write("Water Level: ");
+      mySerial.print(sensorValue); //Using .print instead of .write for values
+      
+      // Now we are going to check if the water level is below a 
+      // out thresholdDown value we set earlier, and if it is have 
+      // words "Dry, Water it!" display one column over on the first 
+      // row:
+      
+      if (sensorValue <= thresholdDown){
+        // move cursor to beginning of second line on LCD:
+        mySerial.write(254); 
+        mySerial.write(192);
+        
+        DisplayWords = "Dry, Water it!";
+        mySerial.print(DisplayWords);
+        
+        // turns the motor on at a slow speed (0 is stopped, 255 is full speed):
+        analogWrite(motorPin, 75);  
+        
+        
+      // If the value is not below our thresholdDown value we want to 
+      // check if it is above our thresholdUp value, and if it is 
+      // change the display words to "Wet, Leave it!":
+      
+      
+      
+      } else if (sensorValue >= thresholdUp){
+        // move cursor to beginning of second line on LCD:
+        mySerial.write(254); 
+        mySerial.write(192);
+        
+        DisplayWords = "Wet, Leave it!";
+        mySerial.print(DisplayWords);
+        
+        // turns the motor off (0 is stopped, 255 is full speed):
+        analogWrite(motorPin, 0);
+      
+      // Otherwise if it is inbetween the two values we want it to 
+      // the display it had, so if our soil was really wet and drying 
+      // the words would only change to "Dry, Water it!" when it got to the lower threshold
+      // (thresholdDown), but if it was dry and getting wetter the words
+      // would only change to "Wet, Leave it!" when it got to the upper 
+      // threshold (thresholdUp_):
+      
+      } else {
+        // move cursor to beginning of second line on LCD:
+        mySerial.write(254); 
+        mySerial.write(192);
+        
+        mySerial.print(DisplayWords);
+      }
+      
+      delay(500); //wait for half a second, so it is easier to read
+    }
+    
+
+
+If you are looking for something on a larger scale for your self-watering system, take a look at our [Liquid Pump](https://www.sparkfun.com/products/10455) or our [12V Solenoid Valve ](https://www.sparkfun.com/products/10456) for outdoor garden hoses.  
+
+Have fun sensing your soil's moisture and adding a few electronics to your plants! 
+--->
+      </div>
+          <div class="section tutorial-page">
+        <h2 id="resources-and-going-further">Resources and Going Further</h2>
+        <h3>Additional Projects</h3>
+
+<p>To connect your plant monitor to the Internet of Things, <a href="https://learn.sparkfun.com/tutorials/sparkfun-inventors-kit-for-photon-experiment-guide/experiment-3-houseplant-monitor">check out this experiment</a> from our SparkFun Inventor&rsquo;s Kit for Photon. In it, we show how to connect the soil moisture sensor to an Internet connected device such as the <a href="https://www.sparkfun.com/products/13774">Photon</a> or the <a href="https://www.sparkfun.com/products/13321">SparkFun Photon RedBoard</a>.</p>
+
+<p>You can also learn how to use the soil moisture sesnor with the Blynk app in the <a href="https://learn.sparkfun.com/tutorials/blynk-board-project-guide/project-12-botanitweeting">Blynk Experiemnt Guide</a>. Get plant watering notifications right on your phone or other mobile device!</p>
+
+<p>Check out this great Instructables project from <a href="https://circuito.io/">Circuito.io</a> that uses the SparkFun Soil Moisture Sensor:</p>
+
+<ul>
+<li><a href="http://www.instructables.com/id/Thirsty-Flamingo/">Thirsty Flamingo</a></li>
+</ul>
+
+
+<p>Check out these other great SparkFun tutorials for more soil moisture sensing fun!</p>
+
+
+<div class="tile-wrap">
+  <div class="tile tutorial-tile has_addl_actions  grid" data-id="145">
+
+  <a href="https://learn.sparkfun.com/tutorials/h2ohno">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/4/f/4/4/6/526d796f757b7f6d708b4568.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">H2OhNo!</h3>
+      </a>
+
+      <div class="description">
+      Learn all about microcontrollers and basic electronics with the H2OhNo! water alarm and development board.    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="145">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">5</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="332">
+
+  <a href="https://learn.sparkfun.com/tutorials/sparkfun-inventors-kit-for-photon-experiment-guide">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/learn_tutorials/3/3/2/Photon_Kit.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">SparkFun Inventor's Kit for Photon Experiment Guide</h3>
+      </a>
+
+      <div class="description">
+      Dive into the world of the Internet of Things with the SparkFun Inventor's Kit for Photon.
+    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="332">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">11</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="617">
+
+  <a href="https://learn.sparkfun.com/tutorials/photon-weather-shield-hookup-guide-v11">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/learn_tutorials/6/1/7/Photon_Weather_Shield_Hook_Up_Guide-03.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">Photon Weather Shield Hookup Guide V11</h3>
+      </a>
+
+      <div class="description">
+      Create Internet-connected weather projects with the SparkFun Weather Shield for the Photon.     </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="617">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">1</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="649">
+
+  <a href="https://learn.sparkfun.com/tutorials/esp32-environment-sensor-shield-hookup-guide">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/learn_tutorials/6/4/9/14153-01.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">ESP32 Environment Sensor Shield Hookup Guide</h3>
+      </a>
+
+      <div class="description">
+      SparkFun's ESP32 Environment Sensor Shield provides sensors and hookups for monitoring environmental conditions. This tutorial will show you how to connect your sensor suite to the Internet and post weather data online.    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="649">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">0</span>
+</span>  </div>
+
+</div>
+</div>
+
+  <div class="clearfix"></div>
+
+
+
+      </div>
+    
+        <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" type="text" value="http://sfe.io/t390" onclick="$(this).select();">
+
+    <div class="share-social">
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','googleplus');" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft390" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','tumblr');" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft390&name=Soil+Moisture+Sensor+Hookup+Guide" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','reddit');" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft390" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','twitter');" href="https://twitter.com/intent/tweet?text=Soil+Moisture+Sensor+Hookup+Guide&url=http%3A%2F%2Fsfe.io%2Ft390&via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','facebook');" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft390&t=Soil+Moisture+Sensor+Hookup+Guide" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','pinterest');" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft390&media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2Flearn_tutorials%2F3%2F9%2F0%2FSoil_Moisture_Sensor_Hook_Up_Guide-07.jpg&description=Soil+Moisture+Sensor+Hookup+Guide" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+  </div>
+
+  <div class="col-sm-4" id="nav-pages">
+    <div id="sidebar_affix">
+
+      <div id="tutorial-pages" class="list-group">
+        <a class="list-group-item"><b>Sections</b></a>
+                          <a data-pagename="getting-started" class="list-group-item" href="#getting-started">
+            Getting Started          </a>
+                  <a data-pagename="hardware-overview-and-assembly" class="list-group-item" href="#hardware-overview-and-assembly">
+            Hardware Overview and Assembly          </a>
+                  <a data-pagename="soil-moisture-sensing-basic-example" class="list-group-item" href="#soil-moisture-sensing-basic-example">
+            Soil Moisture Sensing Basic Example          </a>
+                  <a data-pagename="calibration-" class="list-group-item" href="#calibration-">
+            Calibration           </a>
+                  <a data-pagename="soil-moisture-sensing-project" class="list-group-item" href="#soil-moisture-sensing-project">
+            Soil Moisture Sensing Project          </a>
+                  <a data-pagename="resources-and-going-further" class="list-group-item" href="#resources-and-going-further">
+            Resources and Going Further          </a>
+              </div>
+
+      <div class="list-group">
+        <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/soil-moisture-sensor-hookup-guide/discuss">
+          Comments
+          <span class="badge">16</span>
+        </a>
+                  <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/soil-moisture-sensor-hookup-guide/getting-started">
+            View Paginated
+          </a>
+                <a class="list-group-item" href="#" onclick="window.print(); return false;">
+          Print
+        </a>
+      </div>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>Tags</b></li>
+        <li class="list-group-item"><ul class="tags-list">
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/hookup">Hookup</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/projects">Projects</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/sensors">Sensors</a>  </li>
+</ul>
+</li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>License</b></li>
+        <li class="list-group-item">
+          <span class="sfe-icon-cc">
+            <span class="visuallyhidden">Creative Commons</span>
+          </span>
+          <small>tutorials are <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="new">CC BY-SA 4.0</a></small>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  require(['tutorial', 'jquery.imagesloaded'], function() {
+    $('#tutorial').tutorial();
+  });
+</script>
+
+      </div> <!-- /container -->
+    </div> <!-- /content -->
+
+    
+<footer>
+
+<div class="social">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="sharing-ingenuity">
+          <span class=sfe-icon-flame></span>
+          <span class="text"><span class="text-top">Start<br></span>something.</span>
+        </div>
+        <ul class="spew">
+          <li><a href="https://www.github.com/sparkfun" target="_blank" class=sfe-icon-github><span class=visuallyhidden>GitHub</span></a></li>
+          <li><a href="https://www.youtube.com/sparkfun" target="_blank" class=sfe-icon-youtube><span class=visuallyhidden>YouTube</span></a></li>
+          <li><a href="https://www.vimeo.com/sparkfun" target="_blank" class=sfe-icon-vimeo><span class=visuallyhidden>Vimeo</span></a></li>
+          <li><a href="https://www.facebook.com/SparkFun" target="_blank" class=sfe-icon-facebook><span class=visuallyhidden>Facebook</span></a></li>
+          <li><a href="https://www.instagram.com/sparkfun/" target="_blank" class=sfe-icon-instagram><span class=visuallyhidden>Instagram</span></a></li>
+          <li><a href="https://plus.google.com/106084846822083498483/" target="_blank" class=sfe-icon-google-plus><span class=visuallyhidden>Google Plus</span></a></li>
+          <li><a href="https://www.flickr.com/photos/sparkfun/" target="_blank" class=sfe-icon-flickr><span class=visuallyhidden>Flickr</span></a></li>
+          <li><a href="https://twitter.com/#!/sparkfun" target="_blank" class=sfe-icon-twitter><span class=visuallyhidden>Twitter</span></a></li>
+          <li><a href="https://www.sparkfun.com/feeds" class=sfe-icon-feed><span class=visuallyhidden>RSS</span></a></li>
+        </ul>
+        <div class="newsletter">
+          <!--[if lte IE 8]>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+<![endif]-->
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+<script>
+  hbspt.forms.create({
+    css: '',
+    cssClass: 'hubspot-newsletter-subscribe',
+    portalId: '2224003',
+    formId: 'd2b17dd4-e1bb-406a-ba41-44c19dcd0376'
+  });
+</script>
+        </div>
+      </div>
+    </div><!-- end .row -->
+  </div><!-- end .container -->
+</div><!-- end .social -->
+
+<div class="container">
+
+    <div class="row">
+
+    <div class="subfooter subfooter-about">
+      <p>
+        In 2003, CU student Nate Seidle blew a power supply in his dorm room and, in lieu of a way to order easy replacements, decided to start his own company. Since then, SparkFun has been committed to sustainably helping our world achieve electronics literacy from our headquarters in Boulder, Colorado.
+      </p>
+      <p>
+        No matter your vision, SparkFun's products and resources are designed to make the world of electronics more accessible. In addition to over 2,000 open source components and widgets, SparkFun offers curriculum, training and online tutorials designed to help demystify the wonderful world of embedded electronics. We're here to help you start something.
+      </p>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>About Us</b>
+            <li><a href="https://www.sparkfun.com/about_sparkfun">About SparkFun</a></li>
+	    <li><a href="http://www.sparkfuneducation.com" target="_blank">SparkFun Education <span class="glyphicon glyphicon-new-window"></span></li>
+	    <li><a title="RSS Feeds" href="https://www.sparkfun.com/feeds">Feeds <span class=sfe-icon-feed></span></a></li>
+            <li><a href="https://www.sparkfun.com/jobs">Jobs</a></li>
+            <li><a href="https://www.sparkfun.com/static/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Help</b></li>
+            <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+            <li><a href="https://www.sparkfun.com/support#ShippingPolicy">Shipping</a></li>
+            <li><a href="https://www.sparkfun.com/returns">Return Policy</a></li>
+            <li><a href="https://www.sparkfun.com/static/faq">FAQ</a></li>
+                      </ul>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Programs</b></li>
+	    <li><a href="https://www.sparkfun.com/sponsorships">Become a Community Partner</a>	      <li><ul><li><a href="https://www.sparkfun.com/cpp">Community Stories</a></li></ul></li>
+	    </li>
+            <li><a href="https://www.sparkfun.com/project_calls">Tell Us About Your Project</a></li>
+            <li><a href="https://learn.sparkfun.com/tutorials/how-to-sell-your-widget-on-sparkfun">Sell Your Widget on SparkFun</a></li>
+            <li><a href="https://www.sparkfun.com/distributors/apply">Become a SparkFun Distributor</a></li>
+            <li><a href="https://www.sparkfun.com/volume">Large Volume Sales</a> </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Community</b></li>
+            <li><a href="https://forum.sparkfun.com/">Forum</a></li>
+            <li><a href="https://www.sparkfun.com/news/263">SparkFun IRC Channel</a></li>
+            <li><a href="https://www.sparkfun.com/quiz">Take the SparkFun Quiz</a></li>
+            <li><a href="https://www.kickstarter.com/pages/sparkfun">SparkFun Kickstarter Projects</a></li>
+            <li><a href="https://www.sparkfun.com/distributors">Distributors</a></li>
+          </ul>
+        </div>
+
+      </div><!-- end .row -->
+
+    </div>
+
+    <div id="feedback" class="subfooter subfooter-woym">
+      <form id="woym_form" class="feedback" action="https://learn.sparkfun.com/feedback/mind.json" onsubmit="$(this).sfeutil('mind_feedback'); return false;" method="POST">
+        <div class="error" id="error_feedback" style="display: none"></div>
+        <input type="hidden" name="sparkaptcha" id="sparkaptcha" value="0">
+
+        <div class="form-group">
+          <label for="feedback_textarea" class="control-label">What's on your mind?</label>
+          <div class="controls">
+            <textarea id="feedback_textarea" class="form-control" name="feedback_text" required></textarea>
+            <div class="error" id="error_feedback_text" style="display: none"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_dest" class="control-label">For which department?</label>
+          <select name="dest" class="form-control" id="feedback_dest">
+            <option value="general">General</option>
+            <option value="cust">Customer Service</option>
+            <option value="tech">Tech Support</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_email" class="control-label">
+            Please include your email address if you'd like us to respond to a specific question.
+          </label>
+
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+            <input type="text" class="form-control" id="feedback_email" name="email" placeholder="email address" />
+          </div>
+          <div class="error" id="error_feedback_email" style="display: none"></div>
+
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+  </div><!-- end .row -->
+  
+  <ul class="copyleft">
+    <li>SparkFun Electronics <a href="https://www.sparkfun.com/news/300">&reg;</a></li>
+    <li><a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=6333+Dry+Creek+Parkway,+Niwot,+CO+80503">Niwot, Colorado</a></li>
+    <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+    <li><a href="https://www.sparkfun.com/sitemap">Site Map</a></li>
+    <li><a href="https://www.sparkfun.com/terms">Terms of Service</a></li>
+    <li><a href="https://www.sparkfun.com/privacy">Privacy Policy</a></li>
+    <li class="desktop-toggle">
+              <a href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fsoil-moisture-sensor-hookup-guide">Desktop Site</a>          </li>
+  </ul>
+
+</div><!-- end .container -->
+
+</footer>
+
+    <div class="nav-account">
+  <ul class="nav nav-tabs">
+    <li class="visible-xs">
+      <a class="nav-toggle-account back" href="#">Your Account</a>
+    </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fsoil-moisture-sensor-hookup-guide" data-toggle="modal" data-target="#login_modal" data-remote="false">Log In</a>
+      </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/make">Register</a>
+      </li>
+      </ul>
+</div>
+
+      </div><!-- end .wrapper-inner -->
+    </div><!-- end .wrapper -->
+
+    <!-- Login Modal -->
+<div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Log In</h4>
+        <p class="modal-header-msg"></p>
+      </div>
+      <div class="modal-body">
+        <form role="form" action="https://www.sparkfun.com/account/login" method="post">
+          <input type="hidden" name="redirect" value="/learn/tutorials/soil-moisture-sensor-hookup-guide">
+          <div class="form-group">
+            <label for="login-username">Email</label>
+            <input type="email" tabindex="1" name=user id="login-username" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input tabindex="2" type="password" name="passwd" id="login-password" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Log In" tabindex="3" class="btn btn-action">
+          </div>
+        </form>
+        <p>
+          <a href="https://www.sparkfun.com/account/forgot_password">Forgot your password?</a>          <br>
+          No account? <a id="btn_register_account" href="https://www.sparkfun.com/account/make">Register one!</a>        </p>
+      </div>
+    </div>
+  </div>
+</div>
+  
+          
+<!--  begin olark code -->
+  <script type="text/javascript" async> ;(function(o,l,a,r,k,y){if(o.olark)return; r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0]; y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r); y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)}; y.extend=function(i,j){y("extend",i,j)}; y.identify=function(i){y("identify",k.i=i)}; y.configure=function(i,j){y("configure",i,j);k.c[i]=j}; k=y._={s:[],t:[+new Date],c:{},l:a}; })(window,document,"static.olark.com/jsclient/loader.js");
+  /* custom configuration goes here (www.olark.com/documentation) */
+  olark.identify('4728-501-10-9212');</script>
+  <noscript><a href="https://www.olark.com/site/4728-501-10-9212/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+<!-- end olark code -->
+          <script type="text/javascript">
+      (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+        n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/2224003.js';
+        e.parentNode.insertBefore(n, e);
+      })(document,"script","hs-analytics",300000);
+    </script>
+        <script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0046/4761.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+  </script>
+      </body>
+</html>
+

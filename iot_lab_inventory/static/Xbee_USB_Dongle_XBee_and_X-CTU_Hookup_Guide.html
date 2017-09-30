@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- mobile mode if small screen device -->
+    
+    <title>Exploring XBees and XCTU - learn.sparkfun.com</title>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/css/bootstrap.min.css?rev=1506620278" rel="stylesheet">
+    <link rel="stylesheet" href="/css/theme.github.css?rev=1506620278" type="text/css" media="screen" />    <link rel="alternate" type="application/atom+xml" title="Education Blog" href="https://learn.sparkfun.com/feeds/blog" />
+    <link rel="alternate" type="application/atom+xml" title="Tutorials" href="https://learn.sparkfun.com/feeds/tutorials" />
+    <link rel="alternate" type="application/atom+xml" title="Education Blog Comments" href="https://learn.sparkfun.com/feeds/blog_comments" />
+    <link rel="alternate" type="application/atom+xml" title="Tutorial Comments" href="https://learn.sparkfun.com/feeds/tutorial_comments" />
+
+    <script type="text/javascript">
+      var SFECONFIG = {
+        dnt: false,
+        http_server: 'http://learn.sparkfun.com',
+        https_server: 'https://learn.sparkfun.com',
+        http_static: 'https://cdn.sparkfun.com',
+        learn_server: 'https://learn.sparkfun.com',
+        commerce_server: 'https://www.sparkfun.com',
+        base_url: '/',
+        url: '/',
+        controller: 'tutorials',
+        action: 'view',
+        entity_id: '',
+        auth: false,
+        sparkrev: '1506620278',
+        track_arduino_products: true,
+        search_key: 'xY6qr5Ui3V2UMA762D9Z'      };
+      var require = {
+        paths: {
+          'jqueryui': 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min'
+        },
+        baseUrl: '/js/',
+        urlArgs: "sparkrev=" + SFECONFIG.sparkrev,
+        deps: ['jqueryui'],
+        callback: function() {
+          $('#learn').learn();
+          $('#learn').sfeutil();
+          $.shared('domready');
+        }
+      };
+    </script>
+    <script src="/js/learn-built.js?sparkrev=1506620278"></script>
+          <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-3404365-1', 'auto', {'allowLinker': true});
+      ga('require', 'linker');
+      ga('linker:autoLink', ['www.sparkfun.com', 'avc.sparkfun.com'] );
+      ga('require', 'displayfeatures');
+            ga('set', 'dimension1', 'Guest');
+      ga('send', 'pageview');
+
+      </script>
+        <script type="text/javascript">
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js'); 
+    fbq('init', '988931021243392');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1"src="https://www.facebook.com/tr?id=988931021243392&ev=PageView&noscript=1"/>
+  </noscript>
+      </head>
+
+  <body id=learn class="layout-default no-type tutorials-view" ontouchstart="">
+            <!--
+    Start of DoubleClick Floodlight Tag: Please do not remove
+    Activity name of this tag: Universal
+    URL of the webpage where the tag is expected to be placed: http://sparkfun.com
+    This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+    Creation Date: 07/18/2016
+  -->
+  <script type="text/javascript">
+    var axel = Math.random() + "";
+    var a = axel * 10000000000000;
+    document.write('<iframe src="https://5626816.fls.doubleclick.net/activityi;src=5626816;type=count0;cat=unive0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+  </script>
+  <noscript>
+    <iframe src="https://5626816.fls.doubleclick.net/activityi;src=5626816;type=count0;cat=unive0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+  </noscript>
+  <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+    
+    <div class="wrapper" itemscope itemtype="http://schema.org/WebSite">
+      <meta itemprop="url" content="https://learn.sparkfun.com/">
+      <div class=wrapper-inner>
+
+    
+<div class="header">
+  <div class="container">
+
+    <!-- Mobile Nav Button -->
+    <div class="mobile-menu-container left">
+      <a id="nav_toggle" class="mobile-menu-button nav_toggle" href="#"><span class="sfe-icon-hamburger"></span></a>
+              <a id="search_toggle" class="mobile-menu-button" href="#"><span class="glyphicon glyphicon-search"></span></a>
+          </div>
+
+    <nav class="top-links">
+      <ul>
+        <li>
+          <a href="https://www.sparkfun.com/distributors">Find a Retailer</a>        </li>
+                  <li>
+            <div class="dropdown">
+              <a href="#" id="phone_hours" type="button" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                Need Help?
+                <span class="caret"></span>
+              </a>
+              <div class="dropdown-menu pull-right need-help" role="menu" aria-labelledby="phone_hours">
+                <h4>Customer Service</h4>
+                <p><a href="https://www.sparkfun.com/orders/"><span class="glyphicon glyphicon-dashboard"></span> Track My Order</a></p>
+                <p><a href="https://www.sparkfun.com/support"><span class="glyphicon glyphicon-question-sign"></span> Frequently Asked Questions</a></p>
+                <p><a href="https://www.sparkfun.com/support#InternationalShipping"><span class="glyphicon glyphicon-globe"></span> International Shipping Info</a></p>
+                <p><a href="mailto:cservice@sparkfun.com"><span class="glyphicon glyphicon-envelope"></span> Send Email</a></p>
+                <p class="small text-muted">
+                  Mon-Fri, 9am to 12pm and<br>
+                  1pm to 5pm U.S. Mountain Time:
+                </p>
+                <p><span class="glyphicon glyphicon-earphone"></span> (303) 284-0979</p>
+                                  <p><a data-toggle="chatpopup" href="https://www.sparkfun.com/chat/popup"><span class="glyphicon glyphicon-comment"></span> Chat With Us</a></p>
+                              </div>
+            </div>
+          </li>
+              </ul>
+    </nav>
+
+    <!-- Logo -->
+    <div class="logo-container">
+      <a class="logo" href="https://www.sparkfun.com/">
+        <span class="sfe-icon-flame"></span>
+        <span class="sfe-icon-sparkfun" data-icon="&#x1f525">
+          <span class="visuallyhidden">sparkfun.com</span>
+        </span>
+      </a>
+    </div>
+
+    <!-- Tabs -->
+    <!-- also edit mobile tabs in .tabs-container-mobile -->
+    <nav class="tabs-container hidden-xs">
+      <ul>
+        <li class="shop "><a href="https://www.sparkfun.com/categories">Shop</a></li>
+        <li class="learn active"><a href="https://learn.sparkfun.com/">Learn</a></li>
+        <li class="blog "><a href="https://www.sparkfun.com/news">Blog</a></li>
+        <li class="support "><a href="https://www.sparkfun.com/support">Support</a></li>
+      </ul>
+    </nav>
+
+    <!-- Cart & User -->
+    <div class="user-container mobile-menu-container right">
+
+      <a id="account_toggle" class="mobile-menu-button" href="#"><span class="glyphicon glyphicon-user"></span></a>
+
+              <div class="cart mobile-menu-button">
+          <a href="https://www.sparkfun.com/cart">
+            <span id="cart_status" class="sfe-icon-carticon cart-empty">
+              <span class="visuallyhidden">Shopping Cart</span>
+            </span>
+            <span class="cart_count">
+              <span id="items_in_cart">0</span>
+              <span id="cart_noun" class="visuallyhidden">items</span>
+            </span>
+          </a>
+        </div>
+      
+              <div class="user">
+          <!-- login modal trigger -->
+          <a class="btn btn-default" href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fexploring-xbees-and-xctu" data-toggle="modal" data-target="#login_modal" data-remote="false">log in</a>
+          <a class="btn btn-default" href="https://www.sparkfun.com/account/make">register</a>        </div>
+      
+    </div>
+
+    <nav class="tabs-container-mobile visible-xs col-xs-12">
+      <ul>
+        <li class="shop "><a href="https://www.sparkfun.com/categories">Shop</a></li>
+        <li class="learn active"><a href="https://learn.sparkfun.com/">Learn</a></li>
+        <li class="blog "><a href="https://www.sparkfun.com/news">Blog</a></li>
+        <li class="support "><a href="https://www.sparkfun.com/support">Support</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <!-- Navigation / Search -->
+  <div class="main-nav-container">
+
+    <div class="container">
+
+      <nav class="product-nav">
+        <button type="button" class="product-menu">
+          <span class="menu-icon sfe-icon-hamburger"></span>
+          <span class="product-menu-name">Product Menu</span>
+        </button>
+
+                  <form id="search_form" class="search" action="https://www.sparkfun.com/search/results" method="get" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+            <meta itemprop="target" content="https://www.sparkfun.com/search/results?term={term}">
+            <div class="ui-widget">
+              <input name="term" id="global-search" class="form-control" type="text" value="" placeholder="find products, tutorials, etc..." itemprop="query-input" autocomplete="off">
+              <button type="submit" class="glyphicon glyphicon-search global-search-icon" aria-label="Search"></button>
+            </div>
+          </form>
+              </nav>
+
+      <nav class="sub-nav">
+        <ul>
+          <li>
+            <a href="http://www.sparkfuneducation.com" target="_blank">Education</a>
+          </li>
+          <li>
+            <a href="https://avc.sparkfun.com/"><span class="sfe-icon-avc"></span></a>          </li>
+          <li>
+            <a href="https://forum.sparkfun.com/" target="_blank">Forum</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="product-menu-container">
+      <div class="container">
+
+        <div class="fixed-product-menu-container col-lg-2 col-sm-3 col-xs-12">
+          <div class="sub-nav-mobile product-menu-group">
+            <a class="product-menu-heading desktop-toggle" href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fexploring-xbees-and-xctu">Desktop Site</a>            <a class="product-menu-heading" href="http://www.sparkfuneducation.com" target="_blank">Education</a>
+            <a class="product-menu-heading" href="https://avc.sparkfun.com/"><span class="sfe-icon-avc"></span></a>            <ul class="list-unstyled">
+            </ul>
+          </div>
+          <div class="product-menu-group">
+            <a class="product-menu-heading" href="https://www.sparkfun.com/categories">All Categories</a>            <ul class="list-unstyled">
+            </ul>
+          </div>
+          <div class="product-menu-group">
+            <a class="product-menu-heading" href="https://www.sparkfun.com/categories/featured">Featured <span class="visible-xs pull-right glyphicon glyphicon-plus"></span></a>            <ul class="list-unstyled">
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/new_products">New Products</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/top"><span class="sfe-icon-flame"></span> Top Sellers</a></li>
+                              <li>
+                  <a href="https://www.sparkfun.com/fallsale" class="product-menu-item"><span class="sfe-icon-pumpkin" style="color:#ff8000"></span> Fall Into Savings Sale</a>
+                </li>
+                              <li>
+                  <a href="https://www.sparkfun.com/spectacle" class="product-menu-item"><span class="sfe-icon-spectacle-glasses" style="color:#000000"></span> Spectacle</a>
+                </li>
+                            <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/283">SparkX</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/sale">Sale</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/gift_certificates">Gift Certificates</a></li>
+            </ul>
+          </div>
+                      <a href="https://www.sparkfun.com/microbit" class="hidden-xs">
+              <img class="img-responsive img-rounded center-block" src="https://cdn.sparkfun.com//c/180-180/assets/product_menu_items/1/microbit-now-availble.jpg" alt="Micro:bit Ecosystem">
+            </a>
+                  </div>
+
+                              <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/287" class="product-menu-heading">
+                 Brands                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/featured" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-flame" style="color:#ee2e22"></span> SparkFun                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/103" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-arduino" style="color:#00878f"></span> Arduino                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/233" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-rpi-multi-color" style="color:#ffffff"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span> Raspberry Pi                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/284" class="product-menu-item">
+                                               micro:bit                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/279" class="product-menu-item">
+                                               Espressif (ESP)                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/287" class="product-menu-item">
+                                               <small>all brands</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/2" class="product-menu-heading">
+                 Development                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/299" class="product-menu-item">
+                                               Single Board Comp.                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/300" class="product-menu-item">
+                                               Microcontrollers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/136" class="product-menu-item">
+                                               FPGA                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/149" class="product-menu-item">
+                                               Prototyping Boards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/1" class="product-menu-item">
+                                               Programmers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/2" class="product-menu-item">
+                                               <small>all development</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/23" class="product-menu-heading">
+                 Sensors                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/304" class="product-menu-item">
+                                               Movement                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/146" class="product-menu-item">
+                                               Biometrics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/102" class="product-menu-item">
+                                               Imaging                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/305" class="product-menu-item">
+                                               Environment                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/117" class="product-menu-item">
+                                               Capacitive                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/23" class="product-menu-item">
+                                               <small>all sensors</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/46" class="product-menu-heading">
+                 Tools                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/271" class="product-menu-item">
+                                               3D Printing                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/280" class="product-menu-item">
+                                               CNC                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/49" class="product-menu-item">
+                                               Soldering                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/47" class="product-menu-item">
+                                               Hand Tools                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/177" class="product-menu-item">
+                                               Instruments                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/46" class="product-menu-item">
+                                               <small>all tools</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/310" class="product-menu-heading">
+                 Miscellaneous                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/157" class="product-menu-item">
+                                               All Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/176" class="product-menu-item">
+                                               Books                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/311" class="product-menu-item">
+                                               Arts/Crafts Supplies                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/351" class="product-menu-item">
+                                               SD Cards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/130" class="product-menu-item">
+                                               Swag                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/310" class="product-menu-item">
+                                               <small>all misc</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/51" class="product-menu-heading">
+                 Components                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/89" class="product-menu-item">
+                                               LED &amp; Illumination                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/145" class="product-menu-item">
+                                               Buttons &amp; Switches                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/28" class="product-menu-item">
+                                               Power                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/76" class="product-menu-item">
+                                               LCDs                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/70" class="product-menu-item">
+                                               Cables                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/51" class="product-menu-item">
+                                               <small>all components</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/204" class="product-menu-heading">
+                 E-Textiles                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/327" class="product-menu-item">
+                                               LilyPad                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/328" class="product-menu-item">
+                                               Sewable Electronics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/206" class="product-menu-item">
+                                               Materials                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/268" class="product-menu-item">
+                                               E-Textile Power                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/329" class="product-menu-item">
+                                               E-Textile Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/204" class="product-menu-item">
+                                               <small>all e-textiles</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/31" class="product-menu-heading">
+                 Robotics                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/pages/Actobotics" class="product-menu-item">
+                                               Actobotics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/178" class="product-menu-item">
+                                               Motors &amp; Drivers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/330" class="product-menu-item">
+                                               Parts                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/155" class="product-menu-item">
+                                               Hardware                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/181" class="product-menu-item">
+                                               Robotics Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/31" class="product-menu-item">
+                                               <small>all robotics</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/16" class="product-menu-heading">
+                 Wireless &amp; IoT                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/115" class="product-menu-item">
+                                               Bluetooth                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/112" class="product-menu-item">
+                                               WiFi                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/338" class="product-menu-item">
+                                               Satellite                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/4" class="product-menu-item">
+                                               GPS                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/339" class="product-menu-item">
+                                               Wireless Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/16" class="product-menu-item">
+                                               <small>all wireless/IoT</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/273" class="product-menu-heading">
+                 Audio                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/343" class="product-menu-item">
+                                               Audio Boards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/342" class="product-menu-item">
+                                               Audio Cables                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/344" class="product-menu-item">
+                                               Speakers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/345" class="product-menu-item">
+                                               Audio Chips                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/273" class="product-menu-item">
+                                               <small>all audio</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                  
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+    
+    <div class=content>
+      <div class=container id=airlock>
+
+        
+        <div class=main-title>
+  <ul class="breadcrumb">
+    <li><a href="https://learn.sparkfun.com/">Home</a></li>
+    <li><a href="https://learn.sparkfun.com/tutorials">Tutorials</a></li>
+    <li>Exploring XBees and XCTU</li>
+      </ul>
+
+  <h1>
+    Exploring XBees and XCTU  </h1>
+
+</div>
+
+
+<a id=nav_toggle_pages class=nav_toggle href="#"><span>&#8801;</span> Pages</a>
+
+<div id=tutorial class="row">
+
+  <div class="col-sm-8" id="sections">
+
+    <div class="contributors">
+                      Contributors:
+                <a href="https://www.sparkfun.com/users/69916"><img src="https://static.sparkfun.com/avatar/f4c7d38e015f5dc7ca404c23b30305f4?d=retro&s=20&r=pg" /> Jimb0</a>, <a href="https://www.sparkfun.com/users/194976"><img src="https://static.sparkfun.com/avatar/d6ffc0e01ee3152a3d5fd39ef6e6dd90?d=retro&s=20&r=pg" /> Toni_K</a>          </div>
+
+    <span class="fave_widget verbose">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="353">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">10</span>
+</span>    <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" type="text" value="http://sfe.io/t353" onclick="$(this).select();">
+
+    <div class="share-social">
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','googleplus');" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft353" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','tumblr');" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft353&name=Exploring+XBees+and+XCTU" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','reddit');" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft353" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','twitter');" href="https://twitter.com/intent/tweet?text=Exploring+XBees+and+XCTU&url=http%3A%2F%2Fsfe.io%2Ft353&via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','facebook');" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft353&t=Exploring+XBees+and+XCTU" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','pinterest');" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft353&media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2Flearn_tutorials%2F3%2F5%2F3%2Fdefault.jpg&description=Exploring+XBees+and+XCTU" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+          <div class="section tutorial-page">
+        <h2 id="introduction">Introduction</h2>
+        <p>Is your project being dragged down by wires? Looking for an easy transition to wireless communication? If you want reliable, low-cost, bi-directional communication at moderate speeds XBee may be the solution for you!</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/xbee-wire.jpg"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/xbee-wire.jpg" alt="XBee Wire antenna" /></a></p>
+
+<p>XBees are hugely popular wireless transceivers for a number of reasons. They&rsquo;re <strong>flexible</strong> &ndash; they send and receive data over a <a href="https://learn.sparkfun.com/tutorials/serial-communication">serial port</a>, which means they&rsquo;re compatible with both computers and microcontrollers (like <a href="https://learn.sparkfun.com/tutorials/what-is-an-arduino">Arduino</a>). And they&rsquo;re highly <strong>configurable</strong> &ndash; you can have meshed networks with dozens of XBees, or just a pair swapping data. You can use them to remotely control your robot, or arrange them all over your house to monitor temperatures or lighting conditions in every room.</p>
+
+<h3>Covered In This Tutorial</h3>
+
+<p>The pair of XBees alone won&rsquo;t get you very far. In most cases you&rsquo;ll want a separate module to interface with the XBee. You can use an <a href="https://www.sparkfun.com/products/10854">XBee Shield</a> to connect an XBee to your Arduino. Or you can use an <a href="https://www.sparkfun.com/products/11812">XBee Explorer</a> to connect an XBee to your computer.</p>
+
+<p>The focus of this tutorial is to explain how to use an <strong>XBee Explorer</strong> with an XBee. There are a variety of Explorer boards, all designed to achieve the same purpose: to create a communication gateway between your computer and the XBee.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/3/5/3/explorer-roundup_new.jpg"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/3/5/3/explorer-roundup_new.jpg" alt="Explorer Roundup" /></a></p>
+
+<p style="text-align:center;"> <em>The Explorers: <a href="https://www.sparkfun.com/products/11812">USB Explorer</a>, <a href="https://www.sparkfun.com/products/11697">Explorer Dongle</a>, and <a href="https://www.sparkfun.com/products/13225">Serial Explorer</a>.</em></p>
+
+<p>With an XBee Explorer connected between your computer and your XBee, and with the help of the <strong>X-CTU</strong> software, you can easily configure XBees, test connections, and pass data between your computer and remote XBees. We&rsquo;re going to show you how to do all of that in this tutorial!</p>
+
+<h3>Materials Required</h3>
+
+<p>XBees are really only useful if you have at least a pair of them. They need buddies to talk to! Hence, there&rsquo;s a lot of &ldquo;2x&rdquo; in this list of materials:</p>
+
+<ul>
+<li><strong>2x XBees</strong> &ndash; XBees exist in a variety of <strong>series</strong>, <strong>frequencies</strong>, and <strong>ranges</strong>. If you&rsquo;re just getting started with XBee, we highly recommend going with <strong>Series 1</strong> models &ndash; either with a <a href="https://www.sparkfun.com/products/11215">trace antenna</a>, <a href="https://www.sparkfun.com/products/8665">wire antenna</a> or <a href="https://www.sparkfun.com/products/8666">u.fl connector</a>.
+
+<ul>
+<li>For more help picking an XBee, check out our <a href="https://www.sparkfun.com/pages/xbee_guide">XBee Buying Guide</a>.</li>
+</ul>
+</li>
+<li><strong>2x Explorers</strong> &ndash; either the <a href="https://www.sparkfun.com/products/11812">Explorer USB</a>, <a href="https://www.sparkfun.com/products/11697">Explorer USB Dongle</a>, or <a href="https://www.sparkfun.com/products/13225">Explorer Serial</a>.
+
+<ul>
+<li>These boards act as an interface between your computer and an XBee. They&rsquo;re used to configure your XBee and pass data to and from your computer.</li>
+<li>Depending on which explorer you have, you may also need a matching <a href="https://www.sparkfun.com/products/11301">mini-B USB</a> or <a href="https://www.sparkfun.com/products/65">serial cables</a>.</li>
+</ul>
+</li>
+<li>At least one <strong>computer with <a href="http://www.digi.com/products/wireless-wired-embedded-solutions/zigbee-rf-modules/xctu">X-CTU</a></strong> installed.
+
+<ul>
+<li>The latest version of X-CTU is available for both Mac and Windows!</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Suggested Reading</h3>
+
+<p>This tutorial builds on some lower-level electronics concepts. If you&rsquo;re not familiar with the subjects below, we recommend checking out those tutorials first.</p>
+
+<ul>
+<li><a href="https://learn.sparkfun.com/tutorials/serial-communication">Serial Communication</a> &ndash; XBee&rsquo;s communicate over a serial port. This tutorial will get you familiar with terms like &ldquo;RX&rdquo;, &ldquo;TX&rdquo;, &ldquo;baud rates&rdquo;, &ldquo;stop bits&rdquo;, and &ldquo;parity&rdquo;.</li>
+<li><a href="https://learn.sparkfun.com/tutorials/terminal-basics">Serial Terminal Basics</a> &ndash; The X-CTU software we&rsquo;ll use has an integrated serial terminal called the &ldquo;console&rdquo;. You can use your preferred terminal instead; if you don&rsquo;t have a preferred serial terminal, check out this tutorial.</li>
+<li><a href="https://www.sparkfun.com/pages/xbee_guide">XBee Buying Guide</a> &ndash; We highly recommend Series 1 XBee&rsquo;s, if this is your first time playing with them. If you&rsquo;re curious about other XBee classes, check out this guide!</li>
+<li><a href="https://learn.sparkfun.com/tutorials/hexadecimal">Hexadecimal</a> &ndash; XBee configuration settings &ndash; like addresses and network ID&rsquo;s &ndash; are all programmed in hex. Base 16. If you don&rsquo;t know how to make numbers with 0-9 and A-F, check out this tutorial.</li>
+</ul>
+      </div>
+          <div class="section tutorial-page">
+        <h2 id="selecting-an-explorer">Selecting an Explorer</h2>
+        <p>The first step to communicating with your XBee is picking an interface board that allows you to. XBee Explorers act as a gateway between your computer and your XBee. There are a few to pick from, each offering their own, key differences. Here&rsquo;s a quick overview of each:</p>
+
+<h3>XBee Explorer USB</h3>
+
+<p>The <a href="https://www.sparkfun.com/products/11812">XBee Explorer USB</a> is the most popular of the Explorers. It&rsquo;s equipped with a mini-B USB connector, so you&rsquo;ll need the <a href="https://www.sparkfun.com/products/11301">proper USB cable</a> to connect it to your computer.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/action-usb.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/2/3/action-usb.jpg" alt="Explorer product shot" /></a></p>
+
+<p>The highlight of this board is an <a href="https://www.sparkfun.com/products/11736">FT231X USB-to-Serial converter</a>. That&rsquo;s what translates data between your computer and the XBee. There&rsquo;s also a <strong>reset button</strong>, and a voltage regulator to supply the XBee with plenty of power. In addition, there are four LEDs that&rsquo;ll help if you ever need to debug your XBee: RX, TX, RSSI (signal-strength indicator), and a power indicator.</p>
+
+<p>This board also breaks out each of the XBee&rsquo;s I/O pins to a pair of breadboard-compatible headers. So if you want to make use of the XBee&rsquo;s extended functionality, you can solder some <a href="https://www.sparkfun.com/products/116">header pins</a> into those, or even just solder some wire.</p>
+
+<h3>XBee Explorer USB Dongle</h3>
+
+<p>The <a href="https://www.sparkfun.com/products/11697">XBee Explorer Dongle</a> is an extension of the Explorer. In fact, the only real difference between this and its predecessor is the USB connector. The Dongle can be connected directly to your laptop or PC USB port.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/action-dongle.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/2/3/action-dongle.jpg" alt="XBee Dongle product shot" /></a></p>
+
+<p>Or, if you need some distance from your computer, you can use a <a href="https://www.sparkfun.com/products/517">USB extension cable</a>.</p>
+
+<p>The Dongle still shares all of the features of its sibling &ndash; reset button, LEDs, voltage regulator, and breadboard-compatible pin breakouts.</p>
+
+<h3>XBee Explorer Serial</h3>
+
+<p>Computers with an RS-232 serial port are becoming harder and harder to find, but if you do have one of those relics, the <a href="https://www.sparkfun.com/products/13225">XBee Explorer Serial</a> is a viable option.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/XBee_Serial_with_cables_XBee.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/2/3/XBee_Serial_with_cables_XBee.jpg" alt="XBee Serial Explorer with Cables" /></a></p>
+
+<p>The Serial Explorer has a bigger footprint than its USB-based brethren, but still shares most of the same features. There are RX and TX LEDs, reset button, break-out pins, and a voltage regulator. One additional feature that the Serial Explorer has is an On/Off switch on board. This enables the user to turn on or off the power supply to the XBee module.</p>
+
+<p>One additional feature available on the Serial Explorer are two jumpers available near the DB9 connector. These allow the user to swap the configuration of the DB9 connector to work with either a straight through cable (<a href="http://en.wikipedia.org/wiki/Data_circuit-terminating_equipment">DCE</a> configuration), or a switched cable (<a href="http://en.wikipedia.org/wiki/Data_terminal_equipment">DTE</a> configuration). If you’re using our <a href="https://www.sparkfun.com/products/65">Serial Cable</a>, the default DCE configuration of the jumpers is fine.</p>
+
+<p>The Serial Explorer <em>does</em> require an external power supply. It has a barrel jack connector which will work with our <a href="https://www.sparkfun.com/products/9442">12V</a>,  <a href="https://www.sparkfun.com/products/298">9V</a>, or <a href="https://www.sparkfun.com/products/8269">5V wall adapters</a>. Make sure the selected power supply can source enough current for the XBee you are using.</p>
+
+<hr />
+
+<p>If you&rsquo;re using an Arduino, another option available is the <a href="https://www.sparkfun.com/products/10854">XBee Shield</a>. That&rsquo;s a subject for <a href="https://learn.sparkfun.com/tutorials/xbee-shield-hookup-guide">another tutorial</a>.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="drivers-and-assembly">Drivers and Assembly</h2>
+        <p>The USB-based XBee Explorers all operate using an <a href="https://www.sparkfun.com/products/11736">FTDI FT231X chip</a>, which converts serial to USB and vice-versa. This is one of our favorite chips because it supports all computer platforms and it&rsquo;s easy to work with. If this is the first FTDI chip you&rsquo;ve ever connected to your computer (it probably won&rsquo;t be your last), there is some driver installation to get out of the way.</p>
+
+<p>We&rsquo;ve written a tutorial detailing <a href="https://learn.sparkfun.com/tutorials/how-to-install-ftdi-drivers">How to Install FTDI Drivers tutorial</a>. So go ahead and <strong>plug your USB Explorer into your computer</strong>, and head on to either the <a href="https://learn.sparkfun.com/tutorials/how-to-install-ftdi-drivers/windows---quick-and-easy">Windows</a>, <a href="https://learn.sparkfun.com/tutorials/how-to-install-ftdi-drivers/mac">Mac</a>, or <a href="https://learn.sparkfun.com/tutorials/how-to-install-ftdi-drivers/linux">Linux</a> section there. (Ignore the final steps, where Arduino software is invoked.)</p>
+
+<p>Regardless of whether you&rsquo;re on Mac or Windows, once your Explorer&rsquo;s drivers are installed it will be assigned a <strong>unique port number</strong>. Take note of that port number, as you&rsquo;ll need it on the next pages.</p>
+
+<h3>Basic Assembly: Plug In an XBee!</h3>
+
+<p>Time to &ldquo;assemble&rdquo; the XBee Explorer. Grab your XBee of choice. Notice how it has a flat edge and a more angular/diagonal edge? Match that footprint up to the white lines on your XBee Explorer, and carefully insert!</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/xbee-orientation.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/2/3/xbee-orientation.png" alt="XBee Orientation" /></a></p>
+
+<p>Take care not to bend any of the XBee pins &ndash; be gentle when you&rsquo;re plugging it in. (And be even more careful if you&rsquo;re removing it!)</p>
+
+<p>Nice work! You&rsquo;ve assembled the XBee Explorer. You&rsquo;re ready for the <a href="https://learn.sparkfun.com/tutorials/exploring-xbees-and-xctu/starting-with-x-ctu">next step</a>. Or, if you&rsquo;re a power user, looking to get the most out of your explorer, you can check out the more &ldquo;advanced&rdquo; assembly below.</p>
+
+<h3>Advanced Assembly (Totally Optional)</h3>
+
+<p>For most basic-use cases, all Explorer boards should be good-to-go once you&rsquo;ve installed drivers. If you want to use any of the XBee&rsquo;s I/O pins, you <em>can</em> <a href="https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering">solder</a> <a href="https://www.sparkfun.com/products/116">male headers</a> to the 0.1"-pitch pins inside the XBee headers. This will allow you to plug the board into a breadboard, so you can wire other components up to the XBee.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/action-breadboard.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/2/3/action-breadboard.jpg" alt="XBee Explorer Breadboard Example" /></a></p>
+
+<p style="text-align:center;"> <em>The XBee Explorer can be used with a USB cable and breadboard concurrently &ndash; just solder some headers into the breakout pins. (Actually solder them, don&rsquo;t pretend like we did in the image above.)</em></p>
+
+<p>Each XBee pin is labelled on the bottom side of the board. You can also check out the <a href="https://cdn.sparkfun.com/datasheets/Wireless/Zigbee/XBee-Explorer-v21b.pdf">schematic</a> for help locating a specific pin.</p>
+
+<p>If male headers don&rsquo;t fit your purpose, you can alternatively solder in <a href="https://www.sparkfun.com/products/115">female headers</a> (to plug <a href="https://www.sparkfun.com/products/8431">jumper wires</a> into), or even just <a href="https://www.sparkfun.com/products/11367">bare wire</a>. Just make sure you don&rsquo;t solder anything into the top side of the board &ndash; or you may be unable to plug the XBee in!</p>
+
+<p>We won&rsquo;t cover it in this tutorial, but those &ldquo;DIO#&rdquo; pins can be configured as either inputs or outputs. That means you can use an XBee to directly drive LEDs or motors, and read analog sensors or buttons.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="starting-with-x-ctu">Starting With X-CTU</h2>
+        <p><a href="http://www.digi.com/products/wireless-wired-embedded-solutions/zigbee-rf-modules/xctu">X-CTU</a> is free software, provided by <a href="http://www.digi.com/">Digi</a> (the manufacturer of XBee), which we use to <strong>configure</strong> and <strong>manage</strong> XBees, and test XBee networks.</p>
+
+<p>If you haven&rsquo;t already, head over to their website and <a href="http://www.digi.com/support/productdetail?pid=3352&amp;type=utilities">download the latest release</a> and follow their instructions to install the software.</p>
+
+<h3>Adding XBee&rsquo;s</h3>
+
+<p>Before continuing on, make sure you&rsquo;ve plugged an XBee (correctly) into your Explorer, and have the Explorer plugged into your computer. When you installed the drivers for your Explorer it should have been assigned port number. You&rsquo;ll need that shortly.</p>
+
+<p>After initially opening X-CTU, you&rsquo;ll be presented with a window like this:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/xctu-1.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/2/3/xctu-1.png" alt="X-CTU when it first opens" /></a></p>
+
+<p>To add your XBee(s), <strong>click the &ldquo;Add device&rdquo; icon</strong> &ndash; <img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/add-icon.png"> &ndash; in the upper-left part of the window. That will prompt this screen to show up:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/xctu-2.png"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/xctu-2.png" alt="Add device window" /></a></p>
+
+<p> <strong>Select your communication port</strong>. If you&rsquo;re lucky (or just don&rsquo;t have a lot of stuff connected to your computer) you may only have one option here. Otherwise Windows users should look for the entry that says &ldquo;USB Serial Port&rdquo; and Mac users should look for something like &ldquo;usbserial-XXXXXXXX&rdquo;, if you&rsquo;re using a USB XBee board. If you&rsquo;re using a Serial Explorer instead, pick the &ldquo;Communications Port&rdquo; option. If the Serial Explorer is not showing up, make sure the switch onboard is set to “On”!</p>
+
+<p>This window also allows you to specify more specific serial characteristics like baud rate, data bits, and stop bits. Assuming this is the first time you&rsquo;ve used your XBee, you can <strong>leave those settings alone</strong>. So make sure those values look just as they do in the image above and <strong>click Finish</strong>.</p>
+
+<p>A &ldquo;Discovering radio modules&hellip;&rdquo; window will briefly scroll by, after which you should be presented with the original window, but with an addition to the &ldquo;Radio Modules&rdquo; section on the left. (If X-CTU failed to find a module, check out our <a href="https://learn.sparkfun.com/tutorials/exploring-xbees-and-xctu/troubleshooting">troubleshooting page</a>.)</p>
+
+<p><strong>Click that new module</strong>, and wait a few seconds as X-CTU reads the configuration settings of your XBee. You should then be presented with the entire configuration of your XBee.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/xctu-3.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/2/3/xctu-3.png" alt="An XBee module selected, configuration view" /></a></p>
+
+<p>As you can see by scrolling down the right half, there are <em>a lot</em> of configuration settings available. We&rsquo;ll get to some of those later. For now, though, verify that the configurable settings visible in the screenshot above match those of your XBee (channel=C, PAN ID=3332, DH=0, DL=0, MY=0).</p>
+
+<h3>Do It Again</h3>
+
+<p>To test communication between your XBee&rsquo;s you&rsquo;ll need to connect your second XBee to a computer as well. That means doing the &ldquo;Add device&rdquo; dance one more time.</p>
+
+<p>If you have another computer available, you can install X-CTU on that as well and perform the same set up. You can certainly perform this test with both XBees connected to the same computer as well, just make sure you select the correct port number when you&rsquo;re adding the second XBee.</p>
+
+<p>If you add a second XBee to the same computer, a second entry will be added to the &ldquo;Radio Modules&rdquo; list. Selecting either of those entries will show the configuration settings for that, specific XBee.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/xctu-4.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/2/3/xctu-4.png" alt="Two XBees in one X-CTU" /></a></p>
+
+<p style="text-align:center;"> <em>Note that there are two XBees in the list on the left. The configuration values shown are for the highlighted XBee.</em></p>
+
+<p>If you&rsquo;re ever unsure which XBee is which, try to match up the <strong>MAC</strong> numbers. These numbers are printed on a sticker on the bottom side of your XBee, and they&rsquo;re also listed in XCTU. (It&rsquo;s listed as the &ldquo;Serial Number&rdquo; high and low, and is un-modifiable.)</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/xbee-mac.jpg"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/xbee-mac.jpg" alt="XBee MAC address" /></a></p>
+
+<p style="text-align:center;"> <em>Each XBee has a unique MAC address, printed on a sticker in the highlighted area.</em></p>
+
+<p>As with the last module, make sure all settings are defaulted (channel=C, PAN ID=3332, DH=0, DL=0, MY=0). That&rsquo;ll make the next step possible.</p>
+
+<h3>Quick and Easy Test</h3>
+
+<p><strong>Click the &ldquo;Switch to Consoles&rdquo; icon</strong> &ndash; <img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/console-icon.png"> &ndash; in the upper-right part of the window. This will switch from the configuration tab to the console. We can use the console to send characters to an XBee, which will route that character over-the-air to any other XBee it&rsquo;s connected to.</p>
+
+<p>If you have two XBees connected to your computer, you can switch between each radio&rsquo;s console by selecting the device on the left.</p>
+
+<p>First, <strong>open a serial connection</strong> on each device by clicking the connect icon &ndash; <img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/open-connect-icon.png">. The icon will change, and the border of the console will turn green.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/xctu-5.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/2/3/xctu-5.png" alt="XBee console view" /></a></p>
+
+<p>Next, click into the <strong>left half</strong> of the console, and <strong>type a letter or number</strong>. You should notice that character echoed in a blue font (the <a href="https://learn.sparkfun.com/tutorials/hexadecimal">hexadecimal</a> digits on the right represent the ASCII value). Now click into the other XBee&rsquo;s console. As long as it was open, you should see that same character, but <em>red</em>. Try typing a different character into the second XBee&rsquo;s console, and you should see it work the other way.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/console-test-2-600w.gif"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/console-test-2-600w.gif" alt="XBee console test GIF" /></a></p>
+
+<p>If that worked, then your XBees are configured to talk to each other! If not, check out the <a href="https://learn.sparkfun.com/tutorials/exploring-xbees-and-xctu/troubleshooting#comm-fail">troubleshooting page</a>.</p>
+
+<hr />
+
+<p>That your XBees can talk to each other out of the box is no real surprise. They&rsquo;re all configured to, by default, be on the same network with the same addresses. That might be OK, but what if your neighbor is running an XBee-based robot control network, while you&rsquo;re trying to automate your house? Every time they try to roll a bot forward, your garage door might open! To be safe, you should configure your XBees to operate on a unique network. Fortunately, that, and most other XBee settings are easy to change. On to the next page!</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="configuring-networks">Configuring Networks</h2>
+        <p>As we&rsquo;ve mentioned, XBees are awesome because they&rsquo;re highly &ndash; and easily &ndash; configurable. Most of the XBee configuration settings come down to controlling which other XBees it can talk to. On this page, we&rsquo;ll show you how to configure three of the most important XBee settings there are: PAN ID, MY address, and destination address.</p>
+
+<p>There are a few levels to XBee networks. First, there&rsquo;s the <strong>channel</strong>. This controls the frequency band that your XBee communicates over. Most XBee&rsquo;s operate on the 2.4GHz 802.15.4 band, and the channel further calibrates the operating frequency within that band. You can usually leave the channel setting alone, or at least make sure every XBee you want to have on the same network operates on the same channel.</p>
+
+<p>The next level of an XBee network is the <strong>personal area network ID (PAN ID)</strong>. The network ID is some hexadecimal value between 0 and 0xFFFF. XBees can only communicate with each other if they have the same network ID. There being 65536 possible ID&rsquo;s, there&rsquo;s a very small chance that your neighbor will be operating on the same network (as long as you change it from the default!).</p>
+
+<p>Finally there are MY and destination addresses. Each XBee in a network should be assigned a 16-bit address (again between 0 and 0xFFFF), which is referred to as <strong>MY address</strong>, or the &ldquo;source&rdquo; address. Another setting, the <strong>destination address</strong>, determines which source address an XBee can send data to. For one XBee to be able to send data to another, it must have the same destination address as the other XBee&rsquo;s source.</p>
+
+<p>For example, if XBee 1 has a MY address of 0x1234, and XBee 2 has an equivalent destination address of 0x1234, then XBee 2 can send data to XBee 1. But if XBee 2 has a MY address of 0x5201, and XBee 1 has a destination address of 0x5200, then XBee 1 cannot send data to XBee 2. In this case, only one-way communication is enabled between the two XBee&rsquo;s (only XBee 2 can send data to XBee 1).</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/xbee-networks.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/2/3/xbee-networks.png" alt="XBee networks example" /></a></p>
+
+<p>We can use X-CTU to easily configure each of those settings. Here&rsquo;s how:</p>
+
+<h3>Radio Configuration</h3>
+
+<script language="JavaScript">
+window.onload =function() {
+    var rand = Math.floor(65535*Math.random()).toString(16).toUpperCase();
+    document.getElementById("panIDRando").innerHTML = rand;
+    document.getElementById("panIDRando2").innerHTML = rand;
+    document.getElementById("panIDRando3").innerHTML = rand;
+};
+</script>
+
+
+<p>After the last page, you should already have at least one XBee connected to X-CTU. If you&rsquo;re still over in the console tab, click back over to the <strong>Configuration tab</strong> &ndash; <img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/config-icon.png">. Take a peak at the very first handful of settings, and you should see some familiar acronyms: CH, ID, DH, DL, and MY. Beside each of those blocks is a text box &ndash; that&rsquo;s where we&rsquo;ll type in our new settings.</p>
+
+<h4>Network ID (ID)</h4>
+
+<p>Begin by coming up with a unique network ID number. Think of your favorite number between 0 and 65535, consult your friends and neighbors to make sure your favorite isn&rsquo;t their favorite, then <a href="https://learn.sparkfun.com/tutorials/hexadecimal/conversion-calculators">convert it to hexadecimal</a>. Or if you don&rsquo;t want to put that much effort into it, use a random value like <span id="panIDRando"></span>.</p>
+
+<p>Type your 16-bit network ID into the white text box next to <strong>PAN ID</strong>.</p>
+
+<h4>MY Address (MY)</h4>
+
+<p>Your next job is to create addresses for each XBee in your network. These values should be unique to each XBee in a network. The MY address can be any value between 0x0000 and 0xFFFF. Type this address into the text box next to &ldquo;<strong>MY</strong> 16-bit Source Address&rdquo;.</p>
+
+<p>If you only have two XBees, you can <strong>assign the first an MY address of 0, and the other an address of 1</strong>.</p>
+
+<p>(Your XBee&rsquo;s can share the same MY address, they&rsquo;ll both receive the same data if it&rsquo;s broadcasted to that address.)</p>
+
+<h4>Destination Address (DH &amp; DL)</h4>
+
+<p>The destination address defines which XBee your source XBee is talking to. There are actually two values used to set the destination: destination high (DH) and destination low (DL). You can use that pair of values in one of two ways to set your XBee&rsquo;s mate:</p>
+
+<ol>
+<li>Leave DH set to 0, and set DL to the <strong>MY address</strong> of the receiving XBee.</li>
+<li>Set DH to the <strong>Serial Number High (SH)</strong> and DL to the <strong>Serial Number Low (SL)</strong> of your destination XBee.</li>
+</ol>
+
+
+<p>Either method works, but the former &ndash; setting DH to 0 and DL to the destination&rsquo;s MY address &ndash; is usually easier.</p>
+
+<hr />
+
+<p>Here&rsquo;s an example for setting up the ID, DH, DL, and MY values for a pair of XBees:</p>
+
+<table border=1 cellpadding=5 align="center">
+<tr align="center"><th>Setting</th><th>Acronym</th><th>XBee 1</th><th>XBee 2</th></tr>
+<tr align="center"><th>Channel</th><th>CH</th><td>C</td><td>C</td></tr>
+<tr align="center"><th>PAN ID</th><th>ID</th><td><span id="panIDRando2"></span></td><td><span id="panIDRando3"></span></td></tr>
+<tr align="center"><th>Destination Address High</th><th>DH</th><td>0</td><td>0</td></tr>
+<tr align="center"><th>Destination Address Low</th><th>DL</th><td>1</td><td>0</td></tr>
+<tr align="center"><th>16-bit Source Address</th><th>MY</th><td>0</td><td>1</td></tr>
+</table>
+
+
+<br>
+
+
+<p>Notice how the only real differences are the DL and MY values, which are flip-flopped on each XBee.</p>
+
+<h3>Write Changes</h3>
+
+<p>Once you&rsquo;ve made your changes to the text field, click the brown pencil icon (<img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/write-icon.png">) to <strong>write your changes</strong>. The property background should turn from green to blue, indicating it has been written to a non-default value.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/xctu-6.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/2/3/xctu-6.png" alt="Config tab after writing changes" /></a></p>
+
+<p style="text-align:center;"> <em>XBee 1&rsquo;s config tab after writing the changes.</em></p>
+
+<p>Now, just like last time, you can try to send data from one XBee to the other via the <strong>console</strong>. As long as the addresses and PAN ID&rsquo;s match up, you should have the same success as last time.</p>
+
+<hr />
+
+<p>While it may seem like a lot of work to get right back to where you were, using a unique PAN ID and addressing scheme will make your data transfer more <strong>secure</strong> and <strong>reliable</strong>.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="troubleshooting">Troubleshooting</h2>
+        <p>If your XBee&rsquo;s are giving you any trouble, here are some common problems and fixes we recommend:</p>
+
+<ul>
+<li><a href="#cant-find">Can&rsquo;t Find Device</a> &ndash; If XCTU can&rsquo;t find your XBee, we recommend recovery or discovery.</li>
+<li><a href="#comm-fail">XBees Not Communicating Wirelessly</a> &ndash; If a pair of XBees are failing to communicate, we recommend resetting everything to default.</li>
+<li><a href="#reset">Resetting XBees</a> &ndash; A trick to resetting your XBee (if you don&rsquo;t have a reset button).</li>
+</ul>
+
+
+<h3><a name="cant-find"></a>Can&rsquo;t Find Device</h3>
+
+<p>Are you having a hard time &ldquo;finding&rdquo; an XBee? If you&rsquo;re &ldquo;Add Device&rdquo; process is being followed by a window like this:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/not-found.png"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/not-found.png" alt="Device not found" /></a></p>
+
+<p>There are two options we recommend: discovery or recovery.</p>
+
+<h4>Discovery</h4>
+
+<p>The <strong>Discover radio devices</strong> tool is an extension of &ldquo;Add devices&rdquo;. Open the discovery window by clicking the XBee/magnifying glass icon &ndash; <img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/discover-icon.png"> &ndash; in the top-left.</p>
+
+<p>Once again you&rsquo;ll be prompted to select which communication port your XBee is connected to. Double check that you&rsquo;ve selected the correct one (or even try multiple). The next window will present you with every, single serial setting available, and a whole lot of checkboxes:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/xctu-7.png"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/xctu-7.png" alt="Discover tool, searching all baud rates" /></a></p>
+
+<p>Most of the cases where your XBee is hiding it&rsquo;s because the <strong>baud rate</strong> has been altered. A quick fix for this is to <strong>select all possible baud rates</strong> in the discovery window, then <strong>click Finish</strong>. The discovery process works a lot like the add process except it tests out every selection you make in this window &ndash; that means it will take a little longer to finish.</p>
+
+<p>Hopefully you&rsquo;ve found an XBee that was just configured to talk at a weird baud rate. If not you <em>can</em> select any of the other checkboxes as well, but it&rsquo;ll make for a longer and longer discovery process. Click every checkbox and you might be waiting upwards of an hour for your XBee to be discovered (permutations!).</p>
+
+<p>If you&rsquo;re not having any luck with discovery, the next step is recovery.</p>
+
+<h4>Recovery</h4>
+
+<p>If your XBee seems bricked, don&rsquo;t worry! You can most likely recover it. To get to the recovery screen, click the <strong>Tools</strong> icon, and select <strong>XBee Recovery</strong>.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/xctu-8.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/2/3/xctu-8.png" alt="Opening XBee recovery" /></a></p>
+
+<p>Once again, you&rsquo;ll need to select your COM port, and you&rsquo;ll also need to select the product family. This can be found on the bottom sticker of your XBee. If you&rsquo;re using a series 1 module, the family should be <strong>XB24</strong>. Beyond that you&rsquo;ll need to select a &ldquo;Function Set&rdquo; and &ldquo;Firmware Version&rdquo;. For both of those you should be safe selecting the top-most values in the list.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/recovery.png"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/recovery.png" alt="Recovery tool" /></a></p>
+
+<p>Once you&rsquo;ve made all of those selections, <strong>click Recover</strong>.</p>
+
+<p>The recovery process may take a few minutes. You&rsquo;ll be prompted to <strong>reset your XBee</strong>. If your Explorer has a reset button, simply press it when prompted, otherwise see <a href="#reset">the &ldquo;Reset&rdquo; section below</a>.</p>
+
+<p>During recovery, if XCTU can find your XBee it will. It&rsquo;ll also <strong>update the firmware</strong>, and set you back to the <strong>default settings</strong>. If you know what got your XBee bricked in the first place&hellip;maybe don&rsquo;t do that again.</p>
+
+<h3><a name="comm-fail"></a> XBee&rsquo;s Not Communicating, Reset to Defaults</h3>
+
+<p>If no matter what changes you make to the config settings your XBee&rsquo;s just won&rsquo;t communicate with each other, try resetting them both to the default values.</p>
+
+<p>In the config tab, click the &ldquo;Load default firmware settings&rdquo; icon &ndash; <img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/default-icon.png"> (not sure how to describe that icon). Then <strong>click Yes</strong> to confirm that you want to reset everything.</p>
+
+<p>If you&rsquo;re presented with any red-backgrounded error notifications (like below), first try to <strong>refresh the value</strong>, by clicking the green icon &ndash; <img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/refresh-icon.png">.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/xctu-9.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/2/3/xctu-9.png" alt="Config value error" /></a></p>
+
+<p>If that doesn&rsquo;t fix the error, you can probably get away with typing a &ldquo;0&rdquo; in that box (usually this pops up for properties like encryption keys or other values meant to be kept secret).</p>
+
+<p>After you&rsquo;ve loaded the default values, you still need to <strong>write the settings</strong> by clicking the <strong>big pencil icon</strong> above &ndash; <img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/big-pencil-icon.png">.</p>
+
+<p>After defaulting both radios, the addresses, networks, and other settings should all be compatible. Try communicating over the console again.</p>
+
+<h3><a name="reset"></a>Resetting Old (Pre-Reset Button) Explorers</h3>
+
+<p>When it&rsquo;s having trouble communicating with an XBee, XCTU may present you with a notification like this:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/reset-window.png"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/reset-window.png" alt="Reset notification" /></a></p>
+
+<p>The USB explorers were revised in May 2014 to include a reset button, so resetting should be easily done on those newer boards. However, if you&rsquo;re using an older Explorer you&rsquo;ll have to use the &ldquo;jumper method&rdquo;. Grab a piece of <a href="https://www.sparkfun.com/products/8431">jumper wire</a> and, when prompted with the &ldquo;Action Required&rdquo; window, briefly connect the RST pin to GND.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/reset-to-gnd.png"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/2/3/reset-to-gnd.png" alt="RST and GND pins" /></a></p>
+
+<p>Short them together for about a second, and then remove the wire. If you&rsquo;ve done it within the time window provided by XCTU, it should proceed to the next step. If not give it another try&hellip;it takes some practice.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="resources--going-further">Resources and Going Further</h2>
+        <p>That should be enough to get you started. If you&rsquo;re looking for more XBee and XBee Shield info, check out these resources:</p>
+
+<ul>
+<li><a href="https://cdn.sparkfun.com/datasheets/Wireless/Zigbee/XBee-Explorer-v21b.pdf">XBee Explorer USB Schematic</a> &ndash; If you&rsquo;re confused about how parts are interconnected on the breakout, check out this PDF for the USB Explorer.</li>
+<li><a href="https://github.com/sparkfun/XBee_Explorer_USB">XBee Explorer USB GitHub Repo</a> &ndash; This is where you&rsquo;ll find the latest and greatest PCB design files for the USB Explorer.</li>
+<li><a href="https://cdn.sparkfun.com/datasheets/Wireless/Zigbee/XBee-Explorer-Dongle-v22.pdf">XBee Explorer Dongle Schematic</a> - Schematic for the Dongle board.</li>
+<li><a href="https://github.com/sparkfun/XBee_Explorer_Dongle">XBee Explorer Dongle GitHub Repo</a> &ndash; This repository contains the most up-to-date Dongle PCB design files.</li>
+<li><a href="https://cdn.sparkfun.com/datasheets/Wireless/Zigbee/SparkFun_XBee_Serial_Explorer_v13.pdf">XBee Explorer Serial Schematic</a> - Schematic showing the internal connections of the Explorer Serial board.</li>
+<li><a href="https://github.com/sparkfun/XBee_Explorer_Serial">XBee Explorer Serial GitHub Repo </a> &ndash; The GitHub repository containing the most up-to-date PCB design files for the XBee Explorer Serial.</li>
+<li><a href="https://www.sparkfun.com/datasheets/Wireless/Zigbee/XBee-Manual.pdf">XBee Series 1 Manual</a> &ndash; For more advanced users, if you really want to take advantage of the XBee&rsquo;s unique abilities, check out this guide.</li>
+<li><a href="https://learn.sparkfun.com/resources/14">XBee Wireless Class Materials</a> &ndash; Check out our teaching materials for the XBee class we lead every once-in-a-while.</li>
+</ul>
+
+
+<h3>Going Further</h3>
+
+<p>With XBee and the XBee Explorer you have most of the tools you&rsquo;ll need to take your project to the airwaves. If you&rsquo;re looking to add Arduino to the mix, we recommend using an <a href="https://www.sparkfun.com/products/10854">XBee Shield</a> and following along with our <a href="https://learn.sparkfun.com/tutorials/xbee-shield-hookup-guide">XBee Shield Hookup Guide</a>.</p>
+
+<p style="text-align:center;"> <a href="https://learn.sparkfun.com/tutorials/xbee-shield-hookup-guide"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/3/0/xbee-shield-action-iso-cropped.png" alt="XBee Shield" /></a></p>
+
+<p>What are you going to make? Need some inspiration? Check out these related tutorials:</p>
+
+<ul>
+<li><a href="https://learn.sparkfun.com/tutorials/xbee-wifi-hookup-guide">XBee WiFi Hookup Guide</a> &ndash; Take the next step with XBees, using the XBee WiFi. These modules allow you to connect to a wireless network and give your Arduino Internet access!</li>
+<li><a href="https://learn.sparkfun.com/tutorials/simon-splosion-wireless">Simon Splosion Wireless</a> &ndash; This tutorial demonstrates one of many techniques to &ldquo;hack&rdquo; the Simon Says &ndash; use XBee&rsquo;s to make the Simon game wireless!</li>
+<li><a href="https://learn.sparkfun.com/tutorials/getting-started-with-the-redbot">Getting Started With the RedBot</a> &ndash; The RedBot is our popular, Arduino-based robot platform. Once you get it rolling, you can take it a step further by controlling it with an XBee!</li>
+<li><a href="https://cdn.sparkfun.com/assets/learn_tutorials/3/5/3/Exploring_XBees_and_XCTU.md">Markdown version of this tutorial</a></li>
+</ul>
+      </div>
+    
+        <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" type="text" value="http://sfe.io/t353" onclick="$(this).select();">
+
+    <div class="share-social">
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','googleplus');" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft353" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','tumblr');" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft353&name=Exploring+XBees+and+XCTU" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','reddit');" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft353" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','twitter');" href="https://twitter.com/intent/tweet?text=Exploring+XBees+and+XCTU&url=http%3A%2F%2Fsfe.io%2Ft353&via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','facebook');" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft353&t=Exploring+XBees+and+XCTU" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','pinterest');" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft353&media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2Flearn_tutorials%2F3%2F5%2F3%2Fdefault.jpg&description=Exploring+XBees+and+XCTU" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+  </div>
+
+  <div class="col-sm-4" id="nav-pages">
+    <div id="sidebar_affix">
+
+      <div id="tutorial-pages" class="list-group">
+        <a class="list-group-item"><b>Sections</b></a>
+                          <a data-pagename="introduction" class="list-group-item" href="#introduction">
+            Introduction          </a>
+                  <a data-pagename="selecting-an-explorer" class="list-group-item" href="#selecting-an-explorer">
+            Selecting an Explorer          </a>
+                  <a data-pagename="drivers-and-assembly" class="list-group-item" href="#drivers-and-assembly">
+            Drivers and Assembly          </a>
+                  <a data-pagename="starting-with-x-ctu" class="list-group-item" href="#starting-with-x-ctu">
+            Starting With X-CTU          </a>
+                  <a data-pagename="configuring-networks" class="list-group-item" href="#configuring-networks">
+            Configuring Networks          </a>
+                  <a data-pagename="troubleshooting" class="list-group-item" href="#troubleshooting">
+            Troubleshooting          </a>
+                  <a data-pagename="resources--going-further" class="list-group-item" href="#resources--going-further">
+            Resources and Going Further          </a>
+              </div>
+
+      <div class="list-group">
+        <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/exploring-xbees-and-xctu/discuss">
+          Comments
+          <span class="badge">5</span>
+        </a>
+                  <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/exploring-xbees-and-xctu/introduction">
+            View Paginated
+          </a>
+                <a class="list-group-item" href="#" onclick="window.print(); return false;">
+          Print
+        </a>
+      </div>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>Tags</b></li>
+        <li class="list-group-item"><ul class="tags-list">
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/hookup">Hookup</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/start-a-project">Start a Project</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/wireless">Wireless</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/xbee">XBee</a>  </li>
+</ul>
+</li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>License</b></li>
+        <li class="list-group-item">
+          <span class="sfe-icon-cc">
+            <span class="visuallyhidden">Creative Commons</span>
+          </span>
+          <small>tutorials are <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="new">CC BY-SA 4.0</a></small>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  require(['tutorial', 'jquery.imagesloaded'], function() {
+    $('#tutorial').tutorial();
+  });
+</script>
+
+      </div> <!-- /container -->
+    </div> <!-- /content -->
+
+    
+<footer>
+
+<div class="social">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="sharing-ingenuity">
+          <span class=sfe-icon-flame></span>
+          <span class="text"><span class="text-top">Start<br></span>something.</span>
+        </div>
+        <ul class="spew">
+          <li><a href="https://www.github.com/sparkfun" target="_blank" class=sfe-icon-github><span class=visuallyhidden>GitHub</span></a></li>
+          <li><a href="https://www.youtube.com/sparkfun" target="_blank" class=sfe-icon-youtube><span class=visuallyhidden>YouTube</span></a></li>
+          <li><a href="https://www.vimeo.com/sparkfun" target="_blank" class=sfe-icon-vimeo><span class=visuallyhidden>Vimeo</span></a></li>
+          <li><a href="https://www.facebook.com/SparkFun" target="_blank" class=sfe-icon-facebook><span class=visuallyhidden>Facebook</span></a></li>
+          <li><a href="https://www.instagram.com/sparkfun/" target="_blank" class=sfe-icon-instagram><span class=visuallyhidden>Instagram</span></a></li>
+          <li><a href="https://plus.google.com/106084846822083498483/" target="_blank" class=sfe-icon-google-plus><span class=visuallyhidden>Google Plus</span></a></li>
+          <li><a href="https://www.flickr.com/photos/sparkfun/" target="_blank" class=sfe-icon-flickr><span class=visuallyhidden>Flickr</span></a></li>
+          <li><a href="https://twitter.com/#!/sparkfun" target="_blank" class=sfe-icon-twitter><span class=visuallyhidden>Twitter</span></a></li>
+          <li><a href="https://www.sparkfun.com/feeds" class=sfe-icon-feed><span class=visuallyhidden>RSS</span></a></li>
+        </ul>
+        <div class="newsletter">
+          <!--[if lte IE 8]>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+<![endif]-->
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+<script>
+  hbspt.forms.create({
+    css: '',
+    cssClass: 'hubspot-newsletter-subscribe',
+    portalId: '2224003',
+    formId: 'd2b17dd4-e1bb-406a-ba41-44c19dcd0376'
+  });
+</script>
+        </div>
+      </div>
+    </div><!-- end .row -->
+  </div><!-- end .container -->
+</div><!-- end .social -->
+
+<div class="container">
+
+    <div class="row">
+
+    <div class="subfooter subfooter-about">
+      <p>
+        In 2003, CU student Nate Seidle blew a power supply in his dorm room and, in lieu of a way to order easy replacements, decided to start his own company. Since then, SparkFun has been committed to sustainably helping our world achieve electronics literacy from our headquarters in Boulder, Colorado.
+      </p>
+      <p>
+        No matter your vision, SparkFun's products and resources are designed to make the world of electronics more accessible. In addition to over 2,000 open source components and widgets, SparkFun offers curriculum, training and online tutorials designed to help demystify the wonderful world of embedded electronics. We're here to help you start something.
+      </p>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>About Us</b>
+            <li><a href="https://www.sparkfun.com/about_sparkfun">About SparkFun</a></li>
+	    <li><a href="http://www.sparkfuneducation.com" target="_blank">SparkFun Education <span class="glyphicon glyphicon-new-window"></span></li>
+	    <li><a title="RSS Feeds" href="https://www.sparkfun.com/feeds">Feeds <span class=sfe-icon-feed></span></a></li>
+            <li><a href="https://www.sparkfun.com/jobs">Jobs</a></li>
+            <li><a href="https://www.sparkfun.com/static/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Help</b></li>
+            <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+            <li><a href="https://www.sparkfun.com/support#ShippingPolicy">Shipping</a></li>
+            <li><a href="https://www.sparkfun.com/returns">Return Policy</a></li>
+            <li><a href="https://www.sparkfun.com/static/faq">FAQ</a></li>
+                      </ul>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Programs</b></li>
+	    <li><a href="https://www.sparkfun.com/sponsorships">Become a Community Partner</a>	      <li><ul><li><a href="https://www.sparkfun.com/cpp">Community Stories</a></li></ul></li>
+	    </li>
+            <li><a href="https://www.sparkfun.com/project_calls">Tell Us About Your Project</a></li>
+            <li><a href="https://learn.sparkfun.com/tutorials/how-to-sell-your-widget-on-sparkfun">Sell Your Widget on SparkFun</a></li>
+            <li><a href="https://www.sparkfun.com/distributors/apply">Become a SparkFun Distributor</a></li>
+            <li><a href="https://www.sparkfun.com/volume">Large Volume Sales</a> </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Community</b></li>
+            <li><a href="https://forum.sparkfun.com/">Forum</a></li>
+            <li><a href="https://www.sparkfun.com/news/263">SparkFun IRC Channel</a></li>
+            <li><a href="https://www.sparkfun.com/quiz">Take the SparkFun Quiz</a></li>
+            <li><a href="https://www.kickstarter.com/pages/sparkfun">SparkFun Kickstarter Projects</a></li>
+            <li><a href="https://www.sparkfun.com/distributors">Distributors</a></li>
+          </ul>
+        </div>
+
+      </div><!-- end .row -->
+
+    </div>
+
+    <div id="feedback" class="subfooter subfooter-woym">
+      <form id="woym_form" class="feedback" action="https://learn.sparkfun.com/feedback/mind.json" onsubmit="$(this).sfeutil('mind_feedback'); return false;" method="POST">
+        <div class="error" id="error_feedback" style="display: none"></div>
+        <input type="hidden" name="sparkaptcha" id="sparkaptcha" value="0">
+
+        <div class="form-group">
+          <label for="feedback_textarea" class="control-label">What's on your mind?</label>
+          <div class="controls">
+            <textarea id="feedback_textarea" class="form-control" name="feedback_text" required></textarea>
+            <div class="error" id="error_feedback_text" style="display: none"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_dest" class="control-label">For which department?</label>
+          <select name="dest" class="form-control" id="feedback_dest">
+            <option value="general">General</option>
+            <option value="cust">Customer Service</option>
+            <option value="tech">Tech Support</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_email" class="control-label">
+            Please include your email address if you'd like us to respond to a specific question.
+          </label>
+
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+            <input type="text" class="form-control" id="feedback_email" name="email" placeholder="email address" />
+          </div>
+          <div class="error" id="error_feedback_email" style="display: none"></div>
+
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+  </div><!-- end .row -->
+  
+  <ul class="copyleft">
+    <li>SparkFun Electronics <a href="https://www.sparkfun.com/news/300">&reg;</a></li>
+    <li><a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=6333+Dry+Creek+Parkway,+Niwot,+CO+80503">Niwot, Colorado</a></li>
+    <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+    <li><a href="https://www.sparkfun.com/sitemap">Site Map</a></li>
+    <li><a href="https://www.sparkfun.com/terms">Terms of Service</a></li>
+    <li><a href="https://www.sparkfun.com/privacy">Privacy Policy</a></li>
+    <li class="desktop-toggle">
+              <a href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fexploring-xbees-and-xctu">Desktop Site</a>          </li>
+  </ul>
+
+</div><!-- end .container -->
+
+</footer>
+
+    <div class="nav-account">
+  <ul class="nav nav-tabs">
+    <li class="visible-xs">
+      <a class="nav-toggle-account back" href="#">Your Account</a>
+    </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fexploring-xbees-and-xctu" data-toggle="modal" data-target="#login_modal" data-remote="false">Log In</a>
+      </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/make">Register</a>
+      </li>
+      </ul>
+</div>
+
+      </div><!-- end .wrapper-inner -->
+    </div><!-- end .wrapper -->
+
+    <!-- Login Modal -->
+<div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Log In</h4>
+        <p class="modal-header-msg"></p>
+      </div>
+      <div class="modal-body">
+        <form role="form" action="https://www.sparkfun.com/account/login" method="post">
+          <input type="hidden" name="redirect" value="/learn/tutorials/exploring-xbees-and-xctu">
+          <div class="form-group">
+            <label for="login-username">Email</label>
+            <input type="email" tabindex="1" name=user id="login-username" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input tabindex="2" type="password" name="passwd" id="login-password" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Log In" tabindex="3" class="btn btn-action">
+          </div>
+        </form>
+        <p>
+          <a href="https://www.sparkfun.com/account/forgot_password">Forgot your password?</a>          <br>
+          No account? <a id="btn_register_account" href="https://www.sparkfun.com/account/make">Register one!</a>        </p>
+      </div>
+    </div>
+  </div>
+</div>
+  
+          
+<!--  begin olark code -->
+  <script type="text/javascript" async> ;(function(o,l,a,r,k,y){if(o.olark)return; r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0]; y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r); y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)}; y.extend=function(i,j){y("extend",i,j)}; y.identify=function(i){y("identify",k.i=i)}; y.configure=function(i,j){y("configure",i,j);k.c[i]=j}; k=y._={s:[],t:[+new Date],c:{},l:a}; })(window,document,"static.olark.com/jsclient/loader.js");
+  /* custom configuration goes here (www.olark.com/documentation) */
+  olark.identify('4728-501-10-9212');</script>
+  <noscript><a href="https://www.olark.com/site/4728-501-10-9212/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+<!-- end olark code -->
+          <script type="text/javascript">
+      (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+        n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/2224003.js';
+        e.parentNode.insertBefore(n, e);
+      })(document,"script","hs-analytics",300000);
+    </script>
+        <script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0046/4761.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+  </script>
+      </body>
+</html>
+

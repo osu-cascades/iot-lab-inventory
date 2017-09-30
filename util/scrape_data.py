@@ -18,8 +18,8 @@ from iot_lab_inventory.models import InventoryItem, Part, Image, Document
 # Column number in csv file
 SKU = 0
 NUM = 1
-NAME = 4
 URL = 2
+NAME = 4
 
 if len(sys.argv) != 2:
     print("usage: ./scrape_data.py all_parts.csv")
@@ -34,7 +34,7 @@ else:
 
 for row in reader:
     part = Part()
-    name = row[NAME]
+    name = row[NAME].strip(' ')
     sku = row[SKU]
     sku_num = sku.split('-')[1]
     part.name = name
@@ -65,56 +65,46 @@ for row in reader:
     divs = soup.find_all('div', class_="description")
     for d in divs:
         p = d.find('p')
-        if p is not None and 'Description' in p.text:
+        if p is not None:
             part.description = p.text
 
     # Grab all jpg images, store in file system
-    images = soup.find_all('img')
-    i = 1
-    for image in images:
-        src = image.get('src')
-        if '.jpg' in src and sku_num in src:
-            # Store image in part_name_1.jpg, 2.jpg, ...
-            filename = name.replace(' ', '_').replace('/','_') + '_' + str(i) + '.jpg'
-            imageObj = Image(filename=filename)
-            imageObj.part = part
+    divs = soup.find_all('div', class_="carousel-inner")
+    for div in divs:
+        images = div.find_all('img')
+        i = 1
+        for image in images:
+            src = image.get('src')
+            if '.jpg' in src and sku_num in src:
+                # Store image in part_name_1.jpg, 2.jpg, ...
+                filename = name.replace(' ', '_').replace('/','_') + '_' + str(i) + '.jpg'
+                imageObj = Image(filename=filename)
+                imageObj.part = part
 
-            # image_data = urllib2.urlopen(src).read()
-            # with open(dirname + filename, "wb") as image_file:
-            #     image_file.write(image_data)
-            i += 1
+                image_data = urllib2.urlopen(src).read()
+                with open(dirname + filename, "wb") as image_file:
+                    image_file.write(image_data)
 
-    # Grab all pdf documentation, store in file system
-    links = soup.find_all('a')
-    for link in links:
-        href = link.get('href')
-        if href is not None \
-                and '.pdf' in href \
-                and 'http' in href:
-                # and 'micrel' not in href\
-                # and 'interlinkelectronics' not in href:
-            pdf_name = href.split('/')[-1]
-            pdf_name = pdf_name.replace('%','_')
-            try:
-                filename = name.replace(' ', '_').replace('/','_') + '_' + pdf_name
+                i += 1
+
+    #grab all documentation:
+    docs_div = soup.find_all('div', {'id':'documents-tab'})
+    for div in docs_div:
+        links = div.find_all('a')
+        for link in links:
+            if 'Hookup Guide' in link.string or 'Datasheet' in link.string or 'Tutorial' in link.string:
+                href = link.get('href')
+                filename = name.replace(' ', '_') + '_' + link.string.replace(' ', '_')
+                if '.pdf' in href:
+                    filename += '.pdf'
+                elif '.zip' in href:
+                    filename += '.zip'
+                else:
+                    filename += '.html'
+                cmd = 'wget %s -O %s' % (href, dirname + filename)
                 document = Document(filename=filename)
                 document.part = part
-
-                # pdf_data = urllib2.urlopen(href).read()
-                # with open(dirname + filename, 'wb') as pdf_file:
-                #     pdf_file.write(pdf_data)
-
-            except Exception as e:
-                pass
-
-        if link.string == 'Hookup Guide':
-            if href is not None and 'learn' in href:
-                filename = name.replace(' ','_').replace('/','_') + '_hookup_guide.pdf'
-                document = Document(filename=filename)
-                document.part = part
-
-                # cmd = "wkhtmltopdf '" + href + "' " + '"' + dirname + filename + '"'
-                # os.system(cmd)
+                os.system(cmd)
 
     # Put part into database
     db.session.add(part)

@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- mobile mode if small screen device -->
+    
+    <title>IR Control Kit Hookup Guide - learn.sparkfun.com</title>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/css/bootstrap.min.css?rev=1506620278" rel="stylesheet">
+    <link rel="stylesheet" href="/css/theme.github.css?rev=1506620278" type="text/css" media="screen" />    <link rel="alternate" type="application/atom+xml" title="Education Blog" href="https://learn.sparkfun.com/feeds/blog" />
+    <link rel="alternate" type="application/atom+xml" title="Tutorials" href="https://learn.sparkfun.com/feeds/tutorials" />
+    <link rel="alternate" type="application/atom+xml" title="Education Blog Comments" href="https://learn.sparkfun.com/feeds/blog_comments" />
+    <link rel="alternate" type="application/atom+xml" title="Tutorial Comments" href="https://learn.sparkfun.com/feeds/tutorial_comments" />
+
+    <script type="text/javascript">
+      var SFECONFIG = {
+        dnt: false,
+        http_server: 'http://learn.sparkfun.com',
+        https_server: 'https://learn.sparkfun.com',
+        http_static: 'https://cdn.sparkfun.com',
+        learn_server: 'https://learn.sparkfun.com',
+        commerce_server: 'https://www.sparkfun.com',
+        base_url: '/',
+        url: '/',
+        controller: 'tutorials',
+        action: 'view',
+        entity_id: '',
+        auth: false,
+        sparkrev: '1506620278',
+        track_arduino_products: true,
+        search_key: 'xY6qr5Ui3V2UMA762D9Z'      };
+      var require = {
+        paths: {
+          'jqueryui': 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min'
+        },
+        baseUrl: '/js/',
+        urlArgs: "sparkrev=" + SFECONFIG.sparkrev,
+        deps: ['jqueryui'],
+        callback: function() {
+          $('#learn').learn();
+          $('#learn').sfeutil();
+          $.shared('domready');
+        }
+      };
+    </script>
+    <script src="/js/learn-built.js?sparkrev=1506620278"></script>
+          <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-3404365-1', 'auto', {'allowLinker': true});
+      ga('require', 'linker');
+      ga('linker:autoLink', ['www.sparkfun.com', 'avc.sparkfun.com'] );
+      ga('require', 'displayfeatures');
+            ga('set', 'dimension1', 'Guest');
+      ga('send', 'pageview');
+
+      </script>
+        <script type="text/javascript">
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js'); 
+    fbq('init', '988931021243392');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1"src="https://www.facebook.com/tr?id=988931021243392&ev=PageView&noscript=1"/>
+  </noscript>
+      </head>
+
+  <body id=learn class="layout-default no-type tutorials-view" ontouchstart="">
+            <!--
+    Start of DoubleClick Floodlight Tag: Please do not remove
+    Activity name of this tag: Universal
+    URL of the webpage where the tag is expected to be placed: http://sparkfun.com
+    This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+    Creation Date: 07/18/2016
+  -->
+  <script type="text/javascript">
+    var axel = Math.random() + "";
+    var a = axel * 10000000000000;
+    document.write('<iframe src="https://5626816.fls.doubleclick.net/activityi;src=5626816;type=count0;cat=unive0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+  </script>
+  <noscript>
+    <iframe src="https://5626816.fls.doubleclick.net/activityi;src=5626816;type=count0;cat=unive0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+  </noscript>
+  <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+    
+    <div class="wrapper" itemscope itemtype="http://schema.org/WebSite">
+      <meta itemprop="url" content="https://learn.sparkfun.com/">
+      <div class=wrapper-inner>
+
+    
+<div class="header">
+  <div class="container">
+
+    <!-- Mobile Nav Button -->
+    <div class="mobile-menu-container left">
+      <a id="nav_toggle" class="mobile-menu-button nav_toggle" href="#"><span class="sfe-icon-hamburger"></span></a>
+              <a id="search_toggle" class="mobile-menu-button" href="#"><span class="glyphicon glyphicon-search"></span></a>
+          </div>
+
+    <nav class="top-links">
+      <ul>
+        <li>
+          <a href="https://www.sparkfun.com/distributors">Find a Retailer</a>        </li>
+                  <li>
+            <div class="dropdown">
+              <a href="#" id="phone_hours" type="button" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                Need Help?
+                <span class="caret"></span>
+              </a>
+              <div class="dropdown-menu pull-right need-help" role="menu" aria-labelledby="phone_hours">
+                <h4>Customer Service</h4>
+                <p><a href="https://www.sparkfun.com/orders/"><span class="glyphicon glyphicon-dashboard"></span> Track My Order</a></p>
+                <p><a href="https://www.sparkfun.com/support"><span class="glyphicon glyphicon-question-sign"></span> Frequently Asked Questions</a></p>
+                <p><a href="https://www.sparkfun.com/support#InternationalShipping"><span class="glyphicon glyphicon-globe"></span> International Shipping Info</a></p>
+                <p><a href="mailto:cservice@sparkfun.com"><span class="glyphicon glyphicon-envelope"></span> Send Email</a></p>
+                <p class="small text-muted">
+                  Mon-Fri, 9am to 12pm and<br>
+                  1pm to 5pm U.S. Mountain Time:
+                </p>
+                <p><span class="glyphicon glyphicon-earphone"></span> (303) 284-0979</p>
+                                  <p><a data-toggle="chatpopup" href="https://www.sparkfun.com/chat/popup"><span class="glyphicon glyphicon-comment"></span> Chat With Us</a></p>
+                              </div>
+            </div>
+          </li>
+              </ul>
+    </nav>
+
+    <!-- Logo -->
+    <div class="logo-container">
+      <a class="logo" href="https://www.sparkfun.com/">
+        <span class="sfe-icon-flame"></span>
+        <span class="sfe-icon-sparkfun" data-icon="&#x1f525">
+          <span class="visuallyhidden">sparkfun.com</span>
+        </span>
+      </a>
+    </div>
+
+    <!-- Tabs -->
+    <!-- also edit mobile tabs in .tabs-container-mobile -->
+    <nav class="tabs-container hidden-xs">
+      <ul>
+        <li class="shop "><a href="https://www.sparkfun.com/categories">Shop</a></li>
+        <li class="learn active"><a href="https://learn.sparkfun.com/">Learn</a></li>
+        <li class="blog "><a href="https://www.sparkfun.com/news">Blog</a></li>
+        <li class="support "><a href="https://www.sparkfun.com/support">Support</a></li>
+      </ul>
+    </nav>
+
+    <!-- Cart & User -->
+    <div class="user-container mobile-menu-container right">
+
+      <a id="account_toggle" class="mobile-menu-button" href="#"><span class="glyphicon glyphicon-user"></span></a>
+
+              <div class="cart mobile-menu-button">
+          <a href="https://www.sparkfun.com/cart">
+            <span id="cart_status" class="sfe-icon-carticon cart-empty">
+              <span class="visuallyhidden">Shopping Cart</span>
+            </span>
+            <span class="cart_count">
+              <span id="items_in_cart">0</span>
+              <span id="cart_noun" class="visuallyhidden">items</span>
+            </span>
+          </a>
+        </div>
+      
+              <div class="user">
+          <!-- login modal trigger -->
+          <a class="btn btn-default" href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fir-control-kit-hookup-guide" data-toggle="modal" data-target="#login_modal" data-remote="false">log in</a>
+          <a class="btn btn-default" href="https://www.sparkfun.com/account/make">register</a>        </div>
+      
+    </div>
+
+    <nav class="tabs-container-mobile visible-xs col-xs-12">
+      <ul>
+        <li class="shop "><a href="https://www.sparkfun.com/categories">Shop</a></li>
+        <li class="learn active"><a href="https://learn.sparkfun.com/">Learn</a></li>
+        <li class="blog "><a href="https://www.sparkfun.com/news">Blog</a></li>
+        <li class="support "><a href="https://www.sparkfun.com/support">Support</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <!-- Navigation / Search -->
+  <div class="main-nav-container">
+
+    <div class="container">
+
+      <nav class="product-nav">
+        <button type="button" class="product-menu">
+          <span class="menu-icon sfe-icon-hamburger"></span>
+          <span class="product-menu-name">Product Menu</span>
+        </button>
+
+                  <form id="search_form" class="search" action="https://www.sparkfun.com/search/results" method="get" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+            <meta itemprop="target" content="https://www.sparkfun.com/search/results?term={term}">
+            <div class="ui-widget">
+              <input name="term" id="global-search" class="form-control" type="text" value="" placeholder="find products, tutorials, etc..." itemprop="query-input" autocomplete="off">
+              <button type="submit" class="glyphicon glyphicon-search global-search-icon" aria-label="Search"></button>
+            </div>
+          </form>
+              </nav>
+
+      <nav class="sub-nav">
+        <ul>
+          <li>
+            <a href="http://www.sparkfuneducation.com" target="_blank">Education</a>
+          </li>
+          <li>
+            <a href="https://avc.sparkfun.com/"><span class="sfe-icon-avc"></span></a>          </li>
+          <li>
+            <a href="https://forum.sparkfun.com/" target="_blank">Forum</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="product-menu-container">
+      <div class="container">
+
+        <div class="fixed-product-menu-container col-lg-2 col-sm-3 col-xs-12">
+          <div class="sub-nav-mobile product-menu-group">
+            <a class="product-menu-heading desktop-toggle" href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fir-control-kit-hookup-guide">Desktop Site</a>            <a class="product-menu-heading" href="http://www.sparkfuneducation.com" target="_blank">Education</a>
+            <a class="product-menu-heading" href="https://avc.sparkfun.com/"><span class="sfe-icon-avc"></span></a>            <ul class="list-unstyled">
+            </ul>
+          </div>
+          <div class="product-menu-group">
+            <a class="product-menu-heading" href="https://www.sparkfun.com/categories">All Categories</a>            <ul class="list-unstyled">
+            </ul>
+          </div>
+          <div class="product-menu-group">
+            <a class="product-menu-heading" href="https://www.sparkfun.com/categories/featured">Featured <span class="visible-xs pull-right glyphicon glyphicon-plus"></span></a>            <ul class="list-unstyled">
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/new_products">New Products</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/top"><span class="sfe-icon-flame"></span> Top Sellers</a></li>
+                              <li>
+                  <a href="https://www.sparkfun.com/fallsale" class="product-menu-item"><span class="sfe-icon-pumpkin" style="color:#ff8000"></span> Fall Into Savings Sale</a>
+                </li>
+                              <li>
+                  <a href="https://www.sparkfun.com/spectacle" class="product-menu-item"><span class="sfe-icon-spectacle-glasses" style="color:#000000"></span> Spectacle</a>
+                </li>
+                            <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/283">SparkX</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/sale">Sale</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/gift_certificates">Gift Certificates</a></li>
+            </ul>
+          </div>
+                      <a href="https://www.sparkfun.com/microbit" class="hidden-xs">
+              <img class="img-responsive img-rounded center-block" src="https://cdn.sparkfun.com//c/180-180/assets/product_menu_items/1/microbit-now-availble.jpg" alt="Micro:bit Ecosystem">
+            </a>
+                  </div>
+
+                              <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/287" class="product-menu-heading">
+                 Brands                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/featured" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-flame" style="color:#ee2e22"></span> SparkFun                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/103" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-arduino" style="color:#00878f"></span> Arduino                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/233" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-rpi-multi-color" style="color:#ffffff"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span> Raspberry Pi                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/284" class="product-menu-item">
+                                               micro:bit                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/279" class="product-menu-item">
+                                               Espressif (ESP)                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/287" class="product-menu-item">
+                                               <small>all brands</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/2" class="product-menu-heading">
+                 Development                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/299" class="product-menu-item">
+                                               Single Board Comp.                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/300" class="product-menu-item">
+                                               Microcontrollers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/136" class="product-menu-item">
+                                               FPGA                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/149" class="product-menu-item">
+                                               Prototyping Boards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/1" class="product-menu-item">
+                                               Programmers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/2" class="product-menu-item">
+                                               <small>all development</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/23" class="product-menu-heading">
+                 Sensors                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/304" class="product-menu-item">
+                                               Movement                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/146" class="product-menu-item">
+                                               Biometrics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/102" class="product-menu-item">
+                                               Imaging                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/305" class="product-menu-item">
+                                               Environment                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/117" class="product-menu-item">
+                                               Capacitive                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/23" class="product-menu-item">
+                                               <small>all sensors</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/46" class="product-menu-heading">
+                 Tools                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/271" class="product-menu-item">
+                                               3D Printing                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/280" class="product-menu-item">
+                                               CNC                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/49" class="product-menu-item">
+                                               Soldering                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/47" class="product-menu-item">
+                                               Hand Tools                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/177" class="product-menu-item">
+                                               Instruments                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/46" class="product-menu-item">
+                                               <small>all tools</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/310" class="product-menu-heading">
+                 Miscellaneous                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/157" class="product-menu-item">
+                                               All Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/176" class="product-menu-item">
+                                               Books                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/311" class="product-menu-item">
+                                               Arts/Crafts Supplies                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/351" class="product-menu-item">
+                                               SD Cards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/130" class="product-menu-item">
+                                               Swag                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/310" class="product-menu-item">
+                                               <small>all misc</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/51" class="product-menu-heading">
+                 Components                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/89" class="product-menu-item">
+                                               LED &amp; Illumination                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/145" class="product-menu-item">
+                                               Buttons &amp; Switches                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/28" class="product-menu-item">
+                                               Power                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/76" class="product-menu-item">
+                                               LCDs                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/70" class="product-menu-item">
+                                               Cables                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/51" class="product-menu-item">
+                                               <small>all components</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/204" class="product-menu-heading">
+                 E-Textiles                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/327" class="product-menu-item">
+                                               LilyPad                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/328" class="product-menu-item">
+                                               Sewable Electronics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/206" class="product-menu-item">
+                                               Materials                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/268" class="product-menu-item">
+                                               E-Textile Power                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/329" class="product-menu-item">
+                                               E-Textile Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/204" class="product-menu-item">
+                                               <small>all e-textiles</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/31" class="product-menu-heading">
+                 Robotics                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/pages/Actobotics" class="product-menu-item">
+                                               Actobotics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/178" class="product-menu-item">
+                                               Motors &amp; Drivers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/330" class="product-menu-item">
+                                               Parts                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/155" class="product-menu-item">
+                                               Hardware                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/181" class="product-menu-item">
+                                               Robotics Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/31" class="product-menu-item">
+                                               <small>all robotics</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/16" class="product-menu-heading">
+                 Wireless &amp; IoT                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/115" class="product-menu-item">
+                                               Bluetooth                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/112" class="product-menu-item">
+                                               WiFi                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/338" class="product-menu-item">
+                                               Satellite                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/4" class="product-menu-item">
+                                               GPS                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/339" class="product-menu-item">
+                                               Wireless Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/16" class="product-menu-item">
+                                               <small>all wireless/IoT</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/273" class="product-menu-heading">
+                 Audio                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/343" class="product-menu-item">
+                                               Audio Boards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/342" class="product-menu-item">
+                                               Audio Cables                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/344" class="product-menu-item">
+                                               Speakers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/345" class="product-menu-item">
+                                               Audio Chips                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/273" class="product-menu-item">
+                                               <small>all audio</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                  
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+    
+    <div class=content>
+      <div class=container id=airlock>
+
+        
+        <div class=main-title>
+  <ul class="breadcrumb">
+    <li><a href="https://learn.sparkfun.com/">Home</a></li>
+    <li><a href="https://learn.sparkfun.com/tutorials">Tutorials</a></li>
+    <li>IR Control Kit Hookup Guide</li>
+      </ul>
+
+  <h1>
+    IR Control Kit Hookup Guide  </h1>
+
+</div>
+
+
+<a id=nav_toggle_pages class=nav_toggle href="#"><span>&#8801;</span> Pages</a>
+
+<div id=tutorial class="row">
+
+  <div class="col-sm-8" id="sections">
+
+    <div class="contributors">
+                      Contributors:
+                <a href="https://www.sparkfun.com/users/69916"><img src="https://static.sparkfun.com/avatar/f4c7d38e015f5dc7ca404c23b30305f4?d=retro&s=20&r=pg" /> Jimb0</a>          </div>
+
+    <span class="fave_widget verbose">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="136">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">10</span>
+</span>    <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" type="text" value="http://sfe.io/t136" onclick="$(this).select();">
+
+    <div class="share-social">
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','googleplus');" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft136" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','tumblr');" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft136&name=IR+Control+Kit+Hookup+Guide" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','reddit');" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft136" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','twitter');" href="https://twitter.com/intent/tweet?text=IR+Control+Kit+Hookup+Guide&url=http%3A%2F%2Fsfe.io%2Ft136&via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','facebook');" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft136&t=IR+Control+Kit+Hookup+Guide" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','pinterest');" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft136&media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2Ff%2F5%2Fa%2Ff%2Fa%2F524c417d757b7fe86c8b456a.png&description=IR+Control+Kit+Hookup+Guide" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+          <div class="section tutorial-page">
+        <h2 id="getting-started">Getting Started</h2>
+        <p><a href="https://learn.sparkfun.com/tutorials/ir-communication">Infrared</a> (IR) is a cheap and (as you&rsquo;ll soon discover) easy way to add wireless control to your project. The <a href="https://www.sparkfun.com/products/11761">IR Control Kit</a> gives you everything you need to take control of the extravisible light waves (or are they particles?), so you can remotely control your custom <a href="https://learn.sparkfun.com/tutorials/mp3-player-shield-music-box">music box</a> or build a controller for your TV or stereo.</p>
+
+<p style="text-align:center;"> <a href="https://www.sparkfun.com/products/11761"><img src="https://cdn.sparkfun.com/r/600-600/assets/d/7/8/0/e/524c4670757b7fa6768b4569.png" alt="IR Remote interfacing with Arduino" /></a></p>
+
+<p>In this tutorial we&rsquo;ll show you how to hook up all of the components included with the IR Control Kit, which includes:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/5/2/5/4/e/524c5cf4757b7fe9068b4568.png"><img src="https://cdn.sparkfun.com/assets/5/2/5/4/e/524c5cf4757b7fe9068b4568.png" alt="IR Control Kit contents" /></a></p>
+
+<ul>
+<li>SparkFun&rsquo;s custom-made <a href="https://www.sparkfun.com/products/11759">Infrared Remote Control</a></li>
+<li>A <a href="https://www.sparkfun.com/products/11928">CR2025 Coin Cell Battery</a> for the remote.</li>
+<li>Two 38kHz demodulating <a href="https://www.sparkfun.com/products/10266">Infrared Receiver Modules</a></li>
+<li>Two 950nm-emitting <a href="https://www.sparkfun.com/products/9349">Infrared LEDs</a></li>
+<li>A handful of 330&Omega; resistors. You can never have enough current-limiting resistors.</li>
+</ul>
+
+
+<h3>Required Materials</h3>
+
+<p>In this tutorial, we&rsquo;ll be using an Arduino to both transmit and interpret received IR data. On top of the components included with the IR Control Kit, you&rsquo;ll also need these to follow along with this tutorial:</p>
+
+<ul>
+<li>An <a href="https://www.sparkfun.com/products/11021">Arduino</a> (or Arduino-compatible board) and a means to program it.</li>
+<li>A <a href="https://www.sparkfun.com/categories/149">breadboard</a> is optional but recommended to help with the hardware hookup.</li>
+<li>As with the breadboard, <a href="https://www.sparkfun.com/products/11026">jumper wires</a> are optional but the recommended tool to wire between breadboard and Arduino.</li>
+<li>The first of the examples uses an <a href="https://www.sparkfun.com/products/9264">RGB LED</a> to create a fun, IR-controlled RGB LED project. This is optional.</li>
+<li>The second example uses a simple <a href="https://www.sparkfun.com/products/97">momentary push-button</a> to trigger an IR code transmission. Optional again.</li>
+</ul>
+
+
+<h3>Suggested Reading</h3>
+
+<ul>
+<li><a href="https://learn.sparkfun.com/tutorials/light">Light</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/ir-communication">Infrared Communication</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/light-emitting-diodes-leds">Light-Emitting Diodes (LEDs)</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/switch-basics">Switch Basics</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/pulse-width-modulation">Pulse Width Modulation (PWM)</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/what-is-an-arduino">What is an Arduino?</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/terminal-basics">Serial Terminal Basics</a></li>
+</ul>
+      </div>
+          <div class="section tutorial-page">
+        <h2 id="explanation-of-parts">Explanation of Parts</h2>
+        <p>Before we dig into wiring stuff up and uploading sketches, let&rsquo;s quickly overview each of the components in the IR Control Kit.</p>
+
+<h3>IR LED</h3>
+
+<p>Let&rsquo;s start with simplest of the components first &ndash; the <a href="https://www.sparkfun.com/products/9349">infrared LED</a>. Anyone who&rsquo;s ever worked with electronics has blinked an <a href="https://learn.sparkfun.com/tutorials/light-emitting-diodes-leds">LED</a>, but those blinking LEDs are usually in our visual spectrum. These IR LEDs are just like any LED you&rsquo;ve blinked before, but they emit light at a wavelength of about <strong>950nm</strong> &ndash; radiation well outside of our visual range (about 390 to 700nm).</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/6/b/6/a/c/524b3544757b7fd36c8b4567.png"><img src="https://cdn.sparkfun.com/assets/6/b/6/a/c/524b3544757b7fd36c8b4567.png" alt="IR LED iso" /></a></p>
+
+<p style="text-align:center;"> <em>Is this LED lit up? No normal human can tell!</em></p>
+
+<p>You can&rsquo;t see these LEDs light up, but you can still use them just like any LED. They still have two <a href="https://learn.sparkfun.com/tutorials/polarity">polarized</a> legs: an anode (positive, the long leg) and a cathode. They have a typical forward voltage of about <strong>1.5V</strong>, and a maximum forward current of 50mA. For more specs, you can check out the LED&rsquo;s <a href="http://cdn.sparkfun.com/datasheets/Components/LED/YSL-R531FR1C-F1.pdf">datasheet</a>.</p>
+
+<h4>330&Omega; Current Limiting Resistor</h4>
+
+<p>Just as with any LED, the IR LED needs a series resistor to limit current. That&rsquo;s what the included <a href="https://www.sparkfun.com/products/8377">330&Omega;</a> resistors are for.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/0/8/7/0/4/524c47b9757b7f4f6c8b4571.png"><img src="https://cdn.sparkfun.com/r/300-300/assets/0/8/7/0/4/524c47b9757b7f4f6c8b4571.png" alt="330 ohm resistors" /></a></p>
+
+<p>With a 5V supply connected to the resistor/LED series combo, current through the LED should be limited to about 10mA, which is well inside its safe operating range.</p>
+
+<h3>TSOP38238 IR Receiver Module</h3>
+
+<p>While it may look like a simple transistor, the <a href="https://www.sparkfun.com/products/10266">TSOP38238 IR receiver module</a> is actually a unique, light-demodulating <a href="https://learn.sparkfun.com/tutorials/integrated-circuits">integrated circuit</a>. With three pins, it&rsquo;s about as simple as an IC can get. There are two pins for power &ndash; ground in the middle, and V<sub>S</sub> to a side &ndash; and one, single data output pin.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/6/a/f/b/f/524b36e8757b7f3d6c8b4567.png"><img src="https://cdn.sparkfun.com/assets/6/a/f/b/f/524b36e8757b7f3d6c8b4567.png" alt="IR receiver pinout" /></a></p>
+
+<p>The IR receiver can be powered at anywhere from <strong>2.5V to 5.5V</strong>, so it plays very nicely with a variety of development boards.</p>
+
+<p>This module is tuned to <strong>demodulate 38kHz signals</strong>, which are a very common in the IR signal world. It turns a spiky, modulated signal like this:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/2/3/0/5/0/524b38c3757b7fbf6c8b4567.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/2/3/0/5/0/524b38c3757b7fbf6c8b4567.png" alt="modulated input signal" /></a></p>
+
+<p>Into this a cleaner, much easier to read signal like this:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/d/d/6/b/5/524b38c3757b7fd26c8b4567.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/d/d/6/b/5/524b38c3757b7fd26c8b4567.png" alt="demodulated output signal" /></a></p>
+
+<p>So all we have to do to read the output of this device is count high and low pulses, and measure their durations. For more information on the TSOP38238, check out its <a href="https://www.sparkfun.com/datasheets/Sensors/Infrared/tsop382.pdf">datasheet</a>.</p>
+
+<h3>IR Remote</h3>
+
+<p>Finally we come to the flashy part of the kit: SparkFun&rsquo;s custom-made <a href="https://www.sparkfun.com/products/11759">Infrared Remote Control</a>. This <strong>nine button</strong> remote emits unique 32-bit codes for each button press. The codes are mapped as shown on this image (this will come in handy in our first example):</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/7/1/a/1/c/524b3e48757b7f476d8b4567.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/7/1/a/1/c/524b3e48757b7f476d8b4567.png" alt="IR button remote codes" /></a></p>
+
+<p>The remote&rsquo;s infrared output signal is modulated at 38kHz, so it works perfectly with the IR receiver module.</p>
+
+<h4>How to Battery?</h4>
+
+<p>The IR remote doesn&rsquo;t come with a battery installed, but the IR Control Kit includes one for it. The battery compartment can be found on the bottom edge of the remote. To <strong>open the battery compartment</strong>, pinch the latch with your thumbnail while pulling the drawer out with another fingernail.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/4/e/b/9/5/524c4a87757b7fd56c8b456b.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/4/e/b/9/5/524c4a87757b7fd56c8b456b.png" alt="How to battery" /></a></p>
+
+<p>Insert the battery so that the positive (+) side is facing the <strong>bottom</strong> of the remote.  Then slide the battery drawer back in.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="example-1-using-the-remote">Example 1: Using the Remote</h2>
+        <p>In the first example, we&rsquo;ll show how you can connect the IR receiver to an Arduino, and control it with the IR remote.</p>
+
+<h3>Step 1: Download and Install Ken Shirriff&rsquo;s IRremote Library</h3>
+
+<p>For quickly and easily adding IR control to your Arduino, we recommend you download Ken Shirriff&rsquo;s IRremote library. You can <a href="https://github.com/shirriff/Arduino-IRremote">get it from the GitHub repository</a> (check out our <a href="https://learn.sparkfun.com/tutorials/using-github">Using GitHub tutorial for help</a>, or click <a href="https://github.com/shirriff/Arduino-IRremote/archive/master.zip">here</a> to grab it directly:</p>
+
+<p>For help installing the library, check out our <a href="https://learn.sparkfun.com/tutorials/installing-an-arduino-library">Installing an Arduino Library tutorial</a>. You&rsquo;ll need to extract the folder you download into a &ldquo;libraries&rdquo; folder within your Arduino sketchbook.</p>
+
+<div class="alert alert-warning"><b>Note:</b> Make sure the folder name that you copy into your "libraries" folder is named "IRremote". Use of the ` - ` in the directory name can lead to errors in compiling the code. </div>
+
+
+<p>The IRremote library is a powerful tool for adding IR to your project. Whether you want to send IR codes out to an appliance, or transmit IR codes from a remote to your Arduino (or both!). We&rsquo;ll go over some of the simple stuff you can do with the library. For more help using it, check out <a href="http://www.righto.com/2009/08/multi-protocol-infrared-remote-library.html">Ken Shirriff&rsquo;s blog</a>.</p>
+
+<h3>Step 2: Setup the Hardware</h3>
+
+<p>In this first example, we&rsquo;ll use the IR receiving capabilities of the IRremote library to use the SparkFun IR remote to control an RGB LED. An RGB LED isn&rsquo;t included with the <a href="https://www.sparkfun.com/products/11761">IR Control Kit</a>, but it might be something you&rsquo;ve already got in your parts box. If not, any set of three will do. Or you can even just use the <a href="https://learn.sparkfun.com/tutorials/terminal-basics/arduino-serial-monitor-windows-mac-linux">serial monitor</a> as your output monitor.</p>
+
+<p>This is how we&rsquo;ll connect the IR receiver and RGB LED to our Arduino:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/f/1/7/6/7/524b4959757b7f456d8b4568.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/f/1/7/6/7/524b4959757b7f456d8b4568.png" alt="Circuit fritzing diagram" /></a></p>
+
+<p>The output of the IR receiver connects to D11, but it could be connected to any digital input pin. If you swap pins, make sure you reflect those changes in code!</p>
+
+<p>We don&rsquo;t have a use for the IR LED yet, so, for now, set that safely aside.</p>
+
+<h3>Step 3: Upload the Sketch</h3>
+
+<p>Copy and paste the below code into your Arduino IDE. Then upload it to your Arduino to create your very own, remote controlled, RGB LED.</p>
+
+<pre><code>language:c
+/* RGB Remote Control
+   by: Jim Lindblom
+   SparkFun Electronics
+   date: October 1, 2013
+
+   This sketch uses Ken Shirriff's *awesome* IRremote library:
+       https://github.com/shirriff/Arduino-IRremote
+
+   RGB Remote Control uses a combination of SparkFun's 
+   IR Remote (https://www.sparkfun.com/products/11759) and an
+   IR receiver diode (https://www.sparkfun.com/products/10266) to
+   control an RGB LED.
+
+   The IR Remote's power button turns the LED on or off. The A, B, 
+   and C buttons select a channel (red, green, or blue). The up
+   and down arrows increment or decrement the LED brightness on that channel.
+   The left and right arrows turn a channel to min or max, and
+   circle set it to the middle.
+
+   Hardware setup:
+     * The output of an IR Receiver Diode (38 kHz demodulating
+       version) should be connected to the Arduino's pin 11.
+       * The IR Receiver diode should also be powered off the
+         Arduino's 5V and GND rails.
+     * A common cathode RGB LED is connected to Arduino's pins 
+       5, 9, and 6 (red, green, and blue pins).
+ */
+
+#include &lt;IRremote.h&gt; // Include the IRremote library
+
+/* Setup constants for SparkFun's IR Remote: */
+#define NUM_BUTTONS 9 // The remote has 9 buttons
+/* Define the IR remote button codes. We're only using the
+   least signinficant two bytes of these codes. Each one 
+   should actually have 0x10EF in front of it. Find these codes
+   by running the IRrecvDump example sketch included with
+   the IRremote library.*/
+const uint16_t BUTTON_POWER = 0xD827; // i.e. 0x10EFD827
+const uint16_t BUTTON_A = 0xF807;
+const uint16_t BUTTON_B = 0x7887;
+const uint16_t BUTTON_C = 0x58A7;
+const uint16_t BUTTON_UP = 0xA05F;
+const uint16_t BUTTON_DOWN = 0x00FF;
+const uint16_t BUTTON_LEFT = 0x10EF;
+const uint16_t BUTTON_RIGHT = 0x807F;
+const uint16_t BUTTON_CIRCLE = 0x20DF;
+
+/* Connect the output of the IR receiver diode to pin 11. */
+int RECV_PIN = 11;
+/* Initialize the irrecv part of the IRremote  library */
+IRrecv irrecv(RECV_PIN);
+decode_results results; // This will store our IR received codes
+uint16_t lastCode = 0; // This keeps track of the last code RX'd
+
+/* Setup RGB LED pins: */
+enum ledOrder // Make an enum to add some clarity in the code
+{
+  RED,   // 0
+  GREEN, // 1
+  BLUE   // 2
+};
+const int rgbPins[3] = {5, 9, 6}; // Red, green, blue pins respectively
+byte rgbValues[3] = {55, 23, 200}; // This keeps track of channel brightness
+byte activeChannel = RED; // Start with RED as the active channel
+boolean ledEnable = 1; // Start with the LED on.
+
+void setup()
+{
+  Serial.begin(9600); // Use serial to debug. 
+  irrecv.enableIRIn(); // Start the receiver
+
+  /* Set up the RGB LED pins: */
+  for (int i=0; i&lt;3; i++)
+  {
+    pinMode(rgbPins[i], OUTPUT);
+    analogWrite(rgbPins[i], rgbValues[i]);
+  }
+}
+
+// loop() constantly checks for any received IR codes. At the
+// end it updates the RGB LED.
+void loop() 
+{
+  if (irrecv.decode(&amp;results)) 
+  {
+    /* read the RX'd IR into a 16-bit variable: */
+    uint16_t resultCode = (results.value &amp; 0xFFFF);
+
+    /* The remote will continue to spit out 0xFFFFFFFF if a 
+     button is held down. If we get 0xFFFFFFF, let's just
+     assume the previously pressed button is being held down */
+    if (resultCode == 0xFFFF)
+      resultCode = lastCode;
+    else
+      lastCode = resultCode;
+
+    // This switch statement checks the received IR code against
+    // all of the known codes. Each button press produces a 
+    // serial output, and has an effect on the LED output.
+    switch (resultCode)
+    {
+      case BUTTON_POWER:
+        Serial.println("Power");
+        if (ledEnable) ledEnable = 0;
+        else ledEnable = 1; // Flip ledEnable
+        break;
+      case BUTTON_A:
+        Serial.println("A");
+        activeChannel = RED;
+        break;
+      case BUTTON_B:
+        Serial.println("B");
+        activeChannel = GREEN;
+        break;
+      case BUTTON_C:
+        Serial.println("C");
+        activeChannel = BLUE;
+        break;
+      case BUTTON_UP:
+        Serial.println("Up");
+        rgbValues[activeChannel]++; // Increment brightness
+        break;
+      case BUTTON_DOWN:
+        Serial.println("Down");
+        rgbValues[activeChannel]--; // Decrement brightness
+        break;
+      case BUTTON_LEFT:
+        Serial.println("Left");
+        rgbValues[activeChannel] = 0; // Min brightness (off)
+        break;
+      case BUTTON_RIGHT:
+        Serial.println("Right");
+        rgbValues[activeChannel] =  255; // Max brightness
+        break;
+      case BUTTON_CIRCLE:
+        Serial.println("Circle");
+        rgbValues[activeChannel] = 127; // Medium brightness
+        break;
+      default:
+        Serial.print("Unrecognized code received: 0x");
+        Serial.println(results.value, HEX);
+        break;        
+    }    
+    irrecv.resume(); // Receive the next value
+  }
+
+  // Every time through the loop, update the RGB LEDs:
+  if (ledEnable)
+  {
+    for (int i=0; i&lt;3; i++)
+    {
+      analogWrite(rgbPins[i], rgbValues[i]);
+    }
+  }
+  else
+  {
+    for (int i=0; i&lt;3; i++)
+    {
+      analogWrite(rgbPins[i], 0);
+    }
+  }
+}
+</code></pre>
+
+<p>Check the comments in the code for help understanding what&rsquo;s going on. We&rsquo;re basically looping and checking to see if the IR receiver diode has received a known code from the IR remote. If so, it&rsquo;ll have some effect on the LED &ndash; turning it on/off, turning up or down red/green/blue, etc.</p>
+
+<p>You can also check the output of the serial monitor to make sure the codes are being received. When a known code is received, it&rsquo;ll print out the corresponding button. When an unknown code is received (which shouldn&rsquo;t be often, if ever, if you&rsquo;re only using the SparkFun IR remote) it&rsquo;ll print that code out in hexadecimal.</p>
+
+<h3>Step 4: Play!</h3>
+
+<p>That&rsquo;s all there is to it! Try exploring the code and replacing the RGB LED with other devices you can control. How about a servo motor? Or a relay! There are so many possibilities!</p>
+
+<p>Do you have other IR remotes around? Try them out! As you press a button, check the serial monitor (at 9600 bps) to see what code it spits out. Then add a case for those in the switch statement.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="example-2-transmitting">Example 2: Transmitting</h2>
+        <p>After you&rsquo;ve gotten the remote and receiver working, it&rsquo;s time to add some IR transmission to the setup.</p>
+
+<p>For this example, we&rsquo;ll set up an infrared data relay using both the receiver and an IR LED to transmit data. IR codes received by the Arduino can be sent out the LED by the press of a button.</p>
+
+<h3>Setting Up the Hardware</h3>
+
+<p>On the hardware level, using the IRremote library, there&rsquo;s only <strong>one pin</strong> we can use to transmit IR data: <strong>pin 3</strong>. There&rsquo;s not any give here; pin 3&rsquo;s <a href="https://learn.sparkfun.com/tutorials/pulse-width-modulation">PWM</a>-capabilities make it one of the best choices for transmitting the 38kHz modulated IR data.</p>
+
+<p>We&rsquo;ll also be adding a button to this circuit. If you don&rsquo;t have a button around, you can simply pull pin 12 LOW to emulate a button press. Here&rsquo;s the whole circuit:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/3/5/4/0/3/525e55ec757b7fce268b456a.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/3/5/4/0/3/525e55ec757b7fce268b456a.png" alt="Example 2 fritzing diagram" /></a></p>
+
+<h3>Adding Code</h3>
+
+<p>Once you&rsquo;ve got the hardware all wired up, copy and paste the code below. Then upload it to your Arduino.</p>
+
+<pre><code>language:c
+/* IRrecord (Redux)
+   by: Jim Lindblom
+   SparkFun Electronics
+   date: October 1, 2013
+
+   This sketch uses Ken Shirriff's *awesome* IRremote library:
+       https://github.com/shirriff/Arduino-IRremote
+   It's a slightly modified version of the IRrecord example that
+   comes with that library.
+
+   This sketch uses the IR receiver diode to "record" an IR code.
+   Then, when triggered via a button on pin 12, it will transmit
+   that IR code out of an attached IR LED on pin 3.
+
+   Hardware setup:
+     * The output of an IR Receiver Diode (38 kHz demodulating
+       version) should be connected to the Arduino's pin 11.
+       * The IR Receiver diode should also be powered off the
+         Arduino's 5V and GND rails.
+     * The anode (+, longer leg) of an IR LED should be connected to pin 3 of 
+       the Arduino. The cathode (-) should be connected to a 330
+       Ohm resistor, which connects to ground.
+     * A button should be connected to ground on one end, and pin
+       12 of the Arduino on the other.
+
+*/
+#include &lt;IRremote.h&gt; // Include the IRremote library
+
+/* Connect the output of the IR receiver diode to pin 11. */
+int RECV_PIN = 11;
+/* Initialize the irrecv part of the IRremote  library */
+IRrecv irrecv(RECV_PIN);
+decode_results results; // This will store our IR received codes
+
+IRsend irsend; // Enables IR transmit on pin 3
+
+/* Storage variables for the received IR code: */
+unsigned int irLen = 0; // The length of the code
+unsigned int irBuffer[RAWBUF]; // Storage for raw (UNKNOWN) codes
+int codeType; // The type of code (NEC, SONY, UNKNOWN, etc.)
+unsigned int codeValue; // The value of a known code
+boolean codeReceived = false; // A boolean to keep track of if a code was received
+
+const int buttonPin = 12; // Button pin. Pulled up. Triggered when connected to ground.
+
+// setup() initializes serial and the Infrared receiver.
+void setup()
+{
+  Serial.begin(9600);
+  irrecv.enableIRIn(); // Start the receiver
+
+  pinMode(buttonPin, INPUT_PULLUP);
+}
+
+// loop() checks for either a button press or a received IR code.
+void loop()
+{
+  if (irrecv.decode(&amp;results)) 
+  {
+    updateIRReceive(); // Sort out the received code
+    codeReceived = true; // Enables code transmit on button press
+    irrecv.resume(); // re-enable receive
+  }
+
+  // If the button is pressed, and we've received a code...
+  if ((digitalRead(buttonPin) == LOW) &amp;&amp; (codeReceived == true))
+  {
+    sendCode(); // Sends out our code. (See bottom of sketch).
+    irrecv.enableIRIn(); // Re-enable receiver
+    // We only want to be able to send the code once. Re-set
+    // codeReceived to false:
+    codeReceived = false;
+  }
+}
+
+/* This function reads in the received IR data, and updates the
+   following variables:
+    * codeType -- How was the IR signal encoded? SONY, NEC, 
+      UNKNOWN, etc.
+    * irLen -- The length (number of marks and ticks) of an IR code.
+    * Depending on the codeType, one of these two variables will
+      be updated as well:
+      * codeValue -- IF the codeType is a known type, this variable
+        will contain the received code.
+      * irBuffer -- If the codeType is UNKNOWN, this buffer will
+        contain the format of the received code.
+
+    This function borrows heavily from the IRrecord example code.
+*/
+void updateIRReceive()
+{
+  codeType = results.decode_type;
+  irLen = results.rawlen;
+  if (codeType == UNKNOWN)
+  {
+    irLen--;
+    // We need to convert from ticks to microseconds
+    for (int i = 1; i &lt;= irLen; i++) 
+    {
+      if (i % 2) 
+      {
+        // Mark
+        irBuffer[i-1] = results.rawbuf[i]*USECPERTICK - MARK_EXCESS;
+        Serial.print(" m");
+      } 
+      else 
+      {
+        // Space
+        irBuffer[i-1] = results.rawbuf[i]*USECPERTICK + MARK_EXCESS;
+        Serial.print(" s");
+      }
+      Serial.print(irBuffer[i-1], DEC);
+    }
+    Serial.println();
+  }
+  else 
+  {
+    if (codeType == NEC) 
+    {
+      Serial.print("Received NEC: ");
+      if (results.value == REPEAT) 
+      {
+        // Don't record a NEC repeat value as that's useless.
+        Serial.println("repeat; ignoring.");
+        return;
+      }
+    } 
+    else if (codeType == SONY) 
+    {
+      Serial.print("Received SONY: ");
+    } 
+    else if (codeType == RC5) 
+    {
+      Serial.print("Received RC5: ");
+    } 
+    else if (codeType == RC6) 
+    {
+      Serial.print("Received RC6: ");
+    } 
+    else 
+    {
+      Serial.print("Unexpected codeType ");
+      Serial.print(codeType, DEC);
+      Serial.println("");
+    }
+    Serial.println(results.value, HEX);
+    codeValue = results.value;
+    irLen = results.bits;
+  }
+}
+
+
+void sendCode()
+{
+  if (codeType == NEC) 
+  {
+    irsend.sendNEC(codeValue, irLen);
+    Serial.print("Sent NEC ");
+    Serial.println(codeValue, HEX);
+  } 
+  else if (codeType == SONY)
+  {
+    irsend.sendSony(codeValue, irLen);
+    Serial.print("Sent Sony ");
+    Serial.println(codeValue, HEX);
+  } 
+  else if (codeType == RC5 || codeType == RC6) 
+  {
+    // Put the toggle bit into the code to send
+    codeValue = codeValue &amp; ~(1 &lt;&lt; (irLen - 1));
+    if (codeType == RC5) 
+    {
+      Serial.print("Sent RC5 ");
+      Serial.println(codeValue, HEX);
+      irsend.sendRC5(codeValue, irLen);
+    } 
+    else 
+    {
+      irsend.sendRC6(codeValue, irLen);
+      Serial.print("Sent RC6 ");
+      Serial.println(codeValue, HEX);
+    }
+  } 
+  else if (codeType == UNKNOWN /* i.e. raw */) 
+  {
+    // Assume 38 KHz
+    irsend.sendRaw(irBuffer, irLen, 38);
+    Serial.println("Sent raw");
+  }
+}
+</code></pre>
+
+<p>To use the sketch, you&rsquo;ll still need an IR remote. Begin by <strong>opening the serial monitor</strong> (at 9600 bps). Then <strong>press a button</strong> on the remote. The serial monitor should notify you that a IR code was received. The Arduino&rsquo;s now all loaded up, ready to spit out its own IR code.</p>
+
+<p>To send out the IR code, <strong>press the button</strong> connected to pin 12 (or just short a jumper wire from 12 to GND). Unless you have a device that is looking for specific IR codes, you may not see anything happen. Try the sketch out with some IR remotes and appliances around your house. Can your Arduino trigger your TV to mute?</p>
+
+<h4>Delving Into IR Sends</h4>
+
+<p>If you&rsquo;re using the IRremote library to transmit data, there are just a few lines of code you&rsquo;ll need to add. First, you&rsquo;ll need to declare an instance of <code>IRsend</code> at the top of your code:</p>
+
+<pre><code>language:c
+IRsend irsend;
+</code></pre>
+
+<p>There are a variety of transmitting options made available by the library. They vary by encoding scheme, which usually depends on the manufacturer. You can use any of these functions to send out IR data:</p>
+
+<pre><code>language:c
+void sendNEC(unsigned long data, int nbits);
+void sendSony(unsigned long data, int nbits);
+void sendRC5(unsigned long data, int nbits);
+void sendRC6(unsigned long data, int nbits);
+void sendDISH(unsigned long data, int nbits);
+void sendSharp(unsigned long data, int nbits);
+void sendPanasonic(unsigned int address, unsigned long data);
+void sendJVC(unsigned long data, int nbits, int repeat);
+
+void sendRaw(unsigned int buf[], int len, int hz);
+</code></pre>
+
+<p>If you don&rsquo;t have an appliance matching any of those manufacturers (NEC, Sony, DISH, Sharp, Panasonic, JVC, etc.), you&rsquo;ll have to use the <code>sendRaw</code> function to transmit your IR code.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="resources--going-further">Resources and Going Further</h2>
+        <p>Thanks for checking out our IR Control Kit hookup guide! If you&rsquo;re looking for more documents and resources related to the kit, check out some of these links:</p>
+
+<ul>
+<li><a href="http://www.sparkfun.com/datasheets/Sensors/Infrared/tsop382.pdf">TSOP38238 IR Receiver Module Datasheet</a></li>
+<li><a href="http://cdn.sparkfun.com/datasheets/Components/LED/YSL-R531FR1C-F1.pdf">950nm Infrared LED Datasheet</a></li>
+<li><a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;ved=0CCsQFjAA&amp;url=https%3A%2F%2Fgithub.com%2Fshirriff%2FArduino-IRremote&amp;ei=YEtLUsmQHaqdyQHVq4DwCQ&amp;usg=AFQjCNGA-he6iltj8SbqXXSXoST2PzwvjA&amp;sig2=wxgkAkRTrCjPpBXlwk-wVw&amp;bvm=bv.53371865,d.aWc">IRremote Arduino Library GitHub Repository</a></li>
+<li><a href="http://arcfn.com/2009/08/multi-protocol-infrared-remote-library.html">IRremote Arduino Library Help Page</a></li>
+</ul>
+
+
+<p>If you&rsquo;re looking for general information on infrared communication check out our <a href="https://learn.sparkfun.com/tutorials/ir-communication">IR Communication tutorial</a>, as well as SparkFun Engineer Chris Taylor&rsquo;s IR Project video:</p>
+
+<p style="text-align:center;"><iframe width="500" height="281" src="https://www.youtube.com/embed/V4nM8qd07fE" frameborder="0" allowfullscreen></iframe></p>
+
+<p>And there&rsquo;s also Jeff Branson, starring in an IR Communication video tutorial using our <a href="https://www.sparkfun.com/products/241">IR Emitter/Detector Pair</a>:</p>
+
+<p style="text-align:center;"><iframe width="500" height="281" src="https://www.youtube.com/embed/5_I5eIQsHq8" frameborder="0" allowfullscreen></iframe></p>
+
+<h3>Going Further</h3>
+
+<p>Now that you&rsquo;ve discovered how easy it is to add infrared output or input to your project, what are you going to control with this extravisible, modulated light source? Need some inspiration? Check out some of these tutorials:</p>
+
+<ul>
+<li><a href="https://learn.sparkfun.com/tutorials/led-light-bar-hookup">LED Light Bar Hookup</a> &ndash; If you need some <em>visible</em> light in your life, these LED light bars are an especially bright way to get it</li>
+<li><a href="https://learn.sparkfun.com/tutorials/using-opensegment">Using the OpenSegment</a> &ndash; Along the lines of visible displays, the OpenSegment 4-digit 7-segment displays are an easy tool to add data displays to your project.</li>
+<li><a href="https://www.sparkfun.com/tutorials/282">Rebuilding the Illumitune</a> &ndash; Learn how we integrated IR into the Illumitune project we helped rebuild.</li>
+</ul>
+      </div>
+    
+        <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" type="text" value="http://sfe.io/t136" onclick="$(this).select();">
+
+    <div class="share-social">
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','googleplus');" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft136" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','tumblr');" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft136&name=IR+Control+Kit+Hookup+Guide" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','reddit');" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft136" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','twitter');" href="https://twitter.com/intent/tweet?text=IR+Control+Kit+Hookup+Guide&url=http%3A%2F%2Fsfe.io%2Ft136&via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','facebook');" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft136&t=IR+Control+Kit+Hookup+Guide" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','pinterest');" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft136&media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2Ff%2F5%2Fa%2Ff%2Fa%2F524c417d757b7fe86c8b456a.png&description=IR+Control+Kit+Hookup+Guide" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+  </div>
+
+  <div class="col-sm-4" id="nav-pages">
+    <div id="sidebar_affix">
+
+      <div id="tutorial-pages" class="list-group">
+        <a class="list-group-item"><b>Sections</b></a>
+                          <a data-pagename="getting-started" class="list-group-item" href="#getting-started">
+            Getting Started          </a>
+                  <a data-pagename="explanation-of-parts" class="list-group-item" href="#explanation-of-parts">
+            Explanation of Parts          </a>
+                  <a data-pagename="example-1-using-the-remote" class="list-group-item" href="#example-1-using-the-remote">
+            Example 1: Using the Remote          </a>
+                  <a data-pagename="example-2-transmitting" class="list-group-item" href="#example-2-transmitting">
+            Example 2: Transmitting          </a>
+                  <a data-pagename="resources--going-further" class="list-group-item" href="#resources--going-further">
+            Resources and Going Further          </a>
+              </div>
+
+      <div class="list-group">
+        <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/ir-control-kit-hookup-guide/discuss">
+          Comments
+          <span class="badge">6</span>
+        </a>
+                  <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/ir-control-kit-hookup-guide/getting-started">
+            View Paginated
+          </a>
+                <a class="list-group-item" href="#" onclick="window.print(); return false;">
+          Print
+        </a>
+      </div>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>Tags</b></li>
+        <li class="list-group-item"><ul class="tags-list">
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/communication">Communication</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/hookup">Hookup</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/leds">LEDs</a>  </li>
+</ul>
+</li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>License</b></li>
+        <li class="list-group-item">
+          <span class="sfe-icon-cc">
+            <span class="visuallyhidden">Creative Commons</span>
+          </span>
+          <small>tutorials are <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="new">CC BY-SA 4.0</a></small>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  require(['tutorial', 'jquery.imagesloaded'], function() {
+    $('#tutorial').tutorial();
+  });
+</script>
+
+      </div> <!-- /container -->
+    </div> <!-- /content -->
+
+    
+<footer>
+
+<div class="social">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="sharing-ingenuity">
+          <span class=sfe-icon-flame></span>
+          <span class="text"><span class="text-top">Start<br></span>something.</span>
+        </div>
+        <ul class="spew">
+          <li><a href="https://www.github.com/sparkfun" target="_blank" class=sfe-icon-github><span class=visuallyhidden>GitHub</span></a></li>
+          <li><a href="https://www.youtube.com/sparkfun" target="_blank" class=sfe-icon-youtube><span class=visuallyhidden>YouTube</span></a></li>
+          <li><a href="https://www.vimeo.com/sparkfun" target="_blank" class=sfe-icon-vimeo><span class=visuallyhidden>Vimeo</span></a></li>
+          <li><a href="https://www.facebook.com/SparkFun" target="_blank" class=sfe-icon-facebook><span class=visuallyhidden>Facebook</span></a></li>
+          <li><a href="https://www.instagram.com/sparkfun/" target="_blank" class=sfe-icon-instagram><span class=visuallyhidden>Instagram</span></a></li>
+          <li><a href="https://plus.google.com/106084846822083498483/" target="_blank" class=sfe-icon-google-plus><span class=visuallyhidden>Google Plus</span></a></li>
+          <li><a href="https://www.flickr.com/photos/sparkfun/" target="_blank" class=sfe-icon-flickr><span class=visuallyhidden>Flickr</span></a></li>
+          <li><a href="https://twitter.com/#!/sparkfun" target="_blank" class=sfe-icon-twitter><span class=visuallyhidden>Twitter</span></a></li>
+          <li><a href="https://www.sparkfun.com/feeds" class=sfe-icon-feed><span class=visuallyhidden>RSS</span></a></li>
+        </ul>
+        <div class="newsletter">
+          <!--[if lte IE 8]>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+<![endif]-->
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+<script>
+  hbspt.forms.create({
+    css: '',
+    cssClass: 'hubspot-newsletter-subscribe',
+    portalId: '2224003',
+    formId: 'd2b17dd4-e1bb-406a-ba41-44c19dcd0376'
+  });
+</script>
+        </div>
+      </div>
+    </div><!-- end .row -->
+  </div><!-- end .container -->
+</div><!-- end .social -->
+
+<div class="container">
+
+    <div class="row">
+
+    <div class="subfooter subfooter-about">
+      <p>
+        In 2003, CU student Nate Seidle blew a power supply in his dorm room and, in lieu of a way to order easy replacements, decided to start his own company. Since then, SparkFun has been committed to sustainably helping our world achieve electronics literacy from our headquarters in Boulder, Colorado.
+      </p>
+      <p>
+        No matter your vision, SparkFun's products and resources are designed to make the world of electronics more accessible. In addition to over 2,000 open source components and widgets, SparkFun offers curriculum, training and online tutorials designed to help demystify the wonderful world of embedded electronics. We're here to help you start something.
+      </p>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>About Us</b>
+            <li><a href="https://www.sparkfun.com/about_sparkfun">About SparkFun</a></li>
+	    <li><a href="http://www.sparkfuneducation.com" target="_blank">SparkFun Education <span class="glyphicon glyphicon-new-window"></span></li>
+	    <li><a title="RSS Feeds" href="https://www.sparkfun.com/feeds">Feeds <span class=sfe-icon-feed></span></a></li>
+            <li><a href="https://www.sparkfun.com/jobs">Jobs</a></li>
+            <li><a href="https://www.sparkfun.com/static/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Help</b></li>
+            <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+            <li><a href="https://www.sparkfun.com/support#ShippingPolicy">Shipping</a></li>
+            <li><a href="https://www.sparkfun.com/returns">Return Policy</a></li>
+            <li><a href="https://www.sparkfun.com/static/faq">FAQ</a></li>
+                      </ul>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Programs</b></li>
+	    <li><a href="https://www.sparkfun.com/sponsorships">Become a Community Partner</a>	      <li><ul><li><a href="https://www.sparkfun.com/cpp">Community Stories</a></li></ul></li>
+	    </li>
+            <li><a href="https://www.sparkfun.com/project_calls">Tell Us About Your Project</a></li>
+            <li><a href="https://learn.sparkfun.com/tutorials/how-to-sell-your-widget-on-sparkfun">Sell Your Widget on SparkFun</a></li>
+            <li><a href="https://www.sparkfun.com/distributors/apply">Become a SparkFun Distributor</a></li>
+            <li><a href="https://www.sparkfun.com/volume">Large Volume Sales</a> </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Community</b></li>
+            <li><a href="https://forum.sparkfun.com/">Forum</a></li>
+            <li><a href="https://www.sparkfun.com/news/263">SparkFun IRC Channel</a></li>
+            <li><a href="https://www.sparkfun.com/quiz">Take the SparkFun Quiz</a></li>
+            <li><a href="https://www.kickstarter.com/pages/sparkfun">SparkFun Kickstarter Projects</a></li>
+            <li><a href="https://www.sparkfun.com/distributors">Distributors</a></li>
+          </ul>
+        </div>
+
+      </div><!-- end .row -->
+
+    </div>
+
+    <div id="feedback" class="subfooter subfooter-woym">
+      <form id="woym_form" class="feedback" action="https://learn.sparkfun.com/feedback/mind.json" onsubmit="$(this).sfeutil('mind_feedback'); return false;" method="POST">
+        <div class="error" id="error_feedback" style="display: none"></div>
+        <input type="hidden" name="sparkaptcha" id="sparkaptcha" value="0">
+
+        <div class="form-group">
+          <label for="feedback_textarea" class="control-label">What's on your mind?</label>
+          <div class="controls">
+            <textarea id="feedback_textarea" class="form-control" name="feedback_text" required></textarea>
+            <div class="error" id="error_feedback_text" style="display: none"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_dest" class="control-label">For which department?</label>
+          <select name="dest" class="form-control" id="feedback_dest">
+            <option value="general">General</option>
+            <option value="cust">Customer Service</option>
+            <option value="tech">Tech Support</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_email" class="control-label">
+            Please include your email address if you'd like us to respond to a specific question.
+          </label>
+
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+            <input type="text" class="form-control" id="feedback_email" name="email" placeholder="email address" />
+          </div>
+          <div class="error" id="error_feedback_email" style="display: none"></div>
+
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+  </div><!-- end .row -->
+  
+  <ul class="copyleft">
+    <li>SparkFun Electronics <a href="https://www.sparkfun.com/news/300">&reg;</a></li>
+    <li><a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=6333+Dry+Creek+Parkway,+Niwot,+CO+80503">Niwot, Colorado</a></li>
+    <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+    <li><a href="https://www.sparkfun.com/sitemap">Site Map</a></li>
+    <li><a href="https://www.sparkfun.com/terms">Terms of Service</a></li>
+    <li><a href="https://www.sparkfun.com/privacy">Privacy Policy</a></li>
+    <li class="desktop-toggle">
+              <a href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fir-control-kit-hookup-guide">Desktop Site</a>          </li>
+  </ul>
+
+</div><!-- end .container -->
+
+</footer>
+
+    <div class="nav-account">
+  <ul class="nav nav-tabs">
+    <li class="visible-xs">
+      <a class="nav-toggle-account back" href="#">Your Account</a>
+    </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fir-control-kit-hookup-guide" data-toggle="modal" data-target="#login_modal" data-remote="false">Log In</a>
+      </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/make">Register</a>
+      </li>
+      </ul>
+</div>
+
+      </div><!-- end .wrapper-inner -->
+    </div><!-- end .wrapper -->
+
+    <!-- Login Modal -->
+<div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Log In</h4>
+        <p class="modal-header-msg"></p>
+      </div>
+      <div class="modal-body">
+        <form role="form" action="https://www.sparkfun.com/account/login" method="post">
+          <input type="hidden" name="redirect" value="/learn/tutorials/ir-control-kit-hookup-guide">
+          <div class="form-group">
+            <label for="login-username">Email</label>
+            <input type="email" tabindex="1" name=user id="login-username" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input tabindex="2" type="password" name="passwd" id="login-password" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Log In" tabindex="3" class="btn btn-action">
+          </div>
+        </form>
+        <p>
+          <a href="https://www.sparkfun.com/account/forgot_password">Forgot your password?</a>          <br>
+          No account? <a id="btn_register_account" href="https://www.sparkfun.com/account/make">Register one!</a>        </p>
+      </div>
+    </div>
+  </div>
+</div>
+  
+          
+<!--  begin olark code -->
+  <script type="text/javascript" async> ;(function(o,l,a,r,k,y){if(o.olark)return; r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0]; y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r); y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)}; y.extend=function(i,j){y("extend",i,j)}; y.identify=function(i){y("identify",k.i=i)}; y.configure=function(i,j){y("configure",i,j);k.c[i]=j}; k=y._={s:[],t:[+new Date],c:{},l:a}; })(window,document,"static.olark.com/jsclient/loader.js");
+  /* custom configuration goes here (www.olark.com/documentation) */
+  olark.identify('4728-501-10-9212');</script>
+  <noscript><a href="https://www.olark.com/site/4728-501-10-9212/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+<!-- end olark code -->
+          <script type="text/javascript">
+      (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+        n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/2224003.js';
+        e.parentNode.insertBefore(n, e);
+      })(document,"script","hs-analytics",300000);
+    </script>
+        <script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0046/4761.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+  </script>
+      </body>
+</html>
+

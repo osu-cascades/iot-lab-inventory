@@ -7,7 +7,7 @@ class Part(db.Model):
     __tablename__ = 'parts'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
-    description = db.Column(db.String(2048))
+    description = db.Column(db.String)
     category = db.Column(db.String(64))
     sparkfun_id = db.Column(db.String(64))
     images = db.relationship('Image', backref='part')

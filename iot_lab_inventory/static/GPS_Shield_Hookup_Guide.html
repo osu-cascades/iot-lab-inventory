@@ -1,0 +1,2879 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- mobile mode if small screen device -->
+    
+    <title>GPS Logger Shield Hookup Guide - learn.sparkfun.com</title>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/css/bootstrap.min.css?rev=1506620278" rel="stylesheet">
+    <link rel="stylesheet" href="/css/theme.github.css?rev=1506620278" type="text/css" media="screen" />    <link rel="alternate" type="application/atom+xml" title="Education Blog" href="https://learn.sparkfun.com/feeds/blog" />
+    <link rel="alternate" type="application/atom+xml" title="Tutorials" href="https://learn.sparkfun.com/feeds/tutorials" />
+    <link rel="alternate" type="application/atom+xml" title="Education Blog Comments" href="https://learn.sparkfun.com/feeds/blog_comments" />
+    <link rel="alternate" type="application/atom+xml" title="Tutorial Comments" href="https://learn.sparkfun.com/feeds/tutorial_comments" />
+
+    <script type="text/javascript">
+      var SFECONFIG = {
+        dnt: false,
+        http_server: 'http://learn.sparkfun.com',
+        https_server: 'https://learn.sparkfun.com',
+        http_static: 'https://cdn.sparkfun.com',
+        learn_server: 'https://learn.sparkfun.com',
+        commerce_server: 'https://www.sparkfun.com',
+        base_url: '/',
+        url: '/',
+        controller: 'tutorials',
+        action: 'view',
+        entity_id: '',
+        auth: false,
+        sparkrev: '1506620278',
+        track_arduino_products: true,
+        search_key: 'xY6qr5Ui3V2UMA762D9Z'      };
+      var require = {
+        paths: {
+          'jqueryui': 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min'
+        },
+        baseUrl: '/js/',
+        urlArgs: "sparkrev=" + SFECONFIG.sparkrev,
+        deps: ['jqueryui'],
+        callback: function() {
+          $('#learn').learn();
+          $('#learn').sfeutil();
+          $.shared('domready');
+        }
+      };
+    </script>
+    <script src="/js/learn-built.js?sparkrev=1506620278"></script>
+          <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-3404365-1', 'auto', {'allowLinker': true});
+      ga('require', 'linker');
+      ga('linker:autoLink', ['www.sparkfun.com', 'avc.sparkfun.com'] );
+      ga('require', 'displayfeatures');
+            ga('set', 'dimension1', 'Guest');
+      ga('send', 'pageview');
+
+      </script>
+        <script type="text/javascript">
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js'); 
+    fbq('init', '988931021243392');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1"src="https://www.facebook.com/tr?id=988931021243392&ev=PageView&noscript=1"/>
+  </noscript>
+      </head>
+
+  <body id=learn class="layout-default no-type tutorials-view" ontouchstart="">
+            <!--
+    Start of DoubleClick Floodlight Tag: Please do not remove
+    Activity name of this tag: Universal
+    URL of the webpage where the tag is expected to be placed: http://sparkfun.com
+    This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+    Creation Date: 07/18/2016
+  -->
+  <script type="text/javascript">
+    var axel = Math.random() + "";
+    var a = axel * 10000000000000;
+    document.write('<iframe src="https://5626816.fls.doubleclick.net/activityi;src=5626816;type=count0;cat=unive0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+  </script>
+  <noscript>
+    <iframe src="https://5626816.fls.doubleclick.net/activityi;src=5626816;type=count0;cat=unive0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+  </noscript>
+  <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+    
+    <div class="wrapper" itemscope itemtype="http://schema.org/WebSite">
+      <meta itemprop="url" content="https://learn.sparkfun.com/">
+      <div class=wrapper-inner>
+
+    
+<div class="header">
+  <div class="container">
+
+    <!-- Mobile Nav Button -->
+    <div class="mobile-menu-container left">
+      <a id="nav_toggle" class="mobile-menu-button nav_toggle" href="#"><span class="sfe-icon-hamburger"></span></a>
+              <a id="search_toggle" class="mobile-menu-button" href="#"><span class="glyphicon glyphicon-search"></span></a>
+          </div>
+
+    <nav class="top-links">
+      <ul>
+        <li>
+          <a href="https://www.sparkfun.com/distributors">Find a Retailer</a>        </li>
+                  <li>
+            <div class="dropdown">
+              <a href="#" id="phone_hours" type="button" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                Need Help?
+                <span class="caret"></span>
+              </a>
+              <div class="dropdown-menu pull-right need-help" role="menu" aria-labelledby="phone_hours">
+                <h4>Customer Service</h4>
+                <p><a href="https://www.sparkfun.com/orders/"><span class="glyphicon glyphicon-dashboard"></span> Track My Order</a></p>
+                <p><a href="https://www.sparkfun.com/support"><span class="glyphicon glyphicon-question-sign"></span> Frequently Asked Questions</a></p>
+                <p><a href="https://www.sparkfun.com/support#InternationalShipping"><span class="glyphicon glyphicon-globe"></span> International Shipping Info</a></p>
+                <p><a href="mailto:cservice@sparkfun.com"><span class="glyphicon glyphicon-envelope"></span> Send Email</a></p>
+                <p class="small text-muted">
+                  Mon-Fri, 9am to 12pm and<br>
+                  1pm to 5pm U.S. Mountain Time:
+                </p>
+                <p><span class="glyphicon glyphicon-earphone"></span> (303) 284-0979</p>
+                                  <p><a data-toggle="chatpopup" href="https://www.sparkfun.com/chat/popup"><span class="glyphicon glyphicon-comment"></span> Chat With Us</a></p>
+                              </div>
+            </div>
+          </li>
+              </ul>
+    </nav>
+
+    <!-- Logo -->
+    <div class="logo-container">
+      <a class="logo" href="https://www.sparkfun.com/">
+        <span class="sfe-icon-flame"></span>
+        <span class="sfe-icon-sparkfun" data-icon="&#x1f525">
+          <span class="visuallyhidden">sparkfun.com</span>
+        </span>
+      </a>
+    </div>
+
+    <!-- Tabs -->
+    <!-- also edit mobile tabs in .tabs-container-mobile -->
+    <nav class="tabs-container hidden-xs">
+      <ul>
+        <li class="shop "><a href="https://www.sparkfun.com/categories">Shop</a></li>
+        <li class="learn active"><a href="https://learn.sparkfun.com/">Learn</a></li>
+        <li class="blog "><a href="https://www.sparkfun.com/news">Blog</a></li>
+        <li class="support "><a href="https://www.sparkfun.com/support">Support</a></li>
+      </ul>
+    </nav>
+
+    <!-- Cart & User -->
+    <div class="user-container mobile-menu-container right">
+
+      <a id="account_toggle" class="mobile-menu-button" href="#"><span class="glyphicon glyphicon-user"></span></a>
+
+              <div class="cart mobile-menu-button">
+          <a href="https://www.sparkfun.com/cart">
+            <span id="cart_status" class="sfe-icon-carticon cart-empty">
+              <span class="visuallyhidden">Shopping Cart</span>
+            </span>
+            <span class="cart_count">
+              <span id="items_in_cart">0</span>
+              <span id="cart_noun" class="visuallyhidden">items</span>
+            </span>
+          </a>
+        </div>
+      
+              <div class="user">
+          <!-- login modal trigger -->
+          <a class="btn btn-default" href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fgps-logger-shield-hookup-guide" data-toggle="modal" data-target="#login_modal" data-remote="false">log in</a>
+          <a class="btn btn-default" href="https://www.sparkfun.com/account/make">register</a>        </div>
+      
+    </div>
+
+    <nav class="tabs-container-mobile visible-xs col-xs-12">
+      <ul>
+        <li class="shop "><a href="https://www.sparkfun.com/categories">Shop</a></li>
+        <li class="learn active"><a href="https://learn.sparkfun.com/">Learn</a></li>
+        <li class="blog "><a href="https://www.sparkfun.com/news">Blog</a></li>
+        <li class="support "><a href="https://www.sparkfun.com/support">Support</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <!-- Navigation / Search -->
+  <div class="main-nav-container">
+
+    <div class="container">
+
+      <nav class="product-nav">
+        <button type="button" class="product-menu">
+          <span class="menu-icon sfe-icon-hamburger"></span>
+          <span class="product-menu-name">Product Menu</span>
+        </button>
+
+                  <form id="search_form" class="search" action="https://www.sparkfun.com/search/results" method="get" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+            <meta itemprop="target" content="https://www.sparkfun.com/search/results?term={term}">
+            <div class="ui-widget">
+              <input name="term" id="global-search" class="form-control" type="text" value="" placeholder="find products, tutorials, etc..." itemprop="query-input" autocomplete="off">
+              <button type="submit" class="glyphicon glyphicon-search global-search-icon" aria-label="Search"></button>
+            </div>
+          </form>
+              </nav>
+
+      <nav class="sub-nav">
+        <ul>
+          <li>
+            <a href="http://www.sparkfuneducation.com" target="_blank">Education</a>
+          </li>
+          <li>
+            <a href="https://avc.sparkfun.com/"><span class="sfe-icon-avc"></span></a>          </li>
+          <li>
+            <a href="https://forum.sparkfun.com/" target="_blank">Forum</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="product-menu-container">
+      <div class="container">
+
+        <div class="fixed-product-menu-container col-lg-2 col-sm-3 col-xs-12">
+          <div class="sub-nav-mobile product-menu-group">
+            <a class="product-menu-heading desktop-toggle" href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fgps-logger-shield-hookup-guide">Desktop Site</a>            <a class="product-menu-heading" href="http://www.sparkfuneducation.com" target="_blank">Education</a>
+            <a class="product-menu-heading" href="https://avc.sparkfun.com/"><span class="sfe-icon-avc"></span></a>            <ul class="list-unstyled">
+            </ul>
+          </div>
+          <div class="product-menu-group">
+            <a class="product-menu-heading" href="https://www.sparkfun.com/categories">All Categories</a>            <ul class="list-unstyled">
+            </ul>
+          </div>
+          <div class="product-menu-group">
+            <a class="product-menu-heading" href="https://www.sparkfun.com/categories/featured">Featured <span class="visible-xs pull-right glyphicon glyphicon-plus"></span></a>            <ul class="list-unstyled">
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/new_products">New Products</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/top"><span class="sfe-icon-flame"></span> Top Sellers</a></li>
+                              <li>
+                  <a href="https://www.sparkfun.com/fallsale" class="product-menu-item"><span class="sfe-icon-pumpkin" style="color:#ff8000"></span> Fall Into Savings Sale</a>
+                </li>
+                              <li>
+                  <a href="https://www.sparkfun.com/spectacle" class="product-menu-item"><span class="sfe-icon-spectacle-glasses" style="color:#000000"></span> Spectacle</a>
+                </li>
+                            <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/283">SparkX</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/sale">Sale</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/gift_certificates">Gift Certificates</a></li>
+            </ul>
+          </div>
+                      <a href="https://www.sparkfun.com/microbit" class="hidden-xs">
+              <img class="img-responsive img-rounded center-block" src="https://cdn.sparkfun.com//c/180-180/assets/product_menu_items/1/microbit-now-availble.jpg" alt="Micro:bit Ecosystem">
+            </a>
+                  </div>
+
+                              <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/287" class="product-menu-heading">
+                 Brands                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/featured" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-flame" style="color:#ee2e22"></span> SparkFun                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/103" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-arduino" style="color:#00878f"></span> Arduino                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/233" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-rpi-multi-color" style="color:#ffffff"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span> Raspberry Pi                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/284" class="product-menu-item">
+                                               micro:bit                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/279" class="product-menu-item">
+                                               Espressif (ESP)                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/287" class="product-menu-item">
+                                               <small>all brands</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/2" class="product-menu-heading">
+                 Development                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/299" class="product-menu-item">
+                                               Single Board Comp.                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/300" class="product-menu-item">
+                                               Microcontrollers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/136" class="product-menu-item">
+                                               FPGA                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/149" class="product-menu-item">
+                                               Prototyping Boards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/1" class="product-menu-item">
+                                               Programmers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/2" class="product-menu-item">
+                                               <small>all development</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/23" class="product-menu-heading">
+                 Sensors                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/304" class="product-menu-item">
+                                               Movement                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/146" class="product-menu-item">
+                                               Biometrics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/102" class="product-menu-item">
+                                               Imaging                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/305" class="product-menu-item">
+                                               Environment                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/117" class="product-menu-item">
+                                               Capacitive                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/23" class="product-menu-item">
+                                               <small>all sensors</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/46" class="product-menu-heading">
+                 Tools                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/271" class="product-menu-item">
+                                               3D Printing                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/280" class="product-menu-item">
+                                               CNC                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/49" class="product-menu-item">
+                                               Soldering                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/47" class="product-menu-item">
+                                               Hand Tools                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/177" class="product-menu-item">
+                                               Instruments                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/46" class="product-menu-item">
+                                               <small>all tools</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/310" class="product-menu-heading">
+                 Miscellaneous                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/157" class="product-menu-item">
+                                               All Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/176" class="product-menu-item">
+                                               Books                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/311" class="product-menu-item">
+                                               Arts/Crafts Supplies                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/351" class="product-menu-item">
+                                               SD Cards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/130" class="product-menu-item">
+                                               Swag                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/310" class="product-menu-item">
+                                               <small>all misc</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/51" class="product-menu-heading">
+                 Components                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/89" class="product-menu-item">
+                                               LED &amp; Illumination                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/145" class="product-menu-item">
+                                               Buttons &amp; Switches                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/28" class="product-menu-item">
+                                               Power                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/76" class="product-menu-item">
+                                               LCDs                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/70" class="product-menu-item">
+                                               Cables                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/51" class="product-menu-item">
+                                               <small>all components</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/204" class="product-menu-heading">
+                 E-Textiles                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/327" class="product-menu-item">
+                                               LilyPad                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/328" class="product-menu-item">
+                                               Sewable Electronics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/206" class="product-menu-item">
+                                               Materials                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/268" class="product-menu-item">
+                                               E-Textile Power                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/329" class="product-menu-item">
+                                               E-Textile Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/204" class="product-menu-item">
+                                               <small>all e-textiles</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/31" class="product-menu-heading">
+                 Robotics                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/pages/Actobotics" class="product-menu-item">
+                                               Actobotics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/178" class="product-menu-item">
+                                               Motors &amp; Drivers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/330" class="product-menu-item">
+                                               Parts                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/155" class="product-menu-item">
+                                               Hardware                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/181" class="product-menu-item">
+                                               Robotics Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/31" class="product-menu-item">
+                                               <small>all robotics</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/16" class="product-menu-heading">
+                 Wireless &amp; IoT                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/115" class="product-menu-item">
+                                               Bluetooth                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/112" class="product-menu-item">
+                                               WiFi                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/338" class="product-menu-item">
+                                               Satellite                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/4" class="product-menu-item">
+                                               GPS                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/339" class="product-menu-item">
+                                               Wireless Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/16" class="product-menu-item">
+                                               <small>all wireless/IoT</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/273" class="product-menu-heading">
+                 Audio                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/343" class="product-menu-item">
+                                               Audio Boards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/342" class="product-menu-item">
+                                               Audio Cables                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/344" class="product-menu-item">
+                                               Speakers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/345" class="product-menu-item">
+                                               Audio Chips                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/273" class="product-menu-item">
+                                               <small>all audio</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                  
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+    
+    <div class=content>
+      <div class=container id=airlock>
+
+        
+        <div class=main-title>
+  <ul class="breadcrumb">
+    <li><a href="https://learn.sparkfun.com/">Home</a></li>
+    <li><a href="https://learn.sparkfun.com/tutorials">Tutorials</a></li>
+    <li>GPS Logger Shield Hookup Guide</li>
+      </ul>
+
+  <h1>
+    GPS Logger Shield Hookup Guide  </h1>
+
+</div>
+
+
+<a id=nav_toggle_pages class=nav_toggle href="#"><span>&#8801;</span> Pages</a>
+
+<div id=tutorial class="row">
+
+  <div class="col-sm-8" id="sections">
+
+    <div class="contributors">
+                      Contributors:
+                <a href="https://www.sparkfun.com/users/69916"><img src="https://static.sparkfun.com/avatar/f4c7d38e015f5dc7ca404c23b30305f4?d=retro&s=20&r=pg" /> Jimb0</a>          </div>
+
+    <span class="fave_widget verbose">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="468">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">3</span>
+</span>    <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" type="text" value="http://sfe.io/t468" onclick="$(this).select();">
+
+    <div class="share-social">
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','googleplus');" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft468" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','tumblr');" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft468&name=GPS+Logger+Shield+Hookup+Guide" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','reddit');" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft468" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','twitter');" href="https://twitter.com/intent/tweet?text=GPS+Logger+Shield+Hookup+Guide&url=http%3A%2F%2Fsfe.io%2Ft468&via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','facebook');" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft468&t=GPS+Logger+Shield+Hookup+Guide" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','pinterest');" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft468&media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2Flearn_tutorials%2F4%2F6%2F8%2Fgps-action-shot-01.jpg&description=GPS+Logger+Shield+Hookup+Guide" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+          <div class="section tutorial-page">
+        <h2 id="introduction">Introduction</h2>
+        <p>The <a href="https://www.sparkfun.com/products/13750">SparkFun GPS Logger Shield</a> equips your Arduino with access to a GPS module, µSD memory card socket, and all of the other peripherals you&rsquo;ll need to turn your Arduino into a position-tracking, speed-monitoring, altitude-observing wonder logger.</p>
+
+<p style="text-align:center;"> <a href="https://www.sparkfun.com/products/13750"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/6/8/gps-action-shot-01.jpg" alt="GPS Logger Shield" /></a></p>
+
+<p>The shield is based around a <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/GP3906-TLP_DataSheet_Rev_A01.pdf">GP3906-TLP GPS Module</a> &ndash; a 66-channel GPS receiver featuring a MediaTek MT3339 architecture and an up to 10Hz update rate. The GPS module will stream constant position updates over a simple <a href="https://learn.sparkfun.com/tutorials/serial-communication">serial UART</a>, which you can then log to a <a href="https://www.sparkfun.com/products/11609">µSD card</a> and/or use for other position or time-tracking purposes.</p>
+
+<p>Everything on the shield is highly configurable: A switch allows you to select the GPS module&rsquo;s UART interface between either hardware or software ports, the µSD card operates over a hardware SPI port, which should be compatible with most Arduino layouts, and extra prototyping space should allow you to add those last, few components you need to complete your project.</p>
+
+<h3>Covered In This Tutorial</h3>
+
+<p>This tutorial aims to document all things GPS Logger Shield related, including both the hardware and software required to get it up-and-running. It&rsquo;s split into the following sections:</p>
+
+<ul>
+<li><strong><a href="https://learn.sparkfun.com/tutorials/gps-logger-shield-hookup-guide#hardware-overview">Hardware Overview</a></strong> &ndash; An overview of the schematic, layout, and features of the SparkFun GPS Logger Shield.</li>
+<li><strong><a href="https://learn.sparkfun.com/tutorials/gps-logger-shield-hookup-guide#hardware-setup">Hardware Setup</a></strong> &ndash; Tip for assembling the GPS Logger Shield to best match your project needs.</li>
+<li><strong>Example Arduino Sketches</strong>
+
+<ul>
+<li><strong><a href="https://learn.sparkfun.com/tutorials/gps-logger-shield-hookup-guide#example-sketch-gps-serial-passthrough">GPS Serial Passthrough</a></strong> &ndash; A simple sketch you can use to verify functionality of your GPS Logger Shield, and get an idea of what kind of data the GP3906 GPS module produces.</li>
+<li><strong><a href="https://learn.sparkfun.com/tutorials/gps-logger-shield-hookup-guide#example-sketch-tinygps-serial-streaming">TinyGPS++ Serial Streaming</a></strong> &ndash; Using the TinyGPS++ Arduino library to parse the GPS module&rsquo;s NMEA strings into latitude, longitude, altitude, speed, and more.</li>
+<li><strong><a href="https://learn.sparkfun.com/tutorials/gps-logger-shield-hookup-guide#example-sketch-sd-card-gps-logging">&micro;SD Card GPS Logging</a></strong> &ndash; Finally, we&rsquo;ll plug the parsed GPS data into a CSV file and save it to a &micro;SD card.</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Suggested Materials</h3>
+
+<p>There are a few extra components you&rsquo;ll need to get the GPS Logger Shield fully up-and-running:</p>
+
+<p>Most importantly, you&rsquo;ll need an <strong>Arduino or Arduino-compatible development board</strong>. The GPS&rsquo;s serial and µSD SPI ports should be compatible with almost all Arduino-sized development boards. That includes classics, like the <a href="https://www.sparkfun.com/products/11021">Arduino Uno</a> and <a href="https://www.sparkfun.com/products/12757">SparkFun RedBoard</a>, and newer models, like the <a href="https://www.sparkfun.com/products/11286">Arduino Leonardo</a>, <a href="https://www.sparkfun.com/products/13788">Genuino 101</a>,  and <a href="https://www.sparkfun.com/products/13672">SparkFun SAMD21 Dev Breakout</a>.</p>
+
+
+
+<div class="tile-wrap">
+<div class="tile product-tile has_addl_actions  grid " data-id="11021"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="DEV11021">
+    <meta itemprop="sku" content="DEV-11021">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/11021">
+      <img src="https://cdn.sparkfun.com/r/140-140/assets/parts/6/3/4/3/11021-01c.jpg" alt="Arduino Uno - R3" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type=hidden name=id value="11021">
+          <input type=hidden name=qty value="1">
+          <input type='hidden' name='csrf_token' value='0983677ddbe26b1b2c3129ee102827849b5e77cc53cacf38ef626f9d6ca1dd9fc816cd89c5f7af797f339276ef479e198a380d42727b2373876603e7b68c087c'>          <!-- Add to Cart -->
+          <input type="number" class="quantity form-control" size="4" name="qty" value="1">
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_11021" style="display: none;">
+        <p class="success-message">
+          Added <span class="added_qty_11021"></span> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/11021" itemprop="url">
+        <span itemprop="name">Arduino Uno - R3</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class=sfe-icon-stock-in><span class=visuallyhidden>In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      DEV-11021    </span>
+          <p class="description" style="display:none" itemprop="description">
+        This is the new Arduino Uno R3. In addition to all the features of the previous board, the Uno now uses an ATmega16U2 instead&hellip;      </p>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="prices">
+                  <span class="price price-retail">$24.95</span>
+                <span class="price-sale">
+          <span class="price" itemprop="price" content="21.95">$21.95</span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="4.5 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.5">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">99</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="11021">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">85</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="11021" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid " data-id="13672"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="DEV13672">
+      <meta itemprop="gtin13" content="0845156002726">
+    <meta itemprop="sku" content="DEV-13672">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/13672">
+      <img src="https://cdn.sparkfun.com/r/140-140/assets/parts/1/1/1/1/5/13672-01.jpg" alt="SparkFun SAMD21 Dev Breakout" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type=hidden name=id value="13672">
+          <input type=hidden name=qty value="1">
+          <input type='hidden' name='csrf_token' value='0983677ddbe26b1b2c3129ee102827849b5e77cc53cacf38ef626f9d6ca1dd9fc816cd89c5f7af797f339276ef479e198a380d42727b2373876603e7b68c087c'>          <!-- Add to Cart -->
+          <input type="number" class="quantity form-control" size="4" name="qty" value="1">
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_13672" style="display: none;">
+        <p class="success-message">
+          Added <span class="added_qty_13672"></span> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/13672" itemprop="url">
+        <span itemprop="name">SparkFun SAMD21 Dev Breakout</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class=sfe-icon-stock-in><span class=visuallyhidden>In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      DEV-13672    </span>
+          <p class="description" style="display:none" itemprop="description">
+        If you’re ready to step your Arduino game up from older 8-bit/16MHz microcontrollers, the SparkFun SAMD21 Dev Breakout is a&hellip;      </p>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price" itemprop="price" content="24.95">$24.95</span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="3.6 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-half" data-star-index="3"></span>
+          <span class="sfe-icon-star-empty" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="3.6">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">5</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="13672">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">8</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="13672" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid " data-id="11286"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="DEV11286">
+    <meta itemprop="sku" content="DEV-11286">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/11286">
+      <img src="https://cdn.sparkfun.com/r/140-140/assets/parts/6/9/5/3/11286-01.jpg" alt="Arduino Leonardo with Headers" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="confirm_backorder" method="post">
+          <input type=hidden name=id value="11286">
+          <input type=hidden name=qty value="1">
+          <input type='hidden' name='csrf_token' value='0983677ddbe26b1b2c3129ee102827849b5e77cc53cacf38ef626f9d6ca1dd9fc816cd89c5f7af797f339276ef479e198a380d42727b2373876603e7b68c087c'>          <!-- Add to Cart -->
+          <input type="number" class="quantity form-control" size="4" name="qty" value="1">
+                      <input type="submit" class="btn btn-cart btn-default" value="Backorder">
+                  </form>
+      </div>
+      <div class="added_to_cart_11286" style="display: none;">
+        <p class="success-message">
+          Added <span class="added_qty_11286"></span> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/11286" itemprop="url">
+        <span itemprop="name">Arduino Leonardo with Headers</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="out of stock"><span class=sfe-icon-stock-out><span class=visuallyhidden>Out of stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      DEV-11286    </span>
+          <p class="description" style="display:none" itemprop="description">
+        Arduino is an open-source physical computing platform based on a simple i/o board and a development environment that implemen&hellip;      </p>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price" itemprop="price" content="24.95">$24.95</span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/OutOfStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="4.5 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.5">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">8</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="11286">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">9</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="11286" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid retired" data-id="12757"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="DEV12757">
+      <meta itemprop="gtin13" content="0845156006410">
+    <meta itemprop="sku" content="DEV-12757">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/retired/12757">
+      <img src="https://cdn.sparkfun.com/r/140-140/assets/parts/9/5/1/8/12757-01.jpg" alt="SparkFun RedBoard - Programmed with Arduino" height="140" itemprop="image">
+    </a>
+
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/retired/12757" itemprop="url">
+        <span itemprop="name">SparkFun RedBoard - Programmed with Arduino</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="Retired"><span class=sfe-icon-stock-retired><span class=visuallyhidden>Retired</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      DEV-12757    </span>
+          <p class="description" style="display:none" itemprop="description">
+        At SparkFun we use many Arduinos and we're always looking for the simplest, most stable one. Each board is a bit different an&hellip;      </p>
+      </div>
+
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="4.6 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.6">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">127</span>
+  </span>
+
+      <strong class="retired">Retired</strong>
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="12757">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">80</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="12757" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+</div>
+
+  <div class="clearfix"></div>
+
+
+
+
+<p>We also <strong>highly recommend a <a href="https://www.sparkfun.com/products/337">12mm Coin Cell Battery</a></strong>, which fits into the GPS Shield&rsquo;s battery holder. The GP3906 GPS module requires some sort of voltage on its battery supply input. If you don&rsquo;t have a battery, make sure you read the <a href="https://learn.sparkfun.com/tutorials/gps-logger-shield-hookup-guide#GP3906-VBAT">VBAT section</a> of the hardware overview carefully.</p>
+
+
+
+<div >
+<div class="tile product-tile has_addl_actions big grid " data-id="337"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="PRT00337">
+    <meta itemprop="sku" content="PRT-00337">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/337">
+      <img src="https://cdn.sparkfun.com/r/500-500/assets/parts/2/6/3/00337-01.jpg" alt="Coin Cell Battery - 12mm (CR1225)" height="500" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type=hidden name=id value="337">
+          <input type=hidden name=qty value="1">
+          <input type='hidden' name='csrf_token' value='0983677ddbe26b1b2c3129ee102827849b5e77cc53cacf38ef626f9d6ca1dd9fc816cd89c5f7af797f339276ef479e198a380d42727b2373876603e7b68c087c'>          <!-- Add to Cart -->
+          <input type="number" class="quantity form-control" size="4" name="qty" value="1">
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_337" style="display: none;">
+        <p class="success-message">
+          Added <span class="added_qty_337"></span> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/337" itemprop="url">
+        <span itemprop="name">Coin Cell Battery - 12mm (CR1225)</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class=sfe-icon-stock-in><span class=visuallyhidden>In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      PRT-00337    </span>
+          <p class="description" style="display:none" itemprop="description">
+        CR1225 lithium metal 3V 12mm 47mAh coin cell batteries. Perfect small battery for miniature sensor node applications.
+
+Thes&hellip;      </p>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price" itemprop="price" content="1.95">$1.95</span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="2.5 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-half" data-star-index="2"></span>
+          <span class="sfe-icon-star-empty" data-star-index="3"></span>
+          <span class="sfe-icon-star-empty" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="2.5">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">2</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="337">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">9</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="337" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+</div>
+
+
+
+
+
+<p>You&rsquo;ll also need to <strong>solder some headers</strong> into the shield, to create a solid mechanical and electrical connection between it and the Arduino. We recommend the <a href="https://www.sparkfun.com/products/11417">Arduino R3 Stackable Header Pack</a>, but a set of <a href="https://www.sparkfun.com/products/116">male headers</a> may also suit your needs.</p>
+
+
+
+<div class="tile-wrap">
+<div class="tile product-tile has_addl_actions  grid " data-id="116"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="PRT00116">
+    <meta itemprop="sku" content="PRT-00116">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/116">
+      <img src="https://cdn.sparkfun.com/r/140-140/assets/parts/1/0/6/00116-02-L.jpg" alt="Break Away Headers - Straight" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type=hidden name=id value="116">
+          <input type=hidden name=qty value="1">
+          <input type='hidden' name='csrf_token' value='0983677ddbe26b1b2c3129ee102827849b5e77cc53cacf38ef626f9d6ca1dd9fc816cd89c5f7af797f339276ef479e198a380d42727b2373876603e7b68c087c'>          <!-- Add to Cart -->
+          <input type="number" class="quantity form-control" size="4" name="qty" value="1">
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_116" style="display: none;">
+        <p class="success-message">
+          Added <span class="added_qty_116"></span> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/116" itemprop="url">
+        <span itemprop="name">Break Away Headers - Straight</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class=sfe-icon-stock-in><span class=visuallyhidden>In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      PRT-00116    </span>
+          <p class="description" style="display:none" itemprop="description">
+        A row of headers - break to fit. 40 pins that can be cut to any size. Used with custom PCBs or general custom headers.
+
+**Fea&hellip;      </p>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="prices">
+                  <span class="price price-retail">$1.50</span>
+                <span class="price-sale">
+          <span class="price" itemprop="price" content="0.25">$0.25</span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="4.6 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.6">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">20</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="116">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">59</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="116" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid " data-id="11417"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="PRT11417">
+    <meta itemprop="sku" content="PRT-11417">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/11417">
+      <img src="https://cdn.sparkfun.com/r/140-140/assets/parts/7/2/1/6/11417-01a.jpg" alt="Arduino Stackable Header Kit - R3" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type=hidden name=id value="11417">
+          <input type=hidden name=qty value="1">
+          <input type='hidden' name='csrf_token' value='0983677ddbe26b1b2c3129ee102827849b5e77cc53cacf38ef626f9d6ca1dd9fc816cd89c5f7af797f339276ef479e198a380d42727b2373876603e7b68c087c'>          <!-- Add to Cart -->
+          <input type="number" class="quantity form-control" size="4" name="qty" value="1">
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_11417" style="display: none;">
+        <p class="success-message">
+          Added <span class="added_qty_11417"></span> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/11417" itemprop="url">
+        <span itemprop="name">Arduino Stackable Header Kit - R3</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class=sfe-icon-stock-in><span class=visuallyhidden>In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      PRT-11417    </span>
+          <p class="description" style="display:none" itemprop="description">
+        These headers are made to work with the Arduino Uno R3, Leonardo and new Arduino boards going forward. They are the perfect h&hellip;      </p>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price" itemprop="price" content="1.5">$1.50</span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="4.4 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.4">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">12</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="11417">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">38</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="11417" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid " data-id="115"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="PRT00115">
+    <meta itemprop="sku" content="PRT-00115">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/115">
+      <img src="https://cdn.sparkfun.com/r/140-140/assets/parts/1/0/5/00115-03-L.jpg" alt="Female Headers" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type=hidden name=id value="115">
+          <input type=hidden name=qty value="1">
+          <input type='hidden' name='csrf_token' value='0983677ddbe26b1b2c3129ee102827849b5e77cc53cacf38ef626f9d6ca1dd9fc816cd89c5f7af797f339276ef479e198a380d42727b2373876603e7b68c087c'>          <!-- Add to Cart -->
+          <input type="number" class="quantity form-control" size="4" name="qty" value="1">
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_115" style="display: none;">
+        <p class="success-message">
+          Added <span class="added_qty_115"></span> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/115" itemprop="url">
+        <span itemprop="name">Female Headers</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class=sfe-icon-stock-in><span class=visuallyhidden>In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      PRT-00115    </span>
+          <p class="description" style="display:none" itemprop="description">
+        Single row of 40-holes, female header. Can be cut to size with a pair of wire-cutters. Standard .1" spacing. We use them exte&hellip;      </p>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price" itemprop="price" content="1.5">$1.50</span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="4.1 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-empty" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.1">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">7</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="115">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">34</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="115" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid retired" data-id="11609"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="COM11609">
+    <meta itemprop="sku" content="COM-11609">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/retired/11609">
+      <img src="https://cdn.sparkfun.com/r/140-140/assets/parts/7/6/3/6/11609-02a.jpg" alt="MicroSD Card with Adapter - 8GB" height="140" itemprop="image">
+    </a>
+
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/retired/11609" itemprop="url">
+        <span itemprop="name">MicroSD Card with Adapter - 8GB</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="Retired"><span class=sfe-icon-stock-retired><span class=visuallyhidden>Retired</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      COM-11609    </span>
+          <p class="description" style="display:none" itemprop="description">
+        This is an 8 gig microSD memory card. It's perfect for massive datalogging without taking up a lot of space. These microSD ca&hellip;      </p>
+      </div>
+
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="4 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-empty" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">2</span>
+  </span>
+
+      <strong class="retired">Retired</strong>
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="11609">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">7</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="11609" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+</div>
+
+  <div class="clearfix"></div>
+
+
+
+
+<p>Finally, if you intend on logging the GPS data to a &micro;SD card, you may want to grab a <a href="https://www.sparkfun.com/products/11609">&micro;SD Card and SD Adapter</a>. The Arduino SD library should support most &micro;SD cards formatted with FAT16 or FAT32 file systems.</p>
+
+<h3>Suggested Reading</h3>
+
+<p>This is a beginner-level tutorial &ndash; and the GPS Logger Shield is a beginner-friendly product &ndash; but there are a few concepts you should be comfortable with before continuing on. If any of these subjects sound unfamiliar, considering reading those tutorials before continuing on.</p>
+
+<ul>
+<li><a href="https://learn.sparkfun.com/tutorials/gps-basics">GPS Basics</a> &ndash; This tutorial is a great primer on the wonders of GPS. Learn how we get find our position on the globe by listening to (at least) four satellites send a timestamp and aerial position.</li>
+<li><a href="https://learn.sparkfun.com/tutorials/serial-communication">Serial Communication</a> &ndash; The GP3906 communicates via a simple, serial UART. This tutorial will familiarize you with serial-related concepts like RX, TX, and baud rate.</li>
+<li><a href="https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering">How to Solder: Through-Hole Soldering</a> &ndash; If you&rsquo;ve never soldered before, now&rsquo;s a great time to start, and this is a great tutorial to learn from.</li>
+<li><a href="https://learn.sparkfun.com/tutorials/installing-an-arduino-library">Installing an Arduino Library</a> &ndash; We&rsquo;ll use a pair of fantastic Arduino libraries to log GPS data to an SD card.</li>
+</ul>
+
+
+
+<div class="tile-wrap">
+  <div class="tile tutorial-tile has_addl_actions  grid" data-id="5">
+
+  <a href="https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/e/3/9/9/4/51d9fbe1ce395f7a2a000000.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">How to Solder: Through-Hole Soldering</h3>
+      </a>
+
+      <div class="description">
+      This tutorial covers everything you need to know about through-hole soldering.    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="5">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">26</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="8">
+
+  <a href="https://learn.sparkfun.com/tutorials/serial-communication">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/7/d/f/9/9/50d24be7ce395f1f6c000000.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">Serial Communication</h3>
+      </a>
+
+      <div class="description">
+      Asynchronous serial communication concepts: packets, signal levels, baud rates, UARTs and more!    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="8">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">41</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="9">
+
+  <a href="https://learn.sparkfun.com/tutorials/gps-basics">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/3/6/6/f/7/50edfc17ce395f7105000000.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">GPS Basics</h3>
+      </a>
+
+      <div class="description">
+      The Global Positioning System (GPS) is an engineering marvel that we all have access to for a relatively low cost and no subscription fee. With the correct hardware and minimal effort, you can determine your position and time almost anywhere on the globe.     </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="9">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">14</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="15">
+
+  <a href="https://learn.sparkfun.com/tutorials/installing-an-arduino-library">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/b/e/4/b/2/50f04b99ce395fd95e000001.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">Installing an Arduino Library</h3>
+      </a>
+
+      <div class="description">
+      How do I install a custom Arduino library? It's easy!    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="15">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">13</span>
+</span>  </div>
+
+</div>
+</div>
+
+  <div class="clearfix"></div>
+
+      </div>
+          <div class="section tutorial-page">
+        <h2 id="hardware-overview">Hardware Overview</h2>
+        <p>For a quick overview of the components and features of the GPS Logger Shield, refer to the image below:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/hardware-annotated-gps-shield-top.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/6/8/hardware-annotated-gps-shield-top.jpg" alt="Annotated GPS Shield image" /></a></p>
+
+<p>The rest of this section will dive into some of the more critical components of the shield, including power supply requirements and UART and SPI interface configurations.</p>
+
+<h3><a name="powering-the-gps-logger-shield"></a> Powering the GPS Logger Shield</h3>
+
+<p>The GPS Logger Shield&rsquo;s main voltage supply is taken from the <strong>Arduino 5V</strong> header pin. This voltage is regulated down to 3.3V, which is supplied to both the GPS module and the &micro;SD card.</p>
+
+<p>These two components should consume around 30mA on average, but they may very occasionally spike to upwards of 100mA.</p>
+
+<h4>Logic-Level Shifting</h4>
+
+<p>The shield includes a <a href="https://www.sparkfun.com/products/11771">TXB0108 8-Channel Level Shifter</a>, which shifts voltage levels between the Arduino and 3.3V GPS UART and &micro;SD SPI signals. Regardless of whether your Arduino runs at 5V or 3.3V, you shouldn&rsquo;t have to concern yourself with shifting voltages between either component.</p>
+
+<p>The Arduino-side logic-level voltage is set by the <strong>IOREF pin</strong>, which most Arduino development boards connect to either 5V or 3.3V.</p>
+
+<div class="alert alert-danger"><p><b>&#x26A1; If your Arduino board doesn't have an IOREF pin</b>, or if no voltage is supplied on that pin, you will need to set the IOREF voltage manually. The shield includes a jumper on the back-side of the board, labeled <b>IOREF-SEL</b>, which you can use to set the IOREF voltage to either 3.3V or 5V.</p>
+<p style="text-align:center"><a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/hardware-ioref-jumper-03.png"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/hardware-ioref-jumper-03.png"></img></a></p>
+<p>If your Arduino board doesn't have an IOREF pin, set this jumper to match your desired logic level.</p>
+</div>
+
+
+<h4><a name="GP3906-VBAT"></a> GP3906 Battery Supply (VBAT)</h4>
+
+<p>The GP3906 is a great, little module, but it has one, big quirk: A <b>supply voltage between 2.0-4.3V is required</b> on the VBAT pin. If you have a <a href="https://www.sparkfun.com/products/337">12mm coin cell battery</a>, supplying that voltage is as easy as pushing it into the battery socket. When you insert the battery, make sure you slot it in <b><em>+</em> side facing up</b>.</p></p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/gps-battery-plug.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/6/8/gps-battery-plug.jpg" alt="Plugging battery into the GPS Shield" /></a></p>
+
+<p>If you don&rsquo;t have a battery handy, there are a few workarounds. You can grab a soldering iron, and <b>short the 3V3-Batt jumper</b>, next to the battery socket.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/gps-battery-jumper.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/6/8/gps-battery-jumper.jpg" alt="Batt/3V3 jumper closed" /></a></p>
+
+<p style="text-align:center;"> <em>If you don&rsquo;t have a 12mm battery, shorting the 3V3/Batt jumper will at least keep your GPS module functional.</em></p>
+
+<p>Or you can wire the broken out <b>VBAT pin</b> to any voltage supply between 2.0-4.3V.</p>
+
+<div class="alert alert-danger">
+<b>&#x26A1; VBAT Supply Required:</b> The GP3906 requires some form of voltage supply on its VBAT pin, whether that be an actual battery, or simply the 3.3V regulator output. If your the GPS LED isn't at least blinking (or illuminated) when the shield is powered up, that may indicate lack of supply to the VBAT port (or a dead battery).
+</div>
+
+
+<p>Supplying the GP3906 with a backup battery supply ensures that its real-time clock (RTC) will continue to tick, even when the rest of the board is powered off. That allows the module to get faster GPS fixes when it initially powers up. It doesn&rsquo;t consume a lot of power &ndash; we&rsquo;ve measured around 5-6&micro;A, &ndash; so a 12mm coin cell battery could keep the board &ldquo;running&rdquo; (in sleep mode) for about a year.</p>
+
+<h3>GPS Pin Breakout&rsquo;s</h3>
+
+<p>Most of the GPS input, output, and power pins are connected to <em>something</em> on the GPS Logger Shield, but they&rsquo;re all also broken out to this 8-pin header.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/hardware-gps-breakout.jpg"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/hardware-gps-breakout.jpg" alt="GPS Pin breakout's highlighted" /></a></p>
+
+<p>Here&rsquo;s a quick overview of each pin and its function:</p>
+
+<p style="text-align:center"><table class="table table-striped table-hover table-bordered">
+<tr><th>Pin Label</th><th>In/Out</th><th>Board Connection</th><th>Pin Description</th></tr>
+<tr><th>GND</th><td>In</td><td>Ground</td><td>GPS module ground (0V reference)</td></tr>
+<tr><th>PPS</th><td>Out</td><td></td><td>1 pulse-per-second time reference</td></tr>
+<tr><th>EN</th><td>In</td><td></td><td>Active-high chip-enable &ndash; pull low to reset or turn off</td></tr>
+<tr><th>RX</th><td>In</td><td>Arduino TX/D9</td><td>Serial data input</td></tr>
+<tr><th>TX</th><td>Out</td><td>Arduino RX/D8</td><td>Serial data output</td></tr>
+<tr><th>FIX</th><td>Out</td><td>GPS Fix LED</td><td>GPS fix indicator &ndash; blinks before a fix, HIGH once a fix is valid</td></tr>
+<tr><th>VBAT</th><td>In</td><td>12mm coin cell socket</td><td>Backup power &ndash; keeps the RTC running (2.0-4.3V input range)</td></tr>
+<tr><th>3V3</th><td>In</td><td>On-board 3.3V regulator</td><td>3.3V power supply input</td></tr>
+</table></p>
+
+
+<p>The <strong>PPS</strong> and <strong>EN</strong> pins are left unconnected. You&rsquo;re free to wire them up to any Arduino pin should you need either a pulse-per-second signal, or extra control of the GPS module&rsquo;s operation.</p>
+
+<h3>Selecting the Serial Port</h3>
+
+<p>The GPS module communicates via a simple, UART (serial) interface. The <b>UART-select switch</b> allows you to switch that interface between either the Arduino&rsquo;s hardware UART &ndash; on pins D0 and D1 &ndash; or a <a href="https://www.arduino.cc/en/Reference/SoftwareSerial">SoftwareSerial</a> port on pins D8 and D9.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/hardware-uart-switch.jpg"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/hardware-uart-switch.jpg" alt="UART-select switch" /></a></p>
+
+<p>Should you need a reference, this table shows the map between GPS module and Arduino UART(s):</p>
+
+<div style="width:50%; margin:0 auto;"><p style="text-align:center;"><table class="table table-striped table-bordered">
+<tr><th>GPS Pin</th><th>Arduino Software UART Pin</th><th>Arduino Hardware UART Pin</th></tr>
+<tr><td>RX</td><td>9</td><td>1 (TX)</td></tr>
+<tr><td>TX</td><td>8</td><td>0 (RX)</td></tr>
+</table></p></div>
+
+
+<p>If you&rsquo;re using an Arduino Uno or any development board with one, pre-occupied hardware UART, you may be forced to use the software serial port. Fortunately, the GPS module&rsquo;s baud rate defaults to a slow, steady <strong>9600 bps</strong>, which SoftwareSerial shouldn&rsquo;t have a problem handling.</p>
+
+<p>If you need to move the software serial port pins, they can be custom-routed to any other pin by <strong>cutting the solder jumpers</strong> between pins GPS-RX and D8 and/or GPS-TX and D9.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/hardware-uart-jumpers.jpg"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/hardware-uart-jumpers.jpg" alt="Software UART-select jumpers" /></a></p>
+
+<p>Once those jumpers are cut, you can wire the GPS-RX and GPS-TX pins to any other pins you&rsquo;d like.</p>
+
+<h3>Selecting the &micro;SD SPI Pins</h3>
+
+<p>On older Arduino boards, finding the SPI port was pretty simple &ndash; it&rsquo;d be on pins 10-13, mapping out to CS, MOSI, MISO, and SCLK respectively. On more recent Arduino board releases, however, these pins are just as likely to be found on <em>only</em> the 6-pin, 2x3 SPI header. The GPS Logger Shield maps the &micro;SD SPI pins to both of these headers, in order to support as many development boards as possible.</p>
+
+<p>A trio of three-way solder jumpers can be used to modify which Arduino pins are routed to the &micro;SD card&rsquo;s SPI I/O&rsquo;s.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/hardware-spi-jumpers.jpg"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/hardware-spi-jumpers.jpg" alt="SPI-select jumpers" /></a></p>
+
+<p>The middle pad of these jumpers carries the signal to/from the &micro;SD card. The pads toward the inside of the board carry signals to the SPI header, and the pads toward the outside carry signals to pins 10-13.</p>
+
+<div class="alert alert-info"><p><b>Boards that map SPI to pins 10-13</b> include the Arduino Uno, RedBoard, Arduino Pro's, and most ATmega328P-based boards. If you're using any of these boards, it should be safe to leave the jumper's untouched (as they're also, likely, shorted together on the Arduino).</p>
+
+<p><b>Boards that <em>only</em> map SPI to the 2x3 SPI header</b> include the Arduino Leonardo (and other most ATmega32U4-based boards), Arduino Due, and the Arduino Zero (and most ATSAMD21-based boards). On these boards, you'll need to cut the solder jumpers connecting the middle pad to the D11-, D10-, and D13-side pads.</p></div>
+
+
+<h3>Power and GPS Fix Status LEDs</h3>
+
+<p>This pair of LEDs on the corner of the shield are a handy tool for initial troubleshooting. The <strong>red PWR</strong> LED is attached to the output of the shield&rsquo;s on-board 3.3V regulator. If the shield is getting power, this LED should be on.</p>
+
+<p>The <strong>blue GPS FIX</strong> LED is connected the GP3906&rsquo;s &ldquo;3D_FIX&rdquo; pin. It can be used to identify whether the GPS module has a proper fix or not. When you initially power the shield up, the LED should blink &ndash; indicating it&rsquo;s trying to find a fix. Once the LED turns solidly on, you can rest assured that your GPS module has a good fix on your location.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/gps-fix-led-datasheet.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/6/8/gps-fix-led-datasheet.png" alt="3D Fix pin operation" /></a></p>
+
+<p style="text-align:center;"> <em>The GP3906&rsquo;s 3D_Fix pin operation. The LED will be on when the GPS fix is valid, and blinking at &frac12; Hz otherwise.</em></p>
+
+<p>Both of these LEDs have <strong>solder jumpers</strong> underneath, should you find the need to disable either of them. A quick slice between the pads is all it takes to remove them from the circuit. This might be useful if you&rsquo;re using the GPS Logger Shield in a low-power application, where even the handful of milliamps consumed by the LEDs means months off a project&rsquo;s battery lifetime.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="hardware-setup">Hardware Setup</h2>
+        <p>Assembly of the GPS Logger Shield mostly comes down to soldering <em>something</em> to all of the 6, 8, and 10-pin Arduino headers. We usually recommend <a href="https://www.sparkfun.com/products/11417">Arduino R3 Stackable Headers</a> for this job, but <a href="https://www.sparkfun.com/products/116">male headers</a> can work &ndash; as long as this is the top board in a shield stack.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/gps-headers-soldered.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/6/8/gps-headers-soldered.jpg" alt="Stackable headers soldered into the shield" /></a></p>
+
+<p>If your application requires use of the <strong>6-pin, 2x3 SPI header</strong>, you may also want to solder <a href="https://www.sparkfun.com/products/115">female headers</a> to those pins (make sure they&rsquo;re pointing down, and slot easily into your Arduino&rsquo;s male SPI pins).</p>
+
+<p>If you&rsquo;ve never soldered an Arduino shield before, check out our <a href="https://learn.sparkfun.com/tutorials/arduino-shields#installing-headers-preparation">Arduino Shield Assembly tutorial</a> for some tips.</p>
+
+<h3>Pre-Flight Checklist</h3>
+
+<p>Before you get the go-ahead for GPS Shield'ing, make sure you double-check these common pitfalls one last time:</p>
+
+<h4>Battery (VBAT) Power Supply</h4>
+
+<p>Make sure you have a reliable power source supplying the GPS module&rsquo;s VBAT pin. If you have a shiny, new <a href="https://www.sparkfun.com/products/337">12mm coin cell battery</a> plugged in, that&rsquo;s perfect. Otherwise, make sure you&rsquo;ve either shorted the 3.3V/VBAT jumper, or are supplying something to the GPS module&rsquo;s <em>VBAT</em> breakout.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/gps-battery-in.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/6/8/gps-battery-in.jpg" alt="Battery plugged in" /></a></p>
+
+<h4>UART Selected</h4>
+
+<p>Make sure you have the UART-select switch pointing towards your preferred UART. If you&rsquo;re using an <strong>Uno, Redboard, or any other ATmega328P-based Arduino</strong>, you&rsquo;ll most likely need to have the switch pointing towards <strong>SW-UART</strong>, assuming the hardware UART is used for programming and serial debugging.</p>
+
+<div class="alert alert-danger">If you're using an ATmega328-based Arduino, no matter what your sketch ends up doing, <b>the switch must be in the SW-UART position during any programming upload</b>.</div>
+
+
+<p>If you&rsquo;re using a <strong>Leonardo</strong> (ATmega32U4-based boards), <strong>Zero</strong> (ATSAMD21-based boards), or any other Arduino that has a dedicated and free hardware UART on pins 0/1, we recommend leaving the switch in the <strong>HW-UART</strong> position.</p>
+
+<h4>&micro;SD SPI Jumpers</h4>
+
+<p>Planning on logging data to a &micro;SD card? Make sure the SPI jumpers are set accordingly. If you&rsquo;re using an Uno, Redboard, or any other ATmega328P-based Arduino, you can probably leave the jumpers untouched. SPI should be broken out to <em>both</em> pins 10-13 and the SPI header anyway.</p>
+
+<p>If you&rsquo;re using a <strong>Leonardo</strong> (ATmega32U4-based boards), <strong>Zero</strong> (ATSAMD21-based boards), or any other Arduino that doesn&rsquo;t break the SPI signals to pins 10-13, you&rsquo;ll want to <strong>cut the three SPI-select jumpers</strong> between the middle pad and the D11-D13 pins. That will free up those pins for other purposes in your project.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/gps-spi-headers-cut.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/6/8/gps-spi-headers-cut.jpg" alt="SPI jumpers cut for Leonardo" /></a></p>
+
+<p style="text-align:center;"> <em>Looking closely, you&rsquo;ll see traces cut on all three SPI lines between the middle pad and D11, D12, and D13. That disconnects the &micro;SD lines from those pins &ndash; leaving them connected to the SPI header.</em></p>
+
+<p>If you&rsquo;re relying on the SPI port from the 2x3-pin ICSP header, don&rsquo;t forget to solder headers to the SPI port!</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="example-sketch-gps-serial-passthrough">Example Sketch: GPS Serial Passthrough</h2>
+        <p>Now that your hardware is all set up, we have three pieces of example code to give you a taste of the GPS Logger Shield&rsquo;s functionality. This first example isn&rsquo;t all that useful, but it will, at least, make sure everything&rsquo;s working. Plus it&rsquo;ll show you the raw ugliness of <a href="https://learn.sparkfun.com/tutorials/gps-basics#message-formats">NMEA GPS strings</a> and make you appreciate great libraries like <a href="http://arduiniana.org/libraries/tinygps/">TinyGPS</a> even more.</p>
+
+<p>This example doesn&rsquo;t require any additional libraries. Simply plug the shield into your Arduino and upload the example code. We&rsquo;ve got a couple examples, depending on which Arduino and/or serial port you&rsquo;re using.</p>
+
+<div class="alert alert-info"><p><b>Note:</b> This example assumes you are using the latest version of the Arduino IDE on your desktop. If this is your first time using Arduino, please review our tutorial on <a href="https://learn.sparkfun.com/tutorials/installing-arduino-ide">installing the Arduino IDE.</a></p>If you have not previously installed an Arduino library, please check out our <a href="https://learn.sparkfun.com/tutorials/installing-an-arduino-library">installation guide.</a></p></div>
+
+
+<h3>SoftwareSerial Port Example</h3>
+
+<p>If you&rsquo;re using an Arduino Mega, Arduino Uno, Redboard, any other ATmega328P-based Arduino, and have the UART-select switch in the <strong>SW-UART</strong> position, upload this piece of example code to your Arduino:</p>
+
+<pre><code>language:c
+    /******************************************************************************
+Basic_Passthrough_Software.ino
+Basic Software Serial GPS Passthrough
+By Jim Lindblom @ SparkFun Electronics
+February 9, 2016
+https://github.com/sparkfun/GPS_Shield
+
+This example uses SoftwareSerial to communicate with the GPS module on
+pins 8 and 9. SoftwareSerial should work on most Arduinos, but it's a
+necessity on Arduino Mega's, Arduino Uno's, RedBoard's and any other Arduino
+based around an ATmega328P.
+
+After uploading the code, open your serial monitor, set it to 9600 baud, and
+watch the GPS module's NMEA strings begin to flow by. See if you can pick
+out the latitude and longitude.
+
+Resources:
+SoftwareSerial Library (included with Arduino)
+
+Development/hardware environment specifics:
+Arduino IDE 1.6.7
+GPS Logger Shield v2.0 - Make sure the UART switch is set to SW-UART
+Arduino Uno, RedBoard, Pro, Mega, etc.
+******************************************************************************/
+
+#include &lt;SoftwareSerial.h&gt; // Include the SoftwareSerial library
+#define ARDUINO_GPS_RX 9 // Arduino RX pin connected to GPS TX
+#define ARDUINO_GPS_TX 8 // Arduino TX pin connected to GPS RX
+#define GPS_BAUD_RATE 9600 // The GPS Shield module defaults to 9600 baud
+// Create a SoftwareSerial object called gps:
+SoftwareSerial gpsPort(ARDUINO_GPS_TX, ARDUINO_GPS_RX);
+
+// We'll also define a more descriptive moniker for the Serial Monitor port.
+// This is the hardware serial port on pins 0/1.
+#define SerialMonitor Serial
+
+void setup() 
+{
+  gpsPort.begin(GPS_BAUD_RATE);
+  SerialMonitor.begin(9600);
+}
+
+void loop() 
+{
+  if (gpsPort.available()) // If GPS data is available
+    SerialMonitor.write(gpsPort.read()); // Read it and print to SerialMonitor
+  if (SerialMonitor.available()) // If SerialMonitor data is available
+    gpsPort.write(SerialMonitor.read()); // Read it and send to GPS
+}
+</code></pre>
+
+<p>Copy and paste the above code into your Arduino IDE. You can also download all of the example sketches from our GitHub repository.</p>
+
+<p style="text-align:center;"><a href="https://github.com/sparkfun/GPS_Shield/archive/master.zip" class="btn btn-default">Download GPS Shield Examples</a></p>
+
+<p>This example uses the <a href="https://www.arduino.cc/en/Reference/SoftwareSerial">SoftwareSerial</a> library to communicate with the GPS module, and leaves the hardware serial port for debugging with the serial monitor.</p>
+
+<h3>Hardware Serial Port Example</h3>
+
+<p>If you&rsquo;re using an Arduino Leonardo, Arduino Due, Arduino Zero, or any other Arduino with a free UART on pins 0/1, set the UART-select switch to <strong>HW-UART</strong>, and upload this example:</p>
+
+<pre><code>language:c
+    /******************************************************************************
+Basic_Passthrough_Hardware.ino
+Basic Hardware Serial GPS Passthrough
+By Jim Lindblom @ SparkFun Electronics
+February 9, 2016
+https://github.com/sparkfun/GPS_Shield
+
+This example uses an Arduino's hardware serial port -- on pins 0 and 1 -- to
+communicate with the GPS module. 
+
+Hardware serial should work on any Arduino's with a free hardware serial 
+UART on pins 0/1. That includes Arduino Leonardo, Zero, Due, and SparkFun's
+SAMD21 Dev Board.
+
+After uploading the code, open your serial monitor, set it to 9600 baud, and
+watch the GPS module's NMEA strings begin to flow by. See if you can pick
+out the latitude and longitude.
+
+Development/hardware environment specifics:
+Arduino IDE 1.6.7
+GPS Logger Shield v2.0 - Make sure the UART switch is set to HW-UART
+Arduino Leonardo, Arduino Zero, Arduino Due, SparkFun SAMD21 Dev Board, etc
+******************************************************************************/
+
+#define GPS_BAUD_RATE 9600 // The GPS Shield module defaults to 9600 baud
+
+// Define the serial monitor port. On the Leonardo this is 'Serial'
+//  but on other boards this may be 'SerialUSB'
+#define SerialMonitor Serial // e.g. Arduino Leonardo
+// Define the harware serial port on pins 0/1. On the Leonardo this is 'Serial1'
+//  but on other boards this may be 'Serial'
+#define gpsPort Serial1 // e.g. Arduino Leonardo
+// See https://www.arduino.cc/en/Reference/Serial to find out which Serial ports
+//  you should use in the defines above.
+
+void setup() 
+{
+  SerialMonitor.begin(9600); // Initialize the serial monitor port at 9600 baud
+  gpsPort.begin(GPS_BAUD_RATE); // The GPS module's default baud is 9600
+}
+
+void loop() 
+{
+  if (gpsPort.available()) // If GPS data is available
+    SerialMonitor.write(gpsPort.read()); // Send it to the serial monitor
+  if (SerialMonitor.available()) // If data is sent to the serial monitor
+    gpsPort.write(SerialMonitor.read()); // send it to the GPS module
+}
+</code></pre>
+
+<p>You <em>may</em> have to alter either or both of the serial port <code>#defines</code> at the top of the code. Refer to your development board&rsquo;s datasheet or product info page for more information on which serial port is which.</p>
+
+<h3>Using the Serial Passthrough Sketch</h3>
+
+<p>Once you&rsquo;ve uploaded the sketch, open up your <a href="https://learn.sparkfun.com/tutorials/terminal-basics">serial monitor</a> and set the baud rate to 9600. You should immediately begin to see GPS NMEA data begin to flow by at a rate of 1Hz.</p>
+
+<p>For example, one set of strings may look like:</p>
+
+<pre><code>$GPRMC,235316.000,A,4003.9040,N,10512.5792,W,0.09,144.75,141112,,*19
+$GPGGA,235317.000,4003.9039,N,10512.5793,W,1,08,1.6,1577.9,M,-20.7,M,,0000*5F
+$GPGSA,A,3,22,18,21,06,03,09,24,15,,,,,2.5,1.6,1.9*3E
+</code></pre>
+
+<p>If you don&rsquo;t see anything in the serial monitor, make sure the UART-select switch is in the correct position. Also double check that the blue &ldquo;GPS Fix&rdquo; LED is at least blinking. If it&rsquo;s not, the module may not be receiving power. Don&rsquo;t forget to supply VBAT!</p>
+
+<p>If you&rsquo;re still not having any luck, get in touch with our <a href="https://www.sparkfun.com/technical_assistance">technical support team</a>.</p>
+
+<hr />
+
+<p><a href="https://en.wikipedia.org/wiki/NMEA_0183">NMEA strings</a> are the standard message format produced by almost all GPS receivers. They can relay all sorts of information including the time, latitude, longitude, altitude, and number of satellites visible, but unless you&rsquo;re an incredibly fast parser, these sentences will mostly mean nothing. Fortunately, the Arduino can read those strings, parse them for you, and give you more human-readable pieces of data.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="example-sketch-tinygps-serial-streaming">Example Sketch: TinyGPS Serial Streaming</h2>
+        <p>A couple of our favorite GPS-parsing Arduino libraries are <a href="http://arduiniana.org/libraries/tinygps/">TinyGPS</a> and <a href="http://arduiniana.org/libraries/tinygpsplus/">TinyGPS++</a>. These libraries simplify the task of parsing the excessive NMEA strings, leaving us with just the few bits of data we care about.</p>
+
+<p>You will need to install the libraries in your Arduino IDE. Visit the links above to download them. Reference our <a href="https://learn.sparkfun.com/tutorials/installing-an-arduino-library">Installing an Arduino Library</a> tutorial for any additional library-installing help you may need.</p>
+
+<h3>TinyGPS++ Example</h3>
+
+<p>Here&rsquo;s a quick example, which uses the TinyGPS++ library to parse NMEA strings for position, altitude, time, and date. Copy and past the code below into your Arduino IDE and upload to your board.</p>
+
+<pre><code>language:c
+/******************************************************************************
+  TinyGPSPlus_GPS_Shield.ino
+  TinyGPS++ Library Example for the SparkFun GPS Logger Shield
+  By Jim Lindblom @ SparkFun Electronics
+  February 9, 2016
+  https://github.com/sparkfun/GPS_Shield
+
+  This example uses SoftwareSerial to communicate with the GPS module on
+  pins 8 and 9. It uses the TinyGPS++ library to parse the NMEA strings sent
+  by the GPS module, and prints interesting GPS information to the serial
+  monitor.
+
+  After uploading the code, open your serial monitor, set it to 9600 baud, and
+  watch for latitude, longitude, altitude, course, speed, date, time, and the
+  number of visible satellites.
+
+  Resources:
+  TinyGPS++ Library  - https://github.com/mikalhart/TinyGPSPlus/releases
+  SoftwareSerial Library
+
+  Development/hardware environment specifics:
+  Arduino IDE 1.6.7
+  GPS Logger Shield v2.0 - Make sure the UART switch is set to SW-UART
+  Arduino Uno, RedBoard, Pro, Mega, etc.
+******************************************************************************/
+
+#include &lt;TinyGPS++.h&gt; // Include the TinyGPS++ library
+TinyGPSPlus tinyGPS; // Create a TinyGPSPlus object
+
+#define GPS_BAUD 9600 // GPS module baud rate. GP3906 defaults to 9600.
+
+// If you're using an Arduino Uno, Mega, RedBoard, or any board that uses the
+// 0/1 UART for programming/Serial monitor-ing, use SoftwareSerial:
+#include &lt;SoftwareSerial.h&gt;
+#define ARDUINO_GPS_RX 9 // GPS TX, Arduino RX pin
+#define ARDUINO_GPS_TX 8 // GPS RX, Arduino TX pin
+SoftwareSerial ssGPS(ARDUINO_GPS_TX, ARDUINO_GPS_RX); // Create a SoftwareSerial
+
+// Set gpsPort to either ssGPS if using SoftwareSerial or Serial1 if using an
+// Arduino with a dedicated hardware serial port
+#define gpsPort ssGPS  // Alternatively, use Serial1 on the Leonardo
+
+// Define the serial monitor port. On the Uno, Mega, and Leonardo this is 'Serial'
+//  on other boards this may be 'SerialUSB'
+#define SerialMonitor Serial
+
+void setup()
+{
+  SerialMonitor.begin(9600);
+  gpsPort.begin(GPS_BAUD);
+}
+
+void loop()
+{
+  // print position, altitude, speed, time/date, and satellites:
+  printGPSInfo();
+
+  // "Smart delay" looks for GPS data while the Arduino's not doing anything else
+  smartDelay(1000); 
+}
+
+void printGPSInfo()
+{
+  // Print latitude, longitude, altitude in feet, course, speed, date, time,
+  // and the number of visible satellites.
+  SerialMonitor.print("Lat: "); SerialMonitor.println(tinyGPS.location.lat(), 6);
+  SerialMonitor.print("Long: "); SerialMonitor.println(tinyGPS.location.lng(), 6);
+  SerialMonitor.print("Alt: "); SerialMonitor.println(tinyGPS.altitude.feet());
+  SerialMonitor.print("Course: "); SerialMonitor.println(tinyGPS.course.deg());
+  SerialMonitor.print("Speed: "); SerialMonitor.println(tinyGPS.speed.mph());
+  SerialMonitor.print("Date: "); printDate();
+  SerialMonitor.print("Time: "); printTime();
+  SerialMonitor.print("Sats: "); SerialMonitor.println(tinyGPS.satellites.value());
+  SerialMonitor.println();
+}
+
+// This custom version of delay() ensures that the tinyGPS object
+// is being "fed". From the TinyGPS++ examples.
+static void smartDelay(unsigned long ms)
+{
+  unsigned long start = millis();
+  do
+  {
+    // If data has come in from the GPS module
+    while (gpsPort.available())
+      tinyGPS.encode(gpsPort.read()); // Send it to the encode function
+    // tinyGPS.encode(char) continues to "load" the tinGPS object with new
+    // data coming in from the GPS module. As full NMEA strings begin to come in
+    // the tinyGPS library will be able to start parsing them for pertinent info
+  } while (millis() - start &lt; ms);
+}
+
+// printDate() formats the date into dd/mm/yy.
+void printDate()
+{
+  SerialMonitor.print(tinyGPS.date.day());
+  SerialMonitor.print("/");
+  SerialMonitor.print(tinyGPS.date.month());
+  SerialMonitor.print("/");
+  SerialMonitor.println(tinyGPS.date.year());
+}
+
+// printTime() formats the time into "hh:mm:ss", and prints leading 0's
+// where they're called for.
+void printTime()
+{
+  SerialMonitor.print(tinyGPS.time.hour());
+  SerialMonitor.print(":");
+  if (tinyGPS.time.minute() &lt; 10) SerialMonitor.print('0');
+  SerialMonitor.print(tinyGPS.time.minute());
+  SerialMonitor.print(":");
+  if (tinyGPS.time.second() &lt; 10) SerialMonitor.print('0');
+  SerialMonitor.println(tinyGPS.time.second());
+}
+</code></pre>
+
+<p>You may need to adjust the <code>gpsPort</code> and <code>SerialMonitor</code> defines near the top of the sketch. As it is, the sketch is set up to use the SoftwareSerial port.</p>
+
+<p>After uploading the code, open up your serial monitor to watch the parsed GPS data stream by.</p>
+
+<p>If your module doesn&rsquo;t have a good GPS fix, you&rsquo;ll probably see a lot of 0&rsquo;s stream by; the time should be incrementing, although it&rsquo;ll be incorrect (unless you plugged your Arduino in at exactly midnight!).</p>
+
+<p>If you can find a way to take your computer and Arduino setup outside, that&rsquo;ll be your best bet for getting a fix. Otherwise, try to take it near an open window. The better view it has of the sky, the better chance it&rsquo;ll have to find the four satellites it needs.</p>
+
+<p>A successful, fixed GPS stream will look something like this:</p>
+
+<pre><code>Lat: 40.090422
+Long: -105.184534
+Alt: 5243.77
+Course: 295.56
+Speed: 0.01
+Date: 26/1/2016
+Time: 20:19:34
+Sats: 6
+</code></pre>
+
+<p>For more information on using the TinyGPS++ Library, check out the <a href="http://arduiniana.org/libraries/tinygpsplus/">project homepage</a>.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="example-sketch-sd-card-gps-logging">Example Sketch: µSD Card GPS Logging</h2>
+        <p>Now that we have good GPS data, the final step is to start logging it to a &micro;SD card.</p>
+
+<p>Like the last example, this sketch uses <a href="http://arduiniana.org/libraries/tinygpsplus/">TinyGPS++</a>, it also uses Arduino&rsquo;s built-in <a href="https://www.arduino.cc/en/Reference/SD">SD library</a>.</p>
+
+<p>Upload the following code onto your Arduino.</p>
+
+<pre><code>language:c
+    /******************************************************************************
+  CSV_Logger_TinyGPSPlus.ino
+  Log GPS data to a CSV file on a uSD card
+  By Jim Lindblom @ SparkFun Electronics
+  February 9, 2016
+  https://github.com/sparkfun/GPS_Shield
+
+  This example uses SoftwareSerial to communicate with the GPS module on
+  pins 8 and 9, then communicates over SPI to log that data to a uSD card.
+
+  It uses the TinyGPS++ library to parse the NMEA strings sent by the GPS module,
+  and prints interesting GPS information - comma separated - to a newly created
+  file on the SD card.
+
+  Resources:
+  TinyGPS++ Library  - https://github.com/mikalhart/TinyGPSPlus/releases
+  SD Library (Built-in)
+  SoftwareSerial Library (Built-in)
+
+  Development/hardware environment specifics:
+  Arduino IDE 1.6.7
+  GPS Logger Shield v2.0 - Make sure the UART switch is set to SW-UART
+  Arduino Uno, RedBoard, Pro, Mega, etc.
+******************************************************************************/
+
+#include &lt;SPI.h&gt;
+#include &lt;SD.h&gt;
+#include &lt;TinyGPS++.h&gt;
+
+#define ARDUINO_USD_CS 10 // uSD card CS pin (pin 10 on SparkFun GPS Logger Shield)
+
+/////////////////////////
+// Log File Defintions //
+/////////////////////////
+// Keep in mind, the SD library has max file name lengths of 8.3 - 8 char prefix,
+// and a 3 char suffix.
+// Our log files are called "gpslogXX.csv, so "gpslog99.csv" is our max file.
+#define LOG_FILE_PREFIX "gpslog" // Name of the log file.
+#define MAX_LOG_FILES 100 // Number of log files that can be made
+#define LOG_FILE_SUFFIX "csv" // Suffix of the log file
+char logFileName[13]; // Char string to store the log file name
+// Data to be logged:
+#define LOG_COLUMN_COUNT 8
+char * log_col_names[LOG_COLUMN_COUNT] = {
+  "longitude", "latitude", "altitude", "speed", "course", "date", "time", "satellites"
+}; // log_col_names is printed at the top of the file.
+
+//////////////////////
+// Log Rate Control //
+//////////////////////
+#define LOG_RATE 5000 // Log every 5 seconds
+unsigned long lastLog = 0; // Global var to keep of last time we logged
+
+/////////////////////////
+// TinyGPS Definitions //
+/////////////////////////
+TinyGPSPlus tinyGPS; // tinyGPSPlus object to be used throughout
+#define GPS_BAUD 9600 // GPS module's default baud rate
+
+/////////////////////////////////
+// GPS Serial Port Definitions //
+/////////////////////////////////
+// If you're using an Arduino Uno, Mega, RedBoard, or any board that uses the
+// 0/1 UART for programming/Serial monitor-ing, use SoftwareSerial:
+#include &lt;SoftwareSerial.h&gt;
+#define ARDUINO_GPS_RX 9 // GPS TX, Arduino RX pin
+#define ARDUINO_GPS_TX 8 // GPS RX, Arduino TX pin
+SoftwareSerial ssGPS(ARDUINO_GPS_TX, ARDUINO_GPS_RX); // Create a SoftwareSerial
+
+// Set gpsPort to either ssGPS if using SoftwareSerial or Serial1 if using an
+// Arduino with a dedicated hardware serial port
+#define gpsPort ssGPS  // Alternatively, use Serial1 on the Leonardo
+
+// Define the serial monitor port. On the Uno, Mega, and Leonardo this is 'Serial'
+//  on other boards this may be 'SerialUSB'
+#define SerialMonitor Serial
+
+void setup()
+{
+  SerialMonitor.begin(9600);
+  gpsPort.begin(GPS_BAUD);
+
+  SerialMonitor.println("Setting up SD card.");
+  // see if the card is present and can be initialized:
+  if (!SD.begin(ARDUINO_USD_CS))
+  {
+    SerialMonitor.println("Error initializing SD card.");
+  }
+  updateFileName(); // Each time we start, create a new file, increment the number
+  printHeader(); // Print a header at the top of the new file
+}
+
+void loop()
+{
+  if ((lastLog + LOG_RATE) &lt;= millis())
+  { // If it's been LOG_RATE milliseconds since the last log:
+    if (tinyGPS.location.isUpdated()) // If the GPS data is vaild
+    {
+      if (logGPSData()) // Log the GPS data
+      {
+        SerialMonitor.println("GPS logged."); // Print a debug message
+        lastLog = millis(); // Update the lastLog variable
+      }
+      else // If we failed to log GPS
+      { // Print an error, don't update lastLog
+        SerialMonitor.println("Failed to log new GPS data.");
+      }
+    }
+    else // If GPS data isn't valid
+    {
+      // Print a debug message. Maybe we don't have enough satellites yet.
+      SerialMonitor.print("No GPS data. Sats: ");
+      SerialMonitor.println(tinyGPS.satellites.value());
+    }
+  }
+
+  // If we're not logging, continue to "feed" the tinyGPS object:
+  while (gpsPort.available())
+    tinyGPS.encode(gpsPort.read());
+}
+
+byte logGPSData()
+{
+  File logFile = SD.open(logFileName, FILE_WRITE); // Open the log file
+
+  if (logFile)
+  { // Print longitude, latitude, altitude (in feet), speed (in mph), course
+    // in (degrees), date, time, and number of satellites.
+    logFile.print(tinyGPS.location.lng(), 6);
+    logFile.print(',');
+    logFile.print(tinyGPS.location.lat(), 6);
+    logFile.print(',');
+    logFile.print(tinyGPS.altitude.feet(), 1);
+    logFile.print(',');
+    logFile.print(tinyGPS.speed.mph(), 1);
+    logFile.print(',');
+    logFile.print(tinyGPS.course.deg(), 1);
+    logFile.print(',');
+    logFile.print(tinyGPS.date.value());
+    logFile.print(',');
+    logFile.print(tinyGPS.time.value());
+    logFile.print(',');
+    logFile.print(tinyGPS.satellites.value());
+    logFile.println();
+    logFile.close();
+
+    return 1; // Return success
+  }
+
+  return 0; // If we failed to open the file, return fail
+}
+
+// printHeader() - prints our eight column names to the top of our log file
+void printHeader()
+{
+  File logFile = SD.open(logFileName, FILE_WRITE); // Open the log file
+
+  if (logFile) // If the log file opened, print our column names to the file
+  {
+    int i = 0;
+    for (; i &lt; LOG_COLUMN_COUNT; i++)
+    {
+      logFile.print(log_col_names[i]);
+      if (i &lt; LOG_COLUMN_COUNT - 1) // If it's anything but the last column
+        logFile.print(','); // print a comma
+      else // If it's the last column
+        logFile.println(); // print a new line
+    }
+    logFile.close(); // close the file
+  }
+}
+
+// updateFileName() - Looks through the log files already present on a card,
+// and creates a new file with an incremented file index.
+void updateFileName()
+{
+  int i = 0;
+  for (; i &lt; MAX_LOG_FILES; i++)
+  {
+    memset(logFileName, 0, strlen(logFileName)); // Clear logFileName string
+    // Set logFileName to "gpslogXX.csv":
+    sprintf(logFileName, "%s%d.%s", LOG_FILE_PREFIX, i, LOG_FILE_SUFFIX);
+    if (!SD.exists(logFileName)) // If a file doesn't exist
+    {
+      break; // Break out of this loop. We found our index
+    }
+    else // Otherwise:
+    {
+      SerialMonitor.print(logFileName);
+      SerialMonitor.println(" exists"); // Print a debug statement
+    }
+  }
+  SerialMonitor.print("File name: ");
+  SerialMonitor.println(logFileName); // Debug print the file name
+}
+</code></pre>
+
+<p>You may need to edit the <code>gpsPort</code> and <code>SerialMonitor</code> objects, toward the top of the code to get the example to work correctly on your Arduino. The sketch defaults to using SoftwareSerial for the GPS, which should work for most boards &ndash; as long as the UART-Select switch is shifted towards SW-UART.</p>
+
+<p>Before uploading the code, <strong>plug a &micro;SD card into your GPS Logger Shield</strong>. Push it in gently until you hear a click. Then release, and let it latch into place.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/gps-sd-card-in.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/6/8/gps-sd-card-in.jpg" alt="uSD card plugged into the shield" /></a></p>
+
+<p>Once that&rsquo;s in place, upload and run! You can check the serial monitor for debugging data, or just trust that the logger is logging.</p>
+
+<p>Once the GPS module gets a good fix, the Arduino will start logging longitude, latitude, altitude, speed, course, date, time, and the number of visible satellites into a CSV file. The data is set to log once every five seconds, but that&rsquo;s easily tunable if you need more or less data.</p>
+
+<p>After letting it log for a bit, turn off your Arduino, load the SD card into your computer, and check for a <code>GPSLOG###.CSV</code> file. Open it up in a spreadsheet program, or just use a text editor to see what your Arduino logged.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/gps-log-csv-example.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/6/8/gps-log-csv-example.png" alt="CSV example screenshot" /></a></p>
+
+<p>Now really test the logger! Power your Arduino up with a battery (our <a href="https://www.sparkfun.com/products/9518">9V to Barrel Jack Adapter</a> is handy for that)&hellip;</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/gps-action-shot-02.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/6/8/gps-action-shot-02.jpg" alt="Battery-powered Arduino/GPS Shield" /></a></p>
+
+<p>&hellip;and take your Arduino for a walk.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="resources--going-further">Resources and Going Further</h2>
+        <p>Now that you&rsquo;ve got your GPS Logger Shield up-and-running, what kind of position-tracking Arduino project are you going to make. Need a little more guidance, here are a few links you may find handy:</p>
+
+<ul>
+<li><strong>SparkFun GPS Logger Shield Resources</strong>
+
+<ul>
+<li><a href="https://github.com/sparkfun/GPS_Shield">SparkFun GPS Logger Shield GitHub Repository</a></li>
+<li><a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/GPS_Logger_Shield-v20-Schematic.pdf">SparkFun GPS Logger Shield Schematic</a></li>
+<li><a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/6/8/GP3906-TLP_DataSheet_Rev_A01.pdf">GP3906-TLP GPS Module Datasheet</a></li>
+</ul>
+</li>
+<li><strong>Arduino GPS Resources</strong>
+
+<ul>
+<li><a href="http://arduiniana.org/libraries/tinygps/">TinyGPS Arduino Library</a></li>
+<li><a href="http://arduiniana.org/libraries/tinygpsplus/">TinyGPS++ Arduino Library</a></li>
+<li><a href="https://github.com/adafruit/Adafruit_GPS">Adafruit_GPS Arduino Library</a></li>
+</ul>
+</li>
+</ul>
+
+
+<p>If you need a little project inspiration, here&rsquo;s a SparkFun Live, where you can watch the full build of a <strong>GPS Speedometer</strong>:</p>
+
+<center><iframe width="560" height="315" src="https://www.youtube.com/embed/EAsZ7MLTk-A" frameborder="0" allowfullscreen></iframe></center>
+
+
+<p>Or check out some of these related SparkFun tutorials:</p>
+
+<p style="text-align:center;"> 
+<div class="tile-wrap">
+  <div class="tile tutorial-tile has_addl_actions  grid" data-id="149">
+
+  <a href="https://learn.sparkfun.com/tutorials/copernicus-ii-hookup-guide">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/1/a/c/e/f/526aa4cb757b7f8f0b8b456c.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">Copernicus II Hookup Guide</h3>
+      </a>
+
+      <div class="description">
+      A guide for how to get started with the Copernicus II GPS module.     </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="149">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">1</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="343">
+
+  <a href="https://learn.sparkfun.com/tutorials/alphanumeric-gps-wall-clock">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/learn_tutorials/3/4/3/GPS_Alpha_Clock_3.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">Alphanumeric GPS Wall Clock</h3>
+      </a>
+
+      <div class="description">
+      This is a GPS controlled clock - a clock you truly never have to set! Using GPS and some formulas, we figure out what day of the week and if we are in or out of daylight savings time.    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="343">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">8</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="380">
+
+  <a href="https://learn.sparkfun.com/tutorials/can-bus-shield-hookup-guide">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/learn_tutorials/3/8/0/Shield_Labeled.png)"></div>
+      </div>
+    
+    
+    <h3 class="title">CAN-Bus Shield Hookup Guide</h3>
+      </a>
+
+      <div class="description">
+      A basic introduction to working with the CAN-Bus shield.     </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="380">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">4</span>
+</span>  </div>
+
+</div>
+</div>
+
+  <div class="clearfix"></div>
+</p>      </div>
+    
+        <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" type="text" value="http://sfe.io/t468" onclick="$(this).select();">
+
+    <div class="share-social">
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','googleplus');" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft468" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','tumblr');" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft468&name=GPS+Logger+Shield+Hookup+Guide" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','reddit');" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft468" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','twitter');" href="https://twitter.com/intent/tweet?text=GPS+Logger+Shield+Hookup+Guide&url=http%3A%2F%2Fsfe.io%2Ft468&via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','facebook');" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft468&t=GPS+Logger+Shield+Hookup+Guide" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','pinterest');" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft468&media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2Flearn_tutorials%2F4%2F6%2F8%2Fgps-action-shot-01.jpg&description=GPS+Logger+Shield+Hookup+Guide" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+  </div>
+
+  <div class="col-sm-4" id="nav-pages">
+    <div id="sidebar_affix">
+
+      <div id="tutorial-pages" class="list-group">
+        <a class="list-group-item"><b>Sections</b></a>
+                          <a data-pagename="introduction" class="list-group-item" href="#introduction">
+            Introduction          </a>
+                  <a data-pagename="hardware-overview" class="list-group-item" href="#hardware-overview">
+            Hardware Overview          </a>
+                  <a data-pagename="hardware-setup" class="list-group-item" href="#hardware-setup">
+            Hardware Setup          </a>
+                  <a data-pagename="example-sketch-gps-serial-passthrough" class="list-group-item" href="#example-sketch-gps-serial-passthrough">
+            Example Sketch: GPS Serial Passthrough          </a>
+                  <a data-pagename="example-sketch-tinygps-serial-streaming" class="list-group-item" href="#example-sketch-tinygps-serial-streaming">
+            Example Sketch: TinyGPS Serial Streaming          </a>
+                  <a data-pagename="example-sketch-sd-card-gps-logging" class="list-group-item" href="#example-sketch-sd-card-gps-logging">
+            Example Sketch: µSD Card GPS Logging          </a>
+                  <a data-pagename="resources--going-further" class="list-group-item" href="#resources--going-further">
+            Resources and Going Further          </a>
+              </div>
+
+      <div class="list-group">
+        <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/gps-logger-shield-hookup-guide/discuss">
+          Comments
+          <span class="badge">2</span>
+        </a>
+                  <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/gps-logger-shield-hookup-guide/introduction">
+            View Paginated
+          </a>
+                <a class="list-group-item" href="#" onclick="window.print(); return false;">
+          Print
+        </a>
+      </div>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>Tags</b></li>
+        <li class="list-group-item"><ul class="tags-list">
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/gps">GPS</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/hookup">Hookup</a>  </li>
+</ul>
+</li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>License</b></li>
+        <li class="list-group-item">
+          <span class="sfe-icon-cc">
+            <span class="visuallyhidden">Creative Commons</span>
+          </span>
+          <small>tutorials are <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="new">CC BY-SA 4.0</a></small>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  require(['tutorial', 'jquery.imagesloaded'], function() {
+    $('#tutorial').tutorial();
+  });
+</script>
+
+      </div> <!-- /container -->
+    </div> <!-- /content -->
+
+    
+<footer>
+
+<div class="social">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="sharing-ingenuity">
+          <span class=sfe-icon-flame></span>
+          <span class="text"><span class="text-top">Start<br></span>something.</span>
+        </div>
+        <ul class="spew">
+          <li><a href="https://www.github.com/sparkfun" target="_blank" class=sfe-icon-github><span class=visuallyhidden>GitHub</span></a></li>
+          <li><a href="https://www.youtube.com/sparkfun" target="_blank" class=sfe-icon-youtube><span class=visuallyhidden>YouTube</span></a></li>
+          <li><a href="https://www.vimeo.com/sparkfun" target="_blank" class=sfe-icon-vimeo><span class=visuallyhidden>Vimeo</span></a></li>
+          <li><a href="https://www.facebook.com/SparkFun" target="_blank" class=sfe-icon-facebook><span class=visuallyhidden>Facebook</span></a></li>
+          <li><a href="https://www.instagram.com/sparkfun/" target="_blank" class=sfe-icon-instagram><span class=visuallyhidden>Instagram</span></a></li>
+          <li><a href="https://plus.google.com/106084846822083498483/" target="_blank" class=sfe-icon-google-plus><span class=visuallyhidden>Google Plus</span></a></li>
+          <li><a href="https://www.flickr.com/photos/sparkfun/" target="_blank" class=sfe-icon-flickr><span class=visuallyhidden>Flickr</span></a></li>
+          <li><a href="https://twitter.com/#!/sparkfun" target="_blank" class=sfe-icon-twitter><span class=visuallyhidden>Twitter</span></a></li>
+          <li><a href="https://www.sparkfun.com/feeds" class=sfe-icon-feed><span class=visuallyhidden>RSS</span></a></li>
+        </ul>
+        <div class="newsletter">
+          <!--[if lte IE 8]>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+<![endif]-->
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+<script>
+  hbspt.forms.create({
+    css: '',
+    cssClass: 'hubspot-newsletter-subscribe',
+    portalId: '2224003',
+    formId: 'd2b17dd4-e1bb-406a-ba41-44c19dcd0376'
+  });
+</script>
+        </div>
+      </div>
+    </div><!-- end .row -->
+  </div><!-- end .container -->
+</div><!-- end .social -->
+
+<div class="container">
+
+    <div class="row">
+
+    <div class="subfooter subfooter-about">
+      <p>
+        In 2003, CU student Nate Seidle blew a power supply in his dorm room and, in lieu of a way to order easy replacements, decided to start his own company. Since then, SparkFun has been committed to sustainably helping our world achieve electronics literacy from our headquarters in Boulder, Colorado.
+      </p>
+      <p>
+        No matter your vision, SparkFun's products and resources are designed to make the world of electronics more accessible. In addition to over 2,000 open source components and widgets, SparkFun offers curriculum, training and online tutorials designed to help demystify the wonderful world of embedded electronics. We're here to help you start something.
+      </p>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>About Us</b>
+            <li><a href="https://www.sparkfun.com/about_sparkfun">About SparkFun</a></li>
+	    <li><a href="http://www.sparkfuneducation.com" target="_blank">SparkFun Education <span class="glyphicon glyphicon-new-window"></span></li>
+	    <li><a title="RSS Feeds" href="https://www.sparkfun.com/feeds">Feeds <span class=sfe-icon-feed></span></a></li>
+            <li><a href="https://www.sparkfun.com/jobs">Jobs</a></li>
+            <li><a href="https://www.sparkfun.com/static/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Help</b></li>
+            <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+            <li><a href="https://www.sparkfun.com/support#ShippingPolicy">Shipping</a></li>
+            <li><a href="https://www.sparkfun.com/returns">Return Policy</a></li>
+            <li><a href="https://www.sparkfun.com/static/faq">FAQ</a></li>
+                      </ul>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Programs</b></li>
+	    <li><a href="https://www.sparkfun.com/sponsorships">Become a Community Partner</a>	      <li><ul><li><a href="https://www.sparkfun.com/cpp">Community Stories</a></li></ul></li>
+	    </li>
+            <li><a href="https://www.sparkfun.com/project_calls">Tell Us About Your Project</a></li>
+            <li><a href="https://learn.sparkfun.com/tutorials/how-to-sell-your-widget-on-sparkfun">Sell Your Widget on SparkFun</a></li>
+            <li><a href="https://www.sparkfun.com/distributors/apply">Become a SparkFun Distributor</a></li>
+            <li><a href="https://www.sparkfun.com/volume">Large Volume Sales</a> </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Community</b></li>
+            <li><a href="https://forum.sparkfun.com/">Forum</a></li>
+            <li><a href="https://www.sparkfun.com/news/263">SparkFun IRC Channel</a></li>
+            <li><a href="https://www.sparkfun.com/quiz">Take the SparkFun Quiz</a></li>
+            <li><a href="https://www.kickstarter.com/pages/sparkfun">SparkFun Kickstarter Projects</a></li>
+            <li><a href="https://www.sparkfun.com/distributors">Distributors</a></li>
+          </ul>
+        </div>
+
+      </div><!-- end .row -->
+
+    </div>
+
+    <div id="feedback" class="subfooter subfooter-woym">
+      <form id="woym_form" class="feedback" action="https://learn.sparkfun.com/feedback/mind.json" onsubmit="$(this).sfeutil('mind_feedback'); return false;" method="POST">
+        <div class="error" id="error_feedback" style="display: none"></div>
+        <input type="hidden" name="sparkaptcha" id="sparkaptcha" value="0">
+
+        <div class="form-group">
+          <label for="feedback_textarea" class="control-label">What's on your mind?</label>
+          <div class="controls">
+            <textarea id="feedback_textarea" class="form-control" name="feedback_text" required></textarea>
+            <div class="error" id="error_feedback_text" style="display: none"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_dest" class="control-label">For which department?</label>
+          <select name="dest" class="form-control" id="feedback_dest">
+            <option value="general">General</option>
+            <option value="cust">Customer Service</option>
+            <option value="tech">Tech Support</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_email" class="control-label">
+            Please include your email address if you'd like us to respond to a specific question.
+          </label>
+
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+            <input type="text" class="form-control" id="feedback_email" name="email" placeholder="email address" />
+          </div>
+          <div class="error" id="error_feedback_email" style="display: none"></div>
+
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+  </div><!-- end .row -->
+  
+  <ul class="copyleft">
+    <li>SparkFun Electronics <a href="https://www.sparkfun.com/news/300">&reg;</a></li>
+    <li><a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=6333+Dry+Creek+Parkway,+Niwot,+CO+80503">Niwot, Colorado</a></li>
+    <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+    <li><a href="https://www.sparkfun.com/sitemap">Site Map</a></li>
+    <li><a href="https://www.sparkfun.com/terms">Terms of Service</a></li>
+    <li><a href="https://www.sparkfun.com/privacy">Privacy Policy</a></li>
+    <li class="desktop-toggle">
+              <a href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fgps-logger-shield-hookup-guide">Desktop Site</a>          </li>
+  </ul>
+
+</div><!-- end .container -->
+
+</footer>
+
+    <div class="nav-account">
+  <ul class="nav nav-tabs">
+    <li class="visible-xs">
+      <a class="nav-toggle-account back" href="#">Your Account</a>
+    </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fgps-logger-shield-hookup-guide" data-toggle="modal" data-target="#login_modal" data-remote="false">Log In</a>
+      </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/make">Register</a>
+      </li>
+      </ul>
+</div>
+
+      </div><!-- end .wrapper-inner -->
+    </div><!-- end .wrapper -->
+
+    <!-- Login Modal -->
+<div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Log In</h4>
+        <p class="modal-header-msg"></p>
+      </div>
+      <div class="modal-body">
+        <form role="form" action="https://www.sparkfun.com/account/login" method="post">
+          <input type="hidden" name="redirect" value="/learn/tutorials/gps-logger-shield-hookup-guide">
+          <div class="form-group">
+            <label for="login-username">Email</label>
+            <input type="email" tabindex="1" name=user id="login-username" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input tabindex="2" type="password" name="passwd" id="login-password" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Log In" tabindex="3" class="btn btn-action">
+          </div>
+        </form>
+        <p>
+          <a href="https://www.sparkfun.com/account/forgot_password">Forgot your password?</a>          <br>
+          No account? <a id="btn_register_account" href="https://www.sparkfun.com/account/make">Register one!</a>        </p>
+      </div>
+    </div>
+  </div>
+</div>
+  
+          
+<!--  begin olark code -->
+  <script type="text/javascript" async> ;(function(o,l,a,r,k,y){if(o.olark)return; r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0]; y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r); y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)}; y.extend=function(i,j){y("extend",i,j)}; y.identify=function(i){y("identify",k.i=i)}; y.configure=function(i,j){y("configure",i,j);k.c[i]=j}; k=y._={s:[],t:[+new Date],c:{},l:a}; })(window,document,"static.olark.com/jsclient/loader.js");
+  /* custom configuration goes here (www.olark.com/documentation) */
+  olark.identify('4728-501-10-9212');</script>
+  <noscript><a href="https://www.olark.com/site/4728-501-10-9212/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+<!-- end olark code -->
+          <script type="text/javascript">
+      (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+        n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/2224003.js';
+        e.parentNode.insertBefore(n, e);
+      })(document,"script","hs-analytics",300000);
+    </script>
+        <script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0046/4761.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+  </script>
+      </body>
+</html>
+

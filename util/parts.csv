@@ -1,0 +1,71 @@
+SKU,Quantity,URL,Thumbnail Image,Name,RoHS Compliance,Price (USD)
+BOB-12708,5,https://www.sparkfun.com/products/12708,#,Real Time Clock DS1307,1,14.95
+BOB-13717,5,https://www.sparkfun.com/products/13717,#,Pi Wedge,1,9.95
+CAB-00512,15,https://www.sparkfun.com/products/512,#,USB-B Cable 6 foot,1,3.95
+CAB-11301,5,https://www.sparkfun.com/products/11301,#,USB Mini-B Cable 6 Foot,1,3.95
+CAB-13028,5,https://www.sparkfun.com/products/13028,#,Pi GPIO Cable,1,2.5
+COM-00097,50,https://www.sparkfun.com/products/97,#,Button,1,0.35
+COM-00100,15,https://www.sparkfun.com/products/100,#,SPDT Relay,1,1.95
+COM-00105,15,https://www.sparkfun.com/products/105,#,TriColor LED,1,1.95
+COM-07950,20,https://www.sparkfun.com/products/7950,#,Piezo Speaker,1,1.95
+COM-08588,15,https://www.sparkfun.com/products/8588,#,Diode 1N4148,1,0.15
+COM-08636,5,https://www.sparkfun.com/products/8636,#,Analog to Digital Converter MCP3002,1,2.3
+COM-08642,5,https://www.sparkfun.com/products/8642,#,Reed Switch,1,1.95
+COM-08642,5,https://www.sparkfun.com/products/8642,#,Insulated Reed Switch,1,1.95
+COM-08643,10,https://www.sparkfun.com/products/8643,#,Magnet Cube,1,1.5
+COM-09312,5,https://www.sparkfun.com/products/9312,#,Hall Effect Sensor,1,0.95
+COM-09349,10,https://www.sparkfun.com/products/9349,#,IR LED,1,0.95
+COM-09590,50,https://www.sparkfun.com/products/9590,#,Red LED,1,0.35
+COM-09592,50,https://www.sparkfun.com/products/9592,#,Green LED,1,0.35
+COM-09594,50,https://www.sparkfun.com/products/9594,#,Yellow LED,1,0.35
+COM-09806,15,https://www.sparkfun.com/products/9806,#,10K Trim Potentiometer,1,0.95
+COM-10601,5,https://www.sparkfun.com/products/10601,#,Reed Switch (Insulated),1,1.95
+COM-11372,50,https://www.sparkfun.com/products/11372,#,Blue LED,1,0.5
+COM-11507,200,https://www.sparkfun.com/products/11507,#,Resistor 330 Ohm,1,0.95
+COM-11508,200,https://www.sparkfun.com/products/11508,#,Resistor 10K Ohm,1,0.95
+COM-11853,20,https://www.sparkfun.com/products/11853,#,Resistor 1.0M Ohm,1,0.15
+COM-13004,5,https://www.sparkfun.com/products/13004,#,MicroSD USB Reader,1,4.95
+COM-13689,20,https://www.sparkfun.com/products/13689,#,NPN Transistor,1,0.5
+COM-13699,15,https://www.sparkfun.com/products/13699,#,Shift Register 8-bit,1,0.95
+COM-13833,5,https://www.sparkfun.com/products/13833,#,MicroSD 16GB with Adapter,1,19.95
+DEV-09873,5,https://www.sparkfun.com/products/9873,#,FTDI Breakout,1,14.95
+DEV-11224,15,https://www.sparkfun.com/products/11224,#,Arduino Uno,1,29.95
+DEV-11235,15,https://www.sparkfun.com/products/11235,#,Arduino and Breadboard Holder,1,3.95
+DEV-13825,5,https://www.sparkfun.com/products/13825,#,Raspberry Pi 3,1,39.95
+GPS-13750,5,https://www.sparkfun.com/products/13750,#,GPS Shield,1,44.95
+LCD-00709,15,https://www.sparkfun.com/products/709,#,LCD 16x2,1,15.95
+PRT-11026,15,https://www.sparkfun.com/products/11026,#,Jumper Wires (30),1,1.95
+PRT-12002,15,https://www.sparkfun.com/products/12002,#,Half Breadboard,1,4.95
+PRT-12615,5,https://www.sparkfun.com/products/12615,#,Breadboard,1,5.95
+ROB-09065,15,https://www.sparkfun.com/products/9065,#,Servo,1,8.95
+ROB-11696,15,https://www.sparkfun.com/products/11696,#,DC Motor,1,1.95
+ROB-13047,1,https://www.sparkfun.com/products/13047,#,Actobitty Kit,1,29.95
+ROB-13845,1,https://www.sparkfun.com/products/13845,#,Motor Driver Dual TB6612FNG,1,5.45
+SEN-00246,5,https://www.sparkfun.com/products/246,#,Optical Detector QRD1114,1,0.95
+SEN-08680,20,https://www.sparkfun.com/products/8680,#,Softpot Potentiometer,1,4.95
+SEN-08958,1,https://www.sparkfun.com/products/8958,#,IR Proximity Sensor,1,14.95
+SEN-09088,15,https://www.sparkfun.com/products/9088,#,Photocell,1,1.5
+SEN-09197,5,https://www.sparkfun.com/products/9197,#,Piezo Vibration Sensor,1,2.95
+SEN-09375,5,https://www.sparkfun.com/products/9375,#,Force Sensitive Resistor,1,6.95
+SEN-10264,20,https://www.sparkfun.com/products/10264,#,Flex Sensor,1,7.95
+SEN-10266,10,https://www.sparkfun.com/products/10266,#,IR Receiver Diode TSOP38238,1,1.95
+SEN-10289,5,https://www.sparkfun.com/products/10289,#,Tilt Sensor,1,1.95
+SEN-10293,5,https://www.sparkfun.com/products/10293,#,Piezo Element,1,1.5
+SEN-10988,15,https://www.sparkfun.com/products/10988,#,Temperature Sensor TMP36,1,1.5
+SEN-11084,5,https://www.sparkfun.com/products/11084,#,Altitude Sensor MPL3115A2,1,14.95
+SEN-12041,5,https://www.sparkfun.com/products/12041,#,Capacitive Touch Button AT42QT1010,1,5.95
+SEN-12642,5,https://www.sparkfun.com/products/12642,#,Microphone ,1,10.95
+SEN-12756,5,https://www.sparkfun.com/products/12756,#,Triple Axis Accelerometer MMA8452Q,1,9.95
+SEN-12787,5,https://www.sparkfun.com/products/12787,#,RGB and Gesture Sensor APDS-9960,1,14.95
+SEN-13284,5,https://www.sparkfun.com/products/13284,#,9 DoF Inertial Measurement Unit,1,24.95
+SEN-13285,5,https://www.sparkfun.com/products/13285,#,PIR Motion Sensor,1,9.95
+SEN-13322,5,https://www.sparkfun.com/products/13322,#,Soil Moisture Sensor,1,4.95
+SEN-13763,5,https://www.sparkfun.com/products/13763,#,Humidity and Temperature Sensor Si7021,1,6.95
+SEN-13835,2,https://www.sparkfun.com/products/13835,#,Liquid Level Sensor,1,24.95
+SEN-13959,2,https://www.sparkfun.com/products/13959,#,Ultrasonic Sensor,1,3.95
+TOL-09146,15,https://www.sparkfun.com/products/9146,#,Screwdriver,1,0.95
+TOL-13831,5,https://www.sparkfun.com/products/13831,#,Pi Power Adapter,1,7.95
+WRL-08742,20,https://www.sparkfun.com/products/8742,#,Xbee Pro 802.15.4,1,32.95
+WRL-11697,5,https://www.sparkfun.com/products/11697,#,Xbee USB Dongle,1,24.95
+WRL-12571,20,https://www.sparkfun.com/products/12571,#,Xbee Wifi,1,43.95
+WRL-12847,15,https://www.sparkfun.com/products/12847,#,Xbee Shield,1,14.95

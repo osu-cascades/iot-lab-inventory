@@ -1,0 +1,448 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	
+	<meta property="fb:page_id" content="246262332260" />
+	<meta property="og:type" content="athlete" />
+	<meta property="fb:admins" value="USER_ID1,USER_ID2" />
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js" type="text/javascript"></script>
+	<script src="http://bildr.org/common/js/moo_more.js" type="text/javascript"></script>
+	<script src="http://bildr.org/common/js/common.js" type="text/javascript"></script>
+	<script src="http://bildr.org/common/js/MooClip/MooClipNew.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+	//copy functions
+	window.addEvent("domready",function(){var a=$$(".codesnip-container .copy");var b=new MooClip(a,{moviePath:"/common/js/MooClip/ZeroClipboard.swf",dataSource:function(c){return c.getParent(".codesnip-container").getElement(".codesnip").get("text").tidy()},onCopy:function(d,c){c.set("text","Copied");c.highlight();(function(){c.set("text","Copy Code")}).delay(3000)}})});		
+	</script>
+
+
+
+	 <title>bildr  &raquo; Do You Have The Time? DS1307 RT Clock + Arduino</title>
+	
+	
+	<!-- <title>Do You Have The Time? DS1307 RT Clock + Arduino </title> -->
+	
+	<!-- <title>Do You Have The Time? DS1307 RT Clock + Arduino </title> -->
+ 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="generator" content="WordPress 4.8.2">
+	
+	
+	
+	<meta property="fb:admins" content="12502024" />
+	<meta property="og:site_name" content="bildr" />
+	<meta property="og:type" content="article" />
+	
+	
+	<link rel="stylesheet" href="http://bildr.org/blog/wp-content/themes/bildr/style.css" type="text/css" media="all">
+	
+	<link rel="stylesheet" href="/blog/wp-content/plugins/codesnippet/codesnippet.css" type="text/css" media="all">
+	
+	<link rel="stylesheet" href="http://bildr.org/common/style/common.css" type="text/css" media="all">
+	<link rel="alternate" type="application/rss+xml" title="bildr RSS Feed" href="http://bildr.org/feed/">
+	<link rel="pingback" href="http://bildr.org/blog/xmlrpc.php">
+
+	<script async type="text/javascript" src="http://thisiswaldo.com/ad_delivery?site_id=64"></script>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-4050921-8']);
+  _gaq.push(['_setDomainName', '.bildr.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+
+
+<body>
+	<div id="headerWrapper">
+		<div id="globalNavigationWrapper" >
+			
+			
+			
+			
+			<ul id="globalNavigation">
+				<li>Home</li>
+				<li><a href="http://forum.bildr.org">Forum</a></li>
+				<li><a href="http://wiki.bildr.org">Wiki</a></li>
+				<li><a href="https://github.com/bildr-org">Code</a></li>
+				
+				<ul id="globalNavigationRight">
+					<li><a href="http://bildr.org/feed/">RSS</a></li>
+					<li><a href="http://twitter.com/bildr">Twitter</a></li>
+					<li><a href="http://www.facebook.com/bildr.DIY">Facebook</a></li>
+				</ul>
+				
+			</ul>
+			
+			
+			
+			
+			
+		</div>
+	
+	
+	
+		<div id="header">
+			<a id="mainLogo" class="blog" href="/"></a>
+			
+			<div id="headSearch">
+				<form method="get" id="searchform" action="http://bildr.org/">
+				<input type="text" size="18" value="" name="s" id="searchInput" />
+				<a id="searchChoices" data-searchText="search blog..." href="#"></a>
+				
+				<div id="searchMenu">
+					<a class="wiki" href="#">Search Wiki</a>
+				<!-- <a class="code" href="#">Search Code</a> -->
+					<a class="forum" href="#">Search Forum</a>
+					<a class="blog" href="#">Search Blog</a>
+				</div>
+				
+				
+				<input type="submit" id="searchsubmit" value="Search" class="btn" />
+				</form>
+			</div>
+			
+			<div id="user">		
+				<a href="http://forum.bildr.org/ucp.php?mode=login" title="Login" accesskey="l">Login</a>
+		 / <a href="http://forum.bildr.org/ucp.php?mode=register">Register</a>			</div>
+			
+		</div>
+	</div>
+	
+	<div id="actionWrapper">
+		<div id="actionBar">
+		
+		
+		<ul id="actions">
+			<li class="page_item page-item-2"><a href="http://bildr.org/about/">About</a></li>
+		</ul>
+		
+				
+		
+		</div>
+	</div>
+	
+		
+	
+	<center>
+<div id="waldo-tag-77"></div>
+</center>
+	<div id="waldo-tag-79"></div>
+	
+		
+	<div class="content">
+	
+	
+	
+	
+	
+
+
+
+		
+		<div class="post">
+		
+			<h2>
+				<a href="http://bildr.org/2011/03/ds1307-arduino/">
+					Do You Have The Time? DS1307 RT Clock + Arduino				</a>
+			</h2>
+			
+			<div class="date">
+				Tuesday, March 1	<sup class="super" >st</sup>
+	, 2011			</div>
+			
+			<div class="postContent">
+				<p><img class="noFrame" src="http://bildr.org/blog/wp-content/uploads/2011/02/RTC_Module.jpg"/></p>
+<div class="columnBody">
+<div class="leftColumn">
+Most <a href="http://wiki.bildr.org/index.php/microcontrollers">microcontrollers</a> are time-agnostic, meaning they are unaware of the time around them, but that&#8217;s ok as most things we make have no need for it. But&#8230; every once in awhile you come up with an idea that requires knowing the actual time. Mostly this is used for data-logging, or creating this year&#8217;s newest clock. (Why do we come up with harder ways to tell time?) But whatever your reason, we have a solution: <a href="http://www.sparkfun.com/products/99">The DS1307 RTC</a> (Real Time Clock).</p><div class="vtP5jtZU" style="clear:both;float:left;width:100%;margin:0 0 20px 0;"><center>
+<div id="waldo-tag-74" style="padding: 15px 0px;"></div>
+</center></div>
+<p>For this article we will be discussing and using <a href="http://www.sparkfun.com">Sparkfun&#8217;s</a> RTC Module because it incorporates everything you need to make it work, including a backup <a href="http://wiki.bildr.org/index.php/battery">battery</a> good for a minimum of 9 years. It also comes with the time preset so you may not even need to configure it when you get it.</p>
+<h3>Why write this article?</h3>
+<p>If you look around, this chip has been used for years, and there are dozens of tutorials on using it. So why write another? I read a lot of them and they all had slightly different information, and most of them talked about the chip without the crystal or other needed addons. So im writing this specifically about using Sparkfun&#8217;s RTC module version, and specifically for use on an <a href="http://wiki.bildr.org/index.php/Arduino">Arduino</a>.</p>
+<h3>About</h3>
+<p>The DS1307 is actually a very simple <a href="http://wiki.bildr.org/index.php/I2C">I2C</a> chip. It just gives you back 7 <a href="http://wiki.bildr.org/index.php/bytes">bytes</a> of information that is the time. So all we need to do is receive it &#8230; and transcode it to <a href="http://wiki.bildr.org/index.php/decimal">decimal</a>. &#8220;Transcode it to decimal?!?&#8221; Yeah, don&#8217;t worry, it sounds scary, but it&#8217;s not. See the DS1307 encodes all the data in &#8220;<a href="http://wiki.bildr.org/index.php/BCD">Binary Coded Decima</a>l&#8221; or <a href="http://wiki.bildr.org/index.php/BCD">BCD</a>. <a href="http://wiki.bildr.org/index.php/BCD">BCD</a> is just a way to encode numbers, and works by encoding each digit in 4 digits of <a href="http://wiki.bildr.org/index.php/binary">binary</a>&#8230; like so:<br />
+157 = 0001 0101 0111<br />
+1 = 0001<br />
+5 = 0101<br />
+7 = 0111</p>
+<p>Normally you would say that 157 = 10011101. But that is 157, BCD encodes each digit separately. 1, 5, 7 not 157. hence 0001, 0101, 0111 not 10011101.</p>
+<p>Ok, now that we know we will be receiving the data as <a href="http://wiki.bildr.org/index.php/BCD">BCD</a>, we just need a way to convert that to decimal. Luckily, <a href="http://tronixstuff.wordpress.com/author/johnboxall/">John Boxall</a> over at <a href="http://tronixstuff.wordpress.com/">TronixStuff</a> (incredibly awesome site) has a pretty simple function to do that for us. Lucky for me too because my method was much more complicated.</p>
+</div>
+<div class="rightColumn">
+<p><a href="http://bildr.org/2011/03/ds1307-arduino/rtc-drawing2/" rel="attachment wp-att-690"><img src="http://bildr.org/blog/wp-content/uploads/2011/02/RTC-drawing2.png" class="noFrame" /></a></p>
+</div>
+</div>
+<h3>Time Shifting</h3>
+<p>Like all clocks, minus maybe atomic clocks, this clock isn&#8217;t perfect. Just as the clock on your microwave, the time on this chip will shift. It uses a <a href="http://wiki.bildr.org/index.php/crystal oscillator">crystal oscillator</a> to be as precise as possible, but these are susceptible to drift based on temperature changes and magnetic fields, so it&#8217;s going to shift. How much? Well the spec sheet is a little vague about that. But from what I have read, about one minute per month is considered normal. If this is just too much drift, you do have other options &#8211; The <a href="http://www.sparkfun.com/products/10160">DS3234</a> clock&#8217;s drift is +/- only 1min a year.</p>
+<p>Because it drifts, you may at some point need to re-set the time on it. Because we at bildr don&#8217;t like to leave you in the cold, we are including an example of that too.</p>
+<h3>Hooking it up</h3>
+<p>A few articles I have read have mentioned not connecting this or that, or the need for <a href="http://wiki.bildr.org/index.php/pull up resistors">pull up resistors</a> on the <a href="http://wiki.bildr.org/index.php/I2C">I2C</a> Lines. But, the <a href="http://wiki.bildr.org/index.php/Arduino">Arduino</a> has built-in Pull-Up resistors for the I2C lines initiated by the <a href="http://www.arduino.cc/en/Reference/Wire">Wire library</a> , so unless you have more than one I2C device on the <a href="http://wiki.bildr.org/index.php/bus">bus</a>, you are fine without them. </p>
+<p>Because the DS1307 is an <a href="http://wiki.bildr.org/index.php/I2C">I2C</a> device (I2C is a 2-wire serial connection), you jusst need to connect the SDA (Data) and SCL (Clock) lines to your Arduino for communication. On your Arduino (everything but the <a href="http://wiki.bildr.org/index.php/Arduino_Mega ">mega</a>) SDA is on analog pin 4, and SCL is on analog pin 5. On an arduino mega, SDA is digital 20, and SCL is digital 21.</p>
+<h3>Code</h3>
+<p>If you intend to use the clock to set alarms and trigger events based on time, then you should take a look at <a href="https://github.com/adafruit/RTClib">Lady Ada&#8217;s library for this</a>. It&#8217;s more advanced, and allows you to make alarms, and check how much time is left and so on.</p>
+<p>Our code for this is purposely oversimplified. I wasn&#8217;t sure how to frame it, but because this chip is petty simple, I wanted to show it to you in the code. For this reason, and because the chip comes with the date set from Sparkfun, we are going to leave out the code for setting it from the first example. <strong>The second example includes code for setting the time.</strong></p>
+<p>[code lang=&#8221;arduino&#8221;]<br />
+//Arduino 1.0+ Only<br />
+//Arduino 1.0+ Only</p>
+<p>#include &#8220;Wire.h&#8221;<br />
+#define DS1307_ADDRESS 0x68</p>
+<p>void setup(){<br />
+  Wire.begin();<br />
+  Serial.begin(9600);<br />
+}</p>
+<p>void loop(){<br />
+  printDate();<br />
+  delay(1000);<br />
+}</p>
+<p>byte bcdToDec(byte val)  {<br />
+// Convert binary coded decimal to normal decimal numbers<br />
+  return ( (val/16*10) + (val%16) );<br />
+}</p>
+<p>void printDate(){</p>
+<p>  // Reset the register pointer<br />
+  Wire.beginTransmission(DS1307_ADDRESS);</p>
+<p>  byte zero = 0x00;<br />
+  Wire.write(zero);<br />
+  Wire.endTransmission();</p>
+<p>  Wire.requestFrom(DS1307_ADDRESS, 7);</p>
+<p>  int second = bcdToDec(Wire.read());<br />
+  int minute = bcdToDec(Wire.read());<br />
+  int hour = bcdToDec(Wire.read() &#038; 0b111111); //24 hour time<br />
+  int weekDay = bcdToDec(Wire.read()); //0-6 -> sunday &#8211; Saturday<br />
+  int monthDay = bcdToDec(Wire.read());<br />
+  int month = bcdToDec(Wire.read());<br />
+  int year = bcdToDec(Wire.read());</p>
+<p>  //print the date EG   3/1/11 23:59:59<br />
+  Serial.print(month);<br />
+  Serial.print(&#8220;/&#8221;);<br />
+  Serial.print(monthDay);<br />
+  Serial.print(&#8220;/&#8221;);<br />
+  Serial.print(year);<br />
+  Serial.print(&#8221; &#8220;);<br />
+  Serial.print(hour);<br />
+  Serial.print(&#8220;:&#8221;);<br />
+  Serial.print(minute);<br />
+  Serial.print(&#8220;:&#8221;);<br />
+  Serial.println(second);</p>
+<p>}<br />
+[/code]</p>
+<p><strong>RUNNING THE FOLLOWING CODE WILL RESET THE TIME</strong><br />
+You will need to set the correct time in the setDateTime function &#8211; I did it this way to be a little cleaner looking. Also because the time is set at setup(), it will set the time to that value every time the Arduino restarts. So after you have set it, either upload the above code, or comment out setDateTime from setup, and re-upload the sketch.</p>
+<p>If you need to change the time a bunch, or just make it easy, you could set it up so you can change it via the <a href="http://wiki.bildr.org/index.php/serial">serial</a> terminal. That could be cool!</p>
+<p>[code lang=&#8221;arduino&#8221;]<br />
+//Arduino 1.0+ Only<br />
+//Arduino 1.0+ Only</p>
+<p>#include &#8220;Wire.h&#8221;<br />
+#define DS1307_ADDRESS 0x68<br />
+byte zero = 0x00; //workaround for issue #527</p>
+<p>void setup(){<br />
+  Wire.begin();<br />
+  Serial.begin(9600);<br />
+  setDateTime(); //MUST CONFIGURE IN FUNCTION<br />
+}</p>
+<p>void loop(){<br />
+  printDate();<br />
+  delay(1000);<br />
+}</p>
+<p>void setDateTime(){</p>
+<p>  byte second =      45; //0-59<br />
+  byte minute =      40; //0-59<br />
+  byte hour =        0; //0-23<br />
+  byte weekDay =     2; //1-7<br />
+  byte monthDay =    1; //1-31<br />
+  byte month =       3; //1-12<br />
+  byte year  =       11; //0-99</p>
+<p>  Wire.beginTransmission(DS1307_ADDRESS);<br />
+  Wire.write(zero);</p>
+<p>  Wire.write(decToBcd(second));<br />
+  Wire.write(decToBcd(minute));<br />
+  Wire.write(decToBcd(hour));<br />
+  Wire.write(decToBcd(weekDay));<br />
+  Wire.write(decToBcd(monthDay));<br />
+  Wire.write(decToBcd(month));<br />
+  Wire.write(decToBcd(year));</p>
+<p>  Wire.write(zero); //start </p>
+<p>  Wire.endTransmission();</p>
+<p>}</p>
+<p>byte decToBcd(byte val){<br />
+// Convert normal decimal numbers to binary coded decimal<br />
+  return ( (val/10*16) + (val%10) );<br />
+}</p>
+<p>byte bcdToDec(byte val)  {<br />
+// Convert binary coded decimal to normal decimal numbers<br />
+  return ( (val/16*10) + (val%16) );<br />
+}</p>
+<p>void printDate(){</p>
+<p>  // Reset the register pointer<br />
+  Wire.beginTransmission(DS1307_ADDRESS);<br />
+  Wire.write(zero);<br />
+  Wire.endTransmission();</p>
+<p>  Wire.requestFrom(DS1307_ADDRESS, 7);</p>
+<p>  int second = bcdToDec(Wire.read());<br />
+  int minute = bcdToDec(Wire.read());<br />
+  int hour = bcdToDec(Wire.read() &#038; 0b111111); //24 hour time<br />
+  int weekDay = bcdToDec(Wire.read()); //0-6 -> sunday &#8211; Saturday<br />
+  int monthDay = bcdToDec(Wire.read());<br />
+  int month = bcdToDec(Wire.read());<br />
+  int year = bcdToDec(Wire.read());</p>
+<p>  //print the date EG   3/1/11 23:59:59<br />
+  Serial.print(month);<br />
+  Serial.print(&#8220;/&#8221;);<br />
+  Serial.print(monthDay);<br />
+  Serial.print(&#8220;/&#8221;);<br />
+  Serial.print(year);<br />
+  Serial.print(&#8221; &#8220;);<br />
+  Serial.print(hour);<br />
+  Serial.print(&#8220;:&#8221;);<br />
+  Serial.print(minute);<br />
+  Serial.print(&#8220;:&#8221;);<br />
+  Serial.println(second);</p>
+<p>}<br />
+[/code]</p>
+<h3>Extending this</h3>
+<p>This is a really simple tutorial, and yeah, maybe it was because I had less time than normal, but that shouldn&#8217;t stop you from taking this and making something super cool with it. Even if you just combine it with <a href="http://bildr.org/2011/02/rfid-arduino/">last weeks tutorial</a>, and have it report the time that the tag was read. A count down for your rocket launcher could be cool, maybe an alarm clock that pours water on you to wake you up. (Dont do that, that just sounds dangerous) Or you could hook this up to a <a href="http://www.sparkfun.com/products/9799">voice synthesizer</a> and have it say the time to you when you clap your hands.</p>
+<p>My point is always the same: Take this simple thing and do something crazy with it, just please step away from the binary clock!</p>
+
+<div id="contentad372315"></div>
+<script type="text/javascript">
+    (function(d) {
+        var params =
+        {
+            id: "50e297af-ca72-46f4-bfa0-0bac1a245ca0",
+            d: "YmlsZHIub3Jn",
+            wid: "372315",
+            cb: (new Date()).getTime()
+        };
+        var qs = Object.keys(params).reduce(function(a, k){ a.push(k + '=' + encodeURIComponent(params[k])); return a},[]).join(String.fromCharCode(38));
+        var s = d.createElement('script'); s.type='text/javascript';s.async=true;
+        var p = 'https:' == document.location.protocol ? 'https' : 'http';
+        s.src = p + "://api.content-ad.net/Scripts/widget2.aspx?" + qs;
+        d.getElementById("contentad372315").appendChild(s);
+    })(document);
+</script>
+
+
+<center>
+<div id="waldo-tag-75"></div>
+</center></p>			</div>
+			
+			
+			<div class="network">
+				
+	<span class="reTweet">
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+		<a href="http://twitter.com/share?url=http%3A%2F%2Fbildr.org%2F2011%2F03%2Fds1307-arduino%2F&via=&count=horizontal&text=RT @bildr - Do You Have The Time? DS1307 RT Clock + Arduino" class="twitter-share-button">Tweet</a>
+	</span>				
+	<span class="facebook">				
+		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fbildr.org%2F2011%2F03%2Fds1307-arduino%2F&amp;layout=button_count&amp;show_faces=true&amp;width=100&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+	</span>				<a class="forumDiscussion" href="http://forum.bildr.org/viewtopic.php?p=2970">No Comments</a>			</div>
+			<div class="clear"></div>
+			
+		</div>
+		
+		
+	
+	
+	<div class="alignleft"></div>
+	<div class="alignright"></div>
+	
+	
+	
+	</div>
+
+<div id="footerWrapper">
+	<div id="footerLine"></div>	
+	<center>
+	<div id="waldo-tag-78"></div>
+</center>
+	<div id="footer">
+		
+		<div id="footerLinks">
+		<div id="footer1">
+							<h3>Archives</h3>
+				
+				<ul>
+						<li><a href='http://bildr.org/2013/10/'>October 2013</a></li>
+	<li><a href='http://bildr.org/2012/11/'>November 2012</a></li>
+	<li><a href='http://bildr.org/2012/08/'>August 2012</a></li>
+	<li><a href='http://bildr.org/2012/04/'>April 2012</a></li>
+	<li><a href='http://bildr.org/2012/03/'>March 2012</a></li>
+	<li><a href='http://bildr.org/2012/02/'>February 2012</a></li>
+	<li><a href='http://bildr.org/2012/01/'>January 2012</a></li>
+	<li><a href='http://bildr.org/2011/10/'>October 2011</a></li>
+	<li><a href='http://bildr.org/2011/09/'>September 2011</a></li>
+	<li><a href='http://bildr.org/2011/08/'>August 2011</a></li>
+	<li><a href='http://bildr.org/2011/07/'>July 2011</a></li>
+	<li><a href='http://bildr.org/2011/06/'>June 2011</a></li>
+	<li><a href='http://bildr.org/2011/05/'>May 2011</a></li>
+	<li><a href='http://bildr.org/2011/04/'>April 2011</a></li>
+	<li><a href='http://bildr.org/2011/03/'>March 2011</a></li>
+	<li><a href='http://bildr.org/2011/02/'>February 2011</a></li>
+	<li><a href='http://bildr.org/2011/01/'>January 2011</a></li>
+	<li><a href='http://bildr.org/2010/12/'>December 2010</a></li>
+	<li><a href='http://bildr.org/2010/11/'>November 2010</a></li>
+	<li><a href='http://bildr.org/2010/10/'>October 2010</a></li>
+	<li><a href='http://bildr.org/2010/09/'>September 2010</a></li>
+				</ul>
+					</div>
+	
+		<div id="footer2">
+							<h3>Categories</h3>
+				<ul>
+						<li class="cat-item cat-item-5"><a href="http://bildr.org/category/funded-projects/" >funded projects</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://bildr.org/category/promotions/" >Promotions</a>
+</li>
+	<li class="cat-item cat-item-62"><a href="http://bildr.org/category/review/" >Review</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://bildr.org/category/site/" >Site</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://bildr.org/category/tutorials/" >Tutorials</a>
+</li>
+	<li class="cat-item cat-item-55"><a href="http://bildr.org/category/user-contributed-articles/" >User Contributed Articles</a>
+</li>
+	<li class="cat-item cat-item-102"><a href="http://bildr.org/category/user-project/" >User Project</a>
+</li>
+				</ul>
+					</div>
+		
+		
+		
+		<div id="footer3">
+			<h3>about</h3>
+			
+			<ul>									
+				<li id="copyright">Content available under: <br /><a href="http://creativecommons.org/licenses/by-sa/3.0/" class="external ">Attribution-Share Alike 3.0 Unported</a></li> 						
+				<li>Proudly powered by <a href="http://wordpress.org">WordPress</a>, <strong><a href="http://www.themelab.com" title="Theme Lab">Free WordPress Themes</a>, and <a href="http://www.websiteoffice.com">Search Marketing</a></strong></li>
+			</ul>
+
+	<div id="waldo-tag-80"></div>
+
+		</div>
+		</div>
+		
+		
+		<div class="clearDiv"></div>
+	
+	
+	</div>
+	<div id="footerGrad"></div>
+</div>	
+		
+</body>
+</html>

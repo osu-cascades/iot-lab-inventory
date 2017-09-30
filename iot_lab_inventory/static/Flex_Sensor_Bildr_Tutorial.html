@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	
+	<meta property="fb:page_id" content="246262332260" />
+	<meta property="og:type" content="athlete" />
+	<meta property="fb:admins" value="USER_ID1,USER_ID2" />
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js" type="text/javascript"></script>
+	<script src="http://bildr.org/common/js/moo_more.js" type="text/javascript"></script>
+	<script src="http://bildr.org/common/js/common.js" type="text/javascript"></script>
+	<script src="http://bildr.org/common/js/MooClip/MooClipNew.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+	//copy functions
+	window.addEvent("domready",function(){var a=$$(".codesnip-container .copy");var b=new MooClip(a,{moviePath:"/common/js/MooClip/ZeroClipboard.swf",dataSource:function(c){return c.getParent(".codesnip-container").getElement(".codesnip").get("text").tidy()},onCopy:function(d,c){c.set("text","Copied");c.highlight();(function(){c.set("text","Copy Code")}).delay(3000)}})});		
+	</script>
+
+
+
+	 <title>bildr  &raquo; Sensing A Bend With A Flex Sensor + Arduino</title>
+	
+	
+	<!-- <title>Sensing A Bend With A Flex Sensor + Arduino </title> -->
+	
+	<!-- <title>Sensing A Bend With A Flex Sensor + Arduino </title> -->
+ 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="generator" content="WordPress 4.8.2">
+	
+	
+	
+	<meta property="fb:admins" content="12502024" />
+	<meta property="og:site_name" content="bildr" />
+	<meta property="og:type" content="article" />
+	
+	
+	<link rel="stylesheet" href="http://bildr.org/blog/wp-content/themes/bildr/style.css" type="text/css" media="all">
+	
+	<link rel="stylesheet" href="/blog/wp-content/plugins/codesnippet/codesnippet.css" type="text/css" media="all">
+	
+	<link rel="stylesheet" href="http://bildr.org/common/style/common.css" type="text/css" media="all">
+	<link rel="alternate" type="application/rss+xml" title="bildr RSS Feed" href="http://bildr.org/feed/">
+	<link rel="pingback" href="http://bildr.org/blog/xmlrpc.php">
+
+	<script async type="text/javascript" src="http://thisiswaldo.com/ad_delivery?site_id=64"></script>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-4050921-8']);
+  _gaq.push(['_setDomainName', '.bildr.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+
+
+<body>
+	<div id="headerWrapper">
+		<div id="globalNavigationWrapper" >
+			
+			
+			
+			
+			<ul id="globalNavigation">
+				<li>Home</li>
+				<li><a href="http://forum.bildr.org">Forum</a></li>
+				<li><a href="http://wiki.bildr.org">Wiki</a></li>
+				<li><a href="https://github.com/bildr-org">Code</a></li>
+				
+				<ul id="globalNavigationRight">
+					<li><a href="http://bildr.org/feed/">RSS</a></li>
+					<li><a href="http://twitter.com/bildr">Twitter</a></li>
+					<li><a href="http://www.facebook.com/bildr.DIY">Facebook</a></li>
+				</ul>
+				
+			</ul>
+			
+			
+			
+			
+			
+		</div>
+	
+	
+	
+		<div id="header">
+			<a id="mainLogo" class="blog" href="/"></a>
+			
+			<div id="headSearch">
+				<form method="get" id="searchform" action="http://bildr.org/">
+				<input type="text" size="18" value="" name="s" id="searchInput" />
+				<a id="searchChoices" data-searchText="search blog..." href="#"></a>
+				
+				<div id="searchMenu">
+					<a class="wiki" href="#">Search Wiki</a>
+				<!-- <a class="code" href="#">Search Code</a> -->
+					<a class="forum" href="#">Search Forum</a>
+					<a class="blog" href="#">Search Blog</a>
+				</div>
+				
+				
+				<input type="submit" id="searchsubmit" value="Search" class="btn" />
+				</form>
+			</div>
+			
+			<div id="user">		
+				<a href="http://forum.bildr.org/ucp.php?mode=login" title="Login" accesskey="l">Login</a>
+		 / <a href="http://forum.bildr.org/ucp.php?mode=register">Register</a>			</div>
+			
+		</div>
+	</div>
+	
+	<div id="actionWrapper">
+		<div id="actionBar">
+		
+		
+		<ul id="actions">
+			<li class="page_item page-item-2"><a href="http://bildr.org/about/">About</a></li>
+		</ul>
+		
+				
+		
+		</div>
+	</div>
+	
+		
+	
+	<center>
+<div id="waldo-tag-77"></div>
+</center>
+	<div id="waldo-tag-79"></div>
+	
+		
+	<div class="content">
+	
+	
+	
+	
+	
+
+
+
+		
+		<div class="post">
+		
+			<h2>
+				<a href="http://bildr.org/2012/11/flex-sensor-arduino/">
+					Sensing A Bend With A Flex Sensor + Arduino				</a>
+			</h2>
+			
+			<div class="date">
+				Friday, November 23	<sup class="super" >rd</sup>
+	, 2012			</div>
+			
+			<div class="postContent">
+				<p><img class="noFrame" src="http://bildr.org/blog/wp-content/uploads/2012/11/flexSensor.jpg"/></p>
+<div class="columnBody">
+<div class="leftColumn">
+<p>We spend so much time talking about sensing things less mechanical, that is is easy to forget the accelerometer isnt the only part in town. The flex sensor is one of those parts often overlooked by the advanced user. But what if you need to check if something bent? Like a finger, or a doll arm. (A lot of toy prototypes seem to have this need).</p><div class="zBJN4Fc3" style="clear:both;float:left;width:100%;margin:0 0 20px 0;"><center>
+<div id="waldo-tag-74" style="padding: 15px 0px;"></div>
+</center></div>
+<p>Anytime you need to detect a flex, or bend, a flex sensor is probably the part for you. They come in a few different sizes ( <a href="https://www.sparkfun.com/products/10264">small</a>, <a href="https://www.sparkfun.com/products/8606">large</a>).</p>
+<p>The flex sensor is basically a variable resistor that reacts to bends. Unbent it measures about 22KΩ, to 40KΩ when bend 180º. Note that the bend is only detected in one direction and the reading can be a bit shaky, so you will have best results detecting changes of at least 10º.</p>
+<p>Also, make sure you don&#8217;t bend the sensor at the base as it wont register as a change, and could break the leads. I always tape some thick board to the base of it to make it wont bend there.</p>
+</div>
+<div class="rightColumn">
+<p><a href="http://bildr.org/blog/wp-content/uploads/2012/11/flex-sensor-arduino.png"><img src="http://bildr.org/blog/wp-content/uploads/2012/11/flex-sensor-arduino-400x300.png" alt="" title="flex-sensor-arduino" width="400" height="300" class="alignleft size-medium wp-image-2243" srcset="http://bildr.org/blog/wp-content/uploads/2012/11/flex-sensor-arduino-400x300.png 400w, http://bildr.org/blog/wp-content/uploads/2012/11/flex-sensor-arduino-200x150.png 200w, http://bildr.org/blog/wp-content/uploads/2012/11/flex-sensor-arduino.png 800w" sizes="(max-width: 400px) 100vw, 400px" /></a></p>
+</div>
+</div>
+<h3>Hooking it up, and why</h3>
+<p>The flex sensor changes its resistance when flexed so we can measure that change using one of the Arduino&#8217;s analog pins. But to do that we need a fixed resistor (not changing) that we can use for that comparison (We are using a 22K resistor). This is called a <a href="http://en.wikipedia.org/wiki/Voltage_divider">voltage divider</a> and divides the 5v between the flex sensor and the resistor. </p>
+<p>The analog read on your arduino is basically a voltage meter. at 5V (its max) it would read 1023, and at 0v it read 0. So we can measure how much voltage is on the flex sensor using the analogRead and we have our reading. </p>
+<p>The amount of that 5V that each part gets is proportional to its resistance. So if the the flex sensor and the resistor have the same resistance, the 5V is split evenly (2.5V) to each part. (analog reading of 512)</p>
+<p>Just pretend that the the sensor was reading only 1.1K of resistance, the 22K resistor is going to soak up 20 times as much of that 5V. So the flex sensor would only get .23V. (analog reading of 46)</p>
+<p>And if we roll the flex sensor around a tibe, the flex sensor may be 40K or resistance, so the flex sensor will soak up 1.8 times as much of that 5V as the 22K resistor. So the flex sensor would get 3V. (analog reading of 614)</p>
+<h3>Code</h3>
+<p>The arduino code for this just could not be easier. We are adding some serial prints and delays to it just so you can easily see the readings, but they dont need to be there if you dont need them.</p>
+<p>In my tests I was getting a reading on the arduino between 512, and 614. So the range isnt the best. But using the <a href="http://arduino.cc/en/Reference/map">map() function</a>, you can convert that to a larger range.</p>
+<p><code lang="arduino"></p>
+<p>int flexSensorPin = A0; //analog pin 0</p>
+<p>void setup(){<br />
+  Serial.begin(9600);<br />
+}</p>
+<p>void loop(){<br />
+  int flexSensorReading = analogRead(flexSensorPin); </p>
+<p>  Serial.println(flexSensorReading);</p>
+<p>  //In my tests I was getting a reading on the arduino between 512, and 614.<br />
+  //Using map(), you can convert that to a larger range like 0-100.<br />
+  int flex0to100 = map(flexSensorReading, 512, 614, 0, 100);<br />
+  Serial.println(flex0to100);</p>
+<p>  delay(250); //just here to slow down the output for easier reading<br />
+}</p>
+<p></code></p>
+
+<div id="contentad372315"></div>
+<script type="text/javascript">
+    (function(d) {
+        var params =
+        {
+            id: "50e297af-ca72-46f4-bfa0-0bac1a245ca0",
+            d: "YmlsZHIub3Jn",
+            wid: "372315",
+            cb: (new Date()).getTime()
+        };
+        var qs = Object.keys(params).reduce(function(a, k){ a.push(k + '=' + encodeURIComponent(params[k])); return a},[]).join(String.fromCharCode(38));
+        var s = d.createElement('script'); s.type='text/javascript';s.async=true;
+        var p = 'https:' == document.location.protocol ? 'https' : 'http';
+        s.src = p + "://api.content-ad.net/Scripts/widget2.aspx?" + qs;
+        d.getElementById("contentad372315").appendChild(s);
+    })(document);
+</script>
+
+
+<center>
+<div id="waldo-tag-75"></div>
+</center></p>			</div>
+			
+			
+			<div class="network">
+				
+	<span class="reTweet">
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+		<a href="http://twitter.com/share?url=http%3A%2F%2Fbildr.org%2F2012%2F11%2Fflex-sensor-arduino%2F&via=&count=horizontal&text=RT @bildr - Sensing A Bend With A Flex Sensor + Arduino" class="twitter-share-button">Tweet</a>
+	</span>				
+	<span class="facebook">				
+		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fbildr.org%2F2012%2F11%2Fflex-sensor-arduino%2F&amp;layout=button_count&amp;show_faces=true&amp;width=100&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+	</span>				<a class="forumDiscussion" href="http://forum.bildr.org/viewtopic.php?t=1099">No Comments</a>			</div>
+			<div class="clear"></div>
+			
+		</div>
+		
+		
+	
+	
+	<div class="alignleft"></div>
+	<div class="alignright"></div>
+	
+	
+	
+	</div>
+
+<div id="footerWrapper">
+	<div id="footerLine"></div>	
+	<center>
+	<div id="waldo-tag-78"></div>
+</center>
+	<div id="footer">
+		
+		<div id="footerLinks">
+		<div id="footer1">
+							<h3>Archives</h3>
+				
+				<ul>
+						<li><a href='http://bildr.org/2013/10/'>October 2013</a></li>
+	<li><a href='http://bildr.org/2012/11/'>November 2012</a></li>
+	<li><a href='http://bildr.org/2012/08/'>August 2012</a></li>
+	<li><a href='http://bildr.org/2012/04/'>April 2012</a></li>
+	<li><a href='http://bildr.org/2012/03/'>March 2012</a></li>
+	<li><a href='http://bildr.org/2012/02/'>February 2012</a></li>
+	<li><a href='http://bildr.org/2012/01/'>January 2012</a></li>
+	<li><a href='http://bildr.org/2011/10/'>October 2011</a></li>
+	<li><a href='http://bildr.org/2011/09/'>September 2011</a></li>
+	<li><a href='http://bildr.org/2011/08/'>August 2011</a></li>
+	<li><a href='http://bildr.org/2011/07/'>July 2011</a></li>
+	<li><a href='http://bildr.org/2011/06/'>June 2011</a></li>
+	<li><a href='http://bildr.org/2011/05/'>May 2011</a></li>
+	<li><a href='http://bildr.org/2011/04/'>April 2011</a></li>
+	<li><a href='http://bildr.org/2011/03/'>March 2011</a></li>
+	<li><a href='http://bildr.org/2011/02/'>February 2011</a></li>
+	<li><a href='http://bildr.org/2011/01/'>January 2011</a></li>
+	<li><a href='http://bildr.org/2010/12/'>December 2010</a></li>
+	<li><a href='http://bildr.org/2010/11/'>November 2010</a></li>
+	<li><a href='http://bildr.org/2010/10/'>October 2010</a></li>
+	<li><a href='http://bildr.org/2010/09/'>September 2010</a></li>
+				</ul>
+					</div>
+	
+		<div id="footer2">
+							<h3>Categories</h3>
+				<ul>
+						<li class="cat-item cat-item-5"><a href="http://bildr.org/category/funded-projects/" >funded projects</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://bildr.org/category/promotions/" >Promotions</a>
+</li>
+	<li class="cat-item cat-item-62"><a href="http://bildr.org/category/review/" >Review</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://bildr.org/category/site/" >Site</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://bildr.org/category/tutorials/" >Tutorials</a>
+</li>
+	<li class="cat-item cat-item-55"><a href="http://bildr.org/category/user-contributed-articles/" >User Contributed Articles</a>
+</li>
+	<li class="cat-item cat-item-102"><a href="http://bildr.org/category/user-project/" >User Project</a>
+</li>
+				</ul>
+					</div>
+		
+		
+		
+		<div id="footer3">
+			<h3>about</h3>
+			
+			<ul>									
+				<li id="copyright">Content available under: <br /><a href="http://creativecommons.org/licenses/by-sa/3.0/" class="external ">Attribution-Share Alike 3.0 Unported</a></li> 						
+				<li>Proudly powered by <a href="http://wordpress.org">WordPress</a>, <strong><a href="http://www.themelab.com" title="Theme Lab">Free WordPress Themes</a>, and <a href="http://www.websiteoffice.com">Search Marketing</a></strong></li>
+			</ul>
+
+	<div id="waldo-tag-80"></div>
+
+		</div>
+		</div>
+		
+		
+		<div class="clearDiv"></div>
+	
+	
+	</div>
+	<div id="footerGrad"></div>
+</div>	
+		
+</body>
+</html>

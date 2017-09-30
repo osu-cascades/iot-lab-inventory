@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- mobile mode if small screen device -->
+    
+    <title>Preassembled 40-pin Pi Wedge Hookup Guide - learn.sparkfun.com</title>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/css/bootstrap.min.css?rev=1506620278" rel="stylesheet">
+    <link rel="stylesheet" href="/css/theme.github.css?rev=1506620278" type="text/css" media="screen" />    <link rel="alternate" type="application/atom+xml" title="Education Blog" href="https://learn.sparkfun.com/feeds/blog" />
+    <link rel="alternate" type="application/atom+xml" title="Tutorials" href="https://learn.sparkfun.com/feeds/tutorials" />
+    <link rel="alternate" type="application/atom+xml" title="Education Blog Comments" href="https://learn.sparkfun.com/feeds/blog_comments" />
+    <link rel="alternate" type="application/atom+xml" title="Tutorial Comments" href="https://learn.sparkfun.com/feeds/tutorial_comments" />
+
+    <script type="text/javascript">
+      var SFECONFIG = {
+        dnt: false,
+        http_server: 'http://learn.sparkfun.com',
+        https_server: 'https://learn.sparkfun.com',
+        http_static: 'https://cdn.sparkfun.com',
+        learn_server: 'https://learn.sparkfun.com',
+        commerce_server: 'https://www.sparkfun.com',
+        base_url: '/',
+        url: '/',
+        controller: 'tutorials',
+        action: 'view',
+        entity_id: '',
+        auth: false,
+        sparkrev: '1506620278',
+        track_arduino_products: true,
+        search_key: 'xY6qr5Ui3V2UMA762D9Z'      };
+      var require = {
+        paths: {
+          'jqueryui': 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min'
+        },
+        baseUrl: '/js/',
+        urlArgs: "sparkrev=" + SFECONFIG.sparkrev,
+        deps: ['jqueryui'],
+        callback: function() {
+          $('#learn').learn();
+          $('#learn').sfeutil();
+          $.shared('domready');
+        }
+      };
+    </script>
+    <script src="/js/learn-built.js?sparkrev=1506620278"></script>
+          <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-3404365-1', 'auto', {'allowLinker': true});
+      ga('require', 'linker');
+      ga('linker:autoLink', ['www.sparkfun.com', 'avc.sparkfun.com'] );
+      ga('require', 'displayfeatures');
+            ga('set', 'dimension1', 'Guest');
+      ga('send', 'pageview');
+
+      </script>
+        <script type="text/javascript">
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js'); 
+    fbq('init', '988931021243392');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1"src="https://www.facebook.com/tr?id=988931021243392&ev=PageView&noscript=1"/>
+  </noscript>
+      </head>
+
+  <body id=learn class="layout-default no-type tutorials-view" ontouchstart="">
+            <!--
+    Start of DoubleClick Floodlight Tag: Please do not remove
+    Activity name of this tag: Universal
+    URL of the webpage where the tag is expected to be placed: http://sparkfun.com
+    This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+    Creation Date: 07/18/2016
+  -->
+  <script type="text/javascript">
+    var axel = Math.random() + "";
+    var a = axel * 10000000000000;
+    document.write('<iframe src="https://5626816.fls.doubleclick.net/activityi;src=5626816;type=count0;cat=unive0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+  </script>
+  <noscript>
+    <iframe src="https://5626816.fls.doubleclick.net/activityi;src=5626816;type=count0;cat=unive0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+  </noscript>
+  <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+    
+    <div class="wrapper" itemscope itemtype="http://schema.org/WebSite">
+      <meta itemprop="url" content="https://learn.sparkfun.com/">
+      <div class=wrapper-inner>
+
+    
+<div class="header">
+  <div class="container">
+
+    <!-- Mobile Nav Button -->
+    <div class="mobile-menu-container left">
+      <a id="nav_toggle" class="mobile-menu-button nav_toggle" href="#"><span class="sfe-icon-hamburger"></span></a>
+              <a id="search_toggle" class="mobile-menu-button" href="#"><span class="glyphicon glyphicon-search"></span></a>
+          </div>
+
+    <nav class="top-links">
+      <ul>
+        <li>
+          <a href="https://www.sparkfun.com/distributors">Find a Retailer</a>        </li>
+                  <li>
+            <div class="dropdown">
+              <a href="#" id="phone_hours" type="button" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                Need Help?
+                <span class="caret"></span>
+              </a>
+              <div class="dropdown-menu pull-right need-help" role="menu" aria-labelledby="phone_hours">
+                <h4>Customer Service</h4>
+                <p><a href="https://www.sparkfun.com/orders/"><span class="glyphicon glyphicon-dashboard"></span> Track My Order</a></p>
+                <p><a href="https://www.sparkfun.com/support"><span class="glyphicon glyphicon-question-sign"></span> Frequently Asked Questions</a></p>
+                <p><a href="https://www.sparkfun.com/support#InternationalShipping"><span class="glyphicon glyphicon-globe"></span> International Shipping Info</a></p>
+                <p><a href="mailto:cservice@sparkfun.com"><span class="glyphicon glyphicon-envelope"></span> Send Email</a></p>
+                <p class="small text-muted">
+                  Mon-Fri, 9am to 12pm and<br>
+                  1pm to 5pm U.S. Mountain Time:
+                </p>
+                <p><span class="glyphicon glyphicon-earphone"></span> (303) 284-0979</p>
+                                  <p><a data-toggle="chatpopup" href="https://www.sparkfun.com/chat/popup"><span class="glyphicon glyphicon-comment"></span> Chat With Us</a></p>
+                              </div>
+            </div>
+          </li>
+              </ul>
+    </nav>
+
+    <!-- Logo -->
+    <div class="logo-container">
+      <a class="logo" href="https://www.sparkfun.com/">
+        <span class="sfe-icon-flame"></span>
+        <span class="sfe-icon-sparkfun" data-icon="&#x1f525">
+          <span class="visuallyhidden">sparkfun.com</span>
+        </span>
+      </a>
+    </div>
+
+    <!-- Tabs -->
+    <!-- also edit mobile tabs in .tabs-container-mobile -->
+    <nav class="tabs-container hidden-xs">
+      <ul>
+        <li class="shop "><a href="https://www.sparkfun.com/categories">Shop</a></li>
+        <li class="learn active"><a href="https://learn.sparkfun.com/">Learn</a></li>
+        <li class="blog "><a href="https://www.sparkfun.com/news">Blog</a></li>
+        <li class="support "><a href="https://www.sparkfun.com/support">Support</a></li>
+      </ul>
+    </nav>
+
+    <!-- Cart & User -->
+    <div class="user-container mobile-menu-container right">
+
+      <a id="account_toggle" class="mobile-menu-button" href="#"><span class="glyphicon glyphicon-user"></span></a>
+
+              <div class="cart mobile-menu-button">
+          <a href="https://www.sparkfun.com/cart">
+            <span id="cart_status" class="sfe-icon-carticon cart-empty">
+              <span class="visuallyhidden">Shopping Cart</span>
+            </span>
+            <span class="cart_count">
+              <span id="items_in_cart">0</span>
+              <span id="cart_noun" class="visuallyhidden">items</span>
+            </span>
+          </a>
+        </div>
+      
+              <div class="user">
+          <!-- login modal trigger -->
+          <a class="btn btn-default" href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fpreassembled-40-pin-pi-wedge-hookup-guide" data-toggle="modal" data-target="#login_modal" data-remote="false">log in</a>
+          <a class="btn btn-default" href="https://www.sparkfun.com/account/make">register</a>        </div>
+      
+    </div>
+
+    <nav class="tabs-container-mobile visible-xs col-xs-12">
+      <ul>
+        <li class="shop "><a href="https://www.sparkfun.com/categories">Shop</a></li>
+        <li class="learn active"><a href="https://learn.sparkfun.com/">Learn</a></li>
+        <li class="blog "><a href="https://www.sparkfun.com/news">Blog</a></li>
+        <li class="support "><a href="https://www.sparkfun.com/support">Support</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <!-- Navigation / Search -->
+  <div class="main-nav-container">
+
+    <div class="container">
+
+      <nav class="product-nav">
+        <button type="button" class="product-menu">
+          <span class="menu-icon sfe-icon-hamburger"></span>
+          <span class="product-menu-name">Product Menu</span>
+        </button>
+
+                  <form id="search_form" class="search" action="https://www.sparkfun.com/search/results" method="get" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+            <meta itemprop="target" content="https://www.sparkfun.com/search/results?term={term}">
+            <div class="ui-widget">
+              <input name="term" id="global-search" class="form-control" type="text" value="" placeholder="find products, tutorials, etc..." itemprop="query-input" autocomplete="off">
+              <button type="submit" class="glyphicon glyphicon-search global-search-icon" aria-label="Search"></button>
+            </div>
+          </form>
+              </nav>
+
+      <nav class="sub-nav">
+        <ul>
+          <li>
+            <a href="http://www.sparkfuneducation.com" target="_blank">Education</a>
+          </li>
+          <li>
+            <a href="https://avc.sparkfun.com/"><span class="sfe-icon-avc"></span></a>          </li>
+          <li>
+            <a href="https://forum.sparkfun.com/" target="_blank">Forum</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="product-menu-container">
+      <div class="container">
+
+        <div class="fixed-product-menu-container col-lg-2 col-sm-3 col-xs-12">
+          <div class="sub-nav-mobile product-menu-group">
+            <a class="product-menu-heading desktop-toggle" href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fpreassembled-40-pin-pi-wedge-hookup-guide">Desktop Site</a>            <a class="product-menu-heading" href="http://www.sparkfuneducation.com" target="_blank">Education</a>
+            <a class="product-menu-heading" href="https://avc.sparkfun.com/"><span class="sfe-icon-avc"></span></a>            <ul class="list-unstyled">
+            </ul>
+          </div>
+          <div class="product-menu-group">
+            <a class="product-menu-heading" href="https://www.sparkfun.com/categories">All Categories</a>            <ul class="list-unstyled">
+            </ul>
+          </div>
+          <div class="product-menu-group">
+            <a class="product-menu-heading" href="https://www.sparkfun.com/categories/featured">Featured <span class="visible-xs pull-right glyphicon glyphicon-plus"></span></a>            <ul class="list-unstyled">
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/new_products">New Products</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/top"><span class="sfe-icon-flame"></span> Top Sellers</a></li>
+                              <li>
+                  <a href="https://www.sparkfun.com/fallsale" class="product-menu-item"><span class="sfe-icon-pumpkin" style="color:#ff8000"></span> Fall Into Savings Sale</a>
+                </li>
+                              <li>
+                  <a href="https://www.sparkfun.com/spectacle" class="product-menu-item"><span class="sfe-icon-spectacle-glasses" style="color:#000000"></span> Spectacle</a>
+                </li>
+                            <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/283">SparkX</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/sale">Sale</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/gift_certificates">Gift Certificates</a></li>
+            </ul>
+          </div>
+                      <a href="https://www.sparkfun.com/microbit" class="hidden-xs">
+              <img class="img-responsive img-rounded center-block" src="https://cdn.sparkfun.com//c/180-180/assets/product_menu_items/1/microbit-now-availble.jpg" alt="Micro:bit Ecosystem">
+            </a>
+                  </div>
+
+                              <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/287" class="product-menu-heading">
+                 Brands                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/featured" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-flame" style="color:#ee2e22"></span> SparkFun                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/103" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-arduino" style="color:#00878f"></span> Arduino                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/233" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-rpi-multi-color" style="color:#ffffff"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span> Raspberry Pi                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/284" class="product-menu-item">
+                                               micro:bit                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/279" class="product-menu-item">
+                                               Espressif (ESP)                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/287" class="product-menu-item">
+                                               <small>all brands</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/2" class="product-menu-heading">
+                 Development                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/299" class="product-menu-item">
+                                               Single Board Comp.                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/300" class="product-menu-item">
+                                               Microcontrollers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/136" class="product-menu-item">
+                                               FPGA                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/149" class="product-menu-item">
+                                               Prototyping Boards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/1" class="product-menu-item">
+                                               Programmers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/2" class="product-menu-item">
+                                               <small>all development</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/23" class="product-menu-heading">
+                 Sensors                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/304" class="product-menu-item">
+                                               Movement                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/146" class="product-menu-item">
+                                               Biometrics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/102" class="product-menu-item">
+                                               Imaging                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/305" class="product-menu-item">
+                                               Environment                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/117" class="product-menu-item">
+                                               Capacitive                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/23" class="product-menu-item">
+                                               <small>all sensors</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/46" class="product-menu-heading">
+                 Tools                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/271" class="product-menu-item">
+                                               3D Printing                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/280" class="product-menu-item">
+                                               CNC                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/49" class="product-menu-item">
+                                               Soldering                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/47" class="product-menu-item">
+                                               Hand Tools                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/177" class="product-menu-item">
+                                               Instruments                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/46" class="product-menu-item">
+                                               <small>all tools</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/310" class="product-menu-heading">
+                 Miscellaneous                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/157" class="product-menu-item">
+                                               All Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/176" class="product-menu-item">
+                                               Books                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/311" class="product-menu-item">
+                                               Arts/Crafts Supplies                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/351" class="product-menu-item">
+                                               SD Cards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/130" class="product-menu-item">
+                                               Swag                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/310" class="product-menu-item">
+                                               <small>all misc</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/51" class="product-menu-heading">
+                 Components                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/89" class="product-menu-item">
+                                               LED &amp; Illumination                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/145" class="product-menu-item">
+                                               Buttons &amp; Switches                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/28" class="product-menu-item">
+                                               Power                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/76" class="product-menu-item">
+                                               LCDs                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/70" class="product-menu-item">
+                                               Cables                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/51" class="product-menu-item">
+                                               <small>all components</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/204" class="product-menu-heading">
+                 E-Textiles                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/327" class="product-menu-item">
+                                               LilyPad                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/328" class="product-menu-item">
+                                               Sewable Electronics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/206" class="product-menu-item">
+                                               Materials                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/268" class="product-menu-item">
+                                               E-Textile Power                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/329" class="product-menu-item">
+                                               E-Textile Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/204" class="product-menu-item">
+                                               <small>all e-textiles</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/31" class="product-menu-heading">
+                 Robotics                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/pages/Actobotics" class="product-menu-item">
+                                               Actobotics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/178" class="product-menu-item">
+                                               Motors &amp; Drivers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/330" class="product-menu-item">
+                                               Parts                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/155" class="product-menu-item">
+                                               Hardware                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/181" class="product-menu-item">
+                                               Robotics Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/31" class="product-menu-item">
+                                               <small>all robotics</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/16" class="product-menu-heading">
+                 Wireless &amp; IoT                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/115" class="product-menu-item">
+                                               Bluetooth                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/112" class="product-menu-item">
+                                               WiFi                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/338" class="product-menu-item">
+                                               Satellite                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/4" class="product-menu-item">
+                                               GPS                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/339" class="product-menu-item">
+                                               Wireless Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/16" class="product-menu-item">
+                                               <small>all wireless/IoT</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/273" class="product-menu-heading">
+                 Audio                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/343" class="product-menu-item">
+                                               Audio Boards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/342" class="product-menu-item">
+                                               Audio Cables                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/344" class="product-menu-item">
+                                               Speakers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/345" class="product-menu-item">
+                                               Audio Chips                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/273" class="product-menu-item">
+                                               <small>all audio</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                  
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+    
+    <div class=content>
+      <div class=container id=airlock>
+
+        
+        <div class=main-title>
+  <ul class="breadcrumb">
+    <li><a href="https://learn.sparkfun.com/">Home</a></li>
+    <li><a href="https://learn.sparkfun.com/tutorials">Tutorials</a></li>
+    <li>Preassembled 40-pin Pi Wedge Hookup Guide</li>
+      </ul>
+
+  <h1>
+    Preassembled 40-pin Pi Wedge Hookup Guide  </h1>
+
+</div>
+
+
+<a id=nav_toggle_pages class=nav_toggle href="#"><span>&#8801;</span> Pages</a>
+
+<div id=tutorial class="row">
+
+  <div class="col-sm-8" id="sections">
+
+    <div class="contributors">
+                      Contributors:
+                <a href="https://www.sparkfun.com/users/468760"><img src="https://static.sparkfun.com/avatar/d069e186dea25a3b82d74ef824716693?d=retro&s=20&r=pg" /> Byron J.</a>          </div>
+
+    <span class="fave_widget verbose">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="432">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">2</span>
+</span>    <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" type="text" value="http://sfe.io/t432" onclick="$(this).select();">
+
+    <div class="share-social">
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','googleplus');" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft432" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','tumblr');" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft432&name=Preassembled+40-pin+Pi+Wedge+Hookup+Guide" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','reddit');" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft432" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','twitter');" href="https://twitter.com/intent/tweet?text=Preassembled+40-pin+Pi+Wedge+Hookup+Guide&url=http%3A%2F%2Fsfe.io%2Ft432&via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','facebook');" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft432&t=Preassembled+40-pin+Pi+Wedge+Hookup+Guide" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','pinterest');" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft432&media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2Flearn_tutorials%2F4%2F3%2F2%2Fwedge_breadboard.jpg&description=Preassembled+40-pin+Pi+Wedge+Hookup+Guide" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+          <div class="section tutorial-page">
+        <h2 id="introduction">Introduction</h2>
+        <p>The <a href="https://www.sparkfun.com/products/13717">preassembled 40-pin Pi Wedge</a> is the newest member in our Pi Wedge family.  It&rsquo;s an excellent way to get those pesky Pi pins broken out to a breadboard so that they can easily be used.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/3/2/wedge_breadboard.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/3/2/wedge_breadboard.jpg" alt="alt text" /></a></p>
+
+<p style="text-align:center;"> <em>The Pi Wedge in a breadboard</em></p>
+
+<p>This Pi Wedge is compatible with members of the Pi family with 40-pin GPIO headers, including</p>
+
+<ul>
+<li>The Raspberry Pi Model A+</li>
+<li><a href="https://www.sparkfun.com/products/12995">The Raspberry Pi Model B+</a></li>
+<li><a href="https://www.sparkfun.com/products/13297">The Raspberry Pi 2 Model B</a></li>
+</ul>
+
+
+<p>It adapts the 40-pin GPIO connector on recent Pis to a breadboard-friendly form factor and rearranges the pins by similar function.  Also, the GPIO pins are arranged in ascending order.</p>
+
+<p>This version also comes fully assembled &ndash; no soldering is required!</p>
+
+<p></br></p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/3/2/wedge-n-pi.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/3/2/wedge-n-pi.jpg" alt="alt text" /></a></p>
+
+<p style="text-align:center;"> <em>The Pi Wedge, shown with a Pi B+.</em></p>
+
+<p></br></p>
+
+<h3>Covered in This Tutorial</h3>
+
+<ul>
+<li><a href="https://learn.sparkfun.com/tutorials/preassembled-40-pin-pi-wedgehookup-guide#background">Background</a> &ndash; How the Pi Wedge came to be</li>
+<li><a href="https://learn.sparkfun.com/tutorials/preassembled-40-pin-pi-wedgehookup-guide#assembly">Assembly</a> &ndash; How to connect the FTDI, ribbon cable, and breadboard</li>
+<li><a href="https://learn.sparkfun.com/tutorials/preassembled-40-pin-pi-wedgehookup-guide#pin-mapping">Pin Mapping</a> &ndash; What the silkscreen on the Wedge represents</li>
+<li><a href="https://learn.sparkfun.com/tutorials/preassembled-40-pin-pi-wedgehookup-guide#logic-levels-and-power">Logic Levels and Power</a> &ndash; Electrical information about connecting to the Pi</li>
+<li><a href="https://learn.sparkfun.com/tutorials/preassembled-40-pin-pi-wedgehookup-guide#resources--going-further">Some additional resources</a></li>
+</ul>
+
+
+<p>But before you begin, check out these links and brush up on topics you may not be familiar with:</p>
+
+<h3>Suggested Reading</h3>
+
+<ul>
+<li><a href="https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard">How To Use a Breadboard</a></li>
+<li><a href="http://elinux.org/RPi_Easy_SD_Card_Setup">Setting Up a Boot Card</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/serial-communication">Serial Communication</a></li>
+</ul>
+
+
+<h3>Suggested Viewing</h3>
+
+<ul>
+<li>Getting Started With The Raspberry Pi
+
+<ul>
+<li><a href="https://www.youtube.com/watch?v=b6h95jNWg1g">Part 1</a></li>
+<li><a href="https://www.youtube.com/watch?v=6HeRyrr4i9k">Part 2</a></li>
+<li><a href="https://www.youtube.com/watch?v=1tEMRCtXALM">Part 3</a></li>
+</ul>
+</li>
+</ul>
+      </div>
+          <div class="section tutorial-page">
+        <h2 id="background">Background</h2>
+        <p>In the process of developing projects like the <a href="https://learn.sparkfun.com/tutorials/raspberry-pi-twitter-monitor">Twitter Monitor</a> and  <a href="https://twitter.com/Gr8AmTweetRace">Great American Tweet Race</a> around the Raspberry Pi, we found that we were experiencing some growing pains when trying to expand the Pi into a prototype that involved external hardware.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/3/6/IMG_20131101_145337.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/3/6/IMG_20131101_145337.jpg" alt="Bob Pease would be proud" /></a></p>
+
+<p style="text-align:center;"> <em>There&rsquo;s a Pi somewhere in this ratsnest</em></p>
+
+<p>The Raspberry Pi Model B+ has a 40-pin connector that provides access to several communication interfaces, plus GPIO and power.  But the connector doesn&rsquo;t have detailed labeling, and the native pin arrangement is somewhat scattershot.  Pins used for similar functions aren&rsquo;t always grouped together, and power and ground pins are interspersed with no obvious pattern.</p>
+
+<p>The pins also don&rsquo;t translate to a solderless breadboard very easily.  Our first projects used a bunch of <a href="https://www.sparkfun.com/products/9385">F-M jumper wires</a> that we just plugged into the header.  They involved a lot of &ldquo;ratsnest jiggling&rdquo; when things stopped working.</p>
+
+<h4>Bootstrapping</h4>
+
+<p>In addition to the physical issues of using the I/O connector, getting started with a brand new Raspberry Pi B+ always seems to involve a chicken-and-egg situation.  We just want to SSH into it, so we can use the command line.  But in order to SSH to it, we need to know it&rsquo;s IP address&hellip;and of course, the IP address is most easily learned by running <code>ifconfig</code> on the command line.</p>
+
+<h3>The Solution</h3>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/3/2/wedge_breadboard.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/3/2/wedge_breadboard.jpg" alt="alt text" /></a></p>
+
+<p style="text-align:center;"> <em>Meet the 40-Pin Pi Wedge</em></p>
+
+<p>The Pi Wedge B+ connects to the 40-pin GPIO connector, and breaks out the pins in a breadboard-friendly arrangement and spacing.  It adds a pair of decoupling capacitors on the power supply lines, and it makes the initial bringup process easier - you can plug an <a href="https://www.sparkfun.com/products/9873">FTDI Basic</a> module into the serial port.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="assembly">Assembly</h2>
+        <h3>Contents</h3>
+
+<p>The Preassembleed Pi Wedge comes with the Wedge PCB, and a 40-pin ribbon cable.</p>
+
+<h3>Connection</h3>
+
+<p>The 40-pin ribbon cable is used to connect the wedge to the Pi.  This cable is polarized.  On the Pi Wedge PCB end, the tooth on the cable will interface with the notch in the shrouded header.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/3/2/ribbon-on-wedge.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/3/2/ribbon-on-wedge.jpg" alt="alt text" /></a></p>
+
+<p style="text-align:center;"> <em>Inserting the ribbon cable</em></p>
+
+<p>The header on the Pi B+ itself doesn&rsquo;t have anything to help guarantee the alignment.  You&rsquo;ll need to take care that it gets connected properly.  Pin 1 on the Pi  is marked with a dog-eared corner on the silkscreened rectangle.  The ribbon cable connector is embossed with (a barely visible) small triangle that marks pin 1.  The first pin is also coded on the wire, such as the red markings in the photo below (though it may also be another color, such as black or dark blue).</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/3/2/ribbon-on-pi.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/3/2/ribbon-on-pi.jpg" alt="alt text" /></a></p>
+
+<p style="text-align:center;"> <em>Proper pin-1 orientation</em></p>
+
+<p>The FTDI connector also needs to be aligned correctly.  Be sure to match up the &ldquo;grn&rdquo; and &ldquo;blk&rdquo; markings on both boards.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/3/2/ftdi-plugged.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/3/2/ftdi-plugged.jpg" alt="alt text" /></a></p>
+
+<p style="text-align:center;"> <em>Proper 3.3V FTDI-Basic orientation</em></p>
+
+<p>In the next section, we&rsquo;ll explore how the signals from the Pi are mapped to the Wedge.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="pin-mapping">Pin Mapping</h2>
+        <h3>Changes With the B+</h3>
+
+<p>When the Raspberry Pi foundation introduced the B+, they expanded the GPIO header from 26 to 40 pins.  These changes have been carried forward by the A+ and Pi 2 Model B.  The connector adds nine more GPIO pins plus the ID_SC and ID_SD pins to identify external peripherals, which you can learn more about in our <a href="https://learn.sparkfun.com/tutorials/raspberry-pi-spi-and-i2c-tutorial#i2c-0-on-40-pin-pi-boards">SPI and I2C tutorial</a>.</p>
+
+<h3>Signal Location</h3>
+
+<p>The Pi Wedge reorganizes the I/O pins on the Pi, putting similar functions on adjacent pins.  The SPI, I2C and UART signals are all grouped near each other.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/3/2/PIN-LABELS.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/3/2/PIN-LABELS.png" alt="alt text" /></a></p>
+
+<p style="text-align:center;"> <em>Functional Groupings</em></p>
+
+<p>The pins are labeled, though the labels are short, to fit the space available on the PCB.  The UART, SPI and I2C pins are marked with their communication bus functions, but they are also available as GPIO pins when configured in that mode.</p>
+
+<p>The following table denotes the assignment of signals on the Pi Wedge, including the peripheral and alternate GPIO assignments where appropriate.</p>
+
+<table border="1" align="center" width="500">
+<tr align="center"><td><b>Function</b></td> <td><b>GPIO#</b></td> <td><b>  </b></td> <td><b>Function</b></td> <td><b>GPIO#</b></td></tr>
+<tr align="center"><td></td> <td>GPIO 17</td> <td></td> <td></td> <td>GPIO18</td></tr>
+<tr align="center"><td></td> <td>GPIO 16</td> <td></td> <td></td> <td>GPIO19</td></tr>
+<tr align="center"><td></td> <td>GPIO 13</td> <td></td> <td></td> <td>GPIO 20</td></tr>
+<tr align="center"><td></td> <td>GPIO 12</td> <td></td> <td></td> <td>GPIO 21</td> </tr>
+<tr align="center"><td></td> <td>GPIO 6</td>  <td></td> <td></td> <td>GPIO 22</td> </tr>
+<tr align="center"><td></td> <td>GPIO 5</td>  <td></td> <td></td> <td>GPIO 23</td> </tr>
+<tr align="center"><td></td> <td>GPIO 4</td> <td></td> <td></td> <td>GPIO 24</td> </tr>
+<tr align="center"><td>SPI CE 1</td> <td>GPIO 7</td> <td></td> <td></td> <td>GPIO 25</td> </tr>
+<tr align="center"><td>SPI CE 0</td> <td>GPIO 8</td> <td></td> <td></td> <td>GPIO 26</td> </tr>
+<tr align="center"><td>SPI MOSI</td> <td>GPIO 10</td> <td></td> <td></td> <td>GPIO 27</td></tr>
+<tr align="center"><td>SPI MISO</td> <td>GPIO 9</td> <td></td>  <td>SCL</td> <td>GPIO 3</td></tr>
+<tr align="center"><td>SPI CLK</td> <td>GPIO 11</td> <td></td> <td>SDA</td> <td>GPIO 2</td> </tr>
+<tr align="center"><td>UART RXI</td> <td>GPIO 15</td> <td></td> <td>ID SC</td> <td>GPIO 0</td> </tr>
+<tr align="center"><td>UART TXI</td> <td>GPIO 14</td> <td></td> <td>ID SD</td> <td>GPIO 1</td> </tr>
+<tr align="center"><td>5V</td> <td></td> <td></td> <td></td> <td>5V</td></tr>
+<tr align="center"><td>3.3V</td> <td></td> <td></td> <td></td> <td>3.3V</td></tr>
+<tr align="center"><td>GROUND</td> <td></td> <td></td> <td></td> <td>GROUND</td></tr>
+</table>
+
+
+<p style="text-align:center;"> <em>Pi Wedge B+ Pin-Function mapping</em></p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="logic-levels-and-power">Logic Levels And Power</h2>
+        <h3>Logic Levels</h3>
+
+<p>The Pi uses 3.3V logic levels, which are not 5V tolerant.  Many peripheral devices are capable of running at 3.3V, but in the case that you need to interface with 5V devices, use a level shifter, such as the <a href="https://www.sparkfun.com/products/11771">TXB0104 breakout</a>.</p>
+
+<h3>Communications</h3>
+
+<p>The signals on the 6-pin FTDI header are also limited to 3.3V logic levels.  Be sure to use it with a <a href="https://www.sparkfun.com/products/9873">3.3V FTDI module</a>, and not a 5V one.</p>
+
+<h3>Power</h3>
+
+<p>Understanding the Pi&rsquo;s power supply is critical to using it successfully, particularly when building it into a larger system.</p>
+
+<p>The Raspberry Pi B+ is more efficient than it&rsquo;s predecessors, as it replaces the former chain of linear power regulators with switching regulators.</p>
+
+<p>The most recently published schematics are for the <a href="http://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/README.md">Raspberry Pi B+</a>, and we&rsquo;re assuming that the Pi2 model B and A+ are similar.  Inspecting those schematics, we see that 5V comes into the the board via connector J1 - it&rsquo;s a micro USB connector, but only the power and ground pins are connected.  The 5V coming from this connector passes through a fuse and a transistor circuit that protects against power polarity mishaps, then continues around the board without any further regulation.  The 5V connections on the Pi Wedge come straight from this line.</p>
+
+<p>On the B+, the 5V goes to a dual switching regulator that further reduces it to 3.3V, and 1.8V.  The regulated 3.3V is present on the I/O connector.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/3/2/5/Power-regulators.png"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/3/2/5/Power-regulators.png" alt="Power Regulation" /></a></p>
+
+<p>There are several power strategies that can be applied in a Pi deployment, depending on the overall needs and availability.</p>
+
+<h4>Power Through the GPIO Connector</h4>
+
+<p>The most obvious strategy for powering small external circuits is to get power directly from the GPIO connector.  To power small circuits on your breadboard, you can run jumpers from the 5V or 3.3V and Ground pins on the wedge to the power rails on the breadboard.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/4/3/2/power-rail-ties.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/3/2/power-rail-ties.jpg" alt="alt text" /></a></p>
+
+<p style="text-align:center;"> <em>Jumpering power to the breadboard rails</em></p>
+
+<p>While this is the most immediate way to access power, it only extends to small circuits.  The B+ itself is limited to 2A total from the 5V line, most of which is needed by the B+ itself.  The <a href="http://elinux.org/RPi_Low-level_peripherals#Power_pins">stated limit for the 3.3V pins is 50 mA</a>.</p>
+
+<p>If you&rsquo;re developing external circuitry, and the Pi resets when you&rsquo;re testing it, you may be exceeding the current limits.  We saw this exact situation arise as we added SPI controlled 7-segment LED displays - if we illuminated one too many segments, the system crashed.  For circuits with higher power draw, we&rsquo;ll need to explore some alternatives.</p>
+
+<h4>Daisy Chaining</h4>
+
+<p>The next power option is to connect each section of the circuit directly to the power supply.  This means that the peripherals aren&rsquo;t constrained by the current limits of the fuses and regulators on the Pi itself.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/3/2/5/daisyBplus.png"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/3/2/5/daisyBplus.png" alt="daisy chained power" /></a></p>
+
+<p style="text-align:center;"> <em>The peripherals are powered directly by the supply directly</em></p>
+
+<p>For peripherals that use 5V logic, they should also include <a href="https://learn.sparkfun.com/tutorials/logic-levels">3.3V/5V logic level translation</a>.</p>
+
+<h4>Back Power Through J8</h4>
+
+<p>As described above, a simple deployment can power peripherals via the 5V and 3.3V pins of J8, but it&rsquo;s also possible to apply power to the Pi via those lines.  The Pi Foundation call this <a href="https://github.com/raspberrypi/hats/blob/master/designguide.md#back-powering-the-pi-via-the-j8-gpio-header">&ldquo;back powering&rdquo;</a>, and they have a number of recommendations for it&rsquo;s implementation.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/3/2/5/backpowering-diagram.png"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/3/2/5/backpowering-diagram.png" alt="Backpowering" /></a></p>
+
+<p>The first recommendation is to duplicate the fuse and MOSFET + BJT power protection circuit as seen on the Pi itself.  This circuit is a variant on the &ldquo;ideal diode&rdquo; circuit.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/3/2/5/zvd-circuit.png"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/3/2/5/zvd-circuit.png" alt="Ideal Diode" /></a></p>
+
+<p>It serves several purposes:</p>
+
+<ul>
+<li>Under ordinary circumstances, with power coming in via the micro-USB plug, the MOSFET is biased fully on, so there is only minimal voltage drop across it, where a typical Schottky or Silicon diode would drop 0.3V or more.</li>
+<li>Second, it prevents power from flowing if the power polarity at the micro-USB plug is incorrect.</li>
+<li>Third, if the board is powered via J8, it prevents power from being drawn from J1, to prevent contention if two supplies are present at the same time.</li>
+</ul>
+
+
+<p>The other recommendation is that the HAT needs to be able to provide 5V, +/- 5%, with at least 1.3 A available for the Pi.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="resources--going-further">Resources and Going Further</h2>
+        <h3>Going Further</h3>
+
+<p>If you want more detailed information about the Wedge and the interfaces it breaks out, check out the following materials:</p>
+
+<ul>
+<li>To take a closer look at programming for the I/O on a Pi, in both Python and C, take a look at our <a href="https://learn.sparkfun.com/tutorials/raspberry-gpio">Raspberry gPIo</a> tutorial.</li>
+<li>If you want to use the synchronous serial interface broken out by the wedge, you can learn more in out <a href="https://learn.sparkfun.com/tutorials/raspberry-pi-spi-and-i2c-tutorial">I2C &amp; SPI tutorial</a></li>
+<li>The design files for the PCB, and some WiringPi software examples can be found in the <a href="https://github.com/sparkfun/Pi_Wedge_40-Pin_PreAssembled">40-pin Pi Wedge</a> GitHib repository.</li>
+</ul>
+
+
+<h3>Resources</h3>
+
+<p>For more information about the Raspberry Pi B+ and the software described here, please visit their sites.</p>
+
+<ul>
+<li><a href="http://raspberrypi.org">The Raspberry Pi Foundation</a></li>
+<li>The Pi Foundation&rsquo;s <a href="http://www.raspberrypi.org/forums/viewforum.php?f=100">B+ Addons</a> forum.</li>
+<li>The Pi Foundation&rsquo;s GitHub repository for the <a href="https://github.com/raspberrypi/hats">Raspberry Pi B+ HATs</a>.</li>
+<li>The eLinux.org <a href="http://elinux.org/RPi_Peripherals">Raspberry Pi peripherals</a> guide</li>
+<li><a href="http://wiringpi.com/">WiringPi</a></li>
+<li><a href="http://sourceforge.net/projects/raspberry-gpio-python/">RPi.GPIO module</a></li>
+<li>Some notes about increasing the available current from the <a href="https://projects.drogon.net/testing-setting-the-usb-current-limiter-on-the-raspberry-pi-b/">B+ USB ports</a>.</li>
+</ul>
+
+
+<p>If you have any problems or questions, our <a href="https://www.sparkfun.com/static/contact">technical support department</a> can help.  Please don’t hesitate to contact us. We also love to hear about your projects!</p>      </div>
+    
+        <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" type="text" value="http://sfe.io/t432" onclick="$(this).select();">
+
+    <div class="share-social">
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','googleplus');" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft432" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','tumblr');" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft432&name=Preassembled+40-pin+Pi+Wedge+Hookup+Guide" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','reddit');" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft432" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','twitter');" href="https://twitter.com/intent/tweet?text=Preassembled+40-pin+Pi+Wedge+Hookup+Guide&url=http%3A%2F%2Fsfe.io%2Ft432&via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','facebook');" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft432&t=Preassembled+40-pin+Pi+Wedge+Hookup+Guide" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','pinterest');" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft432&media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2Flearn_tutorials%2F4%2F3%2F2%2Fwedge_breadboard.jpg&description=Preassembled+40-pin+Pi+Wedge+Hookup+Guide" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+  </div>
+
+  <div class="col-sm-4" id="nav-pages">
+    <div id="sidebar_affix">
+
+      <div id="tutorial-pages" class="list-group">
+        <a class="list-group-item"><b>Sections</b></a>
+                          <a data-pagename="introduction" class="list-group-item" href="#introduction">
+            Introduction          </a>
+                  <a data-pagename="background" class="list-group-item" href="#background">
+            Background          </a>
+                  <a data-pagename="assembly" class="list-group-item" href="#assembly">
+            Assembly          </a>
+                  <a data-pagename="pin-mapping" class="list-group-item" href="#pin-mapping">
+            Pin Mapping          </a>
+                  <a data-pagename="logic-levels-and-power" class="list-group-item" href="#logic-levels-and-power">
+            Logic Levels And Power          </a>
+                  <a data-pagename="resources--going-further" class="list-group-item" href="#resources--going-further">
+            Resources and Going Further          </a>
+              </div>
+
+      <div class="list-group">
+        <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/preassembled-40-pin-pi-wedge-hookup-guide/discuss">
+          Comments
+          <span class="badge">0</span>
+        </a>
+                  <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/preassembled-40-pin-pi-wedge-hookup-guide/introduction">
+            View Paginated
+          </a>
+                <a class="list-group-item" href="#" onclick="window.print(); return false;">
+          Print
+        </a>
+      </div>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>Tags</b></li>
+        <li class="list-group-item"><ul class="tags-list">
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/hookup">Hookup</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/prototyping">Prototyping</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/raspberry-pi">Raspberry Pi</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/single-board-computer">Single Board Computer</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/start-a-project">Start a Project</a>  </li>
+</ul>
+</li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>License</b></li>
+        <li class="list-group-item">
+          <span class="sfe-icon-cc">
+            <span class="visuallyhidden">Creative Commons</span>
+          </span>
+          <small>tutorials are <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="new">CC BY-SA 4.0</a></small>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  require(['tutorial', 'jquery.imagesloaded'], function() {
+    $('#tutorial').tutorial();
+  });
+</script>
+
+      </div> <!-- /container -->
+    </div> <!-- /content -->
+
+    
+<footer>
+
+<div class="social">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="sharing-ingenuity">
+          <span class=sfe-icon-flame></span>
+          <span class="text"><span class="text-top">Start<br></span>something.</span>
+        </div>
+        <ul class="spew">
+          <li><a href="https://www.github.com/sparkfun" target="_blank" class=sfe-icon-github><span class=visuallyhidden>GitHub</span></a></li>
+          <li><a href="https://www.youtube.com/sparkfun" target="_blank" class=sfe-icon-youtube><span class=visuallyhidden>YouTube</span></a></li>
+          <li><a href="https://www.vimeo.com/sparkfun" target="_blank" class=sfe-icon-vimeo><span class=visuallyhidden>Vimeo</span></a></li>
+          <li><a href="https://www.facebook.com/SparkFun" target="_blank" class=sfe-icon-facebook><span class=visuallyhidden>Facebook</span></a></li>
+          <li><a href="https://www.instagram.com/sparkfun/" target="_blank" class=sfe-icon-instagram><span class=visuallyhidden>Instagram</span></a></li>
+          <li><a href="https://plus.google.com/106084846822083498483/" target="_blank" class=sfe-icon-google-plus><span class=visuallyhidden>Google Plus</span></a></li>
+          <li><a href="https://www.flickr.com/photos/sparkfun/" target="_blank" class=sfe-icon-flickr><span class=visuallyhidden>Flickr</span></a></li>
+          <li><a href="https://twitter.com/#!/sparkfun" target="_blank" class=sfe-icon-twitter><span class=visuallyhidden>Twitter</span></a></li>
+          <li><a href="https://www.sparkfun.com/feeds" class=sfe-icon-feed><span class=visuallyhidden>RSS</span></a></li>
+        </ul>
+        <div class="newsletter">
+          <!--[if lte IE 8]>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+<![endif]-->
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+<script>
+  hbspt.forms.create({
+    css: '',
+    cssClass: 'hubspot-newsletter-subscribe',
+    portalId: '2224003',
+    formId: 'd2b17dd4-e1bb-406a-ba41-44c19dcd0376'
+  });
+</script>
+        </div>
+      </div>
+    </div><!-- end .row -->
+  </div><!-- end .container -->
+</div><!-- end .social -->
+
+<div class="container">
+
+    <div class="row">
+
+    <div class="subfooter subfooter-about">
+      <p>
+        In 2003, CU student Nate Seidle blew a power supply in his dorm room and, in lieu of a way to order easy replacements, decided to start his own company. Since then, SparkFun has been committed to sustainably helping our world achieve electronics literacy from our headquarters in Boulder, Colorado.
+      </p>
+      <p>
+        No matter your vision, SparkFun's products and resources are designed to make the world of electronics more accessible. In addition to over 2,000 open source components and widgets, SparkFun offers curriculum, training and online tutorials designed to help demystify the wonderful world of embedded electronics. We're here to help you start something.
+      </p>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>About Us</b>
+            <li><a href="https://www.sparkfun.com/about_sparkfun">About SparkFun</a></li>
+	    <li><a href="http://www.sparkfuneducation.com" target="_blank">SparkFun Education <span class="glyphicon glyphicon-new-window"></span></li>
+	    <li><a title="RSS Feeds" href="https://www.sparkfun.com/feeds">Feeds <span class=sfe-icon-feed></span></a></li>
+            <li><a href="https://www.sparkfun.com/jobs">Jobs</a></li>
+            <li><a href="https://www.sparkfun.com/static/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Help</b></li>
+            <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+            <li><a href="https://www.sparkfun.com/support#ShippingPolicy">Shipping</a></li>
+            <li><a href="https://www.sparkfun.com/returns">Return Policy</a></li>
+            <li><a href="https://www.sparkfun.com/static/faq">FAQ</a></li>
+                      </ul>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Programs</b></li>
+	    <li><a href="https://www.sparkfun.com/sponsorships">Become a Community Partner</a>	      <li><ul><li><a href="https://www.sparkfun.com/cpp">Community Stories</a></li></ul></li>
+	    </li>
+            <li><a href="https://www.sparkfun.com/project_calls">Tell Us About Your Project</a></li>
+            <li><a href="https://learn.sparkfun.com/tutorials/how-to-sell-your-widget-on-sparkfun">Sell Your Widget on SparkFun</a></li>
+            <li><a href="https://www.sparkfun.com/distributors/apply">Become a SparkFun Distributor</a></li>
+            <li><a href="https://www.sparkfun.com/volume">Large Volume Sales</a> </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Community</b></li>
+            <li><a href="https://forum.sparkfun.com/">Forum</a></li>
+            <li><a href="https://www.sparkfun.com/news/263">SparkFun IRC Channel</a></li>
+            <li><a href="https://www.sparkfun.com/quiz">Take the SparkFun Quiz</a></li>
+            <li><a href="https://www.kickstarter.com/pages/sparkfun">SparkFun Kickstarter Projects</a></li>
+            <li><a href="https://www.sparkfun.com/distributors">Distributors</a></li>
+          </ul>
+        </div>
+
+      </div><!-- end .row -->
+
+    </div>
+
+    <div id="feedback" class="subfooter subfooter-woym">
+      <form id="woym_form" class="feedback" action="https://learn.sparkfun.com/feedback/mind.json" onsubmit="$(this).sfeutil('mind_feedback'); return false;" method="POST">
+        <div class="error" id="error_feedback" style="display: none"></div>
+        <input type="hidden" name="sparkaptcha" id="sparkaptcha" value="0">
+
+        <div class="form-group">
+          <label for="feedback_textarea" class="control-label">What's on your mind?</label>
+          <div class="controls">
+            <textarea id="feedback_textarea" class="form-control" name="feedback_text" required></textarea>
+            <div class="error" id="error_feedback_text" style="display: none"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_dest" class="control-label">For which department?</label>
+          <select name="dest" class="form-control" id="feedback_dest">
+            <option value="general">General</option>
+            <option value="cust">Customer Service</option>
+            <option value="tech">Tech Support</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_email" class="control-label">
+            Please include your email address if you'd like us to respond to a specific question.
+          </label>
+
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+            <input type="text" class="form-control" id="feedback_email" name="email" placeholder="email address" />
+          </div>
+          <div class="error" id="error_feedback_email" style="display: none"></div>
+
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+  </div><!-- end .row -->
+  
+  <ul class="copyleft">
+    <li>SparkFun Electronics <a href="https://www.sparkfun.com/news/300">&reg;</a></li>
+    <li><a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=6333+Dry+Creek+Parkway,+Niwot,+CO+80503">Niwot, Colorado</a></li>
+    <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+    <li><a href="https://www.sparkfun.com/sitemap">Site Map</a></li>
+    <li><a href="https://www.sparkfun.com/terms">Terms of Service</a></li>
+    <li><a href="https://www.sparkfun.com/privacy">Privacy Policy</a></li>
+    <li class="desktop-toggle">
+              <a href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fpreassembled-40-pin-pi-wedge-hookup-guide">Desktop Site</a>          </li>
+  </ul>
+
+</div><!-- end .container -->
+
+</footer>
+
+    <div class="nav-account">
+  <ul class="nav nav-tabs">
+    <li class="visible-xs">
+      <a class="nav-toggle-account back" href="#">Your Account</a>
+    </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fpreassembled-40-pin-pi-wedge-hookup-guide" data-toggle="modal" data-target="#login_modal" data-remote="false">Log In</a>
+      </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/make">Register</a>
+      </li>
+      </ul>
+</div>
+
+      </div><!-- end .wrapper-inner -->
+    </div><!-- end .wrapper -->
+
+    <!-- Login Modal -->
+<div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Log In</h4>
+        <p class="modal-header-msg"></p>
+      </div>
+      <div class="modal-body">
+        <form role="form" action="https://www.sparkfun.com/account/login" method="post">
+          <input type="hidden" name="redirect" value="/learn/tutorials/preassembled-40-pin-pi-wedge-hookup-guide">
+          <div class="form-group">
+            <label for="login-username">Email</label>
+            <input type="email" tabindex="1" name=user id="login-username" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input tabindex="2" type="password" name="passwd" id="login-password" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Log In" tabindex="3" class="btn btn-action">
+          </div>
+        </form>
+        <p>
+          <a href="https://www.sparkfun.com/account/forgot_password">Forgot your password?</a>          <br>
+          No account? <a id="btn_register_account" href="https://www.sparkfun.com/account/make">Register one!</a>        </p>
+      </div>
+    </div>
+  </div>
+</div>
+  
+          
+<!--  begin olark code -->
+  <script type="text/javascript" async> ;(function(o,l,a,r,k,y){if(o.olark)return; r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0]; y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r); y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)}; y.extend=function(i,j){y("extend",i,j)}; y.identify=function(i){y("identify",k.i=i)}; y.configure=function(i,j){y("configure",i,j);k.c[i]=j}; k=y._={s:[],t:[+new Date],c:{},l:a}; })(window,document,"static.olark.com/jsclient/loader.js");
+  /* custom configuration goes here (www.olark.com/documentation) */
+  olark.identify('4728-501-10-9212');</script>
+  <noscript><a href="https://www.olark.com/site/4728-501-10-9212/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+<!-- end olark code -->
+          <script type="text/javascript">
+      (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+        n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/2224003.js';
+        e.parentNode.insertBefore(n, e);
+      })(document,"script","hs-analytics",300000);
+    </script>
+        <script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0046/4761.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+  </script>
+      </body>
+</html>
+

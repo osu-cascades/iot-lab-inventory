@@ -1,0 +1,2224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- mobile mode if small screen device -->
+    
+    <title>Force Sensitive Resistor Hookup Guide - learn.sparkfun.com</title>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/css/bootstrap.min.css?rev=1506620278" rel="stylesheet">
+    <link rel="stylesheet" href="/css/theme.github.css?rev=1506620278" type="text/css" media="screen" />    <link rel="alternate" type="application/atom+xml" title="Education Blog" href="https://learn.sparkfun.com/feeds/blog" />
+    <link rel="alternate" type="application/atom+xml" title="Tutorials" href="https://learn.sparkfun.com/feeds/tutorials" />
+    <link rel="alternate" type="application/atom+xml" title="Education Blog Comments" href="https://learn.sparkfun.com/feeds/blog_comments" />
+    <link rel="alternate" type="application/atom+xml" title="Tutorial Comments" href="https://learn.sparkfun.com/feeds/tutorial_comments" />
+
+    <script type="text/javascript">
+      var SFECONFIG = {
+        dnt: false,
+        http_server: 'http://learn.sparkfun.com',
+        https_server: 'https://learn.sparkfun.com',
+        http_static: 'https://cdn.sparkfun.com',
+        learn_server: 'https://learn.sparkfun.com',
+        commerce_server: 'https://www.sparkfun.com',
+        base_url: '/',
+        url: '/',
+        controller: 'tutorials',
+        action: 'view',
+        entity_id: '',
+        auth: false,
+        sparkrev: '1506620278',
+        track_arduino_products: true,
+        search_key: 'xY6qr5Ui3V2UMA762D9Z'      };
+      var require = {
+        paths: {
+          'jqueryui': 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min'
+        },
+        baseUrl: '/js/',
+        urlArgs: "sparkrev=" + SFECONFIG.sparkrev,
+        deps: ['jqueryui'],
+        callback: function() {
+          $('#learn').learn();
+          $('#learn').sfeutil();
+          $.shared('domready');
+        }
+      };
+    </script>
+    <script src="/js/learn-built.js?sparkrev=1506620278"></script>
+          <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-3404365-1', 'auto', {'allowLinker': true});
+      ga('require', 'linker');
+      ga('linker:autoLink', ['www.sparkfun.com', 'avc.sparkfun.com'] );
+      ga('require', 'displayfeatures');
+            ga('set', 'dimension1', 'Guest');
+      ga('send', 'pageview');
+
+      </script>
+        <script type="text/javascript">
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js'); 
+    fbq('init', '988931021243392');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1"src="https://www.facebook.com/tr?id=988931021243392&ev=PageView&noscript=1"/>
+  </noscript>
+      </head>
+
+  <body id=learn class="layout-default no-type tutorials-view" ontouchstart="">
+            <!--
+    Start of DoubleClick Floodlight Tag: Please do not remove
+    Activity name of this tag: Universal
+    URL of the webpage where the tag is expected to be placed: http://sparkfun.com
+    This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+    Creation Date: 07/18/2016
+  -->
+  <script type="text/javascript">
+    var axel = Math.random() + "";
+    var a = axel * 10000000000000;
+    document.write('<iframe src="https://5626816.fls.doubleclick.net/activityi;src=5626816;type=count0;cat=unive0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+  </script>
+  <noscript>
+    <iframe src="https://5626816.fls.doubleclick.net/activityi;src=5626816;type=count0;cat=unive0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+  </noscript>
+  <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+    
+    <div class="wrapper" itemscope itemtype="http://schema.org/WebSite">
+      <meta itemprop="url" content="https://learn.sparkfun.com/">
+      <div class=wrapper-inner>
+
+    
+<div class="header">
+  <div class="container">
+
+    <!-- Mobile Nav Button -->
+    <div class="mobile-menu-container left">
+      <a id="nav_toggle" class="mobile-menu-button nav_toggle" href="#"><span class="sfe-icon-hamburger"></span></a>
+              <a id="search_toggle" class="mobile-menu-button" href="#"><span class="glyphicon glyphicon-search"></span></a>
+          </div>
+
+    <nav class="top-links">
+      <ul>
+        <li>
+          <a href="https://www.sparkfun.com/distributors">Find a Retailer</a>        </li>
+                  <li>
+            <div class="dropdown">
+              <a href="#" id="phone_hours" type="button" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                Need Help?
+                <span class="caret"></span>
+              </a>
+              <div class="dropdown-menu pull-right need-help" role="menu" aria-labelledby="phone_hours">
+                <h4>Customer Service</h4>
+                <p><a href="https://www.sparkfun.com/orders/"><span class="glyphicon glyphicon-dashboard"></span> Track My Order</a></p>
+                <p><a href="https://www.sparkfun.com/support"><span class="glyphicon glyphicon-question-sign"></span> Frequently Asked Questions</a></p>
+                <p><a href="https://www.sparkfun.com/support#InternationalShipping"><span class="glyphicon glyphicon-globe"></span> International Shipping Info</a></p>
+                <p><a href="mailto:cservice@sparkfun.com"><span class="glyphicon glyphicon-envelope"></span> Send Email</a></p>
+                <p class="small text-muted">
+                  Mon-Fri, 9am to 12pm and<br>
+                  1pm to 5pm U.S. Mountain Time:
+                </p>
+                <p><span class="glyphicon glyphicon-earphone"></span> (303) 284-0979</p>
+                                  <p><a data-toggle="chatpopup" href="https://www.sparkfun.com/chat/popup"><span class="glyphicon glyphicon-comment"></span> Chat With Us</a></p>
+                              </div>
+            </div>
+          </li>
+              </ul>
+    </nav>
+
+    <!-- Logo -->
+    <div class="logo-container">
+      <a class="logo" href="https://www.sparkfun.com/">
+        <span class="sfe-icon-flame"></span>
+        <span class="sfe-icon-sparkfun" data-icon="&#x1f525">
+          <span class="visuallyhidden">sparkfun.com</span>
+        </span>
+      </a>
+    </div>
+
+    <!-- Tabs -->
+    <!-- also edit mobile tabs in .tabs-container-mobile -->
+    <nav class="tabs-container hidden-xs">
+      <ul>
+        <li class="shop "><a href="https://www.sparkfun.com/categories">Shop</a></li>
+        <li class="learn active"><a href="https://learn.sparkfun.com/">Learn</a></li>
+        <li class="blog "><a href="https://www.sparkfun.com/news">Blog</a></li>
+        <li class="support "><a href="https://www.sparkfun.com/support">Support</a></li>
+      </ul>
+    </nav>
+
+    <!-- Cart & User -->
+    <div class="user-container mobile-menu-container right">
+
+      <a id="account_toggle" class="mobile-menu-button" href="#"><span class="glyphicon glyphicon-user"></span></a>
+
+              <div class="cart mobile-menu-button">
+          <a href="https://www.sparkfun.com/cart">
+            <span id="cart_status" class="sfe-icon-carticon cart-empty">
+              <span class="visuallyhidden">Shopping Cart</span>
+            </span>
+            <span class="cart_count">
+              <span id="items_in_cart">0</span>
+              <span id="cart_noun" class="visuallyhidden">items</span>
+            </span>
+          </a>
+        </div>
+      
+              <div class="user">
+          <!-- login modal trigger -->
+          <a class="btn btn-default" href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fforce-sensitive-resistor-hookup-guide" data-toggle="modal" data-target="#login_modal" data-remote="false">log in</a>
+          <a class="btn btn-default" href="https://www.sparkfun.com/account/make">register</a>        </div>
+      
+    </div>
+
+    <nav class="tabs-container-mobile visible-xs col-xs-12">
+      <ul>
+        <li class="shop "><a href="https://www.sparkfun.com/categories">Shop</a></li>
+        <li class="learn active"><a href="https://learn.sparkfun.com/">Learn</a></li>
+        <li class="blog "><a href="https://www.sparkfun.com/news">Blog</a></li>
+        <li class="support "><a href="https://www.sparkfun.com/support">Support</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <!-- Navigation / Search -->
+  <div class="main-nav-container">
+
+    <div class="container">
+
+      <nav class="product-nav">
+        <button type="button" class="product-menu">
+          <span class="menu-icon sfe-icon-hamburger"></span>
+          <span class="product-menu-name">Product Menu</span>
+        </button>
+
+                  <form id="search_form" class="search" action="https://www.sparkfun.com/search/results" method="get" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+            <meta itemprop="target" content="https://www.sparkfun.com/search/results?term={term}">
+            <div class="ui-widget">
+              <input name="term" id="global-search" class="form-control" type="text" value="" placeholder="find products, tutorials, etc..." itemprop="query-input" autocomplete="off">
+              <button type="submit" class="glyphicon glyphicon-search global-search-icon" aria-label="Search"></button>
+            </div>
+          </form>
+              </nav>
+
+      <nav class="sub-nav">
+        <ul>
+          <li>
+            <a href="http://www.sparkfuneducation.com" target="_blank">Education</a>
+          </li>
+          <li>
+            <a href="https://avc.sparkfun.com/"><span class="sfe-icon-avc"></span></a>          </li>
+          <li>
+            <a href="https://forum.sparkfun.com/" target="_blank">Forum</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="product-menu-container">
+      <div class="container">
+
+        <div class="fixed-product-menu-container col-lg-2 col-sm-3 col-xs-12">
+          <div class="sub-nav-mobile product-menu-group">
+            <a class="product-menu-heading desktop-toggle" href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fforce-sensitive-resistor-hookup-guide">Desktop Site</a>            <a class="product-menu-heading" href="http://www.sparkfuneducation.com" target="_blank">Education</a>
+            <a class="product-menu-heading" href="https://avc.sparkfun.com/"><span class="sfe-icon-avc"></span></a>            <ul class="list-unstyled">
+            </ul>
+          </div>
+          <div class="product-menu-group">
+            <a class="product-menu-heading" href="https://www.sparkfun.com/categories">All Categories</a>            <ul class="list-unstyled">
+            </ul>
+          </div>
+          <div class="product-menu-group">
+            <a class="product-menu-heading" href="https://www.sparkfun.com/categories/featured">Featured <span class="visible-xs pull-right glyphicon glyphicon-plus"></span></a>            <ul class="list-unstyled">
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/new_products">New Products</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/top"><span class="sfe-icon-flame"></span> Top Sellers</a></li>
+                              <li>
+                  <a href="https://www.sparkfun.com/fallsale" class="product-menu-item"><span class="sfe-icon-pumpkin" style="color:#ff8000"></span> Fall Into Savings Sale</a>
+                </li>
+                              <li>
+                  <a href="https://www.sparkfun.com/spectacle" class="product-menu-item"><span class="sfe-icon-spectacle-glasses" style="color:#000000"></span> Spectacle</a>
+                </li>
+                            <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/283">SparkX</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/sale">Sale</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/gift_certificates">Gift Certificates</a></li>
+            </ul>
+          </div>
+                      <a href="https://www.sparkfun.com/microbit" class="hidden-xs">
+              <img class="img-responsive img-rounded center-block" src="https://cdn.sparkfun.com//c/180-180/assets/product_menu_items/1/microbit-now-availble.jpg" alt="Micro:bit Ecosystem">
+            </a>
+                  </div>
+
+                              <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/287" class="product-menu-heading">
+                 Brands                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/featured" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-flame" style="color:#ee2e22"></span> SparkFun                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/103" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-arduino" style="color:#00878f"></span> Arduino                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/233" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-rpi-multi-color" style="color:#ffffff"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span> Raspberry Pi                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/284" class="product-menu-item">
+                                               micro:bit                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/279" class="product-menu-item">
+                                               Espressif (ESP)                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/287" class="product-menu-item">
+                                               <small>all brands</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/2" class="product-menu-heading">
+                 Development                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/299" class="product-menu-item">
+                                               Single Board Comp.                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/300" class="product-menu-item">
+                                               Microcontrollers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/136" class="product-menu-item">
+                                               FPGA                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/149" class="product-menu-item">
+                                               Prototyping Boards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/1" class="product-menu-item">
+                                               Programmers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/2" class="product-menu-item">
+                                               <small>all development</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/23" class="product-menu-heading">
+                 Sensors                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/304" class="product-menu-item">
+                                               Movement                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/146" class="product-menu-item">
+                                               Biometrics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/102" class="product-menu-item">
+                                               Imaging                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/305" class="product-menu-item">
+                                               Environment                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/117" class="product-menu-item">
+                                               Capacitive                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/23" class="product-menu-item">
+                                               <small>all sensors</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/46" class="product-menu-heading">
+                 Tools                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/271" class="product-menu-item">
+                                               3D Printing                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/280" class="product-menu-item">
+                                               CNC                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/49" class="product-menu-item">
+                                               Soldering                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/47" class="product-menu-item">
+                                               Hand Tools                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/177" class="product-menu-item">
+                                               Instruments                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/46" class="product-menu-item">
+                                               <small>all tools</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/310" class="product-menu-heading">
+                 Miscellaneous                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/157" class="product-menu-item">
+                                               All Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/176" class="product-menu-item">
+                                               Books                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/311" class="product-menu-item">
+                                               Arts/Crafts Supplies                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/351" class="product-menu-item">
+                                               SD Cards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/130" class="product-menu-item">
+                                               Swag                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/310" class="product-menu-item">
+                                               <small>all misc</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/51" class="product-menu-heading">
+                 Components                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/89" class="product-menu-item">
+                                               LED &amp; Illumination                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/145" class="product-menu-item">
+                                               Buttons &amp; Switches                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/28" class="product-menu-item">
+                                               Power                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/76" class="product-menu-item">
+                                               LCDs                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/70" class="product-menu-item">
+                                               Cables                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/51" class="product-menu-item">
+                                               <small>all components</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/204" class="product-menu-heading">
+                 E-Textiles                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/327" class="product-menu-item">
+                                               LilyPad                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/328" class="product-menu-item">
+                                               Sewable Electronics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/206" class="product-menu-item">
+                                               Materials                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/268" class="product-menu-item">
+                                               E-Textile Power                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/329" class="product-menu-item">
+                                               E-Textile Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/204" class="product-menu-item">
+                                               <small>all e-textiles</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/31" class="product-menu-heading">
+                 Robotics                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/pages/Actobotics" class="product-menu-item">
+                                               Actobotics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/178" class="product-menu-item">
+                                               Motors &amp; Drivers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/330" class="product-menu-item">
+                                               Parts                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/155" class="product-menu-item">
+                                               Hardware                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/181" class="product-menu-item">
+                                               Robotics Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/31" class="product-menu-item">
+                                               <small>all robotics</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/16" class="product-menu-heading">
+                 Wireless &amp; IoT                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/115" class="product-menu-item">
+                                               Bluetooth                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/112" class="product-menu-item">
+                                               WiFi                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/338" class="product-menu-item">
+                                               Satellite                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/4" class="product-menu-item">
+                                               GPS                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/339" class="product-menu-item">
+                                               Wireless Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/16" class="product-menu-item">
+                                               <small>all wireless/IoT</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/273" class="product-menu-heading">
+                 Audio                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/343" class="product-menu-item">
+                                               Audio Boards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/342" class="product-menu-item">
+                                               Audio Cables                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/344" class="product-menu-item">
+                                               Speakers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/345" class="product-menu-item">
+                                               Audio Chips                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/273" class="product-menu-item">
+                                               <small>all audio</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                  
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+    
+    <div class=content>
+      <div class=container id=airlock>
+
+        
+        <div class=main-title>
+  <ul class="breadcrumb">
+    <li><a href="https://learn.sparkfun.com/">Home</a></li>
+    <li><a href="https://learn.sparkfun.com/tutorials">Tutorials</a></li>
+    <li>Force Sensitive Resistor Hookup Guide</li>
+      </ul>
+
+  <h1>
+    Force Sensitive Resistor Hookup Guide  </h1>
+
+</div>
+
+
+<a id=nav_toggle_pages class=nav_toggle href="#"><span>&#8801;</span> Pages</a>
+
+<div id=tutorial class="row">
+
+  <div class="col-sm-8" id="sections">
+
+    <div class="contributors">
+                      Contributors:
+                <a href="https://www.sparkfun.com/users/69916"><img src="https://static.sparkfun.com/avatar/f4c7d38e015f5dc7ca404c23b30305f4?d=retro&s=20&r=pg" /> Jimb0</a>          </div>
+
+    <span class="fave_widget verbose">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="510">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">3</span>
+</span>    <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" type="text" value="http://sfe.io/t510" onclick="$(this).select();">
+
+    <div class="share-social">
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','googleplus');" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft510" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','tumblr');" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft510&name=Force+Sensitive+Resistor+Hookup+Guide" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','reddit');" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft510" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','twitter');" href="https://twitter.com/intent/tweet?text=Force+Sensitive+Resistor+Hookup+Guide&url=http%3A%2F%2Fsfe.io%2Ft510&via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','facebook');" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft510&t=Force+Sensitive+Resistor+Hookup+Guide" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','pinterest');" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft510&media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2Flearn_tutorials%2F5%2F1%2F0%2Ffsr-iso.jpg&description=Force+Sensitive+Resistor+Hookup+Guide" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+          <div class="section tutorial-page">
+        <h2 id="introduction">Introduction</h2>
+        <p>Force-sensitive resistor&rsquo;s (FSR) are easy-to-use sensors designed for measuring the presence and relative magnitude of localized physical pressure.</p>
+
+
+
+<div class="tile-wrap">
+<div class="tile product-tile has_addl_actions  grid " data-id="9375"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="SEN09375">
+    <meta itemprop="sku" content="SEN-09375">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/9375">
+      <img src="https://cdn.sparkfun.com/r/140-140/assets/parts/2/9/6/7/09375-1.jpg" alt="Force Sensitive Resistor 0.5&quot;" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type=hidden name=id value="9375">
+          <input type=hidden name=qty value="1">
+          <input type='hidden' name='csrf_token' value='3a370a087440c11aa52c80fdbca1479e3092781710580156075f0510e95f4bbc39d40cba17128a0a9fb2f1c58330823b8c428a997594a7fcc8cfcd5a9590315c'>          <!-- Add to Cart -->
+          <input type="number" class="quantity form-control" size="4" name="qty" value="1">
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_9375" style="display: none;">
+        <p class="success-message">
+          Added <span class="added_qty_9375"></span> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/9375" itemprop="url">
+        <span itemprop="name">Force Sensitive Resistor 0.5&quot;</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class=sfe-icon-stock-in><span class=visuallyhidden>In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      SEN-09375    </span>
+          <p class="description" style="display:none" itemprop="description">
+        This is a force sensitive resistor with a round, 0.5" diameter, sensing area. This FSR will vary its resistance depending on &hellip;      </p>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price" itemprop="price" content="6.95">$6.95</span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="4.3 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.3">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">14</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="9375">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">49</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="9375" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid " data-id="9376"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="SEN09376">
+    <meta itemprop="sku" content="SEN-09376">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/9376">
+      <img src="https://cdn.sparkfun.com/r/140-140/assets/parts/2/9/6/8/09376-1.jpg" alt="Force Sensitive Resistor - Square" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type=hidden name=id value="9376">
+          <input type=hidden name=qty value="1">
+          <input type='hidden' name='csrf_token' value='3a370a087440c11aa52c80fdbca1479e3092781710580156075f0510e95f4bbc39d40cba17128a0a9fb2f1c58330823b8c428a997594a7fcc8cfcd5a9590315c'>          <!-- Add to Cart -->
+          <input type="number" class="quantity form-control" size="4" name="qty" value="1">
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_9376" style="display: none;">
+        <p class="success-message">
+          Added <span class="added_qty_9376"></span> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/9376" itemprop="url">
+        <span itemprop="name">Force Sensitive Resistor - Square</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class=sfe-icon-stock-in><span class=visuallyhidden>In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      SEN-09376    </span>
+          <p class="description" style="display:none" itemprop="description">
+        This is a force sensitive resistor with a square, 1.75x1.5", sensing area. This FSR will vary its resistance depending on how&hellip;      </p>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price" itemprop="price" content="9.95">$9.95</span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="4.3 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.3">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">4</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="9376">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">22</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="9376" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid " data-id="9673"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="SEN09673">
+    <meta itemprop="sku" content="SEN-09673">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/9673">
+      <img src="https://cdn.sparkfun.com/r/140-140/assets/parts/3/5/3/7/09673-01.jpg" alt="Force Sensitive Resistor - Small" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type=hidden name=id value="9673">
+          <input type=hidden name=qty value="1">
+          <input type='hidden' name='csrf_token' value='3a370a087440c11aa52c80fdbca1479e3092781710580156075f0510e95f4bbc39d40cba17128a0a9fb2f1c58330823b8c428a997594a7fcc8cfcd5a9590315c'>          <!-- Add to Cart -->
+          <input type="number" class="quantity form-control" size="4" name="qty" value="1">
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_9673" style="display: none;">
+        <p class="success-message">
+          Added <span class="added_qty_9673"></span> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/9673" itemprop="url">
+        <span itemprop="name">Force Sensitive Resistor - Small</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class=sfe-icon-stock-in><span class=visuallyhidden>In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      SEN-09673    </span>
+          <p class="description" style="display:none" itemprop="description">
+        This is a small force sensitive resistor. It has a 0.16" (4 mm) diameter active sensing area. This FSR from Interlink Electro&hellip;      </p>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price" itemprop="price" content="5.95">$5.95</span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="3.8 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-half" data-star-index="3"></span>
+          <span class="sfe-icon-star-empty" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="3.8">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">5</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="9673">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">15</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="9673" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid " data-id="9674"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="SEN09674">
+    <meta itemprop="sku" content="SEN-09674">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/9674">
+      <img src="https://cdn.sparkfun.com/r/140-140/assets/parts/3/5/3/8/09674-01.jpg" alt="Force Sensitive Resistor - Long" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type=hidden name=id value="9674">
+          <input type=hidden name=qty value="1">
+          <input type='hidden' name='csrf_token' value='3a370a087440c11aa52c80fdbca1479e3092781710580156075f0510e95f4bbc39d40cba17128a0a9fb2f1c58330823b8c428a997594a7fcc8cfcd5a9590315c'>          <!-- Add to Cart -->
+          <input type="number" class="quantity form-control" size="4" name="qty" value="1">
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_9674" style="display: none;">
+        <p class="success-message">
+          Added <span class="added_qty_9674"></span> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/9674" itemprop="url">
+        <span itemprop="name">Force Sensitive Resistor - Long</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class=sfe-icon-stock-in><span class=visuallyhidden>In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      SEN-09674    </span>
+          <p class="description" style="display:none" itemprop="description">
+        This very long force sensitive resistor - over 2 feet - has a sensing area of 0.25x24". This FSR from Interlink Electronics w&hellip;      </p>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price" itemprop="price" content="20.95">$20.95</span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="5 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-full" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="5">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">2</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="9674">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">4</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="9674" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+</div>
+
+  <div class="clearfix"></div>
+
+
+
+
+<p>The resistance of an FSR varies as the force on the sensor increases or decreases. When no pressure is being applied to the FSR, its resistance will be larger than 1MΩ. The harder you press on the sensor’s head, the lower the resistance between the two terminals drops. By combining the FSR with a static resistor to create a <a href="https://learn.sparkfun.com/tutorials/voltage-dividers">voltage divider</a>, you can produce a variable voltage that can be read by a microcontroller&rsquo;s analog-to-digital converter.</p>
+
+<h3>Suggested Materials</h3>
+
+<p>This tutorial serves as a quick primer on FSR&rsquo;s and demonstrates how to hook them up and use them. Beyond an FSR of your choice, the following materials are recommended:</p>
+
+<p><strong><a href="https://www.sparkfun.com/products/11021">Arduino Uno</a></strong> &ndash; We&rsquo;ll be using the Arduino&rsquo;s analog-to-digital converter to read in the variable resistance of the FSR. Any Arduino-compatible development platform &ndash; be it a <a href="https://www.sparkfun.com/products/12757">RedBoard</a>, <a href="https://www.sparkfun.com/products/10914">Pro</a> or <a href="https://www.sparkfun.com/products/11113">Pro Mini</a> &ndash; can substitute.</p>
+
+<p><strong><a href="https://www.sparkfun.com/products/10969">Resistor Kit</a></strong> &ndash; To turn the FSR&rsquo;s variable resistance into a readable voltage, we&rsquo;ll combine it with a static resistor to create a voltage divider. This resistor kit is handy for some trial-and-error testing to hone in on the most sensitive circuit possible.</p>
+
+<p><strong><a href="https://www.sparkfun.com/products/12002">Breadboard</a> and <a href="https://www.sparkfun.com/products/11026">Jumper Wires</a></strong> &ndash; The FSR&rsquo;s terminals are breadboard-compatible. We&rsquo;ll stick in that and the resistor, then use the jumper wires to connect from breadboard to Arduino.</p>
+
+
+
+<div class="tile-wrap">
+<div class="tile product-tile has_addl_actions  grid " data-id="10969"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="COM10969">
+      <meta itemprop="gtin13" content="0845156001118">
+    <meta itemprop="sku" content="COM-10969">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/10969">
+      <img src="https://cdn.sparkfun.com/r/140-140/assets/parts/6/1/7/1/10969-01.jpg" alt="Resistor Kit - 1/4W (500 total)" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type=hidden name=id value="10969">
+          <input type=hidden name=qty value="1">
+          <input type='hidden' name='csrf_token' value='3a370a087440c11aa52c80fdbca1479e3092781710580156075f0510e95f4bbc39d40cba17128a0a9fb2f1c58330823b8c428a997594a7fcc8cfcd5a9590315c'>          <!-- Add to Cart -->
+          <input type="number" class="quantity form-control" size="4" name="qty" value="1">
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_10969" style="display: none;">
+        <p class="success-message">
+          Added <span class="added_qty_10969"></span> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/10969" itemprop="url">
+        <span itemprop="name">Resistor Kit - 1/4W (500 total)</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class=sfe-icon-stock-in><span class=visuallyhidden>In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      COM-10969    </span>
+          <p class="description" style="display:none" itemprop="description">
+        Resistors are a good thing, in fact, they're actually crucial in a lot of circuit designs. The only problem seems to be that &hellip;      </p>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="prices">
+                  <span class="price price-retail">$7.95</span>
+                <span class="price-sale">
+          <span class="price" itemprop="price" content="5">$5.00</span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="4.5 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.5">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">124</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="10969">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">93</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="10969" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid " data-id="12002"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="PRT12002">
+    <meta itemprop="sku" content="PRT-12002">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/12002">
+      <img src="https://cdn.sparkfun.com/r/140-140/assets/parts/8/5/0/3/12002-04.jpg" alt="Breadboard - Self-Adhesive (White)" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type=hidden name=id value="12002">
+          <input type=hidden name=qty value="1">
+          <input type='hidden' name='csrf_token' value='3a370a087440c11aa52c80fdbca1479e3092781710580156075f0510e95f4bbc39d40cba17128a0a9fb2f1c58330823b8c428a997594a7fcc8cfcd5a9590315c'>          <!-- Add to Cart -->
+          <input type="number" class="quantity form-control" size="4" name="qty" value="1">
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_12002" style="display: none;">
+        <p class="success-message">
+          Added <span class="added_qty_12002"></span> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/12002" itemprop="url">
+        <span itemprop="name">Breadboard - Self-Adhesive (White)</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class=sfe-icon-stock-in><span class=visuallyhidden>In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      PRT-12002    </span>
+          <p class="description" style="display:none" itemprop="description">
+        This is your tried and true white solderless breadboard. It has 2 power buses, 10 columns, and 30 rows - a total of 400 tie i&hellip;      </p>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price" itemprop="price" content="4.95">$4.95</span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="4.3 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.3">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">34</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="12002">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">43</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="12002" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid " data-id="11026"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="PRT11026">
+    <meta itemprop="sku" content="PRT-11026">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/11026">
+      <img src="https://cdn.sparkfun.com/r/140-140/assets/parts/3/7/0/4/11026-02.jpg" alt="Jumper Wires Standard 7&quot; M/M - 30 AWG (30 Pack)" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type=hidden name=id value="11026">
+          <input type=hidden name=qty value="1">
+          <input type='hidden' name='csrf_token' value='3a370a087440c11aa52c80fdbca1479e3092781710580156075f0510e95f4bbc39d40cba17128a0a9fb2f1c58330823b8c428a997594a7fcc8cfcd5a9590315c'>          <!-- Add to Cart -->
+          <input type="number" class="quantity form-control" size="4" name="qty" value="1">
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_11026" style="display: none;">
+        <p class="success-message">
+          Added <span class="added_qty_11026"></span> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/11026" itemprop="url">
+        <span itemprop="name">Jumper Wires Standard 7&quot; M/M - 30 AWG (30 Pack)</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class=sfe-icon-stock-in><span class=visuallyhidden>In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      PRT-11026    </span>
+          <p class="description" style="display:none" itemprop="description">
+        If you need to knock up a quick prototype there's nothing like having a pile of jumper wires to speed things up, and let's fa&hellip;      </p>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price" itemprop="price" content="1.95">$1.95</span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="4.3 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.3">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">20</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="11026">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">24</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="11026" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid retired" data-id="12757"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="DEV12757">
+      <meta itemprop="gtin13" content="0845156006410">
+    <meta itemprop="sku" content="DEV-12757">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/retired/12757">
+      <img src="https://cdn.sparkfun.com/r/140-140/assets/parts/9/5/1/8/12757-01.jpg" alt="SparkFun RedBoard - Programmed with Arduino" height="140" itemprop="image">
+    </a>
+
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/retired/12757" itemprop="url">
+        <span itemprop="name">SparkFun RedBoard - Programmed with Arduino</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="Retired"><span class=sfe-icon-stock-retired><span class=visuallyhidden>Retired</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      DEV-12757    </span>
+          <p class="description" style="display:none" itemprop="description">
+        At SparkFun we use many Arduinos and we're always looking for the simplest, most stable one. Each board is a bit different an&hellip;      </p>
+      </div>
+
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="4.6 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.6">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">127</span>
+  </span>
+
+      <strong class="retired">Retired</strong>
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="12757">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">80</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="12757" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+</div>
+
+  <div class="clearfix"></div>
+
+
+
+
+<h3>Suggested Reading</h3>
+
+<p>Analog components, like these FSRs, are a great sensor-reading entry-point for beginners, but there are a few electronics concepts you should be familiar with. If any of these tutorial titles sound foreign to you, consider skimming through that content first.</p>
+
+
+<div class="tile-wrap">
+  <div class="tile tutorial-tile has_addl_actions  grid" data-id="35">
+
+  <a href="https://learn.sparkfun.com/tutorials/analog-to-digital-conversion">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/d/d/5/c/4/5114013ece395f527e000000.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">Analog to Digital Conversion</h3>
+      </a>
+
+      <div class="description">
+      The world is analog. Use analog to digital conversion to help digital devices interpret the world.    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="35">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">25</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="44">
+
+  <a href="https://learn.sparkfun.com/tutorials/voltage-dividers">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/learn_tutorials/4/4/Concept_Tutorial_Images-04.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">Voltage Dividers</h3>
+      </a>
+
+      <div class="description">
+      Turn a large voltage into a smaller one with voltage dividers.    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="44">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">32</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="50">
+
+  <a href="https://learn.sparkfun.com/tutorials/what-is-an-arduino">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/3/b/6/e/b/512e66bece395f492b000000.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">What is an Arduino?</h3>
+      </a>
+
+      <div class="description">
+      What is this 'Arduino' thing anyway?    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="50">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">19</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="89">
+
+  <a href="https://learn.sparkfun.com/tutorials/analog-vs-digital">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/3/7/6/6/0/51c48875ce395f745a000000.png)"></div>
+      </div>
+    
+    
+    <h3 class="title">Analog vs. Digital</h3>
+      </a>
+
+      <div class="description">
+      This tutorial covers the concept of analog and digital signals, as they relate to electronics.     </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="89">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">22</span>
+</span>  </div>
+
+</div>
+</div>
+
+  <div class="clearfix"></div>
+
+      </div>
+          <div class="section tutorial-page">
+        <h2 id="fsr-overview">FSR Overview</h2>
+        <p>There are a variety of FSR options out there, and a few key characteristics to differentiate them: <strong>size, shape, and sensing range</strong>. Here&rsquo;s a quick overview:</p>
+
+<p><table style="text-align:center;" class="table table-striped table-hover table-bordered">
+<tr><th>Name</th><th>Shape</th><th>Sensing Area</th><th>Min Pressure</th><th>Max Pressure</th></tr>
+<tr><td><a href="https://www.sparkfun.com/products/9673"><img src="https://cdn.sparkfun.com/r/140-140/assets/parts/3/5/3/7/09673-01.jpg" /><br><b>Force Sensitive Resistor - Small<br>(SEN-09673)</b></td><td style="vertical-align:middle;">Circular</td><td style="vertical-align:middle;">7.62 mm dia<br>(0.3 in)</td><td style="vertical-align:middle;">0.1 kg<br>(0.22 lb)</td><td style="vertical-align:middle;">1 kg <br>(2.2 lb)</td></tr>
+<tr><td><a href="https://www.sparkfun.com/products/9375"><img src="https://cdn.sparkfun.com/r/140-140/assets/parts/2/9/6/7/09375-1.jpg" /><br><b>Force Sensitive Resistor 0.5"<br>(SEN-09375)</b></td><td style="vertical-align:middle;">Circular</td><td style="vertical-align:middle;">12.7 mm dia<br>(0.5 in)</td><td style="vertical-align:middle;">100 g<br>(0.22 lb)</td><td style="vertical-align:middle;">10 kg <br>(22.04 lb)</td></tr>
+<tr><td><a href="https://www.sparkfun.com/products/9376"><img src="https://cdn.sparkfun.com/r/140-140/assets/parts/2/9/6/8/09376-1.jpg" /><br><b>Force Sensitive Resistor - Square<br>(SEN-09376)</b></td><td style="vertical-align:middle;">Square</td><td style="vertical-align:middle;">44.45 x 44.45 mm<br>(1.75 x 1.75 in)<br></td><td style="vertical-align:middle;">100 g<br>(0.22 lb)</td><td style="vertical-align:middle;">10 kg <br>(22.04 lb)</td></tr>
+<tr><td><a href="https://www.sparkfun.com/products/9674"><img src="https://cdn.sparkfun.com/r/140-140/assets/parts/3/5/3/8/09674-01.jpg" /><br><b>Force Sensitive Resistor - Long<br>(SEN-09674)</b></td><td style="vertical-align:middle;">Rectangular</td><td style="vertical-align:middle;">6.35 x 609.6 mm dia<br>(0.25 x 24.0 in)</td><td style="vertical-align:middle;">100 g<br>(0.22 lb)</td><td style="vertical-align:middle;">10 kg <br>(22.04 lb)</td></tr>
+</table></p>
+
+
+<h3>Shape and Size</h3>
+
+<p>Most FSR&rsquo;s feature either a circular or rectangular sensing area. The square FSR is good for broad-area sensing, while the smaller circular sensors can provide more precision to the location being sensed.</p>
+
+<p>The rectangular FSR&rsquo;s include a small-ish <a href="https://www.sparkfun.com/products/9376">square 1.75 x 1.75" sensor</a> and a <a href="https://www.sparkfun.com/products/9674">long 0.25 x 24" strip</a>. The rest of the sensors feature a circular sensing area.</p>
+
+<h3>Sensing Range</h3>
+
+<p>Another key characteristic of the FSR is it&rsquo;s rated sensing range, which defines the minimum and maximum amounts of pressure that the sensor can differentiate between.</p>
+
+<p>The lower the force rating, the more <strong>sensitive</strong> your FSR hookup has the potential to be. But! Any pressure beyond the sensor&rsquo;s maximum limit will be unmeasurable (and may damage the component). The <a href="https://www.sparkfun.com/products/9673">small 1kg-rated FSR</a> will provide more sensitive readings from 0 to 1kg, but won&rsquo;t be able to tell the difference between a 2kg and 10kg weight.</p>
+
+<h3>Force vs. Resistance</h3>
+
+<p>The graph below, figure 2 from the <a href="https://www.sparkfun.com/datasheets/Sensors/Pressure/fsrguide.pdf">FSR Integration Guide</a>, demonstrates the typical force-resistance relationship:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/1/0/fsr-resistance-graph.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/5/1/0/fsr-resistance-graph.png" alt="FSR force vs resistance" /></a></p>
+
+<p>The relationship is generally linear from 50g and up, but note what the relationship does below 50g, and even more-so below 20g. These sensor&rsquo;s have a <strong>turn-on threshold</strong> &ndash; a force that must be present before the resistance drops to a value below 10k&Omega;, where the relationship becomes more linear.</p>
+
+<div class="alert alert-warning">These sensors are simple to set up and great for sensing pressure, but they aren’t incredibly accurate. They’re useful for sensing the presence of something, and the relative magnitude of that force, but they’re not all that great at measuring weight (that’s what <a href="https://www.sparkfun.com/products/10245">load cell’s</a> are for!).</div>
+      </div>
+          <div class="section tutorial-page">
+        <h2 id="example-hardware-hookup">Example Hardware Hookup</h2>
+        <p>By creating a <a href="https://learn.sparkfun.com/tutorials/voltage-dividers">voltage divider</a> with the FSR and another resistor, you can create a variable voltage output, which can be read by a microcontroller’s ADC input.</p>
+
+<h3>Selecting a Static Resistor</h3>
+
+<p>The tricky part of voltage-dividing an FSR is selecting a static resistor value to pair with it. You don&rsquo;t want to overpower the maximum resistance of the FSR, but you also don&rsquo;t want the FSR&rsquo;s minimum resistance to be completely overshadowed either.</p>
+
+<p>It helps to know what range of force you&rsquo;ll be reading. If your project&rsquo;s force-sensing covers the broad range of the FSR (e.g. 0.1-10kg), try to pick a static resistance in the middle-range of the FSR&rsquo;s resistive output &ndash; something in the middle of 200-6k&Omega;. 3k&Omega;, or a common resistor like <strong>3.3k&Omega;</strong>, is a good place to start.</p>
+
+<div class="alert alert-info"><p>Short on resistors? If all you have is 10k&Omega; resistors (looking at you <a href="https://www.sparkfun.com/products/13754">Sensor Kit visitors</a>), you can still make something close to 3k! Try putting <b>three 10k&Omega;'s in <a href="https://learn.sparkfun.com/tutorials/resistors#series-and-parallel-resistors">parallel</a></b> to create a 3.33k&Omega; monster resistor. Or put three 330&Omega; resistors in <b>series</b> to create a 990&Omega; concoction, which will work pretty well too.</p></div>
+
+
+<h3>Example Circuit</h3>
+
+<p>Here&rsquo;s a fritzing diagram combining the FSR, 3.3k&Omega; resistor, three jumper wires and the Arduino:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/1/0/fritzing_example_bb_2.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/5/1/0/fritzing_example_bb_2.png" alt="Fritzing circuit" /></a></p>
+
+<p>And the schematic:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/1/0/fritzing_example_schem.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/5/1/0/fritzing_example_schem.png" alt="Fritzing schematic" /></a></p>
+
+<p>This voltage divider will cause the voltage at A0 to increase as the resistance of the FSR decreases. When the FSR is left untouched, measuring as nearly an open circuit, the voltage at A0 should be zero. If you press as hard as possible on the FSR, the voltage should increase close 5V.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="example-arduino-sketch">Example Arduino Sketch</h2>
+        <p>Here is a simple Arduino example based on the circuit above. Copy and paste this into your Arduino IDE, then upload!</p>
+
+<div class="alert alert-info"><p><b>Note:</b> This example assumes you are using the latest version of the Arduino IDE on your desktop. If this is your first time using Arduino, please review our tutorial on <a href="https://learn.sparkfun.com/tutorials/installing-arduino-ide">installing the Arduino IDE.</a></p>If you have not previously installed an Arduino library, please check out our <a href="https://learn.sparkfun.com/tutorials/installing-an-arduino-library">installation guide.</a></p></div>
+
+
+<pre><code>language:c
+/******************************************************************************
+Force_Sensitive_Resistor_Example.ino
+Example sketch for SparkFun's force sensitive resistors
+  (https://www.sparkfun.com/products/9375)
+Jim Lindblom @ SparkFun Electronics
+April 28, 2016
+
+Create a voltage divider circuit combining an FSR with a 3.3k resistor.
+- The resistor should connect from A0 to GND.
+- The FSR should connect from A0 to 3.3V
+As the resistance of the FSR decreases (meaning an increase in pressure), the
+voltage at A0 should increase.
+
+Development environment specifics:
+Arduino 1.6.7
+******************************************************************************/
+const int FSR_PIN = A0; // Pin connected to FSR/resistor divider
+
+// Measure the voltage at 5V and resistance of your 3.3k resistor, and enter
+// their value's below:
+const float VCC = 4.98; // Measured voltage of Ardunio 5V line
+const float R_DIV = 3230.0; // Measured resistance of 3.3k resistor
+
+void setup() 
+{
+  Serial.begin(9600);
+  pinMode(FSR_PIN, INPUT);
+}
+
+void loop() 
+{
+  int fsrADC = analogRead(FSR_PIN);
+  // If the FSR has no pressure, the resistance will be
+  // near infinite. So the voltage should be near 0.
+  if (fsrADC != 0) // If the analog reading is non-zero
+  {
+    // Use ADC reading to calculate voltage:
+    float fsrV = fsrADC * VCC / 1023.0;
+    // Use voltage and static resistor value to 
+    // calculate FSR resistance:
+    float fsrR = R_DIV * (VCC / fsrV - 1.0);
+    Serial.println("Resistance: " + String(fsrR) + " ohms");
+    // Guesstimate force based on slopes in figure 3 of
+    // FSR datasheet:
+    float force;
+    float fsrG = 1.0 / fsrR; // Calculate conductance
+    // Break parabolic curve down into two linear slopes:
+    if (fsrR &lt;= 600) 
+      force = (fsrG - 0.00075) / 0.00000032639;
+    else
+      force =  fsrG / 0.000000642857;
+    Serial.println("Force: " + String(force) + " g");
+    Serial.println();
+
+    delay(500);
+  }
+  else
+  {
+    // No pressure detected
+  }
+}
+</code></pre>
+
+<p>After uploading, <strong>open your <a href="https://learn.sparkfun.com/tutorials/terminal-basics/arduino-serial-monitor-windows-mac-linux">serial monitor</a></strong>, and set the baud rate to 9600 bps.</p>
+
+<p>If you apply pressure to the FSR, you should see resistance and estimated pressure calculations begin to appear:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/1/0/serial_monitor_output.png"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/5/1/0/serial_monitor_output.png" alt="FSR readings to serial monitor" /></a></p>
+
+<p>Play with the circuit and see how high or low you can get the readings to be. If you have more resistors, try swapping larger or smaller values in for the 3.3k&Omega; to see if you can make the circuit more sensitive. Don&rsquo;t forget to change the value of <code>R_DIV</code> towards the top of the sketch if you do!</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="res">Resources and Going Further</h2>
+        <p>Now that you&rsquo;ve got a force-sensing Arduino circuit, what project are you going to create? If you need more FSR-related resources, be sure to check out the <a href="https://www.sparkfun.com/datasheets/Sensors/Pressure/fsrguide.pdf">FSR Integration Guide</a>, which goes in-depth on the sensor&rsquo;s characteristics. The guide also presents a few more complex circuits you can try hooking up to get even more sensitivity out of your FSR.</p>
+
+<p style="text-align:center;"> <a href="https://www.sparkfun.com/datasheets/Sensors/Pressure/fsrguide.pdf" class="btn btn-default">Check out the FSR Integration Guide</a></p>
+
+<p>Need some project inspiration? Want to check out some similar analog sensors? Check out some of these related tutorials:</p>
+
+
+<div class="tile-wrap">
+  <div class="tile tutorial-tile has_addl_actions  grid" data-id="382">
+
+  <a href="https://learn.sparkfun.com/tutorials/getting-started-with-load-cells">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/learn_tutorials/3/8/2/13329-01.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">Getting Started with Load Cells</h3>
+      </a>
+
+      <div class="description">
+      A tutorial defining what a load cell is and how to use one.     </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="382">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">13</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="502">
+
+  <a href="https://learn.sparkfun.com/tutorials/sik-keyboard-instrument">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/learn_tutorials/5/0/2/SIK_Keyboard_Instrument_Tutorial-14.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">SIK Keyboard Instrument</h3>
+      </a>
+
+      <div class="description">
+      We can use the parts and concepts in the SparkFun Invetor's Kit to make a primitive keyboard instrument.    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="502">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">4</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="509">
+
+  <a href="https://learn.sparkfun.com/tutorials/sensor-kit-resource-hub">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/learn_tutorials/5/0/9/sensor-kit-iso.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">Sensor Kit Resource Hub</h3>
+      </a>
+
+      <div class="description">
+      An overview of each component in the SparkFun Sensor Kit, plus links to tutorials and other resources you'll need to hook them up.    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="509">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">0</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="511">
+
+  <a href="https://learn.sparkfun.com/tutorials/flex-sensor-hookup-guide">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/learn_tutorials/5/1/1/FlexSensor-Tutorial2.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">Flex Sensor Hookup Guide</h3>
+      </a>
+
+      <div class="description">
+      An overview of the flex sensor - a bendable variable resistor. Plus, example circuits and Arduino code to get you started!    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="511">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">1</span>
+</span>  </div>
+
+</div>
+</div>
+
+  <div class="clearfix"></div>
+
+      </div>
+    
+        <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" type="text" value="http://sfe.io/t510" onclick="$(this).select();">
+
+    <div class="share-social">
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','googleplus');" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft510" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','tumblr');" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft510&name=Force+Sensitive+Resistor+Hookup+Guide" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','reddit');" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft510" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','twitter');" href="https://twitter.com/intent/tweet?text=Force+Sensitive+Resistor+Hookup+Guide&url=http%3A%2F%2Fsfe.io%2Ft510&via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','facebook');" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft510&t=Force+Sensitive+Resistor+Hookup+Guide" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','pinterest');" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft510&media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2Flearn_tutorials%2F5%2F1%2F0%2Ffsr-iso.jpg&description=Force+Sensitive+Resistor+Hookup+Guide" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+  </div>
+
+  <div class="col-sm-4" id="nav-pages">
+    <div id="sidebar_affix">
+
+      <div id="tutorial-pages" class="list-group">
+        <a class="list-group-item"><b>Sections</b></a>
+                          <a data-pagename="introduction" class="list-group-item" href="#introduction">
+            Introduction          </a>
+                  <a data-pagename="fsr-overview" class="list-group-item" href="#fsr-overview">
+            FSR Overview          </a>
+                  <a data-pagename="example-hardware-hookup" class="list-group-item" href="#example-hardware-hookup">
+            Example Hardware Hookup          </a>
+                  <a data-pagename="example-arduino-sketch" class="list-group-item" href="#example-arduino-sketch">
+            Example Arduino Sketch          </a>
+                  <a data-pagename="res" class="list-group-item" href="#res">
+            Resources and Going Further          </a>
+              </div>
+
+      <div class="list-group">
+        <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/force-sensitive-resistor-hookup-guide/discuss">
+          Comments
+          <span class="badge">3</span>
+        </a>
+                  <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/force-sensitive-resistor-hookup-guide/introduction">
+            View Paginated
+          </a>
+                <a class="list-group-item" href="#" onclick="window.print(); return false;">
+          Print
+        </a>
+      </div>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>Tags</b></li>
+        <li class="list-group-item"><ul class="tags-list">
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/components">Components</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/hookup">Hookup</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/input-devices">Input Devices</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/sensors">Sensors</a>  </li>
+</ul>
+</li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>License</b></li>
+        <li class="list-group-item">
+          <span class="sfe-icon-cc">
+            <span class="visuallyhidden">Creative Commons</span>
+          </span>
+          <small>tutorials are <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="new">CC BY-SA 4.0</a></small>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  require(['tutorial', 'jquery.imagesloaded'], function() {
+    $('#tutorial').tutorial();
+  });
+</script>
+
+      </div> <!-- /container -->
+    </div> <!-- /content -->
+
+    
+<footer>
+
+<div class="social">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="sharing-ingenuity">
+          <span class=sfe-icon-flame></span>
+          <span class="text"><span class="text-top">Start<br></span>something.</span>
+        </div>
+        <ul class="spew">
+          <li><a href="https://www.github.com/sparkfun" target="_blank" class=sfe-icon-github><span class=visuallyhidden>GitHub</span></a></li>
+          <li><a href="https://www.youtube.com/sparkfun" target="_blank" class=sfe-icon-youtube><span class=visuallyhidden>YouTube</span></a></li>
+          <li><a href="https://www.vimeo.com/sparkfun" target="_blank" class=sfe-icon-vimeo><span class=visuallyhidden>Vimeo</span></a></li>
+          <li><a href="https://www.facebook.com/SparkFun" target="_blank" class=sfe-icon-facebook><span class=visuallyhidden>Facebook</span></a></li>
+          <li><a href="https://www.instagram.com/sparkfun/" target="_blank" class=sfe-icon-instagram><span class=visuallyhidden>Instagram</span></a></li>
+          <li><a href="https://plus.google.com/106084846822083498483/" target="_blank" class=sfe-icon-google-plus><span class=visuallyhidden>Google Plus</span></a></li>
+          <li><a href="https://www.flickr.com/photos/sparkfun/" target="_blank" class=sfe-icon-flickr><span class=visuallyhidden>Flickr</span></a></li>
+          <li><a href="https://twitter.com/#!/sparkfun" target="_blank" class=sfe-icon-twitter><span class=visuallyhidden>Twitter</span></a></li>
+          <li><a href="https://www.sparkfun.com/feeds" class=sfe-icon-feed><span class=visuallyhidden>RSS</span></a></li>
+        </ul>
+        <div class="newsletter">
+          <!--[if lte IE 8]>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+<![endif]-->
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+<script>
+  hbspt.forms.create({
+    css: '',
+    cssClass: 'hubspot-newsletter-subscribe',
+    portalId: '2224003',
+    formId: 'd2b17dd4-e1bb-406a-ba41-44c19dcd0376'
+  });
+</script>
+        </div>
+      </div>
+    </div><!-- end .row -->
+  </div><!-- end .container -->
+</div><!-- end .social -->
+
+<div class="container">
+
+    <div class="row">
+
+    <div class="subfooter subfooter-about">
+      <p>
+        In 2003, CU student Nate Seidle blew a power supply in his dorm room and, in lieu of a way to order easy replacements, decided to start his own company. Since then, SparkFun has been committed to sustainably helping our world achieve electronics literacy from our headquarters in Boulder, Colorado.
+      </p>
+      <p>
+        No matter your vision, SparkFun's products and resources are designed to make the world of electronics more accessible. In addition to over 2,000 open source components and widgets, SparkFun offers curriculum, training and online tutorials designed to help demystify the wonderful world of embedded electronics. We're here to help you start something.
+      </p>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>About Us</b>
+            <li><a href="https://www.sparkfun.com/about_sparkfun">About SparkFun</a></li>
+	    <li><a href="http://www.sparkfuneducation.com" target="_blank">SparkFun Education <span class="glyphicon glyphicon-new-window"></span></li>
+	    <li><a title="RSS Feeds" href="https://www.sparkfun.com/feeds">Feeds <span class=sfe-icon-feed></span></a></li>
+            <li><a href="https://www.sparkfun.com/jobs">Jobs</a></li>
+            <li><a href="https://www.sparkfun.com/static/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Help</b></li>
+            <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+            <li><a href="https://www.sparkfun.com/support#ShippingPolicy">Shipping</a></li>
+            <li><a href="https://www.sparkfun.com/returns">Return Policy</a></li>
+            <li><a href="https://www.sparkfun.com/static/faq">FAQ</a></li>
+                      </ul>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Programs</b></li>
+	    <li><a href="https://www.sparkfun.com/sponsorships">Become a Community Partner</a>	      <li><ul><li><a href="https://www.sparkfun.com/cpp">Community Stories</a></li></ul></li>
+	    </li>
+            <li><a href="https://www.sparkfun.com/project_calls">Tell Us About Your Project</a></li>
+            <li><a href="https://learn.sparkfun.com/tutorials/how-to-sell-your-widget-on-sparkfun">Sell Your Widget on SparkFun</a></li>
+            <li><a href="https://www.sparkfun.com/distributors/apply">Become a SparkFun Distributor</a></li>
+            <li><a href="https://www.sparkfun.com/volume">Large Volume Sales</a> </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Community</b></li>
+            <li><a href="https://forum.sparkfun.com/">Forum</a></li>
+            <li><a href="https://www.sparkfun.com/news/263">SparkFun IRC Channel</a></li>
+            <li><a href="https://www.sparkfun.com/quiz">Take the SparkFun Quiz</a></li>
+            <li><a href="https://www.kickstarter.com/pages/sparkfun">SparkFun Kickstarter Projects</a></li>
+            <li><a href="https://www.sparkfun.com/distributors">Distributors</a></li>
+          </ul>
+        </div>
+
+      </div><!-- end .row -->
+
+    </div>
+
+    <div id="feedback" class="subfooter subfooter-woym">
+      <form id="woym_form" class="feedback" action="https://learn.sparkfun.com/feedback/mind.json" onsubmit="$(this).sfeutil('mind_feedback'); return false;" method="POST">
+        <div class="error" id="error_feedback" style="display: none"></div>
+        <input type="hidden" name="sparkaptcha" id="sparkaptcha" value="0">
+
+        <div class="form-group">
+          <label for="feedback_textarea" class="control-label">What's on your mind?</label>
+          <div class="controls">
+            <textarea id="feedback_textarea" class="form-control" name="feedback_text" required></textarea>
+            <div class="error" id="error_feedback_text" style="display: none"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_dest" class="control-label">For which department?</label>
+          <select name="dest" class="form-control" id="feedback_dest">
+            <option value="general">General</option>
+            <option value="cust">Customer Service</option>
+            <option value="tech">Tech Support</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_email" class="control-label">
+            Please include your email address if you'd like us to respond to a specific question.
+          </label>
+
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+            <input type="text" class="form-control" id="feedback_email" name="email" placeholder="email address" />
+          </div>
+          <div class="error" id="error_feedback_email" style="display: none"></div>
+
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+  </div><!-- end .row -->
+  
+  <ul class="copyleft">
+    <li>SparkFun Electronics <a href="https://www.sparkfun.com/news/300">&reg;</a></li>
+    <li><a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=6333+Dry+Creek+Parkway,+Niwot,+CO+80503">Niwot, Colorado</a></li>
+    <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+    <li><a href="https://www.sparkfun.com/sitemap">Site Map</a></li>
+    <li><a href="https://www.sparkfun.com/terms">Terms of Service</a></li>
+    <li><a href="https://www.sparkfun.com/privacy">Privacy Policy</a></li>
+    <li class="desktop-toggle">
+              <a href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fforce-sensitive-resistor-hookup-guide">Desktop Site</a>          </li>
+  </ul>
+
+</div><!-- end .container -->
+
+</footer>
+
+    <div class="nav-account">
+  <ul class="nav nav-tabs">
+    <li class="visible-xs">
+      <a class="nav-toggle-account back" href="#">Your Account</a>
+    </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fforce-sensitive-resistor-hookup-guide" data-toggle="modal" data-target="#login_modal" data-remote="false">Log In</a>
+      </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/make">Register</a>
+      </li>
+      </ul>
+</div>
+
+      </div><!-- end .wrapper-inner -->
+    </div><!-- end .wrapper -->
+
+    <!-- Login Modal -->
+<div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Log In</h4>
+        <p class="modal-header-msg"></p>
+      </div>
+      <div class="modal-body">
+        <form role="form" action="https://www.sparkfun.com/account/login" method="post">
+          <input type="hidden" name="redirect" value="/learn/tutorials/force-sensitive-resistor-hookup-guide">
+          <div class="form-group">
+            <label for="login-username">Email</label>
+            <input type="email" tabindex="1" name=user id="login-username" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input tabindex="2" type="password" name="passwd" id="login-password" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Log In" tabindex="3" class="btn btn-action">
+          </div>
+        </form>
+        <p>
+          <a href="https://www.sparkfun.com/account/forgot_password">Forgot your password?</a>          <br>
+          No account? <a id="btn_register_account" href="https://www.sparkfun.com/account/make">Register one!</a>        </p>
+      </div>
+    </div>
+  </div>
+</div>
+  
+          
+<!--  begin olark code -->
+  <script type="text/javascript" async> ;(function(o,l,a,r,k,y){if(o.olark)return; r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0]; y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r); y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)}; y.extend=function(i,j){y("extend",i,j)}; y.identify=function(i){y("identify",k.i=i)}; y.configure=function(i,j){y("configure",i,j);k.c[i]=j}; k=y._={s:[],t:[+new Date],c:{},l:a}; })(window,document,"static.olark.com/jsclient/loader.js");
+  /* custom configuration goes here (www.olark.com/documentation) */
+  olark.identify('4728-501-10-9212');</script>
+  <noscript><a href="https://www.olark.com/site/4728-501-10-9212/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+<!-- end olark code -->
+          <script type="text/javascript">
+      (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+        n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/2224003.js';
+        e.parentNode.insertBefore(n, e);
+      })(document,"script","hs-analytics",300000);
+    </script>
+        <script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0046/4761.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+  </script>
+      </body>
+</html>
+

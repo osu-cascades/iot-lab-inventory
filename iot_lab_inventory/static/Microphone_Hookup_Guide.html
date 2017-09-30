@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- mobile mode if small screen device -->
+    
+    <title>Sound Detector Hookup Guide - learn.sparkfun.com</title>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/css/bootstrap.min.css?rev=1506620278" rel="stylesheet">
+    <link rel="stylesheet" href="/css/theme.github.css?rev=1506620278" type="text/css" media="screen" />    <link rel="alternate" type="application/atom+xml" title="Education Blog" href="https://learn.sparkfun.com/feeds/blog" />
+    <link rel="alternate" type="application/atom+xml" title="Tutorials" href="https://learn.sparkfun.com/feeds/tutorials" />
+    <link rel="alternate" type="application/atom+xml" title="Education Blog Comments" href="https://learn.sparkfun.com/feeds/blog_comments" />
+    <link rel="alternate" type="application/atom+xml" title="Tutorial Comments" href="https://learn.sparkfun.com/feeds/tutorial_comments" />
+
+    <script type="text/javascript">
+      var SFECONFIG = {
+        dnt: false,
+        http_server: 'http://learn.sparkfun.com',
+        https_server: 'https://learn.sparkfun.com',
+        http_static: 'https://cdn.sparkfun.com',
+        learn_server: 'https://learn.sparkfun.com',
+        commerce_server: 'https://www.sparkfun.com',
+        base_url: '/',
+        url: '/',
+        controller: 'tutorials',
+        action: 'view',
+        entity_id: '',
+        auth: false,
+        sparkrev: '1506620278',
+        track_arduino_products: true,
+        search_key: 'xY6qr5Ui3V2UMA762D9Z'      };
+      var require = {
+        paths: {
+          'jqueryui': 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min'
+        },
+        baseUrl: '/js/',
+        urlArgs: "sparkrev=" + SFECONFIG.sparkrev,
+        deps: ['jqueryui'],
+        callback: function() {
+          $('#learn').learn();
+          $('#learn').sfeutil();
+          $.shared('domready');
+        }
+      };
+    </script>
+    <script src="/js/learn-built.js?sparkrev=1506620278"></script>
+          <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-3404365-1', 'auto', {'allowLinker': true});
+      ga('require', 'linker');
+      ga('linker:autoLink', ['www.sparkfun.com', 'avc.sparkfun.com'] );
+      ga('require', 'displayfeatures');
+            ga('set', 'dimension1', 'Guest');
+      ga('send', 'pageview');
+
+      </script>
+        <script type="text/javascript">
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js'); 
+    fbq('init', '988931021243392');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1"src="https://www.facebook.com/tr?id=988931021243392&ev=PageView&noscript=1"/>
+  </noscript>
+      </head>
+
+  <body id=learn class="layout-default no-type tutorials-view" ontouchstart="">
+            <!--
+    Start of DoubleClick Floodlight Tag: Please do not remove
+    Activity name of this tag: Universal
+    URL of the webpage where the tag is expected to be placed: http://sparkfun.com
+    This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+    Creation Date: 07/18/2016
+  -->
+  <script type="text/javascript">
+    var axel = Math.random() + "";
+    var a = axel * 10000000000000;
+    document.write('<iframe src="https://5626816.fls.doubleclick.net/activityi;src=5626816;type=count0;cat=unive0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+  </script>
+  <noscript>
+    <iframe src="https://5626816.fls.doubleclick.net/activityi;src=5626816;type=count0;cat=unive0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+  </noscript>
+  <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+    
+    <div class="wrapper" itemscope itemtype="http://schema.org/WebSite">
+      <meta itemprop="url" content="https://learn.sparkfun.com/">
+      <div class=wrapper-inner>
+
+    
+<div class="header">
+  <div class="container">
+
+    <!-- Mobile Nav Button -->
+    <div class="mobile-menu-container left">
+      <a id="nav_toggle" class="mobile-menu-button nav_toggle" href="#"><span class="sfe-icon-hamburger"></span></a>
+              <a id="search_toggle" class="mobile-menu-button" href="#"><span class="glyphicon glyphicon-search"></span></a>
+          </div>
+
+    <nav class="top-links">
+      <ul>
+        <li>
+          <a href="https://www.sparkfun.com/distributors">Find a Retailer</a>        </li>
+                  <li>
+            <div class="dropdown">
+              <a href="#" id="phone_hours" type="button" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                Need Help?
+                <span class="caret"></span>
+              </a>
+              <div class="dropdown-menu pull-right need-help" role="menu" aria-labelledby="phone_hours">
+                <h4>Customer Service</h4>
+                <p><a href="https://www.sparkfun.com/orders/"><span class="glyphicon glyphicon-dashboard"></span> Track My Order</a></p>
+                <p><a href="https://www.sparkfun.com/support"><span class="glyphicon glyphicon-question-sign"></span> Frequently Asked Questions</a></p>
+                <p><a href="https://www.sparkfun.com/support#InternationalShipping"><span class="glyphicon glyphicon-globe"></span> International Shipping Info</a></p>
+                <p><a href="mailto:cservice@sparkfun.com"><span class="glyphicon glyphicon-envelope"></span> Send Email</a></p>
+                <p class="small text-muted">
+                  Mon-Fri, 9am to 12pm and<br>
+                  1pm to 5pm U.S. Mountain Time:
+                </p>
+                <p><span class="glyphicon glyphicon-earphone"></span> (303) 284-0979</p>
+                                  <p><a data-toggle="chatpopup" href="https://www.sparkfun.com/chat/popup"><span class="glyphicon glyphicon-comment"></span> Chat With Us</a></p>
+                              </div>
+            </div>
+          </li>
+              </ul>
+    </nav>
+
+    <!-- Logo -->
+    <div class="logo-container">
+      <a class="logo" href="https://www.sparkfun.com/">
+        <span class="sfe-icon-flame"></span>
+        <span class="sfe-icon-sparkfun" data-icon="&#x1f525">
+          <span class="visuallyhidden">sparkfun.com</span>
+        </span>
+      </a>
+    </div>
+
+    <!-- Tabs -->
+    <!-- also edit mobile tabs in .tabs-container-mobile -->
+    <nav class="tabs-container hidden-xs">
+      <ul>
+        <li class="shop "><a href="https://www.sparkfun.com/categories">Shop</a></li>
+        <li class="learn active"><a href="https://learn.sparkfun.com/">Learn</a></li>
+        <li class="blog "><a href="https://www.sparkfun.com/news">Blog</a></li>
+        <li class="support "><a href="https://www.sparkfun.com/support">Support</a></li>
+      </ul>
+    </nav>
+
+    <!-- Cart & User -->
+    <div class="user-container mobile-menu-container right">
+
+      <a id="account_toggle" class="mobile-menu-button" href="#"><span class="glyphicon glyphicon-user"></span></a>
+
+              <div class="cart mobile-menu-button">
+          <a href="https://www.sparkfun.com/cart">
+            <span id="cart_status" class="sfe-icon-carticon cart-empty">
+              <span class="visuallyhidden">Shopping Cart</span>
+            </span>
+            <span class="cart_count">
+              <span id="items_in_cart">0</span>
+              <span id="cart_noun" class="visuallyhidden">items</span>
+            </span>
+          </a>
+        </div>
+      
+              <div class="user">
+          <!-- login modal trigger -->
+          <a class="btn btn-default" href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fsound-detector-hookup-guide" data-toggle="modal" data-target="#login_modal" data-remote="false">log in</a>
+          <a class="btn btn-default" href="https://www.sparkfun.com/account/make">register</a>        </div>
+      
+    </div>
+
+    <nav class="tabs-container-mobile visible-xs col-xs-12">
+      <ul>
+        <li class="shop "><a href="https://www.sparkfun.com/categories">Shop</a></li>
+        <li class="learn active"><a href="https://learn.sparkfun.com/">Learn</a></li>
+        <li class="blog "><a href="https://www.sparkfun.com/news">Blog</a></li>
+        <li class="support "><a href="https://www.sparkfun.com/support">Support</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <!-- Navigation / Search -->
+  <div class="main-nav-container">
+
+    <div class="container">
+
+      <nav class="product-nav">
+        <button type="button" class="product-menu">
+          <span class="menu-icon sfe-icon-hamburger"></span>
+          <span class="product-menu-name">Product Menu</span>
+        </button>
+
+                  <form id="search_form" class="search" action="https://www.sparkfun.com/search/results" method="get" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+            <meta itemprop="target" content="https://www.sparkfun.com/search/results?term={term}">
+            <div class="ui-widget">
+              <input name="term" id="global-search" class="form-control" type="text" value="" placeholder="find products, tutorials, etc..." itemprop="query-input" autocomplete="off">
+              <button type="submit" class="glyphicon glyphicon-search global-search-icon" aria-label="Search"></button>
+            </div>
+          </form>
+              </nav>
+
+      <nav class="sub-nav">
+        <ul>
+          <li>
+            <a href="http://www.sparkfuneducation.com" target="_blank">Education</a>
+          </li>
+          <li>
+            <a href="https://avc.sparkfun.com/"><span class="sfe-icon-avc"></span></a>          </li>
+          <li>
+            <a href="https://forum.sparkfun.com/" target="_blank">Forum</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="product-menu-container">
+      <div class="container">
+
+        <div class="fixed-product-menu-container col-lg-2 col-sm-3 col-xs-12">
+          <div class="sub-nav-mobile product-menu-group">
+            <a class="product-menu-heading desktop-toggle" href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fsound-detector-hookup-guide">Desktop Site</a>            <a class="product-menu-heading" href="http://www.sparkfuneducation.com" target="_blank">Education</a>
+            <a class="product-menu-heading" href="https://avc.sparkfun.com/"><span class="sfe-icon-avc"></span></a>            <ul class="list-unstyled">
+            </ul>
+          </div>
+          <div class="product-menu-group">
+            <a class="product-menu-heading" href="https://www.sparkfun.com/categories">All Categories</a>            <ul class="list-unstyled">
+            </ul>
+          </div>
+          <div class="product-menu-group">
+            <a class="product-menu-heading" href="https://www.sparkfun.com/categories/featured">Featured <span class="visible-xs pull-right glyphicon glyphicon-plus"></span></a>            <ul class="list-unstyled">
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/new_products">New Products</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/top"><span class="sfe-icon-flame"></span> Top Sellers</a></li>
+                              <li>
+                  <a href="https://www.sparkfun.com/fallsale" class="product-menu-item"><span class="sfe-icon-pumpkin" style="color:#ff8000"></span> Fall Into Savings Sale</a>
+                </li>
+                              <li>
+                  <a href="https://www.sparkfun.com/spectacle" class="product-menu-item"><span class="sfe-icon-spectacle-glasses" style="color:#000000"></span> Spectacle</a>
+                </li>
+                            <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/283">SparkX</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/sale">Sale</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/gift_certificates">Gift Certificates</a></li>
+            </ul>
+          </div>
+                      <a href="https://www.sparkfun.com/microbit" class="hidden-xs">
+              <img class="img-responsive img-rounded center-block" src="https://cdn.sparkfun.com//c/180-180/assets/product_menu_items/1/microbit-now-availble.jpg" alt="Micro:bit Ecosystem">
+            </a>
+                  </div>
+
+                              <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/287" class="product-menu-heading">
+                 Brands                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/featured" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-flame" style="color:#ee2e22"></span> SparkFun                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/103" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-arduino" style="color:#00878f"></span> Arduino                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/233" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-rpi-multi-color" style="color:#ffffff"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span> Raspberry Pi                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/284" class="product-menu-item">
+                                               micro:bit                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/279" class="product-menu-item">
+                                               Espressif (ESP)                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/287" class="product-menu-item">
+                                               <small>all brands</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/2" class="product-menu-heading">
+                 Development                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/299" class="product-menu-item">
+                                               Single Board Comp.                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/300" class="product-menu-item">
+                                               Microcontrollers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/136" class="product-menu-item">
+                                               FPGA                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/149" class="product-menu-item">
+                                               Prototyping Boards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/1" class="product-menu-item">
+                                               Programmers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/2" class="product-menu-item">
+                                               <small>all development</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/23" class="product-menu-heading">
+                 Sensors                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/304" class="product-menu-item">
+                                               Movement                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/146" class="product-menu-item">
+                                               Biometrics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/102" class="product-menu-item">
+                                               Imaging                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/305" class="product-menu-item">
+                                               Environment                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/117" class="product-menu-item">
+                                               Capacitive                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/23" class="product-menu-item">
+                                               <small>all sensors</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/46" class="product-menu-heading">
+                 Tools                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/271" class="product-menu-item">
+                                               3D Printing                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/280" class="product-menu-item">
+                                               CNC                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/49" class="product-menu-item">
+                                               Soldering                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/47" class="product-menu-item">
+                                               Hand Tools                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/177" class="product-menu-item">
+                                               Instruments                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/46" class="product-menu-item">
+                                               <small>all tools</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/310" class="product-menu-heading">
+                 Miscellaneous                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/157" class="product-menu-item">
+                                               All Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/176" class="product-menu-item">
+                                               Books                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/311" class="product-menu-item">
+                                               Arts/Crafts Supplies                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/351" class="product-menu-item">
+                                               SD Cards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/130" class="product-menu-item">
+                                               Swag                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/310" class="product-menu-item">
+                                               <small>all misc</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/51" class="product-menu-heading">
+                 Components                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/89" class="product-menu-item">
+                                               LED &amp; Illumination                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/145" class="product-menu-item">
+                                               Buttons &amp; Switches                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/28" class="product-menu-item">
+                                               Power                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/76" class="product-menu-item">
+                                               LCDs                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/70" class="product-menu-item">
+                                               Cables                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/51" class="product-menu-item">
+                                               <small>all components</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/204" class="product-menu-heading">
+                 E-Textiles                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/327" class="product-menu-item">
+                                               LilyPad                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/328" class="product-menu-item">
+                                               Sewable Electronics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/206" class="product-menu-item">
+                                               Materials                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/268" class="product-menu-item">
+                                               E-Textile Power                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/329" class="product-menu-item">
+                                               E-Textile Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/204" class="product-menu-item">
+                                               <small>all e-textiles</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/31" class="product-menu-heading">
+                 Robotics                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/pages/Actobotics" class="product-menu-item">
+                                               Actobotics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/178" class="product-menu-item">
+                                               Motors &amp; Drivers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/330" class="product-menu-item">
+                                               Parts                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/155" class="product-menu-item">
+                                               Hardware                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/181" class="product-menu-item">
+                                               Robotics Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/31" class="product-menu-item">
+                                               <small>all robotics</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/16" class="product-menu-heading">
+                 Wireless &amp; IoT                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/115" class="product-menu-item">
+                                               Bluetooth                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/112" class="product-menu-item">
+                                               WiFi                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/338" class="product-menu-item">
+                                               Satellite                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/4" class="product-menu-item">
+                                               GPS                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/339" class="product-menu-item">
+                                               Wireless Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/16" class="product-menu-item">
+                                               <small>all wireless/IoT</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/273" class="product-menu-heading">
+                 Audio                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/343" class="product-menu-item">
+                                               Audio Boards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/342" class="product-menu-item">
+                                               Audio Cables                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/344" class="product-menu-item">
+                                               Speakers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/345" class="product-menu-item">
+                                               Audio Chips                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/273" class="product-menu-item">
+                                               <small>all audio</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                  
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+    
+    <div class=content>
+      <div class=container id=airlock>
+
+        
+        <div class=main-title>
+  <ul class="breadcrumb">
+    <li><a href="https://learn.sparkfun.com/">Home</a></li>
+    <li><a href="https://learn.sparkfun.com/tutorials">Tutorials</a></li>
+    <li>Sound Detector Hookup Guide</li>
+      </ul>
+
+  <h1>
+    Sound Detector Hookup Guide  </h1>
+
+</div>
+
+
+<a id=nav_toggle_pages class=nav_toggle href="#"><span>&#8801;</span> Pages</a>
+
+<div id=tutorial class="row">
+
+  <div class="col-sm-8" id="sections">
+
+    <div class="contributors">
+                      Contributors:
+                <a href="https://www.sparkfun.com/users/468760"><img src="https://static.sparkfun.com/avatar/d069e186dea25a3b82d74ef824716693?d=retro&s=20&r=pg" /> Byron J.</a>          </div>
+
+    <span class="fave_widget verbose">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="207">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">4</span>
+</span>    <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" type="text" value="http://sfe.io/t207" onclick="$(this).select();">
+
+    <div class="share-social">
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','googleplus');" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft207" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','tumblr');" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft207&name=Sound+Detector+Hookup+Guide" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','reddit');" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft207" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','twitter');" href="https://twitter.com/intent/tweet?text=Sound+Detector+Hookup+Guide&url=http%3A%2F%2Fsfe.io%2Ft207&via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','facebook');" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft207&t=Sound+Detector+Hookup+Guide" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','pinterest');" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft207&media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2Flearn_tutorials%2F2%2F0%2F7%2FScreen_Shot_2014-02-27_at_4.55.36_PM.jpg&description=Sound+Detector+Hookup+Guide" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+          <div class="section tutorial-page">
+        <h2 id="introduction">Introduction</h2>
+        <p>The <a href="https://www.sparkfun.com/products/12642">Sound Detector</a> is a small board that combines a microphone and some processing circuitry.  It provides not only an audio output, but also a binary indication of the presence of sound, and an analog representation of it&rsquo;s amplitude.</p>
+
+<div class="row">
+  <div class="col-md-6">
+
+<div >
+<div class="tile product-tile has_addl_actions big grid " data-id="12642"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="SEN12642">
+      <meta itemprop="gtin13" content="0845156006502">
+    <meta itemprop="sku" content="SEN-12642">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/12642">
+      <img src="https://cdn.sparkfun.com/r/500-500/assets/parts/9/3/3/0/12642-01.jpg" alt="SparkFun Sound Detector" height="500" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type=hidden name=id value="12642">
+          <input type=hidden name=qty value="1">
+          <input type='hidden' name='csrf_token' value='e83e195f4e0741fd7309347ceb98470867f8b49c53b17bcf7ba447ea570107bf442d8c497dc38de31f9c0987e465499664bf0799115e93feccea7232f7129bb2'>          <!-- Add to Cart -->
+          <input type="number" class="quantity form-control" size="4" name="qty" value="1">
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_12642" style="display: none;">
+        <p class="success-message">
+          Added <span class="added_qty_12642"></span> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/12642" itemprop="url">
+        <span itemprop="name">SparkFun Sound Detector</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class=sfe-icon-stock-in><span class=visuallyhidden>In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      SEN-12642    </span>
+          <p class="description" style="display:none" itemprop="description">
+        The SparkFun Sound Detector is a small and very easy to use audio sensing board with three different outputs. The Sound Detec&hellip;      </p>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price" itemprop="price" content="10.95">$10.95</span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        
+<span class=product-rating title="4.6 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.6">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">11</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="12642">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">33</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="12642" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+</div>
+
+
+</div>
+  <div class="col-md-6">
+
+<div >
+<div class="tile product-tile has_addl_actions big grid " data-id="14262"  itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="SEN14262">
+      <meta itemprop="gtin13" content="0845156008292">
+    <meta itemprop="sku" content="SEN-14262">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/14262">
+      <img src="https://cdn.sparkfun.com/r/500-500/assets/parts/1/0/5/7/0/14262-01.jpg" alt="SparkFun Sound Detector (with Headers)" height="500" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type=hidden name=id value="14262">
+          <input type=hidden name=qty value="1">
+          <input type='hidden' name='csrf_token' value='e83e195f4e0741fd7309347ceb98470867f8b49c53b17bcf7ba447ea570107bf442d8c497dc38de31f9c0987e465499664bf0799115e93feccea7232f7129bb2'>          <!-- Add to Cart -->
+          <input type="number" class="quantity form-control" size="4" name="qty" value="1">
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_14262" style="display: none;">
+        <p class="success-message">
+          Added <span class="added_qty_14262"></span> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/14262" itemprop="url">
+        <span itemprop="name">SparkFun Sound Detector (with Headers)</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class=sfe-icon-stock-in><span class=visuallyhidden>In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      SEN-14262    </span>
+          <p class="description" style="display:none" itemprop="description">
+              </p>
+      </div>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price" itemprop="price" content="11.95">$11.95</span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="14262">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">0</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown"  data-product-id="14262" data-source="add_product_tile" href="#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+</div>
+
+
+</div>
+</div>
+
+
+<h3>Covered in This Tutorial</h3>
+
+<p>This tutorial will guide you through hooking up and using the Sound Detector.  It will examine how the circuit works, explain some details about getting the best performance from the Sound Detector, then present two different projects that demonstrate how to use it.</p>
+
+<h3>Suggested Reading</h3>
+
+<ul>
+<li><a href="https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard">How to Use a Breadboard</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/analog-vs-digital">Analog vs. Digital</a></li>
+<li>The Wikipedia article on <a href="http://en.wikipedia.org/wiki/Sound">sound</a>.</li>
+</ul>
+      </div>
+          <div class="section tutorial-page">
+        <h2 id="quick-start">Quick Start</h2>
+        <p>To get started with the Sound Detector, simply connect it to a power supply.</p>
+
+<p>(Sound Detector → Power Supply )</p>
+
+<ul>
+<li>GND → Supply Ground.</li>
+<li>VCC → Power supply voltage between 3.5 and 5.5 Volts.  5 Volts is ideal.</li>
+</ul>
+
+
+<p>In a quiet room, power the board up, and then speak into the microphone.  You should see the red LED on the
+board blink in response to your voice.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/0/7/LED-on.jpg"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/0/7/LED-on.jpg" alt="alt text" /></a></p>
+
+<p>With it&rsquo;s 3 outputs, the board itself is a lot more flexible.  To explore that flexibility, read on.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="looking-closer">Looking Closer</h2>
+        <h3>Three Outputs?</h3>
+
+<p>The Sound Detector has 3 separate outputs.  It&rsquo;s easiest to see what each is doing with a graph.  The following illustrates how the sound detector responds to a series of sound pulses.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/0/7/waves.png"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/0/7/waves.png" alt="Output Waveforms" /></a></p>
+
+<p style="text-align:center;"> <em>Sample Sound Detector Output</em></p>
+
+<p>This shows the output voltages over time.</p>
+
+<ul>
+<li>The dark green trace is the audio output of the sound detector.  The audio voltage directly from the microphone is found at this output.</li>
+<li>The light green trace is the envelope output.  This analog voltage traces the amplitude of the sound.  Of particular interest, notice that the third pulse gets noticeably louder as it goes.</li>
+<li>Finally, the red line is the gate output.  This output is low when conditions are quiet and goes high when sound is detected.</li>
+</ul>
+
+
+<h3>How It Works</h3>
+
+<p>Having examined the outputs, lets also take a quick walk through the schematic, to gain an understanding of how each stage works.</p>
+
+<h4>First Stage</h4>
+
+<p>The first section of the circuit is an electret microphone capsule.  This portion of the circuit borrows from the <a href="https://www.sparkfun.com/products/9964">Electret Microphone breakout board</a>.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/0/7/schem1.png"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/0/7/schem1.png" alt="Microphone and Preamp" /></a></p>
+
+<p style="text-align:center;"> <em>Microphone and Preamplifier</em></p>
+
+<p>The capsule is biased by the supply voltage through R1, and it outputs an AC voltage that is riding a DC offset of approximately &frac12; the supply voltage.</p>
+
+<p>The output from the capsule is an extremely small voltage, so the signal from the capsule is amplified by IC1G1, an operational amplifier stage.  By default, the preamplifier has an arithmetic gain of 100 (20 dB), and the gain can be adjusted by populating R17 (which we&rsquo;ll examine in detail on the <a href="https://learn.sparkfun.com/tutorials/sound-detector-hookup-guide/configuration">next page</a>).</p>
+
+<p>The <code>audio</code> output is DC coupled, riding one half the supply voltage, so it can be directly connected to the <a href="https://learn.sparkfun.com/tutorials/analog-to-digital-conversion">ADC</a> of a microcontroller.  In perfectly quiet conditions, it will ideally read &frac12; full scale, or 512 on a 10-bit converter.</p>
+
+<h4>Second Stage</h4>
+
+<p>The second stage of the circuit is an envelope follower.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/0/7/schem2.png"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/0/7/schem2.png" alt="Envelope Follower" /></a></p>
+
+<p style="text-align:center;"> Envelope Follower</p>
+
+<p>IC1G3 forms an opamp-based precision rectifier.  This stage implements the equation</p>
+
+<pre><code>if(Vin &gt; 0) 
+    Vout = 0;
+else
+    Vout = Vin * -2.2
+</code></pre>
+
+<p>The opamp inverts and amplifies the signal.  When it&rsquo;s output swings high, D2 turns on, and charges C1.  When the opamp output is high or not swinging, D2 is turned off, and C1 discharges through R9.  Thus, C1 tracks the peaks of the input signal.</p>
+
+<p>IC1G4 is a buffer amplifier, so external loads on the envelope pin won&rsquo;t change the C1&rsquo;s charge/discharge behavior.</p>
+
+<p>This results in a signal that tracks the peak amplitude of the input signal.  A louder sound will result in a higher voltage on the Envelope pin.  As with the audio pin, the envelope can be connected to the ADC of a microcontroller.</p>
+
+<h4>Third Stage</h4>
+
+<p>The final stage implements a thresholded switch on the envelope signal.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/0/7/schem3.png"><img src="https://cdn.sparkfun.com/assets/learn_tutorials/2/0/7/schem3.png" alt="Schmitt Trigger" /></a></p>
+
+<p style="text-align:center;"> <em>Schmitt Trigger</em></p>
+
+<p>The Schmitt trigger watches the envelope signal, and toggles the output when the threshold is exceeded.  A Schmitt trigger is a comparator that adjusts it&rsquo;s threshold voltage when the output switches, requiring a higher voltage to switch on than to switch off.  This allows it to ignore some ripple in the input signal, like the ripple present in the output of the envelope follower stage.</p>
+
+<p>The output of the Schmitt trigger is found on the Gate pin.  You can connect it to a digital input.  We&rsquo;ll  use it to trigger interrupts in the <a href="https://learn.sparkfun.com/tutorials/sound-detector-hookup-guide/software-example">software example</a>.</p>
+
+<h3>Outputs</h3>
+
+<p>Each of the three output signals is present on the .1" header at the edge of the board.  They are active simultaneously.  If you aren&rsquo;t using one in your particular application, simply leave that pin disconnected.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="configuration">Configuration</h2>
+        <h4>Care and Feeding Of The Capsule</h4>
+
+<p>The heart of the Sound Detector is the electret microphone capsule &ndash; without it, we couldn&rsquo;t convert acoustic energy into electrical energy.  These capsules have a couple of quirks that we need to understand in order to apply them successfully.</p>
+
+<p>Inside the capsule is the diaphragm, which is actually one plate of a small capacitor.  That capacitor forms a <a href="https://learn.sparkfun.com/tutorials/voltage-dividers">voltage divider</a> with the external bias resistor. The diaphragm moves in response to sound, and the capacitance changes as the plates get closer together or farther apart, causing the divider to change.  Since capacitors are sensitive to loading, it&rsquo;s internally buffered with a JFET (<a href="http://en.wikipedia.org/wiki/JFET">junction field-effect transistor</a>).</p>
+
+<p>Due to the mechanical and electronic tolerances involved, some capsules are more sensitive than others.  Also, the JFET is rather sensitive to noise on the power supply.  Both of these factors need to be accounted for when deploying the Sound Detector.</p>
+
+<h5>Power Supply</h5>
+
+<p>The Sound Detector is an analog circuit, and as such, it&rsquo;s more sensitive to noise on the power supply than most digital circuits.  Since the capsule is effectively a voltage divider sitting across the power rails, it will transcribe any noise on the supply lines onto the capsule output.  The next circuit in the chain is a high-gain amplifier, so any noise on the supply will then be amplified.  Therefore, the Sound Detector may require more careful power supply configuration than many circuits.</p>
+
+<p>In testing with various supplies, a significant degree of variability was discovered - some supplies are less noisy than others.  One exhibited as much as 30 mV ripple on the supply output, an as a result, the the Sound Detector was rather sensitive and unstable.  You can check how clean a power supply is by checking it with an oscilloscope or volt meter, set to the AC Volts (or, if provided, the AC millivolts) range.  A truly clean supply will show 0.000 VAC.  Based on the supplies used in testing, ripple of more than about 10 mV is problematic.</p>
+
+<p>Powering my Arduino with a 9V external supply, which allows the onboard regulators to function, the Arduino&rsquo;s 5V output was sufficiently clean.  However, powering it from the 5V available on the USB port on a PC, the regulators are bypassed, and the results were somewhat less usable, and vary greatly between different ports on different PCs.  A powered USB hub will probably provide cleaner power than the ports on the PC itself.</p>
+
+<p>If all else fails, three 1.5V batteries in series make a nice, clean source of 4.5V.</p>
+
+<h5>Amplitude Calibration</h5>
+
+<p>The Sound Detector comes set for moderate sensitivity - speaking directly into the microphone, or clapping your hands nearby should cause the gate output to fire.  If you find that it doesn&rsquo;t work well in a specific application, you can change the circuit to be more or less sensitive.</p>
+
+<p>The gain is set by changing the feedback resistors in the preamp stage.  The resistors are marked in the silkscreen on the PCB.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/0/7/Sound_Detector_Hookup_Guide-01.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/0/7/Sound_Detector_Hookup_Guide-01.jpg" alt="Resistor Closeup" /></a></p>
+
+<p style="text-align:center;"> <em>Resistor Closeup</em></p>
+
+<p>R3 is a surface mount part, with 100K Ohm populated by default.  R17 is an unpopulated position for a through hole resistor.</p>
+
+<h5>Lowering The gain</h5>
+
+<p>It&rsquo;s most likely that you&rsquo;ll find the detector to be too sensitive.  In testing the board for this writeup, noisy air conditioning and music in the next office were enough to set it off.  To make the board less sensitive, you can lower the preamplifier gain by populating R17 in parallel with R3.</p>
+
+<table border="1" align="center" width="500">
+<tr align="center"><td><b>R3 Value</b></td><td><b>R17 Value</b></td><td><b>Arithmetic Gain</b></td><td><b>Gain (dB)</b></td></tr>
+<tr align="center"><td>100K</td><td>-</td><td>100</td><td>40</td></tr>
+<tr align="center"><td>100K</td><td>100K</td><td>50</td><td>33</td></tr>
+<tr align="center"><td>100K</td><td>47K</td><td>32</td><td>30</td></tr>
+<tr align="center"><td>100K</td><td>22K</td><td>18</td><td>25</td></tr>
+<tr align="center"><td>100K</td><td>10K</td><td>9</td><td>19</td></tr>
+<tr align="center"><td>100K</td><td>4.7K</td><td>4</td><td>13</td></tr>
+<tr align="center"><td>100K</td><td>2.2K</td><td>2</td><td>6</td></tr>
+</table>
+
+
+<h5>Raising The Gain</h5>
+
+<p>If you want to make the sound detector more sensitive, so that it will be activated by quieter sounds, you can remove R3, and populate R17.</p>
+
+<table border="1" align="center" width="500">
+<tr align="center"><td><b>R17 Value</b></td><td><b>Arithmetic Gain</b></td><td><b>Gain (dB)</b></td></tr>
+<tr align="center"><td>100K</td><td>100</td><td>40</td></tr>
+<tr align="center"><td>220K</td><td>220</td><td>46</td></tr>
+<tr align="center"><td>470K</td><td>470</td><td>53</td></tr>
+<tr align="center"><td>1Meg</td><td>1000</td><td>60</td></tr>
+</table>
+
+
+<hr />
+
+<h4>Lights Out</h4>
+
+<p>In some applications, the onboard LED may be distracting or undesirable.  To disable it, simply use a solder sucker or wick to remove the solder blob from the jumper near the LED.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/0/7/Sound_Detector_Hookup_Guide-02.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/0/7/Sound_Detector_Hookup_Guide-02.jpg" alt="alt text" /></a></p>
+
+<h4>Physical Considerations</h4>
+
+<p>The electret capsule on the Sound Detector is also sensitive to mechanical vibration and wind noise.</p>
+
+<p>The Sound Detector will pick up handling noise.  Mounting it with a resilient material can help absorb vibration &ndash; placing it on a piece of open-cell foam helped reject vibration conducted through the testing workbench.  Other resilient mounting strategies would include suspending it using rubber bands, or building shock absorbers using #4 machine screws and heat-shrink tubing.</p>
+
+<p>Wind noise is caused when blasts of air enter the capsule.  Examples would be a windy day, or the sharp exhalation that often accompanies syllables such &ldquo;p,&rdquo; &ldquo;b&rdquo; and &ldquo;t.&rdquo;   The capsule come with a thin fabric covering, but it may not be enough to prevent stronger blasts.  You can craft a more robust windscreen with open-cell foam or synthetic fur (like the covering that sneaks into the frame when a boom mic accidentally enters a film scene).</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="software-example">Software Example</h2>
+        <p>Now that we understand how to configure the board, let&rsquo;s hook it to an Arduino and see what it can do.</p>
+
+<h3>Materials</h3>
+
+<p>In addition to the <a href="https://www.sparkfun.com/products/12642">Sound Detector</a>, you&rsquo;ll need the following parts.</p>
+
+<script src="https://www.sparkfun.com/wish_lists/82222.js"></script>
+
+
+<h3>Connections</h3>
+
+<p>We snapped a 5-pin section off the header, and <a href="https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering">soldered</a> it to the Sound Detector.  Then we took the jumper wires and made the following connections.</p>
+
+<p>(Sound Detector → Arduino )</p>
+
+<ul>
+<li>GND → Supply Ground</li>
+<li>VCC → Power supply voltage between 3.5 and 5.5 Volts</li>
+<li>Gate → Pin 2</li>
+<li>Envelope → A0</li>
+</ul>
+
+
+<p>Additionally, as described on the <a href="https://learn.sparkfun.com/tutorials/sound-detector-hookup-guide/configuration">calibration page</a>, a 33K Ohm resistor was soldered into position R17.  R3 was left in place, so the gain was lowered from 40 dB to about 28 dB.</p>
+
+<pre><code>language:c
+/******************************************************************************
+ * sound_detector_demo.ino
+ * Sound detector sample sketch
+ * Byron Jacquot @ SparkFun Electronics
+ * February 19, 2014
+ * https://github.com/sparkfun/Sound_Detector
+ * 
+ * This sketch demonstrates the use of the Sparkfun Sound Detector board.
+ *
+ * The Sound Detector is a small board that combines a microphone and some 
+ * processing circuitry.  It provides not only an audio output, but also a 
+ * binary indication of the presence of sound and an analog representation 
+ * of it's amplitude.  
+ *
+ * This sketch demonstrates two different modes of usage for the Sound
+ * Detector.  The gate output (a binary indication that is high when sound
+ * is present, and low when conditions are quiet) is used to fire a pin-change 
+ * ISR, which lights an LED when the sound is present.  The envelope output 
+ * (an analog voltage to rises to indicate the amplitude of the sound) is 
+ * sampled in the loop(), and it prints an indication of the level to the 
+ * serial terminal. 
+ *
+ * For more details about the Sound Detector, please check the hookup guide.
+ *
+ * Connections:
+ * The Sound Detector is connected to the Adrduino as follows:
+ * (Sound Detector -&gt; Arduino pin)
+ * GND → GND
+ * VCC → 5V
+ * Gate → Pin 2
+ * Envelope → A0
+ * 
+ * Resources:
+ * Additional library requirements: none
+ * 
+ * Development environment specifics:
+ * Using Arduino IDe 1.0.5
+ * Tested on Redboard, 3.3v/8MHz and 5v/16MHz ProMini hardware.
+ * 
+ * This code is beerware; if you see me (or any other SparkFun employee) at the
+ * local, and you've found our code helpful, please buy us a round!
+ * 
+ * Distributed as-is; no warranty is given.
+ ******************************************************************************/
+
+ // Define hardware connections
+#define PIN_GATE_IN 2
+#define IRQ_GATE_IN  0
+#define PIN_LED_OUT 13
+#define PIN_ANALOG_IN A0
+
+// soundISR()
+// This function is installed as an interrupt service routine for the pin
+// change interrupt.  When digital input 2 changes state, this routine
+// is called.
+// It queries the state of that pin, and sets the onboard LED to reflect that 
+// pin's state.
+void soundISR()
+{
+  int pin_val;
+
+  pin_val = digitalRead(PIN_GATE_IN);
+  digitalWrite(PIN_LED_OUT, pin_val);   
+}
+
+void setup()
+{
+  Serial.begin(9600);
+
+  //  Configure LED pin as output
+  pinMode(PIN_LED_OUT, OUTPUT);
+
+  // configure input to interrupt
+  pinMode(PIN_GATE_IN, INPUT);
+  attachInterrupt(IRQ_GATE_IN, soundISR, CHANGE);
+
+  // Display status
+  Serial.println("Initialized");
+}
+
+void loop()
+{
+  int value;
+
+  // Check the envelope input
+  value = analogRead(PIN_ANALOG_IN);
+
+  // Convert envelope value into a message
+  Serial.print("Status: ");
+  if(value &lt;= 10)
+  {
+    Serial.println("Quiet.");
+  }
+  else if( (value &gt; 10) &amp;&amp; ( value &lt;= 30) )
+  {
+    Serial.println("Moderate.");
+  }
+  else if(value &gt; 30)
+  {
+    Serial.println("Loud.");
+  }
+
+  // pause for 1 second
+  delay(1000);
+}
+</code></pre>
+
+<p>This code simultaneously demonstrates two different operating modes of the Sound Detector.</p>
+
+<ul>
+<li>First, using the external interrupt facility, the Arduino observes the gate output, and sets the onboard (pin 13) LED to follow the gate status.</li>
+<li>Second, in the loop() routine, it uses an analog input to periodically sample the envelope signal.  That value is interpreted into a message indicating the current loudness via a series of thresholds.</li>
+</ul>
+      </div>
+          <div class="section tutorial-page">
+        <h2 id="analog-example">Analog Example</h2>
+        <p>As a purely analog circuit, the Sound Detector isn&rsquo;t limited to strictly being a peripheral for a microcontroller.  To illustrate an alternate application, we&rsquo;ve wired up a completely analog example.  We&rsquo;ve tied the envelope output to an <a href="https://learn.sparkfun.com/tutorials/dotbar-display-driver-hookup-guide">LM3916 VU bar-graph LED driver</a>, to make a visual sound level meter.  For this application, the Sound Detector is configured with no resistor for R17, and the default 100K in position R3.</p>
+
+<h3>Materials</h3>
+
+<p>Again, we start with the <a href="https://www.sparkfun.com/products/12642">Sound Detector</a>, then add the following parts.</p>
+
+<script src="https://www.sparkfun.com/wish_lists/82223.js"></script>
+
+
+<h3>Schematic</h3>
+
+<p>We connect those parts as follows.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/0/7/fritzing-schem.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/0/7/fritzing-schem.png" alt="Fritzing Schematic" /></a></p>
+
+<p>Which translates thusly onto a solderless breadboard.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/0/7/breadboard.png"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/0/7/breadboard.png" alt="Fritzing Breadboard" /></a></p>
+
+<p>The assembled, operational version looks like this.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/2/0/7/Sound_Detector_Hookup_Guide-06.jpg"><img src="https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/2/0/7/Sound_Detector_Hookup_Guide-06.jpg" alt="Physical Breadboard" /></a></p>
+
+<p style="text-align:center;"> <em>Listening to &ldquo;The Lonely Bull&rdquo; by the Ventures</em></p>
+
+<p>Sound picked up by the microphone is now translated onto the bar graph.  The louder the sound is, the more LEDs light up!</p>
+
+<p>A few of notes about the circuit.</p>
+
+<ul>
+<li>It uses two power supply rails.  An external supply was used as a source of 13 VDC.  The 13V is further regulated down to 5V using an LM317 adjustable regulator.  This provides the recommended minimum of 12V for the bar-graph driver, and a stable source of 5V for the Sound Detector.
+
+<ul>
+<li>The 5V is connected to the + rail at the top of the breadboard.  It is used to power the Sound Detector, and as the anode supply for the LEDs.</li>
+<li>The 13V is on the lower + rail, and is the power supply for the LM3916.</li>
+</ul>
+</li>
+<li>The 100K Ohm resistor between pins 6 and 7 of the LM3916 sets the reference for the scaling of the bar graph.  If the meter seems to be too sensitive, it can be reduced to 10K or lower.</li>
+<li>Pin 6 of the LED bar graph is at one of the covered-over positions on the power rail.  The leg was folded over to make contact with pin 5.</li>
+<li>Pin 9 of the LM3916 sets the chip for dot or bar modes.  As shown above, tied to the 13V rail, the chip is in bar mode.  If pin 9 is left unconnected, the chip will be in dot mode.</li>
+</ul>
+      </div>
+          <div class="section tutorial-page">
+        <h2 id="reso">Resources and Going Further</h2>
+        <p>A few parting thoughts.</p>
+
+<h2>Troubleshooting:</h2>
+
+<p>If the Sound Detector is misbehaving, try the following steps.</p>
+
+<ul>
+<li>Double check that the power supply is clean, preferably with an oscilloscope.  Irregularities on the supply will likely be present on the output.</li>
+<li>The gain configuration is easier to tame with the higher headroom offered by higher supply voltages.  Providing the Sound Detector with a stable 5V supply, and translating output down to 3.3V will yield better results than powering the detector directly from 3.3V.</li>
+<li>Finally, listen to the audio output.  AC-couple the audio output using a 10 uF electrolytic capacitor, with its + leg to the sound detector, and connect a small speaker or headphone.  Simply listening to the output often yields clues as to what&rsquo;s wrong.
+
+<ul>
+<li>You&rsquo;ll be able to hear whether unexpected noises, such as wind and vibration, are being picked up.</li>
+<li>If the audio output is distorted, the gain may need to be reduced.</li>
+<li>If the audio output is really quiet, the gain may need to be increased.</li>
+<li>If there is a constant tone on the audio output, double-check that the power supply is suitably stable.  Switch-mode power supplies often introduce oscillations on the power rails.</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Documentation</h2>
+
+<p>Design files for the Sound Detector are in the corresponding <a href="https://github.com/sparkfun/Sound_Detector">GitHub repository</a>.  This includes the Eagle files, and the <a href="https://learn.sparkfun.com/tutorials/sound-detector-hookup-guide/software-example">Arduino example</a> and <a href="https://learn.sparkfun.com/tutorials/sound-detector-hookup-guide/analog-example">Fritzing example</a> we explored above.</p>
+
+<p>Additionally, there are SPICE simulations of the circuit for <a href="http://www.linear.com/designtools/software/#LTspice">LT Spice</a>.  One of those simulations, <code>sound_detector-wav.asc</code> actually analyzes the contents of a wav file (which was used to generate the <a href="https://learn.sparkfun.com/tutorials/sound-detector-hookup-guide/looking-closer">diagram on page 2</a> of this tutorial), though you&rsquo;ll have to modify the file path to analyze a wav file if your own.</p>
+
+<p>Finally, the Sound Detector has been added to the sensors category in the <a href="https://github.com/sparkfun/Fritzing_Parts">Sparkfun Fritzing Library</a>.</p>
+
+<h2>See Also</h2>
+
+<ul>
+<li>The Wikipedia page for <a href="http://en.wikipedia.org/wiki/Electret_microphone">electret microphones</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/dotbar-display-driver-hookup-guide">LM3914/5/6 Dot/Bar Display Driver Hookup Guide</a></li>
+</ul>
+      </div>
+    
+        <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" type="text" value="http://sfe.io/t207" onclick="$(this).select();">
+
+    <div class="share-social">
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','googleplus');" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft207" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','tumblr');" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft207&name=Sound+Detector+Hookup+Guide" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','reddit');" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft207" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','twitter');" href="https://twitter.com/intent/tweet?text=Sound+Detector+Hookup+Guide&url=http%3A%2F%2Fsfe.io%2Ft207&via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','facebook');" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft207&t=Sound+Detector+Hookup+Guide" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel=nofollow onclick="return $(this).sfeutil('track_link',this,'Share','clicked','pinterest');" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft207&media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2Flearn_tutorials%2F2%2F0%2F7%2FScreen_Shot_2014-02-27_at_4.55.36_PM.jpg&description=Sound+Detector+Hookup+Guide" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+  </div>
+
+  <div class="col-sm-4" id="nav-pages">
+    <div id="sidebar_affix">
+
+      <div id="tutorial-pages" class="list-group">
+        <a class="list-group-item"><b>Sections</b></a>
+                          <a data-pagename="introduction" class="list-group-item" href="#introduction">
+            Introduction          </a>
+                  <a data-pagename="quick-start" class="list-group-item" href="#quick-start">
+            Quick Start          </a>
+                  <a data-pagename="looking-closer" class="list-group-item" href="#looking-closer">
+            Looking Closer          </a>
+                  <a data-pagename="configuration" class="list-group-item" href="#configuration">
+            Configuration          </a>
+                  <a data-pagename="software-example" class="list-group-item" href="#software-example">
+            Software Example          </a>
+                  <a data-pagename="analog-example" class="list-group-item" href="#analog-example">
+            Analog Example          </a>
+                  <a data-pagename="reso" class="list-group-item" href="#reso">
+            Resources and Going Further          </a>
+              </div>
+
+      <div class="list-group">
+        <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/sound-detector-hookup-guide/discuss">
+          Comments
+          <span class="badge">20</span>
+        </a>
+                  <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/sound-detector-hookup-guide/introduction">
+            View Paginated
+          </a>
+                <a class="list-group-item" href="#" onclick="window.print(); return false;">
+          Print
+        </a>
+      </div>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>Tags</b></li>
+        <li class="list-group-item"><ul class="tags-list">
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/audio">Audio</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/hookup">Hookup</a>  </li>
+</ul>
+</li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>License</b></li>
+        <li class="list-group-item">
+          <span class="sfe-icon-cc">
+            <span class="visuallyhidden">Creative Commons</span>
+          </span>
+          <small>tutorials are <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="new">CC BY-SA 4.0</a></small>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  require(['tutorial', 'jquery.imagesloaded'], function() {
+    $('#tutorial').tutorial();
+  });
+</script>
+
+      </div> <!-- /container -->
+    </div> <!-- /content -->
+
+    
+<footer>
+
+<div class="social">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="sharing-ingenuity">
+          <span class=sfe-icon-flame></span>
+          <span class="text"><span class="text-top">Start<br></span>something.</span>
+        </div>
+        <ul class="spew">
+          <li><a href="https://www.github.com/sparkfun" target="_blank" class=sfe-icon-github><span class=visuallyhidden>GitHub</span></a></li>
+          <li><a href="https://www.youtube.com/sparkfun" target="_blank" class=sfe-icon-youtube><span class=visuallyhidden>YouTube</span></a></li>
+          <li><a href="https://www.vimeo.com/sparkfun" target="_blank" class=sfe-icon-vimeo><span class=visuallyhidden>Vimeo</span></a></li>
+          <li><a href="https://www.facebook.com/SparkFun" target="_blank" class=sfe-icon-facebook><span class=visuallyhidden>Facebook</span></a></li>
+          <li><a href="https://www.instagram.com/sparkfun/" target="_blank" class=sfe-icon-instagram><span class=visuallyhidden>Instagram</span></a></li>
+          <li><a href="https://plus.google.com/106084846822083498483/" target="_blank" class=sfe-icon-google-plus><span class=visuallyhidden>Google Plus</span></a></li>
+          <li><a href="https://www.flickr.com/photos/sparkfun/" target="_blank" class=sfe-icon-flickr><span class=visuallyhidden>Flickr</span></a></li>
+          <li><a href="https://twitter.com/#!/sparkfun" target="_blank" class=sfe-icon-twitter><span class=visuallyhidden>Twitter</span></a></li>
+          <li><a href="https://www.sparkfun.com/feeds" class=sfe-icon-feed><span class=visuallyhidden>RSS</span></a></li>
+        </ul>
+        <div class="newsletter">
+          <!--[if lte IE 8]>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+<![endif]-->
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+<script>
+  hbspt.forms.create({
+    css: '',
+    cssClass: 'hubspot-newsletter-subscribe',
+    portalId: '2224003',
+    formId: 'd2b17dd4-e1bb-406a-ba41-44c19dcd0376'
+  });
+</script>
+        </div>
+      </div>
+    </div><!-- end .row -->
+  </div><!-- end .container -->
+</div><!-- end .social -->
+
+<div class="container">
+
+    <div class="row">
+
+    <div class="subfooter subfooter-about">
+      <p>
+        In 2003, CU student Nate Seidle blew a power supply in his dorm room and, in lieu of a way to order easy replacements, decided to start his own company. Since then, SparkFun has been committed to sustainably helping our world achieve electronics literacy from our headquarters in Boulder, Colorado.
+      </p>
+      <p>
+        No matter your vision, SparkFun's products and resources are designed to make the world of electronics more accessible. In addition to over 2,000 open source components and widgets, SparkFun offers curriculum, training and online tutorials designed to help demystify the wonderful world of embedded electronics. We're here to help you start something.
+      </p>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>About Us</b>
+            <li><a href="https://www.sparkfun.com/about_sparkfun">About SparkFun</a></li>
+	    <li><a href="http://www.sparkfuneducation.com" target="_blank">SparkFun Education <span class="glyphicon glyphicon-new-window"></span></li>
+	    <li><a title="RSS Feeds" href="https://www.sparkfun.com/feeds">Feeds <span class=sfe-icon-feed></span></a></li>
+            <li><a href="https://www.sparkfun.com/jobs">Jobs</a></li>
+            <li><a href="https://www.sparkfun.com/static/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Help</b></li>
+            <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+            <li><a href="https://www.sparkfun.com/support#ShippingPolicy">Shipping</a></li>
+            <li><a href="https://www.sparkfun.com/returns">Return Policy</a></li>
+            <li><a href="https://www.sparkfun.com/static/faq">FAQ</a></li>
+                      </ul>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Programs</b></li>
+	    <li><a href="https://www.sparkfun.com/sponsorships">Become a Community Partner</a>	      <li><ul><li><a href="https://www.sparkfun.com/cpp">Community Stories</a></li></ul></li>
+	    </li>
+            <li><a href="https://www.sparkfun.com/project_calls">Tell Us About Your Project</a></li>
+            <li><a href="https://learn.sparkfun.com/tutorials/how-to-sell-your-widget-on-sparkfun">Sell Your Widget on SparkFun</a></li>
+            <li><a href="https://www.sparkfun.com/distributors/apply">Become a SparkFun Distributor</a></li>
+            <li><a href="https://www.sparkfun.com/volume">Large Volume Sales</a> </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Community</b></li>
+            <li><a href="https://forum.sparkfun.com/">Forum</a></li>
+            <li><a href="https://www.sparkfun.com/news/263">SparkFun IRC Channel</a></li>
+            <li><a href="https://www.sparkfun.com/quiz">Take the SparkFun Quiz</a></li>
+            <li><a href="https://www.kickstarter.com/pages/sparkfun">SparkFun Kickstarter Projects</a></li>
+            <li><a href="https://www.sparkfun.com/distributors">Distributors</a></li>
+          </ul>
+        </div>
+
+      </div><!-- end .row -->
+
+    </div>
+
+    <div id="feedback" class="subfooter subfooter-woym">
+      <form id="woym_form" class="feedback" action="https://learn.sparkfun.com/feedback/mind.json" onsubmit="$(this).sfeutil('mind_feedback'); return false;" method="POST">
+        <div class="error" id="error_feedback" style="display: none"></div>
+        <input type="hidden" name="sparkaptcha" id="sparkaptcha" value="0">
+
+        <div class="form-group">
+          <label for="feedback_textarea" class="control-label">What's on your mind?</label>
+          <div class="controls">
+            <textarea id="feedback_textarea" class="form-control" name="feedback_text" required></textarea>
+            <div class="error" id="error_feedback_text" style="display: none"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_dest" class="control-label">For which department?</label>
+          <select name="dest" class="form-control" id="feedback_dest">
+            <option value="general">General</option>
+            <option value="cust">Customer Service</option>
+            <option value="tech">Tech Support</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_email" class="control-label">
+            Please include your email address if you'd like us to respond to a specific question.
+          </label>
+
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+            <input type="text" class="form-control" id="feedback_email" name="email" placeholder="email address" />
+          </div>
+          <div class="error" id="error_feedback_email" style="display: none"></div>
+
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+  </div><!-- end .row -->
+  
+  <ul class="copyleft">
+    <li>SparkFun Electronics <a href="https://www.sparkfun.com/news/300">&reg;</a></li>
+    <li><a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=6333+Dry+Creek+Parkway,+Niwot,+CO+80503">Niwot, Colorado</a></li>
+    <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+    <li><a href="https://www.sparkfun.com/sitemap">Site Map</a></li>
+    <li><a href="https://www.sparkfun.com/terms">Terms of Service</a></li>
+    <li><a href="https://www.sparkfun.com/privacy">Privacy Policy</a></li>
+    <li class="desktop-toggle">
+              <a href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fsound-detector-hookup-guide">Desktop Site</a>          </li>
+  </ul>
+
+</div><!-- end .container -->
+
+</footer>
+
+    <div class="nav-account">
+  <ul class="nav nav-tabs">
+    <li class="visible-xs">
+      <a class="nav-toggle-account back" href="#">Your Account</a>
+    </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fsound-detector-hookup-guide" data-toggle="modal" data-target="#login_modal" data-remote="false">Log In</a>
+      </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/make">Register</a>
+      </li>
+      </ul>
+</div>
+
+      </div><!-- end .wrapper-inner -->
+    </div><!-- end .wrapper -->
+
+    <!-- Login Modal -->
+<div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Log In</h4>
+        <p class="modal-header-msg"></p>
+      </div>
+      <div class="modal-body">
+        <form role="form" action="https://www.sparkfun.com/account/login" method="post">
+          <input type="hidden" name="redirect" value="/learn/tutorials/sound-detector-hookup-guide">
+          <div class="form-group">
+            <label for="login-username">Email</label>
+            <input type="email" tabindex="1" name=user id="login-username" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input tabindex="2" type="password" name="passwd" id="login-password" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Log In" tabindex="3" class="btn btn-action">
+          </div>
+        </form>
+        <p>
+          <a href="https://www.sparkfun.com/account/forgot_password">Forgot your password?</a>          <br>
+          No account? <a id="btn_register_account" href="https://www.sparkfun.com/account/make">Register one!</a>        </p>
+      </div>
+    </div>
+  </div>
+</div>
+  
+          
+<!--  begin olark code -->
+  <script type="text/javascript" async> ;(function(o,l,a,r,k,y){if(o.olark)return; r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0]; y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r); y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)}; y.extend=function(i,j){y("extend",i,j)}; y.identify=function(i){y("identify",k.i=i)}; y.configure=function(i,j){y("configure",i,j);k.c[i]=j}; k=y._={s:[],t:[+new Date],c:{},l:a}; })(window,document,"static.olark.com/jsclient/loader.js");
+  /* custom configuration goes here (www.olark.com/documentation) */
+  olark.identify('4728-501-10-9212');</script>
+  <noscript><a href="https://www.olark.com/site/4728-501-10-9212/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+<!-- end olark code -->
+          <script type="text/javascript">
+      (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+        n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/2224003.js';
+        e.parentNode.insertBefore(n, e);
+      })(document,"script","hs-analytics",300000);
+    </script>
+        <script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0046/4761.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+  </script>
+      </body>
+</html>
+

@@ -4,9 +4,9 @@
   <a href="#" onclick="history.back();">« back</a>
   <h1>{{ part.name }}</h1>
   {% for image in part.images %}
-    <img width="150" src="{{ url_for('static', filename=image.filename) }}"/>
-    <!--{% set s3_image_url = [config.S3_BUCKET_NAME, image.filename] | join %}-->
-    <!--<img height="150" src="{{ s3_image_url }}"/>-->
+    <!--<img width="150" src="{{ url_for('static', filename=image.filename) }}"/>-->
+    {% set s3_image_url = [config.S3_BUCKET_NAME, image.filename] | join %}
+    <img height="150" src="{{ s3_image_url }}"/>
   {% endfor %}
   <p>{{ part.description }}</p>
   <br>

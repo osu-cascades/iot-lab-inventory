@@ -14,9 +14,9 @@ def home():
 def parts():
     category = request.args.get('category')
     if category is None:
-        parts = Part.query.all()
+        parts = Part.query.order_by('name').all()
     else:
-        parts = Part.query.filter_by(category=category).all()
+        parts = Part.query.filter_by(category=category).order_by('name').all()
     return render_template('parts/list.html', parts=parts, category=category)
 
 

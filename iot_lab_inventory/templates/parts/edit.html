@@ -10,7 +10,7 @@
   <!-- /parts/edit.html -->
   <h1>Edit Part {{ part.id }}</h1>
   {% for image in part.images %}
-    {#<img height="100" src="{{ url_for('static', filename=image.filename) }}"/>#}
+    <!--{#<img height="100" src="{{ url_for('static', filename=image.filename) }}"/>#}-->
     {% set s3_image_url = [config.S3_BUCKET_NAME,image.filename] | join %}
     <img height="100" src="{{ s3_image_url }}"/>
   {% endfor %}
